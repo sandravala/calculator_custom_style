@@ -1,5 +1,5 @@
 @charset "UTF-8";.formbox {
-    --formbox-font-size: .85em;
+    --formbox-font-size: 12px;
     --formbox-radius: 0.25em;
     --formbox-shadow: none;
     --formbox-hr-color: #f5f5f5;
