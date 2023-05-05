@@ -522,3 +522,50 @@
 .formbox__counter-btn {
     color: currentColor
 }
+
+.ui-datepicker table {width: 100%;font-size: 1em;border-collapse: collapse;margin:0 0 .4em;}
+.ui-datepicker td a {
+    display: block;
+    padding: 0.2em;
+    text-align: center;
+    text-decoration: none;
+}
+
+.ui-widget {
+    font-family: var(--formbox-title-font);/*{ffDefault}*/;
+    font-size: .9em/*{fsDefault}*/;
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+    font-family: inherit;
+    font-size: 1em;
+}
+
+select {
+    width: 100%;
+    border: 1px #212121;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url(data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23212121' viewBox='0 0 448 512'%3E%3Cpath d='M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z' /%3E%3C/svg%3E);
+    background-repeat: no-repeat;
+    background-position: calc( 100% - 18px) center;
+    background-position-x: calc(100% - 18px);
+    background-position-y: center;
+    background-color: transparent;
+    font-weight: bold;
+}
+
+body, button, input, select, optgroup, textarea {
+    color: #212121;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.ui-datepicker .ui-datepicker-title {
+    margin: 0 2.3em;
+    line-height: 1.8em;
+    text-align: center;
+    text-transform: uppercase;
+}
