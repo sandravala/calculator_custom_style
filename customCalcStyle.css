@@ -14,7 +14,7 @@
     --formbox-field-background: transparent;
     --formbox-field-color: inherit;
     --formbox-field-border-hcolor: #dbdbdb;
-    --form-field-height: 2.5em;
+    --form-field-height: 3em;
     --formbox-field-readonly-background: transparent;
     --formbox-field-readonly-color: inherit;
     --formbox-addon-color: inherit;
@@ -196,7 +196,7 @@
     -webkit-align-items: center;
     align-items: center;
     vertical-align: middle;
-    height: 3em;
+    height: var(--form-field-height);
     padding: .75em 1em;
     background-color: white;
     /* border: var(--formbox-field-border-width) solid var(--formbox-field-border-color); */
