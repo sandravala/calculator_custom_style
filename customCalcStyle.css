@@ -196,10 +196,10 @@
     -webkit-align-items: center;
     align-items: center;
     vertical-align: middle;
-    /* height: var(--form-field-height); */
+    height: 100%;
     padding: .75em 1em;
-    /* background-color: var(--formbox-addon-background);
-    border: var(--formbox-field-border-width) solid var(--formbox-field-border-color); */
+    background-color: white;
+    /* border: var(--formbox-field-border-width) solid var(--formbox-field-border-color); */
     color: var(--formbox-addon-color);
     font-size: 1em;
     font-weight: var(--formbox-addon-weight);
