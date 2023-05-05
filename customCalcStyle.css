@@ -554,6 +554,7 @@ select {
     background-position-y: center;
     background-color: transparent;
     font-weight: bold;
+    padding-left: 10px;
 }
 
 body, button, input, select, optgroup, textarea {
