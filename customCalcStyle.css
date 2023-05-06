@@ -1,12 +1,12 @@
 @charset "UTF-8";
 
 .formbox {
-    --formbox-font-size: 20px;
+    --formbox-font-size: 14px;
     --formbox-radius: 0.25em;
     --formbox-shadow: none;
     --formbox-hr-color: #f5f5f5;
     --formbox-title-weight: 600;
-    --formbox-title-size: .85em; 
+    --formbox-title-size: 1em; 
     --formbox-title-color: inherit;
     --formbox-title-font: inherit;
     --formbox-field-border-color: #dbdbdb;
@@ -14,7 +14,7 @@
     --formbox-field-background: transparent;
     --formbox-field-color: inherit;
     --formbox-field-border-hcolor: #dbdbdb;
-    --form-field-height: 3em;
+    --form-field-height: 2em;
     --formbox-field-readonly-background: transparent;
     --formbox-field-readonly-color: inherit;
     --formbox-addon-color: inherit;
