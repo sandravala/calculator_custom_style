@@ -127,7 +127,7 @@
     font-family: var(--formbox-title-font);
     font-size: var(--formbox-title-size);
     font-weight: var(--formbox-title-weight);
-    font-transform: uppercase
+    text-transform: uppercase
 }
 
 .formbox__container:has(textarea) .formbox__title {
