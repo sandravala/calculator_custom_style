@@ -198,7 +198,7 @@
     vertical-align: middle;
     height: var(--form-field-height);
     padding: .75em 1em;
-    background-color: white;
+    background-color: transparent;
     /* border: var(--formbox-field-border-width) solid var(--formbox-field-border-color); */
     color: var(--formbox-addon-color);
     font-size: 1em;
@@ -289,7 +289,7 @@
     border-radius: var(--formbox-radius);
     outline: 0;
     color: var(--formbox-field-color);
-    font-size: 1em;
+    font-size: .85em;
     line-height: 1
 }
 
@@ -299,7 +299,7 @@
 .formbox__container textarea.formbox__field-result,
 .formbox__container textarea.formbox__field-textarea {
     padding: .75em 1em;
-    font-size: 1em
+    font-size: .85em
 }
 
 .formbox__container input.formbox__field-input,
@@ -366,7 +366,7 @@
     background: var(--formbox-field-background) url(data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23555%22%2F%3E%3C%2Fsvg%3E) no-repeat right 5px top 55%;
     background-size: 1em 1em;
     cursor: pointer;
-    font-size: 1em;
+    font-size: .85em;
     -webkit-appearance: none
 }
 
