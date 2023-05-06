@@ -423,7 +423,7 @@
     -webkit-justify-content: center;
     justify-content: center;
     height: var(--form-field-height);
-    padding: 1em;
+    padding: .5em;
     border: var(--formbox-field-border-width) solid #071927;
     border-radius: var(--formbox-radius);
     cursor: pointer;
