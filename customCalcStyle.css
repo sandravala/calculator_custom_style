@@ -21,14 +21,14 @@
     --formbox-addon-background: #f5f5f5;
     --formbox-addon-weight: 400;
     --formbox-btn-calc-weight: 500;
-    --formbox-btn-calc-color: #ffffff;
-    --formbox-btn-calc-bg: #006400;
+    --formbox-btn-calc-color: #071927;
+    --formbox-btn-calc-bg: #ffffff;
     --formbox-btn-calc-hcolor: #ffffff;
-    --formbox-btn-calc-hbg: #006400;
-    --formbox-btn-reset-color: #ffffff;
-    --formbox-btn-reset-bg: #383838;
+    --formbox-btn-calc-hbg: #071927;
+    --formbox-btn-reset-color: #071927;
+    --formbox-btn-reset-bg: #ffffff;
     --formbox-btn-reset-hcolor: #ffffff;
-    --formbox-btn-reset-hbg: #383838;
+    --formbox-btn-reset-hbg: #071927;
     --formbox-title-result-color: inherit;
     --formbox-title-result-weight: 600;
     --formbox-field-border-result-color: #dbdbdb;
@@ -422,8 +422,8 @@
     -webkit-justify-content: center;
     justify-content: center;
     height: var(--form-field-height);
-    padding: .75em 1em;
-    border: var(--formbox-field-border-width) solid transparent;
+    padding: .5em;
+    border: var(--formbox-field-border-width) solid #071927;
     border-radius: var(--formbox-radius);
     cursor: pointer;
     -webkit-user-select: none;
@@ -431,10 +431,12 @@
     -ms-user-select: none;
     user-select: none;
     text-align: center;
-    font-size: 1em;
+    font-size: .85em;
     font-weight: var(--formbox-btn-calc-weight);
     white-space: nowrap
 }
+
+
 
 .formbox__btn button:not(:hover):not(:active).formbox__btn-calc {
     background-color: var(--formbox-btn-calc-bg);
