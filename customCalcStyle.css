@@ -34,7 +34,7 @@
     --formbox-field-border-result-color: #dbdbdb;
     --formbox-field-result-background: transparent;
     --formbox-result-addon-color: inherit;
-    --formbox-result-addon-background: #f5f5f5
+    --formbox-result-addon-background: transparent
 }
 
 .formbox-wrapper {
@@ -422,7 +422,7 @@
     -webkit-justify-content: center;
     justify-content: center;
     height: var(--form-field-height);
-    padding: .5em;
+    padding: 1em;
     border: var(--formbox-field-border-width) solid #071927;
     border-radius: var(--formbox-radius);
     cursor: pointer;
