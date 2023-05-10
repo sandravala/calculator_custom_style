@@ -99,7 +99,7 @@
     }
 }
 
-.formbox th, td {
+.formbox th, .formbox td {
     text-align: left; 
     font-size: .85em; 
     text-transform: uppercase;
