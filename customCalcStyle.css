@@ -99,7 +99,8 @@
     display: grid;
     -webkit-align-items: flex-start;
     align-items: flex-start;
-    grid-gap: .75em
+    grid-gap: .75em;
+    margin-top: 1.5em
 }
 
 @media screen and (min-width: 776px) {
