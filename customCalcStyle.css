@@ -101,17 +101,15 @@
     align-items: flex-start;
     grid-gap: .75em;
     padding-top: 2em
-}
-
-//uzsidedu kur reikia linijas
-.formbox__container.has_border {
-    margin_top: 2em;
-    border-top: var(--formbox-field-border-width) solid var(--formbox-field-border-color);
-}
-
-//pasidariau atskira klase, kad nereiktu su js uzkraunant slepti laukeliu pradzioje
-.formbox__container.nerodyti {
-    display: none;
+        
+    &.has_border {
+        margin_top: 2em;
+        border-top: var(--formbox-field-border-width) solid var(--formbox-field-border-color);
+    }
+    
+    &.nerodyti {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 776px) {
