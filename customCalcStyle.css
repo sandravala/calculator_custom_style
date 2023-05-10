@@ -93,6 +93,17 @@
 
 .formbox table {
     width: 100%
+    &.rezultatuLentele {
+        border-collapse: separate !important; 
+        border-spacing: .60em !important;
+    }
+}
+
+.formbox th, td {
+    text-align: left; 
+    font-size: .85em; 
+    text-transform: uppercase;
+    padding-left: .3em;
 }
 
 .formbox__container {
