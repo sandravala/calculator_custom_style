@@ -100,7 +100,17 @@
     -webkit-align-items: flex-start;
     align-items: flex-start;
     grid-gap: .75em;
-    margin-top: 2em
+    padding-top: 2em
+}
+
+//uzsidedu kur reikia linijas
+.formox_container.has_border {
+    border-top: var(--formbox-field-border-width) solid var(--formbox-field-border-color);
+}
+
+//pasidariau atskira klase, kad nereiktu su js uzkraunant slepti laukeliu pradzioje
+.formbox_container.nerodyti {
+    display: none;
 }
 
 @media screen and (min-width: 776px) {
