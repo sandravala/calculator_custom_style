@@ -105,6 +105,7 @@
 
 //uzsidedu kur reikia linijas
 .formox_container.has_border {
+    margin_top: 2em;
     border-top: var(--formbox-field-border-width) solid var(--formbox-field-border-color);
 }
 
