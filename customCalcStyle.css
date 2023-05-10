@@ -100,10 +100,10 @@
     -webkit-align-items: flex-start;
     align-items: flex-start;
     grid-gap: .75em;
-    padding-top: 2em;
+    padding-bottom: 2em;
         
     &.has_border {
-        margin_top: 2em;
+        padding-top: 2em;
         border-top: var(--formbox-field-border-width) solid var(--formbox-field-border-color);
     }
     
