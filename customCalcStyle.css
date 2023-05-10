@@ -71,7 +71,7 @@
     box-shadow: var(--formbox-shadow);
     border: 0;
     border-radius: var(--formbox-radius);
-    gap: 1em
+    gap: .1em
 }
 
 .formbox hr {
