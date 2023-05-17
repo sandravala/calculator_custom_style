@@ -1,51 +1,4 @@
-function calcCustomScript(x, fieldset, field, label, calc) {
 
-// KINTAMIEJI IS FORMOS (UZPILDOMA VARTOTOJO)
-        let motinystesIsmokaRodyti = x[1];
-        //tikrina ar pazymeta, jei taip - true
-        let tevystesIsmokaRodyti = x[2];
-        //tikrina ar pazymeta, jei taip - true
-        let vpaIsmokaRodyti = x[3];
-        //tikrina ar pazymeta, jei taip - true
-        let vpaTrukme = x[4];
-        let mamaArTetisVpa = x[5];
-        // mama - 1, tetis - 2
-        let naudosisNpm = x[6] === 1;
-
-        let mamosPajamuTipas = x[7];
-        // 1 jei DU, 2 jei IV
-        let mamosPajamos = x[8];
-        let mamosIslaiduTipas = x[9];
-        //1 jei 30 proc, 2 jei faktas
-        let mamosIslaidos = x[10];
-
-        let tecioPajamuTipas = x[11];
-        // 1 jei DU, 2 jei IV
-        let tecioPajamos = x[12];
-        let tecioIslaiduTipas = x[13];
-        //1 jei 30 proc, 2 jei faktas
-        let tecioIslaidos = x[14];
-
-        let gimdymoData = x[15];
-        ////x15 yra integruotas datePicker, jo nenaudojame
-
-        // uzsivadinu fieldsetus
-        let ismokuTipoLaukas = 1;
-        let vpaTrukmesLaukas = 2;
-        let vpaImsLaukas = 3;
-        let npmLaukas = 4;
-        let mamosPajamuTipoLaukas = 5;
-        let mamosPajamuLaukas = 6;
-        let mamosIslaiduTipoLaukas = 7;
-        let faktiniuMamosIslaiduLaukas = 8;
-        let tecioPajamuTipoLaukas = 9;
-        let tecioPajamuLaukas = 10;
-        let tecioIslaiduTipoLaukas = 11;
-        let faktiniuTecioIslaiduLaukas = 12;
-        let gimdymoDatosLaukas = 13;
-        let mygtukuLaukas = 14;
-        let rezultatuLaukas = 15;
-	
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
 
 const motinystesCheck = document.getElementById('formbox-field-1');
@@ -450,4 +403,3 @@ jQuery('form').on('change', function(){
 });
 
 // Make a calculation when loading the form -> kad skaiciuotu tik tada, kai paspaudziamas mygtukas
-}
