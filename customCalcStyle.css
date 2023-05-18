@@ -122,7 +122,7 @@
     }
 }
 
-.formbox__container {
+fieldset.formbox__container {
     display: grid;
     -webkit-align-items: flex-start;
     align-items: flex-start;
