@@ -85,9 +85,6 @@
 .formbox .is-hidden,
 .formbox textarea[hidden] {
     display: none;
-    visibility: hidden;
-    width: 0;
-    height: 0;
 }
 
 .formbox .has-result .formbox-title {
@@ -141,6 +138,16 @@ fieldset.formbox__container {
     height: 0;
     }
 }
+
+fieldset.formbox__container.has_border {
+        padding-top: 2em;
+        border-top: var(--formbox-field-border-width) solid var(--formbox-field-border-color);
+}
+
+fieldset.formbox__container.nerodyti {
+            display: none;
+}
+   
 
 @media screen and (min-width: 776px) {
     .formbox__container {
