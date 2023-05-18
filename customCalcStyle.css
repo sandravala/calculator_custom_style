@@ -132,7 +132,7 @@
     }
     
     &.nerodyti {
-        display: none;
+        -webkit-display: none;
     }
 }
 
