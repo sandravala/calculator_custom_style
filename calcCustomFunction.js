@@ -182,6 +182,36 @@ function rodytiLaukus(visiLaukuNumeriaiArray, rodytiTrueOrFalse) {
  	visiLaukuNumeriaiArray.forEach(laukoNr => {rodytiTrueOrFalse ? fieldset[laukoNr].removeClass('nerodyti') : fieldset[laukoNr].addClass('nerodyti');} )
 };
 
+// jquery reset mygtukas istrina viska, kas buvo suzymeta, ir paslepia visus laukus
+
+jQuery('.formbox__btn-reset').on('click', function(){
+	sessionStorage.removeItem('done'); 
+	fieldset[rezultatuLaukas].removeClass('has-result'); 
+	fieldset[rezultatuLaukas].hide(); 
+	rodytiLaukus([...vpaLaukai,...bendriLaukai, npmLaukas, ...mLaukai[0], ...mLaukai[1], ...tLaukai[0], ...tLaukai[1]], false);
+	atzymetiRadios([ ...vpaRadios, ...tRadios, ...mRadios ]);
+  jQuery('#formbox-field-1').prop( "checked", false );
+  jQuery('#formbox-field-2').prop( "checked", false );
+  jQuery('#formbox-field-3').prop( "checked", false );
+	jQuery('#rezultatuLentele').empty();
+});
+
+jQuery('input').on('change', function(){
+	if(motinystesIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
+	if(tevystesIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
+	if(vpaIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
+});
+
+jQuery('form').on('change', function(){
+	if(motinystesIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
+	if(tevystesIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
+	if(vpaIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
+});
+// Make a calculation when loading the form -> kad skaiciuotu tik tada, kai paspaudziamas mygtukas
+}
+
+function skaiciuotiIsmokas(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput) {
+
 // SKAICIUOJAME LUBAS IR GRINDIS
 
 let minIsmoka = bazineSocIsmoka * 6 ; //  6 bazinės socialinės išmokos dydžiai galioję praeitą ketvirtį (paskutinis patvirtintas dydis) iki teisės gauti išmoką atsiradimo dienos.
@@ -380,31 +410,5 @@ jQuery(document).ready(function($) {
 (vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0) ? label[15].text('Preliminariai apskaičiuotos išmokos: ') : label[15].text('');
 (vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0) ? fieldset[rezultatuLaukas].addClass('has_border') : null;
 
-// jquery reset mygtukas istrina viska, kas buvo suzymeta, ir paslepia visus laukus
-
-jQuery('.formbox__btn-reset').on('click', function(){
-	sessionStorage.removeItem('done'); 
-	fieldset[rezultatuLaukas].removeClass('has-result'); 
-	fieldset[rezultatuLaukas].hide(); 
-	rodytiLaukus([...vpaLaukai,...bendriLaukai, npmLaukas, ...mLaukai[0], ...mLaukai[1], ...tLaukai[0], ...tLaukai[1]], false);
-	atzymetiRadios([ ...vpaRadios, ...tRadios, ...mRadios ]);
-  jQuery('#formbox-field-1').prop( "checked", false );
-  jQuery('#formbox-field-2').prop( "checked", false );
-  jQuery('#formbox-field-3').prop( "checked", false );
-	jQuery('#rezultatuLentele').empty();
-});
-
-jQuery('input').on('change', function(){
-	if(motinystesIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
-	if(tevystesIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
-	if(vpaIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
-});
-
-jQuery('form').on('change', function(){
-	if(motinystesIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
-	if(tevystesIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
-	if(vpaIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
-});
-
-// Make a calculation when loading the form -> kad skaiciuotu tik tada, kai paspaudziamas mygtukas
+	return rezultatai;
 }
