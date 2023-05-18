@@ -83,7 +83,7 @@
 }
 
 .formbox .is-hidden,
-.formbox__container .nerodyti,
+formbox__container .nerodyti,
 .formbox textarea[hidden] {
     display: none
 }
@@ -120,7 +120,7 @@
     }
 }
 
-.formbox__container {
+div.formbox__container {
     display: grid;
     -webkit-align-items: flex-start;
     align-items: flex-start;
