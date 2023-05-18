@@ -83,6 +83,7 @@
 }
 
 .formbox .is-hidden,
+.formbox__container .nerodyti,
 .formbox textarea[hidden] {
     display: none
 }
@@ -132,7 +133,7 @@
     }
     
     &.nerodyti {
-        -webkit-display: none;
+        display: none;
     }
 }
 
