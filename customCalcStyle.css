@@ -83,9 +83,11 @@
 }
 
 .formbox .is-hidden,
-formbox__container .nerodyti,
 .formbox textarea[hidden] {
-    display: none
+    display: none;
+    visibility: hidden;
+    width: 0;
+    height: 0;
 }
 
 .formbox .has-result .formbox-title {
@@ -134,6 +136,9 @@ formbox__container .nerodyti,
     
     &.nerodyti {
         display: none;
+        visibility: hidden;
+    width: 0;
+    height: 0;
     }
 }
 
