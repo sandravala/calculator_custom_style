@@ -120,7 +120,7 @@ formbox__container .nerodyti,
     }
 }
 
-div.formbox__container {
+.formbox__container {
     display: grid;
     -webkit-align-items: flex-start;
     align-items: flex-start;
