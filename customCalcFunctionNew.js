@@ -1,8 +1,5 @@
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput) {
 
-
-
-
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
 
 const motinystesCheck = document.getElementById('formbox-field-1');
@@ -83,22 +80,26 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 		case 'mamosDU' :
 			mamosIslaidos30.checked = false;
 			mamosIslaidosFaktas.checked = false;
+			label[6].text('Mamos darbo užmokestis su mokesčiais');
 			rodytiLaukus([ mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas ], false);
 			break;
 		case 'mamosIV' : 
 			mamosIslaidos30.checked = false;
 			mamosIslaidosFaktas.checked = false;
+			label[6].text('Vidutinės mamos pajamos');
 			rodytiLaukus([ mamosIslaiduTipoLaukas ], true);
 			rodytiLaukus([ faktiniuMamosIslaiduLaukas ], false);
 			break;
 		case 'tecioDU' :
 			tecioIslaidos30.checked = false;
 			tecioIslaidosFaktas.checked = false;
+			label[10].text('Tėčio darbo užmokestis su mokesčiais');
 			rodytiLaukus([ tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas ], false);
 			break;
 		case 'tecioIV' : 
 			tecioIslaidos30.checked = false;
 			tecioIslaidosFaktas.checked = false;
+			label[6].text('Vidutinės tėčio pajamos');
 			rodytiLaukus([ tecioIslaiduTipoLaukas ], true);
 			rodytiLaukus([ faktiniuTecioIslaiduLaukas ], false);
 			break;
