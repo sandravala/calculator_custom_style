@@ -259,15 +259,15 @@ function diena(dataDienai) {
 	return gimtadienis;
 } 
 
-let d = gimimoDiena;
+let d = new Date(gimimoDiena);
 d.setDate(d.getDate() - 70);
 // nuo gimdymo datos atimam 10 savaiciu, -70 d., nepriskaiciuoti prasymo svarstymo datos ir ismokejimo datos
 let motinystesIsmokosData = d.getFullYear() + " " + menesiai[d.getMonth()] + " " + diena(d); // plius 1 mėn., nes skaičiuoja nuo 0 (t.y. pirmas mėnuo yra 0)
 let tevystesIsmokosPabaiga = (gimimoDiena.getFullYear() + 1) + " " + menesiai[gimimoDiena.getMonth()-1] + " " + diena(gimimoDiena); // minus vienas, nes getMonth() nuo 1, o array menesiai nuo 0
 
 let gDiena = gimimoDiena.getFullYear() + " " + menesiai[gimimoDiena.getMonth()] + " " + diena(gimimoDiena);
-let gMenuo = gimimoDiena.getMonth() + 1;
-let vpaPradzia = gimimoDiena;
+let gMenuo = gimimoDiena.getMonth();
+let vpaPradzia = new Date(gimimoDiena);
 vpaPradzia.setDate(vpaPradzia.getDate() + 56);
 let vpaMenuo = vpaPradzia.getMonth() + 1 - gMenuo + 1;
 
@@ -313,7 +313,7 @@ let bazeNpmSkaiciavimui = pajamuBaze(!mamaVpa); // pasirenkam mamos ar tecio du 
 function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm) {
 		const tarifas = i < 6 || npm ? neperleidziamuMenesiuTarifas : vpaTrukme <= 18 ? tarifasAtostogos18men : i < 13 ? tarifasAtostogos24men[0] : tarifasAtostogos24men[1];
 		const tarifasSpausdinimui = i < 6 || npm ? tarifas + ' % (npm***)' : tarifas + ' %';
-		const menuo = (gimimoDiena.getFullYear() + metuNuoGimdymo) + " " + menesiai[gMenuo + i >= 12 ? gMenuo + i - 12 * metuNuoGimdymo: gMenuo + i];
+		const menuo = (gimimoDiena.getFullYear() + metuNuoGimdymo) + " " + menesiai[gMenuo + i >= 12 ? (gMenuo + i)%12: gMenuo + i];
 		const baze = npm ? bazeNpmSkaiciavimui : bazeSkaiciavimui;
 		const suma = galutineIsmokosSuma(baze, tarifas, 1);
 		const gavejas = !npm ? mamaVpa? 'mama' : 'tėtis' : mamaVpa? 'tėtis' : 'mama'; 
@@ -322,9 +322,9 @@ function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm) {
 }
 
 for (let i = 4 ; i <= vpaTrukme + 1; i++) {
-	const praejoMetu = Math.trunc((gimimoDiena.getMonth() + i - 1)/12);
+	const praejoMetu = Math.trunc((gimimoDiena.getMonth() + i)/12);
 	if(i > vpaTrukme - 1 && naudosisNpm) {
-		tekstasIsmokuSarasui(praejoMetu, i, true);
+ tekstasIsmokuSarasui(praejoMetu, i, true);
 	} else if (i <= vpaTrukme - 1) {
 		tekstasIsmokuSarasui(praejoMetu, i);
 	}
