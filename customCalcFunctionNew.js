@@ -321,7 +321,7 @@ function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm) {
 		const tarifasSpausdinimui = i < 6 || npm ? tarifas + ' % (npm***)' : tarifas + ' %';
 		const menuo = (gimimoDiena.getFullYear() + metuNuoGimdymo) + " " + menesiai[gMenuo + i >= 12 ? (gMenuo + i)%12: gMenuo + i];
 		const baze = npm ? bazeNpmSkaiciavimui : bazeSkaiciavimui;
-		const suma = galutineIsmokosSuma(baze, tarifas, 1);
+		const suma = ismokosSumaSuMokesciais(baze, tarifas, 1).toLocaleString("lt-LT")  + " € (" + galutineIsmokosSuma(baze, tarifas, 1).toLocaleString("lt-LT") + " € į rankas)";
 		const gavejas = !npm ? mamaVpa? 'mama' : 'tėtis' : mamaVpa? 'tėtis' : 'mama'; 
 	
 		vpaIsmokos.push({'tarifas' : tarifasSpausdinimui,	'men' : menuo, 'suma' : suma.toLocaleString("lt-LT") + " €", 'gavejas' : gavejas});
