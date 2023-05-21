@@ -1,4 +1,4 @@
-console.log('dar karta');
+console.log('dar vienas');
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas) {
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
@@ -47,10 +47,12 @@ const mamosPajamuInput = document.getElementById('formbox-field-8');
 const mamosIslaiduInput = document.getElementById('formbox-field-10');
 const tecioPajamuInput = document.getElementById('formbox-field-12');
 const tecioIslaiduInput = document.getElementById('formbox-field-14');
+const datosInput = document.getElementById('formbox-field-15');
 mamosPajamuInput.addEventListener('change', event => rodytiLaukusIsmokosSkaiciavimui('pajamuIslaidu'));	
 mamosIslaiduInput.addEventListener('change', event => rodytiLaukusIsmokosSkaiciavimui('pajamuIslaidu'));	
 tecioPajamuInput.addEventListener('change', event => rodytiLaukusIsmokosSkaiciavimui('pajamuIslaidu'));	
 tecioIslaiduInput.addEventListener('change', event => rodytiLaukusIsmokosSkaiciavimui('pajamuIslaidu'));	
+datosInput.addEventListener('change', event => rodytiLaukusIsmokosSkaiciavimui('pajamuIslaidu'));	
 	
 let vpaLaukai = [ vpaTrukmesLaukas, vpaImsLaukas ];
 let mLaukai = [ [mamosPajamuTipoLaukas, mamosPajamuLaukas], [mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas] ];
@@ -99,6 +101,7 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 			mamosIslaidosFaktas.checked = false;
 			label[6].text('Mamos darbo užmokestis su mokesčiais');
 			rodytiLaukus([ mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas ], false);
+			fieldset[mamosPajamuTipoLaukas].removeClass('klaida');
 			break;
 		case 'mamosIV' : 
 			mamosIslaidos30.checked = false;
@@ -106,12 +109,14 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 			label[6].text('Vidutinės mamos pajamos');
 			rodytiLaukus([ mamosIslaiduTipoLaukas ], true);
 			rodytiLaukus([ faktiniuMamosIslaiduLaukas ], false);
+			fieldset[mamosPajamuTipoLaukas].removeClass('klaida');
 			break;
 		case 'tecioDU' :
 			tecioIslaidos30.checked = false;
 			tecioIslaidosFaktas.checked = false;
 			label[10].text('Tėčio darbo užmokestis su mokesčiais');
 			rodytiLaukus([ tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas ], false);
+			fieldset[tecioPajamuTipoLaukas].removeClass('klaida');
 			break;
 		case 'tecioIV' : 
 			tecioIslaidos30.checked = false;
@@ -119,18 +124,23 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 			label[6].text('Vidutinės tėčio pajamos');
 			rodytiLaukus([ tecioIslaiduTipoLaukas ], true);
 			rodytiLaukus([ faktiniuTecioIslaiduLaukas ], false);
+			fieldset[tecioPajamuTipoLaukas].removeClass('klaida');
 			break;
 		case 'mamosIslaidos' :
 			rodytiLaukus([ faktiniuMamosIslaiduLaukas ], true);
+			fieldset[mamosIslaiduTipoLaukas].removeClass('klaida');
 			break;
 		case 'mamos30' :
 			rodytiLaukus([ faktiniuMamosIslaiduLaukas ], false);
+			fieldset[mamosIslaiduTipoLaukas].removeClass('klaida');
 			break;
 		case 'tecioIslaidos' :
 			rodytiLaukus([ faktiniuTecioIslaiduLaukas ], true);
+			fieldset[tecioIslaiduTipoLaukas].removeClass('klaida');
 			break;
 		case 'tecio30' :
 			rodytiLaukus([ faktiniuTecioIslaiduLaukas ], false);
+			fieldset[tecioIslaiduTipoLaukas].removeClass('klaida');
 			break;
 		case 'npmTaip' :
 			naudosisNpm = 1;
@@ -148,6 +158,7 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 			mamosIslaidos > 0 ? fieldset[faktiniuMamosIslaiduLaukas].removeClass('klaida') : null;
 			tecioPajamos > 0 ? fieldset[tecioPajamuLaukas].removeClass('klaida') : null;
 			tecioIslaidos > 0 ? fieldset[faktiniuTecioIslaiduLaukas].removeClass('klaida') : null;
+			gimdymoData !== '' ? fieldset[gimdymoDatosLaukas].removeClass('klaida') : null;
 			break;
 	}
 }
