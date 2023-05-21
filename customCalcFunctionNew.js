@@ -42,6 +42,15 @@ mamosIslaidosFaktas.addEventListener('click', event => rodytiLaukusIsmokosSkaici
 tecioIslaidos30.addEventListener('click', event => rodytiLaukusIsmokosSkaiciavimui('tecio30'));
 tecioIslaidosFaktas.addEventListener('click', event => rodytiLaukusIsmokosSkaiciavimui('tecioIslaidos'));
 
+const mamosPajamuInput = document.getElementById('formbox-field-8');
+const mamosIslaiduInput = document.getElementById('formbox-field-10');
+const tecioPajamuInput = document.getElementById('formbox-field-12');
+const tecioIslaiduInput = document.getElementById('formbox-field-14');
+mamosPajamuInput.addEventListener('input', event => rodytiLaukusIsmokosSkaiciavimui('pajamuIslaidu'));	
+mamosIslaiduInput.addEventListener('input', event => rodytiLaukusIsmokosSkaiciavimui('pajamuIslaidu'));	
+tecioPajamuInput.addEventListener('input', event => rodytiLaukusIsmokosSkaiciavimui('pajamuIslaidu'));	
+tecioIslaiduInput.addEventListener('input', event => rodytiLaukusIsmokosSkaiciavimui('pajamuIslaidu'));	
+	
 let vpaLaukai = [ vpaTrukmesLaukas, vpaImsLaukas ];
 let mLaukai = [ [mamosPajamuTipoLaukas, mamosPajamuLaukas], [mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas] ];
 let tLaukai = [ [tecioPajamuTipoLaukas, tecioPajamuLaukas], [tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas] ];
@@ -72,6 +81,7 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 			mamaArTetisVpa = 2;
 			rodytiLaukus([ tecioPajamuTipoLaukas, tecioPajamuLaukas ], true);
 			label[4].text('Mama naudosis 2 neperleidžiamais VPA mėnesiais?');
+			fieldset[vpaImsLaukas].removeClass('klaida');
 			rodytiLaukus([ npmLaukas ], true);
 			naudosisNpm ? rodytiLaukus([ mamosPajamuTipoLaukas, mamosPajamuLaukas ], true) : motinystesIsmokaRodyti ? null : rodytiLaukus([ mamosPajamuTipoLaukas, mamosPajamuLaukas ], false);
 			break;
@@ -79,6 +89,7 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 			mamaArTetisVpa = 1;
 			rodytiLaukus([ mamosPajamuTipoLaukas, mamosPajamuLaukas ], true);
 			label[4].text('Tėtis naudosis 2 neperleidžiamais VPA mėnesiais?');
+			fieldset[vpaImsLaukas].removeClass('klaida');
 			rodytiLaukus([ npmLaukas ], true);
 			naudosisNpm ? rodytiLaukus([ tecioPajamuTipoLaukas, tecioPajamuLaukas ], true) : tevystesIsmokaRodyti ? null : rodytiLaukus([ tecioPajamuTipoLaukas, tecioPajamuLaukas ], false);
 			break;
@@ -123,10 +134,18 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 		case 'npmTaip' :
 			naudosisNpm = 1;
 			mamaArTetisVpa === 1 ? rodytiLaukus([ tecioPajamuTipoLaukas, tecioPajamuLaukas ], true) : mamaArTetisVpa === 2 ? rodytiLaukus([ mamosPajamuTipoLaukas, mamosPajamuLaukas ], true) : null;
+			fieldset[npmLaukas].removeClass('klaida');
 			break;
 		case 'npmNe' :
 			naudosisNpm = 0;
  			mamaArTetisVpa === 1 && !tevystesIsmokaRodyti ? rodytiLaukus([ tecioPajamuTipoLaukas, tecioPajamuLaukas ], false) : mamaArTetisVpa === 2 && !motinystesIsmokaRodyti? rodytiLaukus([ mamosPajamuTipoLaukas, mamosPajamuLaukas ], false) : null;
+			fieldset[npmLaukas].removeClass('klaida');
+			break;
+		case 'pajamuIslaidu':
+			mamosPajamos > 0 ? fieldset[mamosPajamuLaukas].removeClass('klaida') : null;
+			mamosIslaidos > 0 ? fieldset[faktiniuMamosIslaiduLaukas].removeClass('klaida') : null;
+			tecioPajamos > 0 ? fieldset[tecioPajamuLaukas].removeClass('klaida') : null;
+			tecioIslaidos > 0 ? fieldset[faktiniuTecioIslaiduLaukas].removeClass('klaida') : null;
 			break;
 	}
 }
@@ -421,8 +440,6 @@ ${createRow(vpaIsmokos, vpaIsmokosPavadinimas)}
 
 rezultatai = rezultatuLentele;
 
-
-	
 	return rezultatai;
 }
 
