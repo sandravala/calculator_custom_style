@@ -413,13 +413,11 @@ jQuery(document).ready(function($) {
 		monthNames: [ "Sausis", "Vasaris", "Kovas", "Balandis", "Gegužė", "Birželis", "Liepa", "Rugpjūtis", "Rugsėjis", "Spalis", "Lapkritis", "Gruodis" ],
 		dayNamesMin: [ "S", "Pr", "A", "T", "K", "Pn", "Š" ],
 		firstDay: 1,
+		changeMonth: true,
 		changeYear: true,
-		changeMonth: true
 	});
 	
 });
-
-
 	
 	return rezultatai;
 }
