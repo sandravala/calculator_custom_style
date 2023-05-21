@@ -223,6 +223,7 @@ jQuery(document).ready(function($) {
 	$('.date_picker').datepicker({
 		dateFormat : 'yy-mm-dd',
 		monthNames: [ "Sausis", "Vasaris", "Kovas", "Balandis", "Gegužė", "Birželis", "Liepa", "Rugpjūtis", "Rugsėjis", "Spalis", "Lapkritis", "Gruodis" ],
+		monthNamesShort: [ "Sausis", "Vasaris", "Kovas", "Balandis", "Gegužė", "Birželis", "Liepa", "Rugpjūtis", "Rugsėjis", "Spalis", "Lapkritis", "Gruodis" ],
 		dayNamesMin: [ "S", "Pr", "A", "T", "K", "Pn", "Š" ],
 		firstDay: 1,
 		changeMonth: true,
