@@ -147,6 +147,10 @@ fieldset.formbox__container.has_border {
 fieldset.formbox__container.nerodyti {
             display: none;
 }
+
+fieldset.formbox__container.klaida {
+    color: #d12e2e;
+}
    
 
 @media screen and (min-width: 776px) {
