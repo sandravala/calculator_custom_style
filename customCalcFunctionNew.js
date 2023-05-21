@@ -417,5 +417,34 @@ jQuery(document).ready(function($) {
 (vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0) ? label[15].text('Preliminariai apskaičiuotos išmokos: ') : label[15].text('');
 (vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0) ? fieldset[rezultatuLaukas].addClass('has_border') : null;
 
+	
+// patikrina ar viskas užpildyta, jei ne - priskiria klase klaidu
+	
+if (vpaIsmokaRodyti === 1) {
+vpaTrukme === 0 ? fieldset[vpaTrukmesLaukas].addClass('klaida') : fieldset[vpaTrukmesLaukas].removeClass('klaida');
+	console.log('klaidu logika pasiekta');
+// vpaTrukme === 0
+// mamaArTetisVpa === 0
+}
+
+// if (vpaIsmokaRodyti === 1 && mamaArTetisVpa === 1)  || (vpaIsmokaRodyti === 1 && mamaArTetisVpa === 2 && naudosisNpm === 1)   || motinystesIsmokaRodyti === 1, klaidos
+// mamosPajamuTipas === 0
+// mamosPajamos <= 0
+// if mamosPajamuTipas === 2, tada klaidos:
+// mamosIslaiduTipas === 0 
+// if mamosIslaiduTipas === 2, tada klaidos:
+// mamosIslaidos === 0
+
+// if (vpaIsmokaRodyti === 1 && mamaArTetisVpa === 2)  || (vpaIsmokaRodyti === 1 && mamaArTetisVpa === 1 && naudosisNpm === 1)   || tevystesIsmokaRodyti === 1, klaidos
+// tecioPajamuTipas  === 0
+// tecioPajamos  <= 0
+// if tecioPajamuTipas  === 2, tada klaidos:
+// tecioIslaiduTipas === 0
+// if tecioIslaiduTipas === 2, tada klaidos: 
+// tecioIslaidos  === 0
+
+// atskira klaida
+// gimdymoData = x[15]; 
+	
 	return rezultatai;
 }
