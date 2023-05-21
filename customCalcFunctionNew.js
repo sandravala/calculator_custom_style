@@ -11,7 +11,9 @@ vpaCheck.addEventListener('click', event => rodytiLaukusIsmokosSkaiciavimui('vpa
 
 const vpaTrukme18Radio = document.getElementById('formbox-field-4_1');
 const vpaTrukme24Radio = document.getElementById('formbox-field-4_2');
-
+vpaTrukme18Radio.addEventListener('click', event => rodytiLaukusIsmokosSkaiciavimui('vpaTrukme'));
+vpaTrukme24Radio.addEventListener('click', event => rodytiLaukusIsmokosSkaiciavimui('vpaTrukme'));
+	
 const tecioRadio = document.getElementById('formbox-field-5_2');
 const mamosRadio = document.getElementById('formbox-field-5_1');
 tecioRadio.addEventListener('click', event => rodytiLaukusIsmokosSkaiciavimui('tecioRadio'));
@@ -63,6 +65,8 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 			vpaIsmokaRodyti = !vpaIsmokaRodyti;
 			isjungtiLaukus();
 			break;
+		case 'vpaTrukme' :
+			fieldset[vpaTrukmesLaukas].removeClass('klaida');
 		case 'tecioRadio' : 
 			mamaArTetisVpa = 2;
 			rodytiLaukus([ tecioPajamuTipoLaukas, tecioPajamuLaukas ], true);
