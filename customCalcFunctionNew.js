@@ -213,6 +213,24 @@ jQuery('form').on('change', function(){
 	if(tevystesIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
 	if(vpaIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
 });
+	
+// sugeneruoja date picker is paprasto textfield
+
+datosInput.addClass('date_picker');
+datosInput.addAttr('placeholder', 'yyyy-mm-dd');
+
+jQuery(document).ready(function($) {
+	$('.date_picker').datepicker({
+		dateFormat : 'yy-mm-dd',
+		monthNames: [ "Sausis", "Vasaris", "Kovas", "Balandis", "Gegužė", "Birželis", "Liepa", "Rugpjūtis", "Rugsėjis", "Spalis", "Lapkritis", "Gruodis" ],
+		dayNamesMin: [ "S", "Pr", "A", "T", "K", "Pn", "Š" ],
+		firstDay: 1,
+		changeMonth: true,
+		changeYear: true,
+	});
+	
+});
+	
 // Make a calculation when loading the form -> kad skaiciuotu tik tada, kai paspaudziamas mygtukas
 }
 
@@ -402,22 +420,7 @@ ${createRow(vpaIsmokos, vpaIsmokosPavadinimas)}
 
 rezultatai = rezultatuLentele;
 
-// sugeneruoja date picker is paprasto textfield
 
-datosInput.addClass('date_picker');
-datosInput.addAttr('placeholder', 'yyyy-mm-dd');
-
-jQuery(document).ready(function($) {
-	$('.date_picker').datepicker({
-		dateFormat : 'yy-mm-dd',
-		monthNames: [ "Sausis", "Vasaris", "Kovas", "Balandis", "Gegužė", "Birželis", "Liepa", "Rugpjūtis", "Rugsėjis", "Spalis", "Lapkritis", "Gruodis" ],
-		dayNamesMin: [ "S", "Pr", "A", "T", "K", "Pn", "Š" ],
-		firstDay: 1,
-		changeMonth: true,
-		changeYear: true,
-	});
-	
-});
 	
 	return rezultatai;
 }
