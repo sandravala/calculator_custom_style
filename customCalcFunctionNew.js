@@ -418,6 +418,12 @@ jQuery(document).ready(function($) {
 	
 });
 
+
+	
+	return rezultatai;
+}
+
+function getAlert(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas){
 if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti === 1) {
 	if (vpaIsmokaRodyti === 1) {
 		generateAlert(vpaTrukme === undefined, vpaTrukmesLaukas);
@@ -456,7 +462,6 @@ function generateAlert(conditionToGenerateAlert, fieldsetNumberToAddStyling) {
 	if (conditionToGenerateAlert) {
 	    fieldset[fieldsetNumberToAddStyling].addClass('klaida');
 	    calcAlert = 'Užpildykite raudonai pažymėtus laukelius ir spauskite "SKAIČIUOTI"';
-	console.log(calcAlert);
 	  } else {
 	    fieldset[fieldsetNumberToAddStyling].removeClass('klaida');
 	  }
@@ -473,8 +478,5 @@ calcAlert !== "" ? label[klaiduLaukas].text('Klaida! Trūksta duomenų ') : labe
 // prideti css klase klaidoms, color: red (tik spalva parinkti ne tokia ryskia)
 // prideti calc.alert -> pateikite visą reikalingą informaciją (trūkstami laukai pažymėti raudonu tekstu)
 // dar reikėtų alert jeigu veda papildomą ar kitokią info (kad paspaustų skaičiuoti vėl). arba pakeisti mygtuko tekstą į perskaičiuoti - iki kol paspaudžia išvalyti
-
-
-	
-	return rezultatai;
+return calcAlert;
 }
