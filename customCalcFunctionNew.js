@@ -421,8 +421,8 @@ jQuery(document).ready(function($) {
 // sugeneruoja rezultato label
 (vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0) ? label[15].text('Preliminariai apskaičiuotos išmokos: ') : label[15].text('');
 (vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0) ? fieldset[rezultatuLaukas].addClass('has_border') : null;
+// dar reikia padaryt rezultato label, jeigu calcAlert ne tuscias, kad rasytu "truksta duomenu:"
 
-	
 // patikrina ar viskas užpildyta, jei ne - priskiria klase klaidu
 	
 // if (vpaIsmokaRodyti === 1) {
