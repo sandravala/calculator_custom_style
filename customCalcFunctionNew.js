@@ -142,6 +142,7 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 			fieldset[npmLaukas].removeClass('klaida');
 			break;
 		case 'pajamuIslaidu':
+			console.log(mamosPajamos > 0);
 			mamosPajamos > 0 ? fieldset[mamosPajamuLaukas].removeClass('klaida') : null;
 			mamosIslaidos > 0 ? fieldset[faktiniuMamosIslaiduLaukas].removeClass('klaida') : null;
 			tecioPajamos > 0 ? fieldset[tecioPajamuLaukas].removeClass('klaida') : null;
