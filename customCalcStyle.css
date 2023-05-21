@@ -125,6 +125,7 @@ fieldset.formbox__container {
     align-items: flex-start;
     grid-gap: .75em;
     padding-bottom: 2em;
+    padding-left: 2em;
         
     &.has_border {
         padding-top: 2em;
@@ -150,6 +151,7 @@ fieldset.formbox__container.nerodyti {
 
 fieldset.formbox__container.klaida {
     color: #d12e2e;
+    background-color: #ffe6e6;
 }
    
 
