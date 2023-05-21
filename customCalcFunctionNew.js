@@ -418,40 +418,59 @@ jQuery(document).ready(function($) {
 	
 });
 
+switch(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti === 1) {
+	case vpaIsmokaRodyti === 1:
+		generateAlert(vpaTrukme === undefined, vpaTrukmesLaukas);
+		generateAlert(mamaArTetisVpa === undefined, vpaImsLaukas);
+
+	case (vpaIsmokaRodyti === 1 && (mamaArTetisVpa === 1 || (mamaArTetisVpa === 2 && naudosisNpm === 1))) || motinystesIsmokaRodyti === 1:
+			generateAlert(mamosPajamuTipas === undefined, mamosPajamuTipoLaukas);
+			generateAlert(mamosPajamos <= 0, mamosPajamuLaukas);
+			
+			if (mamosPajamuTipas === 2) {
+				generateAlert(mamosIslaiduTipas === undefined, mamosIslaiduTipoLaukas);
+				if (mamosIslaiduTipas === 2) {
+					generateAlert(mamosIslaidos === 0, faktiniuMamosIslaiduLaukas);
+				}
+			}
+
+	case (vpaIsmokaRodyti === 1 && (mamaArTetisVpa === 2 || (mamaArTetisVpa === 1 && naudosisNpm === 1))) || tevystesIsmokaRodyti === 1:
+			generateAlert(tecioPajamuTipas === undefined, tecioPajamuTipoLaukas);
+			generateAlert(tecioPajamos <= 0, tecioPajamuLaukas);
+			if (tecioPajamuTipas === 2) {
+				generateAlert(tecioIslaiduTipas === undefined, tecioIslaiduTipoLaukas);
+				if (tecioIslaiduTipas === 2) {
+					generateAlert(tecioIslaidos === 0, faktiniuTecioIslaiduLaukas);
+				}
+			}
+	default:
+		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
+		break;
+}
+
+function generateAlert(conditionToGenerateAlert, fieldsetNumberToAddStyling) {
+	if (condition) {
+	    fieldset[fieldsetNumber].addClass('klaida');
+	    calcAlert = 'Užpildykite raudonai pažymėtus laukelius ir spauskite "SKAIČIUOTI"';
+	  } else {
+	    fieldset[vpaImsLaukas].removeClass('klaida');
+	    calcAlert = '';
+	  }
+}
+
 // // sugeneruoja rezultato label
-// (vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0) && (!calcAlert || calcAlert == '' || || calcAlert == null)? label[rezultatuLaukas].text('Preliminariai apskaičiuotos išmokos: ') : label[rezultatuLaukas].text('');
-// (vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0) && (calcAlert === "" || calcAlert === null) ? fieldset[rezultatuLaukas].addClass('has_border') : null;
-// // dar reikia padaryt rezultato label, jeigu calcAlert ne tuscias, kad rasytu "truksta duomenu:"
+(vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0)  && calcAlert === "" ? label[rezultatuLaukas].text('Preliminariai apskaičiuotos išmokos: ') : label[rezultatuLaukas].text('');
+(vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0) && calcAlert === "" ? fieldset[rezultatuLaukas].addClass('has_border') : null;
+// dar reikia padaryt rezultato label, jeigu calcAlert ne tuscias, kad rasytu "truksta duomenu:"
 
-// !!calcAlert ? label[klaiduLaukas].text('Klaida! Nurodykite trūkstamus duomenis ir spauskite "Skaičiuoti": ') : label[klaiduLaukas].text('');
-	
-// patikrina ar viskas užpildyta, jei ne - priskiria klase klaidu
-	
-// if (vpaIsmokaRodyti === 1) {
-// vpaTrukme === 0 ? fieldset[vpaTrukmesLaukas].addClass('klaida') : fieldset[vpaTrukmesLaukas].removeClass('klaida');
-// 	console.log('klaidu logika pasiekta');
-// // vpaTrukme === 0
-// // mamaArTetisVpa === 0
-// }
+calcAlert !== '' ? label[klaiduLaukas].text('Klaida! Trūksta duomenų ') : label[klaiduLaukas].text('');
 
-// if (vpaIsmokaRodyti === 1 && mamaArTetisVpa === 1)  || (vpaIsmokaRodyti === 1 && mamaArTetisVpa === 2 && naudosisNpm === 1)   || motinystesIsmokaRodyti === 1, klaidos
-// mamosPajamuTipas === 0
-// mamosPajamos <= 0
-// if mamosPajamuTipas === 2, tada klaidos:
-// mamosIslaiduTipas === 0 
-// if mamosIslaiduTipas === 2, tada klaidos:
-// mamosIslaidos === 0
+// Klaidos
+// prideti css klase klaidoms, color: red (tik spalva parinkti ne tokia ryskia)
+// prideti calc.alert -> pateikite visą reikalingą informaciją (trūkstami laukai pažymėti raudonu tekstu)
+// dar reikėtų alert jeigu veda papildomą ar kitokią info (kad paspaustų skaičiuoti vėl). arba pakeisti mygtuko tekstą į perskaičiuoti - iki kol paspaudžia išvalyti
 
-// if (vpaIsmokaRodyti === 1 && mamaArTetisVpa === 2)  || (vpaIsmokaRodyti === 1 && mamaArTetisVpa === 1 && naudosisNpm === 1)   || tevystesIsmokaRodyti === 1, klaidos
-// tecioPajamuTipas  === 0
-// tecioPajamos  <= 0
-// if tecioPajamuTipas  === 2, tada klaidos:
-// tecioIslaiduTipas === 0
-// if tecioIslaiduTipas === 2, tada klaidos: 
-// tecioIslaidos  === 0
 
-// atskira klaida
-// gimdymoData = x[15]; 
 	
 	return rezultatai;
 }
