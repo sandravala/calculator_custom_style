@@ -418,6 +418,7 @@ jQuery(document).ready(function($) {
 	
 });
 
+function alertAfterSubmit() {
 switch(true) {
 	case vpaIsmokaRodyti === 1:
 		generateAlert(vpaTrukme === undefined, vpaTrukmesLaukas);
@@ -447,6 +448,8 @@ switch(true) {
 		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
 		break;
 }
+}
+alertAfterSubmit();
 
 function generateAlert(conditionToGenerateAlert, fieldsetNumberToAddStyling) {
 	if (conditionToGenerateAlert) {
