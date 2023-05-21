@@ -579,27 +579,6 @@ fieldset.formbox__container.klaida {
     color: currentColor
 }
 
-.ui-datepicker table {width: 100%;font-size: 1em;border-collapse: collapse;margin:0 0 .4em;}
-.ui-datepicker td a {
-    display: block;
-    padding: 0.2em;
-    text-align: center;
-    text-decoration: none;
-}
-.ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
-    width: 50%;
-    line-height: 2;
-}
-
-.ui-widget {
-    font-family: var(--formbox-title-font);/*{ffDefault}*/;
-    font-size: .9em/*{fsDefault}*/;
-}
-
-.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
-    font-family: inherit;
-    font-size: 1em;
-}
 
 select {
     width: 100%;
@@ -624,6 +603,28 @@ body, button, input, select, optgroup, textarea {
     line-height: 1;
 }
 
+.ui-datepicker table {width: 100%;font-size: 1em;border-collapse: collapse;margin:0 0 .4em;}
+.ui-datepicker td a {
+    display: block;
+    padding: 0.2em;
+    text-align: center;
+    text-decoration: none;
+}
+.ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
+    width: 50%;
+    line-height: 2;
+}
+
+.ui-widget {
+    font-family: var(--formbox-title-font);/*{ffDefault}*/;
+    font-size: .9em/*{fsDefault}*/;
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+    font-family: inherit;
+    font-size: 1em;
+}
+
 .ui-datepicker .ui-datepicker-title {
     margin: 0 2.3em;
     line-height: 1.8em;
@@ -636,4 +637,8 @@ body, button, input, select, optgroup, textarea {
     top: 9px;
     width: 1.8em;
     height: 1.8em;
+}
+
+.ui-datepicker {
+    width: 20em;
 }
