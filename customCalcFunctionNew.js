@@ -392,8 +392,8 @@ function createRow(data, ismokuPavadinimas) {
 	for(let i = 0; i < data.length ; i++) {
 		rows += `<tr>
 						<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].tarifas}</td>
-						<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].men}</td>
-						<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].suma}</td>
+						<td style='text-align: left; font-size: .85em; padding-left: .3em;'>${data[i].men}</td>
+						<td style='text-align: left; font-size: .85em; padding-left: .3em;'>${data[i].suma}</td>
 						<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].gavejas}</td>
 					</tr>`
 	}
