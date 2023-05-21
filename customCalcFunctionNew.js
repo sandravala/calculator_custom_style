@@ -418,7 +418,7 @@ jQuery(document).ready(function($) {
 	
 });
 
-switch(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti === 1) {
+switch(true) {
 	case vpaIsmokaRodyti === 1:
 		generateAlert(vpaTrukme === undefined, vpaTrukmesLaukas);
 		generateAlert(mamaArTetisVpa === undefined, vpaImsLaukas);
@@ -449,11 +449,11 @@ switch(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRo
 }
 
 function generateAlert(conditionToGenerateAlert, fieldsetNumberToAddStyling) {
-	if (condition) {
-	    fieldset[fieldsetNumber].addClass('klaida');
+	if (conditionToGenerateAlert) {
+	    fieldset[fieldsetNumberToAddStyling].addClass('klaida');
 	    calcAlert = 'Užpildykite raudonai pažymėtus laukelius ir spauskite "SKAIČIUOTI"';
 	  } else {
-	    fieldset[vpaImsLaukas].removeClass('klaida');
+	    fieldset[fieldsetNumberToAddStyling].removeClass('klaida');
 	    calcAlert = '';
 	  }
 }
