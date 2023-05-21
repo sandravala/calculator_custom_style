@@ -449,13 +449,14 @@ if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti
 		}
 	}
 
-} else {calcAlert = '';}
+} else {calcAlert = "";}
 
 
 function generateAlert(conditionToGenerateAlert, fieldsetNumberToAddStyling) {
 	if (conditionToGenerateAlert) {
 	    fieldset[fieldsetNumberToAddStyling].addClass('klaida');
 	    calcAlert = 'Užpildykite raudonai pažymėtus laukelius ir spauskite "SKAIČIUOTI"';
+	console.log(calcAlert);
 	  } else {
 	    fieldset[fieldsetNumberToAddStyling].removeClass('klaida');
 	  }
