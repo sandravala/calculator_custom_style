@@ -48,11 +48,11 @@ const mamosIslaiduInput = document.getElementById('formbox-field-10');
 const tecioPajamuInput = document.getElementById('formbox-field-12');
 const tecioIslaiduInput = document.getElementById('formbox-field-14');
 const gimdymoDatosInput = document.getElementById('formbox-field-15');
-mamosPajamuInput.addEventListener('change', event => {fieldset[mamosPajamuLaukas].removeClass('klaida');});	
-mamosIslaiduInput.addEventListener('change', event => {fieldset[faktiniuMamosIslaiduLaukas].removeClass('klaida');});	
-tecioPajamuInput.addEventListener('change', event => {fieldset[tecioPajamuLaukas].removeClass('klaida');});	
-tecioIslaiduInput.addEventListener('change', event => {fieldset[faktiniuTecioIslaiduLaukas].removeClass('klaida');});	
-gimdymoDatosInput.addEventListener('change', event => {fieldset[gimdymoDatosLaukas].removeClass('klaida');});	
+mamosPajamuInput.addEventListener('input', event => {fieldset[mamosPajamuLaukas].removeClass('klaida');});	
+mamosIslaiduInput.addEventListener('input', event => {fieldset[faktiniuMamosIslaiduLaukas].removeClass('klaida');});	
+tecioPajamuInput.addEventListener('input', event => {fieldset[tecioPajamuLaukas].removeClass('klaida');});	
+tecioIslaiduInput.addEventListener('input', event => {fieldset[faktiniuTecioIslaiduLaukas].removeClass('klaida');});	
+gimdymoDatosInput.addEventListener('input', event => {fieldset[gimdymoDatosLaukas].removeClass('klaida');});	
 	
 let vpaLaukai = [ vpaTrukmesLaukas, vpaImsLaukas ];
 let mLaukai = [ [mamosPajamuTipoLaukas, mamosPajamuLaukas], [mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas] ];
