@@ -419,7 +419,7 @@ jQuery(document).ready(function($) {
 });
 
 // sugeneruoja rezultato label
-(vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0) && (calcAlert === "" || calcAlert === null) ? label[rezultatuLaukas].text('Preliminariai apskaičiuotos išmokos: ') : label[rezultatuLaukas].text('');
+(vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0) && label[klaiduLaukas].innerHtml === '' ? label[rezultatuLaukas].text('Preliminariai apskaičiuotos išmokos: ') : label[rezultatuLaukas].text('');
 (vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0) && (calcAlert === "" || calcAlert === null) ? fieldset[rezultatuLaukas].addClass('has_border') : null;
 // dar reikia padaryt rezultato label, jeigu calcAlert ne tuscias, kad rasytu "truksta duomenu:"
 
