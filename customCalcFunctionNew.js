@@ -419,11 +419,11 @@ jQuery(document).ready(function($) {
 });
 
 // sugeneruoja rezultato label
-(vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0) ? label[rezultatuLaukas].text('Preliminariai apskaičiuotos išmokos: ') : label[rezultatuLaukas].text('');
-(vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0) ? fieldset[rezultatuLaukas].addClass('has_border') : null;
+(vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0) && (calcAlert === "" || calcAlert === null) ? label[rezultatuLaukas].text('Preliminariai apskaičiuotos išmokos: ') : label[rezultatuLaukas].text('');
+(vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0) && (calcAlert === "" || calcAlert === null) ? fieldset[rezultatuLaukas].addClass('has_border') : null;
 // dar reikia padaryt rezultato label, jeigu calcAlert ne tuscias, kad rasytu "truksta duomenu:"
 
-calcAlert !== "" || calcAlert !== null ? label[klaiduLaukas].text('Išmokoms apskaičiuoti dar trūksta duomenų: ') : label[klaiduLaukas].text('');
+calcAlert !== "" || calcAlert !== null ? label[klaiduLaukas].text('Klaida! Nurodykite trūkstamus duomenis ir spauskite "Skaičiuoti": ') : label[klaiduLaukas].text('');
 	
 // patikrina ar viskas užpildyta, jei ne - priskiria klase klaidu
 	
