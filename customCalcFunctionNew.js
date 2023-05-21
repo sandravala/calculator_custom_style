@@ -67,6 +67,7 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 			break;
 		case 'vpaTrukme' :
 			fieldset[vpaTrukmesLaukas].removeClass('klaida');
+			break;
 		case 'tecioRadio' : 
 			mamaArTetisVpa = 2;
 			rodytiLaukus([ tecioPajamuTipoLaukas, tecioPajamuLaukas ], true);
