@@ -420,12 +420,12 @@ jQuery(document).ready(function($) {
 	
 // patikrina ar viskas užpildyta, jei ne - priskiria klase klaidu
 	
-if (vpaIsmokaRodyti === 1) {
-vpaTrukme === 0 ? fieldset[vpaTrukmesLaukas].addClass('klaida') : fieldset[vpaTrukmesLaukas].removeClass('klaida');
-	console.log('klaidu logika pasiekta');
-// vpaTrukme === 0
-// mamaArTetisVpa === 0
-}
+// if (vpaIsmokaRodyti === 1) {
+// vpaTrukme === 0 ? fieldset[vpaTrukmesLaukas].addClass('klaida') : fieldset[vpaTrukmesLaukas].removeClass('klaida');
+// 	console.log('klaidu logika pasiekta');
+// // vpaTrukme === 0
+// // mamaArTetisVpa === 0
+// }
 
 // if (vpaIsmokaRodyti === 1 && mamaArTetisVpa === 1)  || (vpaIsmokaRodyti === 1 && mamaArTetisVpa === 2 && naudosisNpm === 1)   || motinystesIsmokaRodyti === 1, klaidos
 // mamosPajamuTipas === 0
