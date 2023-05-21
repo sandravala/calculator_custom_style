@@ -1,4 +1,4 @@
-console.log('datosInput');
+console.log('-datosInput');
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas) {
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
@@ -47,12 +47,12 @@ const mamosPajamuInput = document.getElementById('formbox-field-8');
 const mamosIslaiduInput = document.getElementById('formbox-field-10');
 const tecioPajamuInput = document.getElementById('formbox-field-12');
 const tecioIslaiduInput = document.getElementById('formbox-field-14');
-const gimdymoDatosInput = document.getElementById('formbox-field-15');
+//const gimdymoDatosInput = document.getElementById('formbox-field-15');
 mamosPajamuInput.addEventListener('change', event => rodytiLaukusIsmokosSkaiciavimui('pajamuIslaidu'));	
 mamosIslaiduInput.addEventListener('change', event => rodytiLaukusIsmokosSkaiciavimui('pajamuIslaidu'));	
 tecioPajamuInput.addEventListener('change', event => rodytiLaukusIsmokosSkaiciavimui('pajamuIslaidu'));	
 tecioIslaiduInput.addEventListener('change', event => rodytiLaukusIsmokosSkaiciavimui('pajamuIslaidu'));	
-gimdymoDatosInput.addEventListener('change', event => rodytiLaukusIsmokosSkaiciavimui('pajamuIslaidu'));	
+// gimdymoDatosInput.addEventListener('change', event => rodytiLaukusIsmokosSkaiciavimui('pajamuIslaidu'));	
 	
 let vpaLaukai = [ vpaTrukmesLaukas, vpaImsLaukas ];
 let mLaukai = [ [mamosPajamuTipoLaukas, mamosPajamuLaukas], [mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas] ];
