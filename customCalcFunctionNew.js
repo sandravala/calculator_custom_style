@@ -203,15 +203,15 @@ jQuery('.formbox__btn-reset').on('click', function(){
 });
 
 jQuery('input').on('change', function(){
-	if(motinystesIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
-	if(tevystesIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
-	if(vpaIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
+	if(motinystesIsmokaRodyti && !calcAlert) {fieldset[rezultatuLaukas].show();};
+	if(tevystesIsmokaRodyti && !calcAlert) {fieldset[rezultatuLaukas].show();};
+	if(vpaIsmokaRodyti && !calcAlert) {fieldset[rezultatuLaukas].show();};
 });
 
 jQuery('form').on('change', function(){
-	if(motinystesIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
-	if(tevystesIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
-	if(vpaIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
+	if(motinystesIsmokaRodyti && !calcAlert) {fieldset[rezultatuLaukas].show();};
+	if(tevystesIsmokaRodyti && !calcAlert) {fieldset[rezultatuLaukas].show();};
+	if(vpaIsmokaRodyti && !calcAlert) {fieldset[rezultatuLaukas].show();};
 });
 // Make a calculation when loading the form -> kad skaiciuotu tik tada, kai paspaudziamas mygtukas
 }
