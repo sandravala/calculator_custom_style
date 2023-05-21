@@ -448,8 +448,7 @@ if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti
 			}
 		}
 	}
-	
-		calcAlert = '';
+
 } else {calcAlert = '';}
 
 
