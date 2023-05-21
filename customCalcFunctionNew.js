@@ -423,7 +423,7 @@ jQuery(document).ready(function($) {
 (vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0) ? fieldset[rezultatuLaukas].addClass('has_border') : null;
 // dar reikia padaryt rezultato label, jeigu calcAlert ne tuscias, kad rasytu "truksta duomenu:"
 
-calcAlert !== '' ? label[klaiduLaukas].text('Išmokoms apskaičiuoti dar trūksta duomenų: ') : label[klaiduLaukas].text('');
+calcAlert !== "" || calcAlert !== null ? label[klaiduLaukas].text('Išmokoms apskaičiuoti dar trūksta duomenų: ') : label[klaiduLaukas].text('');
 	
 // patikrina ar viskas užpildyta, jei ne - priskiria klase klaidu
 	
