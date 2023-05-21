@@ -43,16 +43,16 @@ mamosIslaidosFaktas.addEventListener('click', event => rodytiLaukusIsmokosSkaici
 tecioIslaidos30.addEventListener('click', event => rodytiLaukusIsmokosSkaiciavimui('tecio30'));
 tecioIslaidosFaktas.addEventListener('click', event => rodytiLaukusIsmokosSkaiciavimui('tecioIslaidos'));
 
-// const mamosPajamuInput = document.getElementById('formbox-field-8');
-// const mamosIslaiduInput = document.getElementById('formbox-field-10');
-// const tecioPajamuInput = document.getElementById('formbox-field-12');
-// const tecioIslaiduInput = document.getElementById('formbox-field-14');
-// //const gimdymoDatosInput = document.getElementById('formbox-field-15');
-// mamosPajamuInput.addEventListener('input', event => rodytiLaukusIsmokosSkaiciavimui('pajamuIslaidu'));	
-// mamosIslaiduInput.addEventListener('change', event => rodytiLaukusIsmokosSkaiciavimui('pajamuIslaidu'));	
-// tecioPajamuInput.addEventListener('change', event => rodytiLaukusIsmokosSkaiciavimui('pajamuIslaidu'));	
-// tecioIslaiduInput.addEventListener('change', event => rodytiLaukusIsmokosSkaiciavimui('pajamuIslaidu'));	
-// gimdymoDatosInput.addEventListener('change', event => rodytiLaukusIsmokosSkaiciavimui('pajamuIslaidu'));	
+const mamosPajamuInput = document.getElementById('formbox-field-8');
+const mamosIslaiduInput = document.getElementById('formbox-field-10');
+const tecioPajamuInput = document.getElementById('formbox-field-12');
+const tecioIslaiduInput = document.getElementById('formbox-field-14');
+const gimdymoDatosInput = document.getElementById('formbox-field-15');
+mamosPajamuInput.addEventListener('change', event => {fieldset[mamosPajamuLaukas].removeClass('klaida');});	
+mamosIslaiduInput.addEventListener('change', event => {fieldset[faktiniuMamosIslaiduLaukas].removeClass('klaida');});	
+tecioPajamuInput.addEventListener('change', event => {fieldset[tecioPajamuLaukas].removeClass('klaida');});	
+tecioIslaiduInput.addEventListener('change', event => {fieldset[faktiniuTecioIslaiduLaukas].removeClass('klaida');});	
+gimdymoDatosInput.addEventListener('change', event => {fieldset[gimdymoDatosLaukas].removeClass('klaida');});	
 	
 let vpaLaukai = [ vpaTrukmesLaukas, vpaImsLaukas ];
 let mLaukai = [ [mamosPajamuTipoLaukas, mamosPajamuLaukas], [mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas] ];
@@ -152,14 +152,6 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
  			mamaArTetisVpa === 1 && !tevystesIsmokaRodyti ? rodytiLaukus([ tecioPajamuTipoLaukas, tecioPajamuLaukas ], false) : mamaArTetisVpa === 2 && !motinystesIsmokaRodyti? rodytiLaukus([ mamosPajamuTipoLaukas, mamosPajamuLaukas ], false) : null;
 			fieldset[npmLaukas].removeClass('klaida');
 			break;
-// 		case 'pajamuIslaidu':
-// 			console.log(mamosPajamos > 0);
-// 			mamosPajamos > 0 ? fieldset[mamosPajamuLaukas].removeClass('klaida') : null;
-// 			mamosIslaidos > 0 ? fieldset[faktiniuMamosIslaiduLaukas].removeClass('klaida') : null;
-// 			tecioPajamos > 0 ? fieldset[tecioPajamuLaukas].removeClass('klaida') : null;
-// 			tecioIslaidos > 0 ? fieldset[faktiniuTecioIslaiduLaukas].removeClass('klaida') : null;
-// 			gimdymoData !== '' ? fieldset[gimdymoDatosLaukas].removeClass('klaida') : null;
-// 			break;
 	}
 }
 
