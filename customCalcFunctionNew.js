@@ -467,7 +467,7 @@ function generateAlert(conditionToGenerateAlert, fieldsetNumberToAddStyling) {
 (vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0) && calcAlert === "" ? fieldset[rezultatuLaukas].addClass('has_border') : null;
 // dar reikia padaryt rezultato label, jeigu calcAlert ne tuscias, kad rasytu "truksta duomenu:"
 
-calcAlert !== '' ? label[klaiduLaukas].text('Klaida! Trūksta duomenų ') : label[klaiduLaukas].text('');
+calcAlert !== "" ? label[klaiduLaukas].text('Klaida! Trūksta duomenų ') : label[klaiduLaukas].text('');
 
 // Klaidos
 // prideti css klase klaidoms, color: red (tik spalva parinkti ne tokia ryskia)
