@@ -1,4 +1,4 @@
-console.log('tecio pajamu laukelis');
+console.log('errors');
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas) {
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
@@ -123,7 +123,7 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 		case 'tecioIV' : 
 			tecioIslaidos30.checked = false;
 			tecioIslaidosFaktas.checked = false;
-			label[6].text('Vidutinės tėčio pajamos');
+			label[10].text('Vidutinės tėčio pajamos');
 			rodytiLaukus([ tecioIslaiduTipoLaukas, tecioPajamuLaukas ], true);
 			rodytiLaukus([ faktiniuTecioIslaiduLaukas ], false);
 			fieldset[tecioPajamuTipoLaukas].removeClass('klaida');
@@ -472,7 +472,7 @@ if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti
 		}
 	}
 
-	if ((vpaIsmokaRodyti === 1 && (mamaArTetisVpa === 2 || (mamaArTetisVpa === 1 && naudosisNpm === 1))) || tevystesIsmokaRodyti === 1){
+	if ((vpaIsmokaRodyti === 1 && (mamaArTetisVpa === 2 || (mamaArTetisVpa === 1 && naudosisNpm === 1)))) || tevystesIsmokaRodyti === 1){
 		generateAlert(tecioPajamuTipas === undefined, tecioPajamuTipoLaukas);
 		generateAlert(tecioPajamos <= 0, tecioPajamuLaukas);
 		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
@@ -499,13 +499,7 @@ function generateAlert(conditionToGenerateAlert, fieldsetNumberToAddStyling) {
 // // sugeneruoja rezultato label
 (vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0)  && calcAlert === "" ? label[rezultatuLaukas].text('Preliminariai apskaičiuotos išmokos: ') : label[rezultatuLaukas].text('');
 (vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0) && calcAlert === "" ? fieldset[rezultatuLaukas].addClass('has_border') : null;
-// dar reikia padaryt rezultato label, jeigu calcAlert ne tuscias, kad rasytu "truksta duomenu:"
-
 calcAlert !== "" ? label[klaiduLaukas].text('Klaida! Trūksta duomenų ') : label[klaiduLaukas].text('');
 
-// Klaidos
-// prideti css klase klaidoms, color: red (tik spalva parinkti ne tokia ryskia)
-// prideti calc.alert -> pateikite visą reikalingą informaciją (trūkstami laukai pažymėti raudonu tekstu)
-// dar reikėtų alert jeigu veda papildomą ar kitokią info (kad paspaustų skaičiuoti vėl). arba pakeisti mygtuko tekstą į perskaičiuoti - iki kol paspaudžia išvalyti
 return calcAlert;
 }
