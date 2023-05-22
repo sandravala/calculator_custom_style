@@ -1,4 +1,4 @@
-console.log('fixed errors 3');
+console.log('fixed errors 4');
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas) {
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
@@ -454,17 +454,13 @@ rezultatai = rezultatuLentele;
 
 function getAlert(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas){
 if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti === 1) {
-	console.log("mamaArTetisVpa === 1 && naudosisNpm === 2" + (mamaArTetisVpa === 1 && naudosisNpm === 2));
-	console.log("mamaArTetisVpa === 2 && naudosisNpm === 1" + (mamaArTetisVpa === 2 && naudosisNpm === 1));
-	console.log("mamaArTetisVpa === 2 && naudosisNpm === 2" + (mamaArTetisVpa === 2 && naudosisNpm === 2));
-	console.log("mamaArTetisVpa === 1 && naudosisNpm === 1" + (mamaArTetisVpa === 1 && naudosisNpm === 1));
 	if (vpaIsmokaRodyti === 1) {
 		generateAlert(vpaTrukme === undefined, vpaTrukmesLaukas);
 		generateAlert(mamaArTetisVpa === undefined, vpaImsLaukas);
 		generateAlert(naudosisNpm === undefined, npmLaukas);
 		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
 	}
-	if((mamaArTetisVpa === 1 && !naudosisNpm) || (mamaArTetisVpa === 2 && naudosisNpm) || motinystesIsmokaRodyti === 1) {
+	if(mamaArTetisVpa === 1 || (mamaArTetisVpa === 2 && naudosisNpm) || motinystesIsmokaRodyti === 1) {
 	generateAlert(mamosPajamuTipas === undefined, mamosPajamuTipoLaukas);
 	generateAlert(mamosPajamos <= 0, mamosPajamuLaukas);
 	generateAlert(gimdymoData === '', gimdymoDatosLaukas);
@@ -476,7 +472,7 @@ if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti
 		}
 	}
 	
-	if((mamaArTetisVpa === 2 && !naudosisNpm) || (mamaArTetisVpa === 1 && naudosisNpm) || tevystesIsmokaRodyti === 1) {
+	if(mamaArTetisVpa === 2 || (mamaArTetisVpa === 1 && naudosisNpm) || tevystesIsmokaRodyti === 1) {
 		generateAlert(tecioPajamuTipas === undefined, tecioPajamuTipoLaukas);
 		generateAlert(tecioPajamos <= 0, tecioPajamuLaukas);
 		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
