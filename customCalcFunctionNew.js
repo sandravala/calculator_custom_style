@@ -1,4 +1,4 @@
-console.log('fixed errors 2');
+console.log('fixed errors 3');
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas) {
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
@@ -454,6 +454,10 @@ rezultatai = rezultatuLentele;
 
 function getAlert(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas){
 if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti === 1) {
+	console.log("mamaArTetisVpa === 1 && naudosisNpm === 2" + (mamaArTetisVpa === 1 && naudosisNpm === 2));
+	console.log("mamaArTetisVpa === 2 && naudosisNpm === 1" + (mamaArTetisVpa === 2 && naudosisNpm === 1));
+	console.log("mamaArTetisVpa === 2 && naudosisNpm === 2" + (mamaArTetisVpa === 2 && naudosisNpm === 2));
+	console.log("mamaArTetisVpa === 1 && naudosisNpm === 1" + (mamaArTetisVpa === 1 && naudosisNpm === 1));
 	if (vpaIsmokaRodyti === 1) {
 		generateAlert(vpaTrukme === undefined, vpaTrukmesLaukas);
 		generateAlert(mamaArTetisVpa === undefined, vpaImsLaukas);
@@ -495,6 +499,7 @@ function generateAlert(conditionToGenerateAlert, fieldsetNumberToAddStyling) {
 	    fieldset[fieldsetNumberToAddStyling].removeClass('klaida');
 	  }
 }
+
 
 // // sugeneruoja rezultato label
 (vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (mamosPajamos > 0 || tecioPajamos > 0)  && calcAlert === "" ? label[rezultatuLaukas].text('Preliminariai apskaičiuotos išmokos: ') : label[rezultatuLaukas].text('');
