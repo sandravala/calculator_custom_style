@@ -1,4 +1,4 @@
-console.log('bug fixed');
+console.log('tecio pajamu laukelis');
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas) {
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
@@ -82,11 +82,11 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 			break;
 		case 'tecioRadio' : 
 			mamaArTetisVpa = 2;
-			rodytiLaukus([ tecioPajamuTipoLaukas, tecioPajamuLaukas ], true);
+			rodytiLaukus([ tecioPajamuTipoLaukas ], true);
 			label[4].text('Mama naudosis 2 neperleidžiamais VPA mėnesiais?');
 			fieldset[vpaImsLaukas].removeClass('klaida');
 			rodytiLaukus([ npmLaukas ], true);
-			naudosisNpm ? rodytiLaukus([ mamosPajamuTipoLaukas, mamosPajamuLaukas ], true) : motinystesIsmokaRodyti ? null : rodytiLaukus([ mamosPajamuTipoLaukas, mamosPajamuLaukas ], false);
+			naudosisNpm ? rodytiLaukus([ mamosPajamuTipoLaukas ], true) : motinystesIsmokaRodyti ? null : rodytiLaukus([ mamosPajamuTipoLaukas ], false);
 			break;
 		case 'mamosRadio' : 
 			mamaArTetisVpa = 1;
@@ -94,7 +94,7 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 			label[4].text('Tėtis naudosis 2 neperleidžiamais VPA mėnesiais?');
 			fieldset[vpaImsLaukas].removeClass('klaida');
 			rodytiLaukus([ npmLaukas ], true);
-			naudosisNpm ? rodytiLaukus([ tecioPajamuTipoLaukas, tecioPajamuLaukas ], true) : tevystesIsmokaRodyti ? null : rodytiLaukus([ tecioPajamuTipoLaukas, tecioPajamuLaukas ], false);
+			naudosisNpm ? rodytiLaukus([ tecioPajamuTipoLaukas ], true) : tevystesIsmokaRodyti ? null : rodytiLaukus([ tecioPajamuTipoLaukas ], false);
 			break;
 		case 'mamosDU' :
 			mamosIslaidos30.checked = false;
@@ -116,6 +116,7 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 			tecioIslaidos30.checked = false;
 			tecioIslaidosFaktas.checked = false;
 			label[10].text('Tėčio darbo užmokestis su mokesčiais');
+			rodytiLaukus([ tecioPajamuLaukas ], true);
 			rodytiLaukus([ tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas ], false);
 			fieldset[tecioPajamuTipoLaukas].removeClass('klaida');
 			break;
@@ -123,7 +124,7 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 			tecioIslaidos30.checked = false;
 			tecioIslaidosFaktas.checked = false;
 			label[6].text('Vidutinės tėčio pajamos');
-			rodytiLaukus([ tecioIslaiduTipoLaukas ], true);
+			rodytiLaukus([ tecioIslaiduTipoLaukas, tecioPajamuLaukas ], true);
 			rodytiLaukus([ faktiniuTecioIslaiduLaukas ], false);
 			fieldset[tecioPajamuTipoLaukas].removeClass('klaida');
 			break;
@@ -145,7 +146,7 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 			break;
 		case 'npmTaip' :
 			naudosisNpm = 1;
-			mamaArTetisVpa === 1 ? rodytiLaukus([ tecioPajamuTipoLaukas, tecioPajamuLaukas ], true) : mamaArTetisVpa === 2 ? rodytiLaukus([ mamosPajamuTipoLaukas, mamosPajamuLaukas ], true) : null;
+			mamaArTetisVpa === 1 ? rodytiLaukus([ tecioPajamuTipoLaukas ], true) : mamaArTetisVpa === 2 ? rodytiLaukus([ mamosPajamuTipoLaukas ], true) : null;
 			fieldset[npmLaukas].removeClass('klaida');
 			break;
 		case 'npmNe' :
