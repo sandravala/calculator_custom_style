@@ -464,7 +464,7 @@ if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti
 		generateAlert(naudosisNpm === undefined, npmLaukas);
 		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
 	}
-	if((mamaArTetisVpa === 1 && naudosisNpm === 2) || (mamaArTetisVpa === 2 && naudosisNpm === 1) || motinystesIsmokaRodyti === 1) {
+	if((mamaArTetisVpa === 1 && !naudosisNpm) || (mamaArTetisVpa === 2 && naudosisNpm) || motinystesIsmokaRodyti === 1) {
 	generateAlert(mamosPajamuTipas === undefined, mamosPajamuTipoLaukas);
 	generateAlert(mamosPajamos <= 0, mamosPajamuLaukas);
 	generateAlert(gimdymoData === '', gimdymoDatosLaukas);
@@ -476,7 +476,7 @@ if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti
 		}
 	}
 	
-	if((mamaArTetisVpa === 2 && naudosisNpm === 2) || (mamaArTetisVpa === 1 && naudosisNpm === 1) || tevystesIsmokaRodyti === 1) {
+	if((mamaArTetisVpa === 2 && !naudosisNpm) || (mamaArTetisVpa === 1 && naudosisNpm) || tevystesIsmokaRodyti === 1) {
 		generateAlert(tecioPajamuTipas === undefined, tecioPajamuTipoLaukas);
 		generateAlert(tecioPajamos <= 0, tecioPajamuLaukas);
 		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
