@@ -459,31 +459,31 @@ if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti
 		generateAlert(mamaArTetisVpa === undefined, vpaImsLaukas);
 		generateAlert(naudosisNpm === undefined, npmLaukas);
 		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
-	}
-	if ((vpaIsmokaRodyti === 1 && (mamaArTetisVpa === 1 || (mamaArTetisVpa === 2 && naudosisNpm === 1))) || motinystesIsmokaRodyti === 1){
+			
+		if((mamaArTetisVpa === 1 && naudosisNpm === 2) || (mamaArTetisVpa === 2 && naudosisNpm === 1) || motinystesIsmokaRodyti === 1) {
 		generateAlert(mamosPajamuTipas === undefined, mamosPajamuTipoLaukas);
 		generateAlert(mamosPajamos <= 0, mamosPajamuLaukas);
 		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
-		if (mamosPajamuTipas === 2) {
-			generateAlert(mamosIslaiduTipas === undefined, mamosIslaiduTipoLaukas);
-			if (mamosIslaiduTipas === 2) {
-				generateAlert(mamosIslaidos === 0, faktiniuMamosIslaiduLaukas);
+			if (mamosPajamuTipas === 2) {
+				generateAlert(mamosIslaiduTipas === undefined, mamosIslaiduTipoLaukas);
+				if (mamosIslaiduTipas === 2) {
+					generateAlert(mamosIslaidos === 0, faktiniuMamosIslaiduLaukas);
+				}
+			}
+		}
+	
+		if((mamaArTetisVpa === 2 && naudosisNpm === 2) || (mamaArTetisVpa === 1 && naudosisNpm === 1) || tevystesIsmokaRodyti === 1) {
+			generateAlert(tecioPajamuTipas === undefined, tecioPajamuTipoLaukas);
+			generateAlert(tecioPajamos <= 0, tecioPajamuLaukas);
+			generateAlert(gimdymoData === '', gimdymoDatosLaukas);
+			if (tecioPajamuTipas === 2) {
+				generateAlert(tecioIslaiduTipas === undefined, tecioIslaiduTipoLaukas);
+				if (tecioIslaiduTipas === 2) {
+					generateAlert(tecioIslaidos === 0, faktiniuTecioIslaiduLaukas);
+				}
 			}
 		}
 	}
-
-	if ((vpaIsmokaRodyti === 1 && (mamaArTetisVpa === 2 || (mamaArTetisVpa === 1 && naudosisNpm === 1))) || tevystesIsmokaRodyti === 1){
-		generateAlert(tecioPajamuTipas === undefined, tecioPajamuTipoLaukas);
-		generateAlert(tecioPajamos <= 0, tecioPajamuLaukas);
-		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
-		if (tecioPajamuTipas === 2) {
-			generateAlert(tecioIslaiduTipas === undefined, tecioIslaiduTipoLaukas);
-			if (tecioIslaiduTipas === 2) {
-				generateAlert(tecioIslaidos === 0, faktiniuTecioIslaiduLaukas);
-			}
-		}
-	}
-
 } else {calcAlert = "";}
 
 
