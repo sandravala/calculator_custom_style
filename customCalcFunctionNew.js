@@ -472,7 +472,7 @@ if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti
 		}
 	}
 
-	if ((vpaIsmokaRodyti === 1 && (mamaArTetisVpa === 2 || (mamaArTetisVpa === 1 && naudosisNpm === 1)))) || tevystesIsmokaRodyti === 1){
+	if ((vpaIsmokaRodyti === 1 && (mamaArTetisVpa === 2 || (mamaArTetisVpa === 1 && naudosisNpm === 1))) || tevystesIsmokaRodyti === 1){
 		generateAlert(tecioPajamuTipas === undefined, tecioPajamuTipoLaukas);
 		generateAlert(tecioPajamos <= 0, tecioPajamuLaukas);
 		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
