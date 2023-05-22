@@ -439,6 +439,7 @@ ${createRow(vpaIsmokos, vpaIsmokosPavadinimas)}
 <tr><td colspan='4'>${paaiskinimai[1]}</td></tr>
 <tr><td colspan='4'>${paaiskinimai[2]}</td></tr>
 <tr><td colspan='4'>${paaiskinimai[3]}</td></tr>
+<tr><td colspan='4'>${paaiskinimai[4]}</td></tr>
 </tbody>
 </table>
 `
