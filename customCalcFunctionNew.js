@@ -55,7 +55,7 @@ tecioIslaiduInput.addEventListener('input', event => {fieldset[faktiniuTecioIsla
 gimdymoDatosInput.addEventListener('input', event => {fieldset[gimdymoDatosLaukas].removeClass('klaida');});	
 	
 let vpaLaukai = [ vpaTrukmesLaukas, vpaImsLaukas ];
-let mLaukai = [ [mamosPajamuTipoLaukas], [mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas] ];
+let mLaukai = [ [mamosPajamuTipoLaukas, mamosPajamuLaukas], [mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas] ];
 let tLaukai = [ [tecioPajamuTipoLaukas, tecioPajamuLaukas], [tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas] ];
 let bendriLaukai = [ gimdymoDatosLaukas, rezultatuLaukas ];
 
@@ -168,30 +168,30 @@ function isjungtiLaukus() {
     case !vpaIsmokaRodyti && !motinystesIsmokaRodyti && tevystesIsmokaRodyti:
     		rodytiLaukus([ ...vpaLaukai, ...mLaukai[0], ...mLaukai[1] ], false);
 				atzymetiRadios([...vpaRadios, ...mRadios]);
-    		rodytiLaukus(tLaukai[0], true);
+    		rodytiLaukus(tLaukai[0][0], true);
         break;
 		case !vpaIsmokaRodyti && motinystesIsmokaRodyti && !tevystesIsmokaRodyti:
     		rodytiLaukus([...vpaLaukai, ...tLaukai[0], ...tLaukai[1] ], false);
 				atzymetiRadios([...vpaRadios, ...tRadios]);
-    		rodytiLaukus(mLaukai[0], true);
+    		rodytiLaukus(mLaukai[0][0], true);
         break;
     case !vpaIsmokaRodyti && motinystesIsmokaRodyti && tevystesIsmokaRodyti:
 				rodytiLaukus(vpaLaukai, false);
 				atzymetiRadios(vpaRadios);
-    		rodytiLaukus([ ...mLaukai[0], ...tLaukai[0] ], true);
+    		rodytiLaukus([ ...mLaukai[0][0], ...tLaukai[0][0] ], true);
         break;
 		case vpaIsmokaRodyti && motinystesIsmokaRodyti && tevystesIsmokaRodyti:
-    		rodytiLaukus([ ...vpaLaukai, ...mLaukai[0], ...tLaukai[0] ], true);
+    		rodytiLaukus([ ...vpaLaukai, ...mLaukai[0][0], ...tLaukai[0][0] ], true);
         break;
 		case vpaIsmokaRodyti && !motinystesIsmokaRodyti && tevystesIsmokaRodyti:
 				mamaArTetisVpa === 2 && !naudosisNpm ? rodytiLaukus( [...mLaukai[0], ...mLaukai[1] ], false) : null;
 				atzymetiRadios(mRadios);
-    		rodytiLaukus([ ...vpaLaukai, ...tLaukai[0] ], true);
+    		rodytiLaukus([ ...vpaLaukai, ...tLaukai[0][0] ], true);
         break;
 		case vpaIsmokaRodyti && motinystesIsmokaRodyti && !tevystesIsmokaRodyti:
 				mamaArTetisVpa === 1 && !naudosisNpm ? rodytiLaukus( [...tLaukai[0], ...tLaukai[1] ], false) : null; 
 				atzymetiRadios(tRadios);
-    		rodytiLaukus([ ...vpaLaukai, ...mLaukai[0] ], true);
+    		rodytiLaukus([ ...vpaLaukai, ...mLaukai[0][0] ], true);
         break;
 		case vpaIsmokaRodyti && !motinystesIsmokaRodyti && !tevystesIsmokaRodyti:
 			rodytiLaukus(vpaLaukai, true);
