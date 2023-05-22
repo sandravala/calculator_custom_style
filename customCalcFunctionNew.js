@@ -1,4 +1,4 @@
-console.log('new day new script');
+console.log('nerodyti pajamu lauko');
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas) {
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
@@ -55,7 +55,7 @@ tecioIslaiduInput.addEventListener('input', event => {fieldset[faktiniuTecioIsla
 gimdymoDatosInput.addEventListener('input', event => {fieldset[gimdymoDatosLaukas].removeClass('klaida');});	
 	
 let vpaLaukai = [ vpaTrukmesLaukas, vpaImsLaukas ];
-let mLaukai = [ [mamosPajamuTipoLaukas, mamosPajamuLaukas], [mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas] ];
+let mLaukai = [ [mamosPajamuTipoLaukas], [mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas] ];
 let tLaukai = [ [tecioPajamuTipoLaukas, tecioPajamuLaukas], [tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas] ];
 let bendriLaukai = [ gimdymoDatosLaukas, rezultatuLaukas ];
 
@@ -274,12 +274,12 @@ let duomenysMaxIsmokai = {
 
 // PASIRENKAM, KURI KETVIRTI IMTI (IMA PRIESPASKUTINI)
 function ketvirtisIsmokoms(data) {
-    if(Math.floor(data.getMonth() / 3) - 2 < 0) {
+    if(Math.floor(data.getMonth() / 3) <= 0) {
         duomenysMaxIsmokai.metai = data.getFullYear() - 1;
-        duomenysMaxIsmokai.ketvirtis = 5 + (Math.floor(data.getMonth() / 3) - 2);
+        duomenysMaxIsmokai.ketvirtis = 4 + (Math.floor(data.getMonth() / 3));
     } else {
         duomenysMaxIsmokai.metai = data.getFullYear();
-        duomenysMaxIsmokai.ketvirtis = Math.floor(data.getMonth() / 3) - 2;
+        duomenysMaxIsmokai.ketvirtis = Math.floor(data.getMonth() / 3);
     };
 };
 
@@ -297,7 +297,7 @@ function findLastPositive(arr) {
 
 let maxIsmoka = 
 		vdu.filter(el => el[0] === duomenysMaxIsmokai.metai).length == 0 || vdu.filter(el => el[0] === duomenysMaxIsmokai.metai)[0][duomenysMaxIsmokai.ketvirtis] == 0 ? 
-		findLastPositive(flatten(vdu))*2 : (vdu.filter(el => el[0] === duomenysMaxIsmokai.metai)[0][duomenysMaxIsmokai.ketvirtis])*2;
+		duomenysMaxIsmokai.metai > vdu[0][0] ? findLastPositive(flatten(vdu))*2  : vdu[0][1]*2 : (vdu.filter(el => el[0] === duomenysMaxIsmokai.metai)[0][duomenysMaxIsmokai.ketvirtis])*2;
 maxIsmoka.round(2);
 
 // PASIDAROM LENTELE SU ISMOKU SARASU PAMENESIUI
