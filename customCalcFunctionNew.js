@@ -90,7 +90,7 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 			break;
 		case 'mamosRadio' : 
 			mamaArTetisVpa = 1;
-			rodytiLaukus([ mamosPajamuTipoLaukas, mamosPajamuLaukas ], true);
+			rodytiLaukus([ mamosPajamuTipoLaukas ], true);
 			label[4].text('Tėtis naudosis 2 neperleidžiamais VPA mėnesiais?');
 			fieldset[vpaImsLaukas].removeClass('klaida');
 			rodytiLaukus([ npmLaukas ], true);
@@ -101,13 +101,14 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 			mamosIslaidosFaktas.checked = false;
 			label[6].text('Mamos darbo užmokestis su mokesčiais');
 			rodytiLaukus([ mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas ], false);
+			rodytiLaukus([ mamosPajamuLaukas ], true);
 			fieldset[mamosPajamuTipoLaukas].removeClass('klaida');
 			break;
 		case 'mamosIV' : 
 			mamosIslaidos30.checked = false;
 			mamosIslaidosFaktas.checked = false;
 			label[6].text('Vidutinės mamos pajamos');
-			rodytiLaukus([ mamosIslaiduTipoLaukas ], true);
+			rodytiLaukus([ mamosIslaiduTipoLaukas, mamosPajamuLaukas ], true);
 			rodytiLaukus([ faktiniuMamosIslaiduLaukas ], false);
 			fieldset[mamosPajamuTipoLaukas].removeClass('klaida');
 			break;
@@ -273,12 +274,12 @@ let duomenysMaxIsmokai = {
 
 // PASIRENKAM, KURI KETVIRTI IMTI (IMA PRIESPASKUTINI)
 function ketvirtisIsmokoms(data) {
-    if(Math.floor(data.getMonth() / 3) - 1 <= 0) {
+    if(Math.floor(data.getMonth() / 3) - 2 < 0) {
         duomenysMaxIsmokai.metai = data.getFullYear() - 1;
-        duomenysMaxIsmokai.ketvirtis = 4 + (Math.floor(data.getMonth() / 3) - 1);
+        duomenysMaxIsmokai.ketvirtis = 5 + (Math.floor(data.getMonth() / 3) - 2);
     } else {
         duomenysMaxIsmokai.metai = data.getFullYear();
-        duomenysMaxIsmokai.ketvirtis = Math.floor(data.getMonth() / 3) - 1;
+        duomenysMaxIsmokai.ketvirtis = Math.floor(data.getMonth() / 3) - 2;
     };
 };
 
@@ -370,7 +371,7 @@ function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm) {
 		vpaIsmokos.push({'tarifas' : tarifasSpausdinimui,	'men' : menuo, 'suma' : suma.toLocaleString("lt-LT") + " €", 'gavejas' : gavejas});
 }
 
-for (let i = 4 ; i <= vpaTrukme + 1; i++) {
+for (let i = 2 ; i <= vpaTrukme + 1; i++) {
 	const praejoMetu = Math.trunc((gimimoDiena.getMonth() + i)/12);
 	if(i > vpaTrukme - 1 && naudosisNpm) {
  tekstasIsmokuSarasui(praejoMetu, i, true);
