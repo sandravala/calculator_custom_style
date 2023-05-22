@@ -1,4 +1,3 @@
-console.log('fixed errors 4');
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas) {
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
@@ -162,45 +161,45 @@ function isjungtiLaukus() {
 	vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti ? rodytiLaukus(bendriLaukai, true) : rodytiLaukus(bendriLaukai, false);	
 	
 	switch (true) { 
-    case !vpaIsmokaRodyti && !motinystesIsmokaRodyti && !tevystesIsmokaRodyti:
+    		case !vpaIsmokaRodyti && !motinystesIsmokaRodyti && !tevystesIsmokaRodyti:
 			rodytiLaukus([...vpaLaukai, ...mLaukai[0], ...mLaukai[1], ...tLaukai[0], ...tLaukai[1]], false);
 			atzymetiRadios([ ...vpaRadios, ...tRadios, ...mRadios ]);
-      break;
-    case !vpaIsmokaRodyti && !motinystesIsmokaRodyti && tevystesIsmokaRodyti:
-    		rodytiLaukus([ ...vpaLaukai, ...mLaukai[0], ...mLaukai[1] ], false);
-				atzymetiRadios([...vpaRadios, ...mRadios]);
-    		rodytiLaukus([tLaukai[0][0]], true);
-        break;
+      			break;
+    		case !vpaIsmokaRodyti && !motinystesIsmokaRodyti && tevystesIsmokaRodyti:
+    			rodytiLaukus([ ...vpaLaukai, ...mLaukai[0], ...mLaukai[1] ], false);
+			atzymetiRadios([...vpaRadios, ...mRadios]);
+    			rodytiLaukus([tLaukai[0][0]], true);
+       			break;
 		case !vpaIsmokaRodyti && motinystesIsmokaRodyti && !tevystesIsmokaRodyti:
-    		rodytiLaukus([...vpaLaukai, ...tLaukai[0], ...tLaukai[1] ], false);
-				atzymetiRadios([...vpaRadios, ...tRadios]);
-    		rodytiLaukus([mLaukai[0][0]], true);
-        break;
-    case !vpaIsmokaRodyti && motinystesIsmokaRodyti && tevystesIsmokaRodyti:
-				rodytiLaukus(vpaLaukai, false);
-				atzymetiRadios(vpaRadios);
-    		rodytiLaukus([ mLaukai[0][0], tLaukai[0][0] ], true);
-        break;
+    			rodytiLaukus([...vpaLaukai, ...tLaukai[0], ...tLaukai[1] ], false);
+			atzymetiRadios([...vpaRadios, ...tRadios]);
+    			rodytiLaukus([mLaukai[0][0]], true);
+        		break;
+    		case !vpaIsmokaRodyti && motinystesIsmokaRodyti && tevystesIsmokaRodyti:
+			rodytiLaukus(vpaLaukai, false);
+			atzymetiRadios(vpaRadios);
+    			rodytiLaukus([ mLaukai[0][0], tLaukai[0][0] ], true);
+       			break;
 		case vpaIsmokaRodyti && motinystesIsmokaRodyti && tevystesIsmokaRodyti:
-    		rodytiLaukus([ ...vpaLaukai, mLaukai[0][0], tLaukai[0][0] ], true);
-        break;
+    			rodytiLaukus([ ...vpaLaukai, mLaukai[0][0], tLaukai[0][0] ], true);
+        		break;
 		case vpaIsmokaRodyti && !motinystesIsmokaRodyti && tevystesIsmokaRodyti:
-				mamaArTetisVpa === 2 && !naudosisNpm ? rodytiLaukus( [...mLaukai[0], ...mLaukai[1] ], false) : null;
-				atzymetiRadios(mRadios);
-    		rodytiLaukus([ ...vpaLaukai, tLaukai[0][0] ], true);
-        break;
+			mamaArTetisVpa === 2 && !naudosisNpm ? rodytiLaukus( [...mLaukai[0], ...mLaukai[1] ], false) : null;
+			atzymetiRadios(mRadios);
+    			rodytiLaukus([ ...vpaLaukai, tLaukai[0][0] ], true);
+       			break;
 		case vpaIsmokaRodyti && motinystesIsmokaRodyti && !tevystesIsmokaRodyti:
-				mamaArTetisVpa === 1 && !naudosisNpm ? rodytiLaukus( [...tLaukai[0], ...tLaukai[1] ], false) : null; 
-				atzymetiRadios(tRadios);
-    		rodytiLaukus([ ...vpaLaukai, mLaukai[0][0] ], true);
-        break;
+			mamaArTetisVpa === 1 && !naudosisNpm ? rodytiLaukus( [...tLaukai[0], ...tLaukai[1] ], false) : null; 
+			atzymetiRadios(tRadios);
+    			rodytiLaukus([ ...vpaLaukai, mLaukai[0][0] ], true);
+       			break;
 		case vpaIsmokaRodyti && !motinystesIsmokaRodyti && !tevystesIsmokaRodyti:
 			rodytiLaukus(vpaLaukai, true);
 			if (!naudosisNpm) {
 				mamaArTetisVpa === 2 ? rodytiLaukus( [...mLaukai[0], ...mLaukai[1] ], false) : mamaArTetisVpa === 1 ? rodytiLaukus( [...tLaukai[0], ...tLaukai[1] ], false) : null;
 			} 
 			atzymetiRadios([ ...mRadios, ...tRadios ]);
-        break;
+        		break;
 	}
 }
 
@@ -257,8 +256,6 @@ jQuery(document).ready(function($) {
 	});
 	
 });
-	
-// Make a calculation when loading the form -> kad skaiciuotu tik tada, kai paspaudziamas mygtukas
 }
 
 function skaiciuotiIsmokas(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas) {
@@ -296,8 +293,7 @@ function findLastPositive(arr) {
     }, undefined);
 };
 
-let maxIsmoka = 
-		vdu.filter(el => el[0] === duomenysMaxIsmokai.metai).length == 0 || vdu.filter(el => el[0] === duomenysMaxIsmokai.metai)[0][duomenysMaxIsmokai.ketvirtis] == 0 ? 
+let maxIsmoka = vdu.filter(el => el[0] === duomenysMaxIsmokai.metai).length == 0 || vdu.filter(el => el[0] === duomenysMaxIsmokai.metai)[0][duomenysMaxIsmokai.ketvirtis] == 0 ? 
 		duomenysMaxIsmokai.metai > vdu[0][0] ? findLastPositive(flatten(vdu))*2  : vdu[0][1]*2 : (vdu.filter(el => el[0] === duomenysMaxIsmokai.metai)[0][duomenysMaxIsmokai.ketvirtis])*2;
 maxIsmoka.round(2);
 
@@ -341,13 +337,13 @@ let tecioBazeIsmokai = tecioPajamuTipas == 1 ? tecioPajamos : tecioIslaiduTipas 
 
 let motinystesIsmoka = galutineIsmokosSuma(mamosBazeIsmokai, motinystesTarifas, 4);
 let motinystesIsmokaSuMokesciais = ismokosSumaSuMokesciais(mamosBazeIsmokai, motinystesTarifas, 4);
-let motinystesIsmokosEilute = motinystesIsmokaRodyti && mamosPajamos > 0 ? [{'tarifas' : motinystesTarifas  + ' %', 'men' : 'nuo ' + motinystesIsmokosData, 'suma' : motinystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " € (" + motinystesIsmoka.toLocaleString("lt-LT") + " € į rankas)", 'gavejas': 'mama'}] : [{'tarifas':'', 'men': '', 'suma': '', 'gavejas': ''}];
+let motinystesIsmokosEilute = motinystesIsmokaRodyti && mamosPajamos > 0 ? [{'tarifas' : motinystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + motinystesIsmokosData, 'suma' : motinystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " € (" + motinystesIsmoka.toLocaleString("lt-LT") + " € į rankas)", 'gavejas': 'mama'}] : [{'tarifas':'', 'men': '', 'suma': '', 'gavejas': ''}];
 
 // apskaiciuojame tevystes ismoka
 
 let tevystesIsmoka = galutineIsmokosSuma(tecioBazeIsmokai, tevystesTarifas, 1);
 let tevystesIsmokaSuMokesciais = ismokosSumaSuMokesciais(tecioBazeIsmokai, tevystesTarifas, 1);
-let tevystesIsmokosEilute = tevystesIsmokaRodyti && tecioPajamos > 0 ? [{'tarifas' : tevystesTarifas  + ' %', 'men' : 'nuo ' + gDiena , 'suma' : tevystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " € (" + tevystesIsmoka.toLocaleString("lt-LT")  + " € į rankas)", 'gavejas': 'tėtis'}] : [{'tarifas':'', 'men': '', 'suma': '', 'gavejas': ''}];
+let tevystesIsmokosEilute = tevystesIsmokaRodyti && tecioPajamos > 0 ? [{'tarifas' : tevystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + gDiena , 'suma' : tevystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " € (" + tevystesIsmoka.toLocaleString("lt-LT")  + " € į rankas)", 'gavejas': 'tėtis'}] : [{'tarifas':'', 'men': '', 'suma': '', 'gavejas': ''}];
 
 //pasidarome vpa ismoku sarasa 
 let vpaIsmokos = [];
@@ -363,13 +359,13 @@ let bazeNpmSkaiciavimui = pajamuBaze(!mamaVpa); // pasirenkam mamos ar tecio du 
 
 function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm) {
 		const tarifas = i < 6 || npm ? neperleidziamuMenesiuTarifas : vpaTrukme <= 18 ? tarifasAtostogos18men : i < 13 ? tarifasAtostogos24men[0] : tarifasAtostogos24men[1];
-		const tarifasSpausdinimui = i < 6 || npm ? tarifas + ' % (npm***)' : tarifas + ' %';
+		const tarifasSpausdinimui = i < 6 || npm ? tarifas.toLocaleString("lt-LT") + ' % (npm***)' : tarifas.toLocaleString("lt-LT") + ' %';
 		const menuo = (gimimoDiena.getFullYear() + metuNuoGimdymo) + " " + menesiai[gMenuo + i >= 12 ? (gMenuo + i)%12: gMenuo + i];
 		const baze = npm ? bazeNpmSkaiciavimui : bazeSkaiciavimui;
 		const suma = ismokosSumaSuMokesciais(baze, tarifas, 1).toLocaleString("lt-LT")  + " € (" + galutineIsmokosSuma(baze, tarifas, 1).toLocaleString("lt-LT") + " € į rankas)";
 		const gavejas = !npm ? mamaVpa? 'mama' : 'tėtis' : mamaVpa? 'tėtis' : 'mama'; 
 	
-		vpaIsmokos.push({'tarifas' : tarifasSpausdinimui,	'men' : menuo, 'suma' : suma.toLocaleString("lt-LT") + " €", 'gavejas' : gavejas});
+		vpaIsmokos.push({'tarifas' : tarifasSpausdinimui, 'men' : menuo, 'suma' : suma, 'gavejas' : gavejas});
 }
 
 for (let i = 2 ; i <= vpaTrukme + 1; i++) {
