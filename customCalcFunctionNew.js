@@ -1,4 +1,4 @@
-console.log('06 04 16:32');
+console.log('06 04 18:56');
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
@@ -74,9 +74,9 @@ function pastabaDelIvGrindu(laukelisPoKuriuoPridetiPastaba, arPrideti) {
 	if (arPrideti) {
 	const ivPajamuPastaba = pastabosLaukas ? pastabosLaukas : document.createElement("div");
 	ivPajamuPastaba.setAttribute("id", "pastaba" + laukelisPoKuriuoPridetiPastaba);
-	ivPajamuPastaba.style.color = "red";
+	// ivPajamuPastaba.style.color = "red";
 	ivPajamuPastaba.style.padding = "0px 0px 32px 32px";
-	ivPajamuPastaba.innerHTML = `Jūsų vidutinės mėnesinės pajamos turi būti ne mažesnės, nei ${minimumas} ir galimai išmoka nebus skiriama, todėl preliminarūs apskaičiavimai negali būti atliekami.`;
+	ivPajamuPastaba.innerHTML = `Jūsų vidutinės mėnesinės pajamos turi būti ne mažesnės, nei ${minimumas} €. Jei vidutinės mėnesinės pajamos mažesnės, galimai išmoka nebūtų skiriama, todėl preliminarūs apskaičiavimai negali būti atliekami.`;
 	fieldset[laukelisPoKuriuoPridetiPastaba].insertAdjacentElement("afterend", ivPajamuPastaba);
 	} else if (pastabosLaukas){
 	pastabosLaukas.remove();
@@ -119,7 +119,7 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 		case 'mamosDU' :
 			mamosIslaidos30.checked = false;
 			mamosIslaidosFaktas.checked = false;
-			label[6].text('Mamos darbo užmokestis su mokesčiais');
+			label[mamosPajamuLaukas].text('Mamos darbo užmokestis su mokesčiais');
 			mamosPajamuInput.setAttribute('min', 0);
 			mamosPajamuInput.setAttribute('value', 0);
 			pastabaDelIvGrindu(mamosPajamuLaukas, false);
@@ -130,7 +130,7 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 		case 'mamosIV' : 
 			mamosIslaidos30.checked = false;
 			mamosIslaidosFaktas.checked = false;
-			label[6].text('Vidutinės mamos pajamos');
+			label[mamosPajamuLaukas].text('Vidutinės mamos pajamos');
 			mamosPajamuInput.setAttribute('min', minimumas);
 			mamosPajamuInput.setAttribute('value', minimumas);
 			pastabaDelIvGrindu(mamosPajamuLaukas, true);
@@ -141,7 +141,10 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 		case 'tecioDU' :
 			tecioIslaidos30.checked = false;
 			tecioIslaidosFaktas.checked = false;
-			label[10].text('Tėčio darbo užmokestis su mokesčiais');
+			label[tecioPajamuLaukas].text('Tėčio darbo užmokestis su mokesčiais');
+			tecioPajamuInput.setAttribute('min', 0);
+			tecioPajamuInput.setAttribute('value', 0);
+			pastabaDelIvGrindu(tecioPajamuLaukas, false);
 			rodytiLaukus([ tecioPajamuLaukas ], true);
 			rodytiLaukus([ tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas ], false);
 			fieldset[tecioPajamuTipoLaukas].removeClass('klaida');
@@ -149,7 +152,10 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 		case 'tecioIV' : 
 			tecioIslaidos30.checked = false;
 			tecioIslaidosFaktas.checked = false;
-			label[10].text('Vidutinės tėčio pajamos');
+			label[tecioPajamuLaukas].text('Vidutinės tėčio pajamos');
+			tecioPajamuInput.setAttribute('min', minimumas);
+			tecioPajamuInput.setAttribute('value', minimumas);
+			pastabaDelIvGrindu(tecioPajamuLaukas, true);
 			rodytiLaukus([ tecioIslaiduTipoLaukas, tecioPajamuLaukas ], true);
 			rodytiLaukus([ faktiniuTecioIslaiduLaukas ], false);
 			fieldset[tecioPajamuTipoLaukas].removeClass('klaida');
@@ -373,6 +379,7 @@ let tevystesIsmokaSuMokesciais = ismokosSumaSuMokesciais(tecioBazeIsmokai, tevys
 let tevystesIsmokosEilute = tevystesIsmokaRodyti && tecioPajamos > 0 ? [{'tarifas' : tevystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + gDiena , 'suma' : tevystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : tevystesIsmoka.toLocaleString("lt-LT")  + " €", 'gavejas': 'tėtis'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
 
 //pasidarome vpa ismoku sarasa 
+
 let vpaIsmokos = [];
 let mamaVpa = mamaArTetisVpa === 1; // patikriniam, ar mama eis vpa (jei ne, tai vadinasi tetis)
 function pajamuBaze(arMamaVpa){
@@ -381,8 +388,10 @@ function pajamuBaze(arMamaVpa){
 }; //jei mama, tai ima mamos. jei tetis arba !mama - tai ima tecio
 
 let bazeSkaiciavimui = pajamuBaze(mamaVpa); // pasirenkam mamos ar tecio du skaiciuoti ismokoms pagrindinems
-
 let bazeNpmSkaiciavimui = pajamuBaze(!mamaVpa); // pasirenkam mamos ar tecio du skaiciuoti ismokoms npm
+
+const bendraIsmokuSuma = 0;
+const bendraIsmokuSumaSuMokesciais = 0;
 
 function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm) {
 		const tarifas = i < 6 || npm ? neperleidziamuMenesiuTarifas : vpaTrukme <= 18 ? tarifasAtostogos18men : i < 13 ? tarifasAtostogos24men[0] : tarifasAtostogos24men[1];
@@ -392,7 +401,8 @@ function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm) {
 		const suma = ismokosSumaSuMokesciais(baze, tarifas, 1).toLocaleString("lt-LT")  + " €";
 		const sumaPoMokesciu = galutineIsmokosSuma(baze, tarifas, 1).toLocaleString("lt-LT") + " €";
 		const gavejas = !npm ? mamaVpa? 'mama' : 'tėtis' : mamaVpa? 'tėtis' : 'mama'; 
-	
+		bendraIsmokuSuma += galutineIsmokosSuma(baze, tarifas, 1);
+		bendraIsmokuSumaSuMokesciais += ismokosSumaSuMokesciais(baze, tarifas, 1);
 		vpaIsmokos.push({'tarifas' : tarifasSpausdinimui, 'men' : menuo, 'suma' : suma, 'sumaPoMokesciu': sumaPoMokesciu, 'gavejas' : gavejas});
 }
 
@@ -404,6 +414,8 @@ for (let i = 2 ; i <= vpaTrukme + 1; i++) {
 		tekstasIsmokuSarasui(praejoMetu, i);
 	}
 }
+
+vpaIsmokos.push('tarifas' : '', 'men' : "Viso: ", 'suma' : bendraIsmokuSumaSuMokesciais, 'sumaPoMokesciu': bendraIsmokuSuma, 'gavejas' : ''});
 
 // funkcija eiluciu generavimui pagal duomenis
 
