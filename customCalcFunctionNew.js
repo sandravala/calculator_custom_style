@@ -1,4 +1,4 @@
-console.log('06 04 19:11');
+console.log('06 04 19:21');
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
@@ -415,7 +415,7 @@ for (let i = 2 ; i <= vpaTrukme + 1; i++) {
 	}
 }
 
-vpaIsmokos.push({'tarifas' : '', 'men' : 'Viso: ', 'suma' : bendraIsmokuSumaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu': bendraIsmokuSuma.toLocaleString("lt-LT")  + " €", 'gavejas' : ''});
+vpaIsmokos.push({'tarifas' : '', 'men' : `<b>Viso:</b>`, 'suma' : `<b>${bendraIsmokuSumaSuMokesciais.toLocaleString("lt-LT")} €</b>`, 'sumaPoMokesciu': `${bendraIsmokuSuma.toLocaleString("lt-LT")} €</b>`, 'gavejas' : ''});
 
 // funkcija eiluciu generavimui pagal duomenis
 
