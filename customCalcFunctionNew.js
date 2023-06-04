@@ -1,4 +1,4 @@
-console.log('06 04 16:27');
+console.log('06 04 16:32');
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
@@ -412,17 +412,18 @@ function createRow(data, ismokuPavadinimas) {
 
 	if (ismokuPavadinimas !== '') {
 		rows += `<tr>
-						<td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${ismokuPavadinimas}</td>
-					</tr>`
-	}
-	for(let i = 0; i < data.length ; i++) {
-		rows += `<tr>
-						<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].tarifas}</td>
-						<td style='text-align: left; font-size: .85em; padding-left: .3em;'>${data[i].men}</td>
-						<td style='text-align: left; font-size: .85em; padding-left: .3em;'>${data[i].suma}</td>
-						<td style='text-align: left; font-size: .85em; padding-left: .3em;'>${data[i].sumaPoMokesciu}</td>
-						<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].gavejas}</td>
-					</tr>`
+			 <td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${ismokuPavadinimas}</td>
+			</tr>`
+	
+		for(let i = 0; i < data.length ; i++) {
+			rows += `<tr>
+					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].tarifas}</td>
+					<td style='text-align: left; font-size: .85em; padding-left: .3em;'>${data[i].men}</td>
+					<td style='text-align: left; font-size: .85em; padding-left: .3em;'>${data[i].suma}</td>
+					<td style='text-align: left; font-size: .85em; padding-left: .3em;'>${data[i].sumaPoMokesciu}</td>
+					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].gavejas}</td>
+				</tr>`
+		}
 	}
 	return rows;	
 };
