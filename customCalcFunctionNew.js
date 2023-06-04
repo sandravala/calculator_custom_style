@@ -1,5 +1,5 @@
-console.log('paaiskinimai');
-function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas) {
+console.log('06 04 15:13');
+function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
 
@@ -63,6 +63,11 @@ let vpaRadios = [ vpaTrukme18Radio, vpaTrukme24Radio, tecioRadio, mamosRadio, np
 let mRadios = [ mamosDUpajamos, mamosIVpajamos, mamosIslaidos30, mamosIslaidosFaktas ];
 let tRadios = [ tecioDUpajamos, tecioIVpajamos, tecioIslaidos30, tecioIslaidosFaktas ];
 
+const ivPajamuPastaba = document.createElement("div");
+ivPajamuPastaba.setAttribute("id", "ivPajamuPastaba");
+ivPajamuPastaba.innerHTML = `Jūsų vidutinės mėnesinės pajamos turi būti ne mažesnės, nei ${minimumas} ir galimai išmoka nebus skiriama, todėl preliminarūs apskaičiavimai negali būti atliekami.`;
+ivPajamuPastaba.style.color = "red";
+	
 function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 	switch(ismoka) {
 		case 'motinystes' : 
@@ -108,7 +113,9 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 			mamosIslaidos30.checked = false;
 			mamosIslaidosFaktas.checked = false;
 			label[6].text('Vidutinės mamos pajamos');
+			mamosPajamuInput.setAttribute('min', 840);
 			rodytiLaukus([ mamosIslaiduTipoLaukas, mamosPajamuLaukas ], true);
+			mamosPajamuLaukas.insertAdjacentElement("afterend", ivPajamuPastaba);
 			rodytiLaukus([ faktiniuMamosIslaiduLaukas ], false);
 			fieldset[mamosPajamuTipoLaukas].removeClass('klaida');
 			break;
@@ -259,7 +266,7 @@ jQuery(document).ready(function($) {
 });
 }
 
-function skaiciuotiIsmokas(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas) {
+function skaiciuotiIsmokas(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
 // SKAICIUOJAME LUBAS IR GRINDIS
 
@@ -338,13 +345,13 @@ let tecioBazeIsmokai = tecioPajamuTipas == 1 ? tecioPajamos : tecioIslaiduTipas 
 
 let motinystesIsmoka = galutineIsmokosSuma(mamosBazeIsmokai, motinystesTarifas, 4);
 let motinystesIsmokaSuMokesciais = ismokosSumaSuMokesciais(mamosBazeIsmokai, motinystesTarifas, 4);
-let motinystesIsmokosEilute = motinystesIsmokaRodyti && mamosPajamos > 0 ? [{'tarifas' : motinystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + motinystesIsmokosData, 'suma' : motinystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " € (" + motinystesIsmoka.toLocaleString("lt-LT") + " € į rankas)", 'gavejas': 'mama'}] : [{'tarifas':'', 'men': '', 'suma': '', 'gavejas': ''}];
+let motinystesIsmokosEilute = motinystesIsmokaRodyti && mamosPajamos > 0 ? [{'tarifas' : motinystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + motinystesIsmokosData, 'suma' : motinystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : motinystesIsmoka.toLocaleString("lt-LT") + " €", 'gavejas': 'mama'}] : [{'tarifas':'', 'men': '', 'suma': '', 'gavejas': ''}];
 
 // apskaiciuojame tevystes ismoka
 
 let tevystesIsmoka = galutineIsmokosSuma(tecioBazeIsmokai, tevystesTarifas, 1);
 let tevystesIsmokaSuMokesciais = ismokosSumaSuMokesciais(tecioBazeIsmokai, tevystesTarifas, 1);
-let tevystesIsmokosEilute = tevystesIsmokaRodyti && tecioPajamos > 0 ? [{'tarifas' : tevystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + gDiena , 'suma' : tevystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " € (" + tevystesIsmoka.toLocaleString("lt-LT")  + " € į rankas)", 'gavejas': 'tėtis'}] : [{'tarifas':'', 'men': '', 'suma': '', 'gavejas': ''}];
+let tevystesIsmokosEilute = tevystesIsmokaRodyti && tecioPajamos > 0 ? [{'tarifas' : tevystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + gDiena , 'suma' : tevystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : tevystesIsmoka.toLocaleString("lt-LT")  + " €", 'gavejas': 'tėtis'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
 
 //pasidarome vpa ismoku sarasa 
 let vpaIsmokos = [];
@@ -363,10 +370,11 @@ function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm) {
 		const tarifasSpausdinimui = i < 6 || npm ? tarifas.toLocaleString("lt-LT") + ' % (npm***)' : tarifas.toLocaleString("lt-LT") + ' %';
 		const menuo = (gimimoDiena.getFullYear() + metuNuoGimdymo) + " " + menesiai[gMenuo + i >= 12 ? (gMenuo + i)%12: gMenuo + i];
 		const baze = npm ? bazeNpmSkaiciavimui : bazeSkaiciavimui;
-		const suma = ismokosSumaSuMokesciais(baze, tarifas, 1).toLocaleString("lt-LT")  + " € (" + galutineIsmokosSuma(baze, tarifas, 1).toLocaleString("lt-LT") + " € į rankas)";
+		const suma = ismokosSumaSuMokesciais(baze, tarifas, 1).toLocaleString("lt-LT")  + " €";
+		const sumaPoMokesciu = galutineIsmokosSuma(baze, tarifas, 1).toLocaleString("lt-LT") + " €";
 		const gavejas = !npm ? mamaVpa? 'mama' : 'tėtis' : mamaVpa? 'tėtis' : 'mama'; 
 	
-		vpaIsmokos.push({'tarifas' : tarifasSpausdinimui, 'men' : menuo, 'suma' : suma, 'gavejas' : gavejas});
+		vpaIsmokos.push({'tarifas' : tarifasSpausdinimui, 'men' : menuo, 'suma' : suma, 'sumaPoMokesciu': sumaPoMokesciu, 'gavejas' : gavejas});
 }
 
 for (let i = 2 ; i <= vpaTrukme + 1; i++) {
@@ -385,7 +393,7 @@ function createRow(data, ismokuPavadinimas) {
 
 	if (ismokuPavadinimas !== '') {
 		rows += `<tr>
-						<td colspan='4' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${ismokuPavadinimas}</td>
+						<td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${ismokuPavadinimas}</td>
 					</tr>`
 	}
 	for(let i = 0; i < data.length ; i++) {
@@ -393,6 +401,7 @@ function createRow(data, ismokuPavadinimas) {
 						<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].tarifas}</td>
 						<td style='text-align: left; font-size: .85em; padding-left: .3em;'>${data[i].men}</td>
 						<td style='text-align: left; font-size: .85em; padding-left: .3em;'>${data[i].suma}</td>
+						<td style='text-align: left; font-size: .85em; padding-left: .3em;'>${data[i].sumaPoMokesciu}</td>
 						<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].gavejas}</td>
 					</tr>`
 	}
@@ -405,19 +414,23 @@ let mIsmokosPavadinimas = motinystesIsmokaRodyti && mamosPajamos > 0 ? 'Motinyst
 let tIsmokosPavadinimas = tevystesIsmokaRodyti && tecioPajamos > 0 ? 'Tėvystės išmoka:' : '';
 let vpaIsmokosPavadinimas = vpaIsmokaRodyti && (tecioPajamos || mamosPajamos) > 0 ? 'Vaiko priežiūros atostogų išmoka:' : '';
 let paaiskinimuPavadinimas = tecioPajamos || mamosPajamos > 0 ? 'Paaiškinimai:' : '';
-let pavadinimai = mamosPajamos > 0 || tecioPajamos > 0 ? ['tarifas', 'data*', 'suma**', 'gavėjas'] : ['', '', '', ''];
+let pavadinimai = mamosPajamos > 0 || tecioPajamos > 0 ? ['tarifas', 'data*', 'suma**', 'suma (į rankas)', 'gavėjas'] : ['', '', '', '', ''];
 
 
 // pasidarom paaiskinimu tekstus
 
-let paaiskinimai = mamosPajamos > 0 || tecioPajamos > 0 ? ['* - Preliminari teisės į išmoką atsiradimo data, t.y. nuo kada galima kreiptis dėl išmokos.','', '** - preliminariai apskaičiuota išmokos suma pagal pateiktus duomenis (faktinės išmokos gali nežymiai kisti, priklausomai nuo gimdymo datos, atostogų, ligos ir pan.)', '', ''] : ['', '', '', ''];
+let paaiskinimai = mamosPajamos > 0 || tecioPajamos > 0 ? ['* - Preliminari teisės į išmoką atsiradimo data, t.y. nuo kada galima kreiptis dėl išmokos.','', '** - preliminariai apskaičiuota išmokos suma pagal pateiktus duomenis (faktinės išmokos gali nežymiai kisti, priklausomai nuo gimdymo datos, atostogų, ligos ir pan.)', '', '', ''] : ['', '', '', '', '', ''];
 mamosPajamos > 0 && motinystesIsmokaRodyti ? paaiskinimai[1] = 'Tikslią datą nurodys jus prižiūrintis gydytojas.' : paaiskinimai[1] = '';
 	
 mamosPajamos > 0  && mamosBazeIsmokai > maxIsmoka ? paaiskinimai[3] += `Mamos pajamos viršija maksimalų galimą išmokos dydį, todėl išmokos skaičiuojamos nuo didžiausios galimos sumos (${maxIsmoka.toLocaleString("lt-LT")} Eur). ` : mamosPajamos > 0  && mamosBazeIsmokai < minIsmoka ? paaiskinimai[3] += `Mamos pajamos yra mažesnės už šiuo metu galiojantį minimalų dydį, todėl išmokos skaičiuojamos nuo mažiausios galimos sumos (${minIsmoka.toLocaleString("lt-LT")} Eur). ` : null;
 
 tecioPajamos > 0 && tecioBazeIsmokai < minIsmoka ? paaiskinimai[3] += `Tėčio pajamos yra mažesnės už šiuo metu galiojantį minimalų dydį, todėl išmokos skaičiuojamos nuo mažiausios galimos sumos (${minIsmoka.toLocaleString("lt-LT")} Eur).` : tecioPajamos > 0 && tecioBazeIsmokai > maxIsmoka ? paaiskinimai[3] += `Tėčio pajamos viršija šiuo metu galiojantį maksimalų galimą išmokos dydį, todėl išmokos skaičiuojamos nuo didžiausios galimos sumos (${maxIsmoka.toLocaleString("lt-LT")} Eur).` : null;
 
-vpaIsmokaRodyti && (tecioPajamos || mamosPajamos) > 0 ? paaiskinimai[4] = '*** - didesnis tarifas taikomas tik neperleidžiamais VPA mėnesiais (NPM), ir jais atitinkamai gali pasinaudoti tik mama arba tėtis. Jei NPM naudoja tik vienas iš tėvų, išmoka pradingsta, o VPA sutrumpėja' : null;
+vpaIsmokaRodyti && (tecioPajamos || mamosPajamos) > 0 ? paaiskinimai[4] = '*** - NPM yra 2 neperleidžiami mėnesiai mamai ir 2 neperleidžiami mėnesiai tėčiui. Didesnis tarifas taikomas tik neperleidžiamais VPA mėnesiais (NPM), ir jais atitinkamai gali pasinaudoti tik mama arba tėtis. Jei NPM naudoja tik vienas iš tėvų, išmoka pradingsta, o VPA sutrumpėja' : null;
+
+(tecioPajamos > 0 && tecioPajamuTipas == 2) || (mamosPajamos > 0 && mamosPajamuTipas == 2) ? paaiskinimai[5] = 'Jei pajamas deklaruojate kartą metuose, galimai išmoką gausite tik kitais mokestiniais metais. Jei atliekate avansinius mokėjimus, būtinai išsiųskite SAV pranešimą mėnuo iki teisės į išmoką datos.' : null;
+
+// jeigu pasirenka idv 'Jei pajamas deklaruojate kartą metuose, galimai išmoką gausite tik kitais mokestiniais metais. Jei atliekate avansinius mokėjimus, būtinai išsiųskite SAV pranešimą mėnuo iki teisės į išmoką datos.'	
 
 // sugeneruojame rezultatu lentele
 
@@ -429,18 +442,20 @@ let rezultatuLentele =
 <th style='text-align: left; font-size: .85em; text-transform: uppercase;padding-left: .3em;'">${pavadinimai[1]}</th>
 <th style='text-align: left; font-size: .85em; text-transform: uppercase;padding-left: .3em;'">${pavadinimai[2]}</th>
 <th style='text-align: left; font-size: .85em; text-transform: uppercase;padding-left: .3em;'">${pavadinimai[3]}</th>
+<th style='text-align: left; font-size: .85em; text-transform: uppercase;padding-left: .3em;'">${pavadinimai[4]}</th>
 </tr>
 </thead>
 <tbody>
 ${createRow(motinystesIsmokosEilute, mIsmokosPavadinimas)}
 ${createRow(tevystesIsmokosEilute, tIsmokosPavadinimas)}
 ${createRow(vpaIsmokos, vpaIsmokosPavadinimas)}
-<tr><td colspan='4' class='segment' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${paaiskinimuPavadinimas}</td></tr>
-<tr><td colspan='4'>${paaiskinimai[0]}</td></tr>
-<tr><td colspan='4'>${paaiskinimai[1]}</td></tr>
-<tr><td colspan='4'>${paaiskinimai[2]}</td></tr>
-<tr><td colspan='4'>${paaiskinimai[3]}</td></tr>
-<tr><td colspan='4'>${paaiskinimai[4]}</td></tr>
+<tr><td colspan='5' class='segment' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${paaiskinimuPavadinimas}</td></tr>
+<tr><td colspan='5'>${paaiskinimai[0]}</td></tr>
+<tr><td colspan='5'>${paaiskinimai[1]}</td></tr>
+<tr><td colspan='5'>${paaiskinimai[5]}</td></tr> // cia apie idv deklaravima karta metuose
+<tr><td colspan='5'>${paaiskinimai[2]}</td></tr>
+<tr><td colspan='5'>${paaiskinimai[3]}</td></tr>
+<tr><td colspan='5'>${paaiskinimai[4]}</td></tr>
 </tbody>
 </table>
 `
@@ -450,7 +465,7 @@ rezultatai = rezultatuLentele;
 	return rezultatai;
 }
 
-function getAlert(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas){
+function getAlert(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas){
 if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti === 1) {
 	if (vpaIsmokaRodyti === 1) {
 		generateAlert(vpaTrukme === undefined, vpaTrukmesLaukas);
@@ -458,6 +473,7 @@ if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti
 		generateAlert(naudosisNpm === undefined, npmLaukas);
 		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
 	}
+	
 	if(mamaArTetisVpa === 1 || (mamaArTetisVpa === 2 && naudosisNpm) || motinystesIsmokaRodyti === 1) {
 	generateAlert(mamosPajamuTipas === undefined, mamosPajamuTipoLaukas);
 	generateAlert(mamosPajamos <= 0, mamosPajamuLaukas);
