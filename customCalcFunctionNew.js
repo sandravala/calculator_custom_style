@@ -415,7 +415,7 @@ for (let i = 2 ; i <= vpaTrukme + 1; i++) {
 	}
 }
 
-vpaIsmokos.push('tarifas' : '', 'men' : 'Viso: ', 'suma' : bendraIsmokuSumaSuMokesciais, 'sumaPoMokesciu': bendraIsmokuSuma, 'gavejas' : ''});
+vpaIsmokos.push({'tarifas' : '', 'men' : 'Viso: ', 'suma' : bendraIsmokuSumaSuMokesciais, 'sumaPoMokesciu': bendraIsmokuSuma, 'gavejas' : ''});
 
 // funkcija eiluciu generavimui pagal duomenis
 
