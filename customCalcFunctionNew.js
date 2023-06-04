@@ -1,4 +1,4 @@
-console.log('06 04 16:20');
+console.log('06 04 16:23');
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
@@ -71,7 +71,7 @@ let tRadios = [ tecioDUpajamos, tecioIVpajamos, tecioIslaidos30, tecioIslaidosFa
 
 function pastabaDelIvGrindu(laukelisPoKuriuoPridetiPastaba, arPrideti) {
 	const pastabosLaukas = document.getElementById( "pastaba" + laukelisPoKuriuoPridetiPastaba);
-	if (prideti) {
+	if (arPrideti) {
 	const ivPajamuPastaba = document.createElement("div");
 	ivPajamuPastaba.setAttribute("id", "pastaba" + laukelisPoKuriuoPridetiPastaba);
 	ivPajamuPastaba.style.color = "red";
