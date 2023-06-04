@@ -1,4 +1,4 @@
-console.log('06 04 15:50');
+console.log('06 04 16:20');
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
@@ -63,18 +63,25 @@ let vpaRadios = [ vpaTrukme18Radio, vpaTrukme24Radio, tecioRadio, mamosRadio, np
 let mRadios = [ mamosDUpajamos, mamosIVpajamos, mamosIslaidos30, mamosIslaidosFaktas ];
 let tRadios = [ tecioDUpajamos, tecioIVpajamos, tecioIslaidos30, tecioIslaidosFaktas ];
 
-const ivPajamuPastabaMamos = document.createElement("div");
-ivPajamuPastabaMamos.setAttribute("id", "ivPajamuPastaba");
-ivPajamuPastabaMamos.style.color = "red";
-ivPajamuPastabaMamos.style.padding = "0px 0px 32px 32px";
-fieldset[mamosPajamuLaukas].insertAdjacentElement("afterend", ivPajamuPastabaMamos);
+// const ivPajamuPastabaMamos = document.createElement("div");
+// ivPajamuPastabaMamos.setAttribute("id", "ivPajamuPastabaMamos");
+// ivPajamuPastabaMamos.style.color = "red";
+// fieldset[mamosPajamuLaukas].insertAdjacentElement("afterend", ivPajamuPastabaMamos);
 	
-const ivPajamuPastabaTecio = document.createElement("div");
-ivPajamuPastabaTecio.setAttribute("id", "ivPajamuPastaba");
-ivPajamuPastabaTecio.style.color = "red";
-ivPajamuPastabaTecio.style.padding = "0px 0px 32px 32px";
-fieldset[tecioPajamuLaukas].insertAdjacentElement("afterend", ivPajamuPastabaTecio);
 
+function pastabaDelIvGrindu(laukelisPoKuriuoPridetiPastaba, arPrideti) {
+	const pastabosLaukas = document.getElementById( "pastaba" + laukelisPoKuriuoPridetiPastaba);
+	if (prideti) {
+	const ivPajamuPastaba = document.createElement("div");
+	ivPajamuPastaba.setAttribute("id", "pastaba" + laukelisPoKuriuoPridetiPastaba);
+	ivPajamuPastaba.style.color = "red";
+	ivPajamuPastaba.style.padding = "0px 0px 32px 32px";
+	ivPajamuPastaba.innerHTML = `Jūsų vidutinės mėnesinės pajamos turi būti ne mažesnės, nei ${minimumas} ir galimai išmoka nebus skiriama, todėl preliminarūs apskaičiavimai negali būti atliekami.`;
+	fieldset[laukelisPoKuriuoPridetiPastaba].insertAdjacentElement("afterend", ivPajamuPastaba);
+	} else if (pastabosLaukas){
+	pastabosLaukas.remove();
+	}
+}
 	
 function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 	switch(ismoka) {
@@ -115,7 +122,7 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 			label[6].text('Mamos darbo užmokestis su mokesčiais');
 			mamosPajamuInput.setAttribute('min', 0);
 			mamosPajamuInput.setAttribute('value', 0);
-			ivPajamuPastabaMamos.innerHTML = '';
+			pastabaDelIvGrindu(mamosPajamuLaukas, false);
 			rodytiLaukus([ mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas ], false);
 			rodytiLaukus([ mamosPajamuLaukas ], true);
 			fieldset[mamosPajamuTipoLaukas].removeClass('klaida');
@@ -126,7 +133,7 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 			label[6].text('Vidutinės mamos pajamos');
 			mamosPajamuInput.setAttribute('min', minimumas);
 			mamosPajamuInput.setAttribute('value', minimumas);
-			ivPajamuPastabaMamos.innerHTML = `Jūsų vidutinės mėnesinės pajamos turi būti ne mažesnės, nei ${minimumas} ir galimai išmoka nebus skiriama, todėl preliminarūs apskaičiavimai negali būti atliekami.`;
+			pastabaDelIvGrindu(mamosPajamuLaukas, true);
 			rodytiLaukus([ mamosIslaiduTipoLaukas, mamosPajamuLaukas ], true);
 			rodytiLaukus([ faktiniuMamosIslaiduLaukas ], false);
 			fieldset[mamosPajamuTipoLaukas].removeClass('klaida');
