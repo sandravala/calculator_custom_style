@@ -1,4 +1,4 @@
-console.log('06 04 15:13');
+console.log('06 04 15:33');
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
@@ -115,7 +115,7 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 			label[6].text('Vidutinės mamos pajamos');
 			mamosPajamuInput.setAttribute('min', 840);
 			rodytiLaukus([ mamosIslaiduTipoLaukas, mamosPajamuLaukas ], true);
-			mamosPajamuLaukas.insertAdjacentElement("afterend", ivPajamuPastaba);
+			fieldset[mamosPajamuLaukas].insertAdjacentElement("afterend", ivPajamuPastaba);
 			rodytiLaukus([ faktiniuMamosIslaiduLaukas ], false);
 			fieldset[mamosPajamuTipoLaukas].removeClass('klaida');
 			break;
@@ -345,7 +345,7 @@ let tecioBazeIsmokai = tecioPajamuTipas == 1 ? tecioPajamos : tecioIslaiduTipas 
 
 let motinystesIsmoka = galutineIsmokosSuma(mamosBazeIsmokai, motinystesTarifas, 4);
 let motinystesIsmokaSuMokesciais = ismokosSumaSuMokesciais(mamosBazeIsmokai, motinystesTarifas, 4);
-let motinystesIsmokosEilute = motinystesIsmokaRodyti && mamosPajamos > 0 ? [{'tarifas' : motinystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + motinystesIsmokosData, 'suma' : motinystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : motinystesIsmoka.toLocaleString("lt-LT") + " €", 'gavejas': 'mama'}] : [{'tarifas':'', 'men': '', 'suma': '', 'gavejas': ''}];
+let motinystesIsmokosEilute = motinystesIsmokaRodyti && mamosPajamos > 0 ? [{'tarifas' : motinystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + motinystesIsmokosData, 'suma' : motinystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : motinystesIsmoka.toLocaleString("lt-LT") + " €", 'gavejas': 'mama'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
 
 // apskaiciuojame tevystes ismoka
 
@@ -452,7 +452,7 @@ ${createRow(vpaIsmokos, vpaIsmokosPavadinimas)}
 <tr><td colspan='5' class='segment' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${paaiskinimuPavadinimas}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[0]}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[1]}</td></tr>
-<tr><td colspan='5'>${paaiskinimai[5]}</td></tr> // cia apie idv deklaravima karta metuose
+<tr><td colspan='5'>${paaiskinimai[5]}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[2]}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[3]}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[4]}</td></tr>
