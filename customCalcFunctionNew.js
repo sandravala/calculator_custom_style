@@ -1,4 +1,4 @@
-console.log('06 04 18:56');
+console.log('06 04 19:07');
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
@@ -415,7 +415,7 @@ for (let i = 2 ; i <= vpaTrukme + 1; i++) {
 	}
 }
 
-vpaIsmokos.push('tarifas' : '', 'men' : "Viso: ", 'suma' : bendraIsmokuSumaSuMokesciais, 'sumaPoMokesciu': bendraIsmokuSuma, 'gavejas' : ''});
+vpaIsmokos.push('tarifas' : '', 'men' : 'Viso: ', 'suma' : bendraIsmokuSumaSuMokesciais, 'sumaPoMokesciu': bendraIsmokuSuma, 'gavejas' : ''});
 
 // funkcija eiluciu generavimui pagal duomenis
 
