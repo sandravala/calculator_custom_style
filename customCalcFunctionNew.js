@@ -119,7 +119,7 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 		case 'mamosDU' :
 			mamosIslaidos30.checked = false;
 			mamosIslaidosFaktas.checked = false;
-			label[mamosPajamuLaukas].text('Mamos darbo užmokestis su mokesčiais');
+			label[mamosPajamuLaukas].text('Mamos darbo užmokestis prieš mokesčius');
 			mamosPajamuInput.setAttribute('min', 0);
 			mamosPajamuInput.setAttribute('value', 0);
 			pastabaDelIvGrindu(mamosPajamuLaukas, false);
@@ -141,7 +141,7 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 		case 'tecioDU' :
 			tecioIslaidos30.checked = false;
 			tecioIslaidosFaktas.checked = false;
-			label[tecioPajamuLaukas].text('Tėčio darbo užmokestis su mokesčiais');
+			label[tecioPajamuLaukas].text('Tėčio darbo užmokestis prieš mokesčius');
 			tecioPajamuInput.setAttribute('min', 0);
 			tecioPajamuInput.setAttribute('value', 0);
 			pastabaDelIvGrindu(tecioPajamuLaukas, false);
