@@ -443,7 +443,7 @@ function createRow(data, ismokuPavadinimas) {
 
 // pasidarome pavadinimus stulpeliu
 
-let mIsmokosPavadinimas = motinystesIsmokaRodyti && mamosPajamos > 0 ? 'Motinystės išmoka:' : '';
+let mIsmokosPavadinimas = motinystesIsmokaRodyti && mamosPajamos > 0 ? 'Nėštumo ir gimdymo atostogų išmoka:' : '';
 let tIsmokosPavadinimas = tevystesIsmokaRodyti && tecioPajamos > 0 ? 'Tėvystės išmoka:' : '';
 let vpaIsmokosPavadinimas = vpaIsmokaRodyti && (tecioPajamos || mamosPajamos) > 0 ? 'Vaiko priežiūros atostogų išmoka:' : '';
 let paaiskinimuPavadinimas = tecioPajamos || mamosPajamos > 0 ? 'Paaiškinimai:' : '';
@@ -452,8 +452,9 @@ let pavadinimai = mamosPajamos > 0 || tecioPajamos > 0 ? ['tarifas', 'data*', 's
 
 // pasidarom paaiskinimu tekstus
 
-let paaiskinimai = mamosPajamos > 0 || tecioPajamos > 0 ? ['* - Preliminari teisės į išmoką atsiradimo data, t.y. nuo kada galima kreiptis dėl išmokos.','', '** - preliminariai apskaičiuota išmokos suma pagal pateiktus duomenis (faktinės išmokos gali nežymiai kisti, priklausomai nuo gimdymo datos, atostogų, ligos ir pan.)', '', '', ''] : ['', '', '', '', '', ''];
+let paaiskinimai = mamosPajamos > 0 || tecioPajamos > 0 ? ['* - Preliminari teisės į išmoką atsiradimo data, t.y. nuo kada galima kreiptis dėl išmokos.','', '** - preliminariai apskaičiuota išmokos suma pagal pateiktus duomenis (faktinės išmokos gali nežymiai kisti, priklausomai nuo gimdymo datos, atostogų, ligos ir pan.)', '', '', '', ''] : ['', '', '', '', '', '', ''];
 mamosPajamos > 0 && motinystesIsmokaRodyti ? paaiskinimai[1] = 'Tikslią datą nurodys jus prižiūrintis gydytojas.' : paaiskinimai[1] = '';
+mamosPajamos > 0 && motinystesIsmokaRodyti ? paaiskinimai[6] = 'Nėštumo ir gimdymo išmoka mokama visa iš karto už visą 126 dienų laikotarpį.' : paaiskinimai[6] = '';
 	
 mamosPajamos > 0  && mamosBazeIsmokai > maxIsmoka ? paaiskinimai[3] += `Mamos pajamos viršija maksimalų galimą išmokos dydį, todėl išmokos skaičiuojamos nuo didžiausios galimos sumos (${maxIsmoka.toLocaleString("lt-LT")} Eur). ` : mamosPajamos > 0  && mamosBazeIsmokai < minIsmoka ? paaiskinimai[3] += `Mamos pajamos yra mažesnės už šiuo metu galiojantį minimalų dydį, todėl išmokos skaičiuojamos nuo mažiausios galimos sumos (${minIsmoka.toLocaleString("lt-LT")} Eur). ` : null;
 
@@ -487,6 +488,7 @@ ${createRow(vpaIsmokos, vpaIsmokosPavadinimas)}
 <tr><td colspan='5'>${paaiskinimai[1]}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[5]}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[2]}</td></tr>
+<tr><td colspan='5'>${paaiskinimai[6]}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[3]}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[4]}</td></tr>
 </tbody>
