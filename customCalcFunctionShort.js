@@ -70,11 +70,9 @@ function isjungtiLaukus() {
 			if (!naudosisNpm) {
 				if(mamaArTetisVpa === 2) {
 					rodytiLaukus( [...mLaukai[0], ...mLaukai[1] ], false);
-					atzymetiRadios([ ...mRadios ]);
 				}
 				if(mamaArTetisVpa === 1) {
 					rodytiLaukus( [...tLaukai[0], ...tLaukai[1] ], false);
-					atzymetiRadios([ ...tRadios ]);
 				}
 			} 
 }
@@ -98,10 +96,7 @@ jQuery('.formbox__btn-reset').on('click', function(){
 	fieldset[rezultatuLaukas].removeClass('has-result'); 
 	fieldset[rezultatuLaukas].hide(); 
 	rodytiLaukus([...vpaLaukai,...bendriLaukai, npmLaukas, ...mLaukai[0], ...mLaukai[1], ...tLaukai[0], ...tLaukai[1]], false);
-	atzymetiRadios([ ...vpaRadios, ...tRadios, ...mRadios ]);
-  jQuery('#formbox-field-1').prop( "checked", false );
-  jQuery('#formbox-field-2').prop( "checked", false );
-  jQuery('#formbox-field-3').prop( "checked", false );
+	atzymetiRadios([ ...vpaRadios ]);
 	jQuery('#rezultatuLentele').empty();
 });
 
