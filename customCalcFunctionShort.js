@@ -319,11 +319,12 @@ rezultatai = rezultatuLentele;
 }
 
 function getAlert(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas){
-
+	if(tecioPajamos > 0 || mamosPajamos > 0) {
 	generateAlert(vpaTrukme === undefined, vpaTrukmesLaukas);
 	generateAlert(mamaArTetisVpa === undefined, vpaImsLaukas);
 	generateAlert(naudosisNpm === undefined, npmLaukas);
 	generateAlert(gimdymoData === '', gimdymoDatosLaukas);
+	}
 
 	if(mamaArTetisVpa === 1 || (mamaArTetisVpa === 2 && naudosisNpm) ) {
 	generateAlert(mamosPajamos <= 0, mamosPajamuLaukas);
