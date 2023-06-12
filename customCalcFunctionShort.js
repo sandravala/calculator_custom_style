@@ -324,34 +324,34 @@ function getAlert(fieldset, label, tevystesTarifas, motinystesTarifas, neperleid
 	generateAlert(mamaArTetisVpa === undefined, vpaImsLaukas);
 	generateAlert(naudosisNpm === undefined, npmLaukas);
 	generateAlert(gimdymoData === '', gimdymoDatosLaukas);
-	
+
 	if(mamaArTetisVpa === 1 || (mamaArTetisVpa === 2 && naudosisNpm) ) {
 	generateAlert(mamosPajamos <= 0, mamosPajamuLaukas);
 	generateAlert(gimdymoData === '', gimdymoDatosLaukas);
 	}
-	
+
 	if(mamaArTetisVpa === 2 || (mamaArTetisVpa === 1 && naudosisNpm) ) {
 		generateAlert(tecioPajamos <= 0, tecioPajamuLaukas);
 		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
 	}
 	
-} 
 
 
-function generateAlert(conditionToGenerateAlert, fieldsetNumberToAddStyling) {
-	if (conditionToGenerateAlert) {
-	    fieldset[fieldsetNumberToAddStyling].addClass('klaida');
-	    calcAlert = 'Užpildykite raudonai pažymėtus laukelius ir spauskite "SKAIČIUOTI"';
-	  } else {
-	    fieldset[fieldsetNumberToAddStyling].removeClass('klaida');
-	  }
-}
+
+	function generateAlert(conditionToGenerateAlert, fieldsetNumberToAddStyling) {
+		if (conditionToGenerateAlert) {
+		    fieldset[fieldsetNumberToAddStyling].addClass('klaida');
+		    calcAlert = 'Užpildykite raudonai pažymėtus laukelius ir spauskite "SKAIČIUOTI"';
+		  } else {
+		    fieldset[fieldsetNumberToAddStyling].removeClass('klaida');
+		  }
+	}
 
 
-// // sugeneruoja rezultato label
-(mamosPajamos > 0 || tecioPajamos > 0)  && calcAlert === "" ? label[rezultatuLaukas].text('Preliminariai apskaičiuotos išmokos**:') : label[rezultatuLaukas].text('');
-(mamosPajamos > 0 || tecioPajamos > 0) && calcAlert === "" ? fieldset[rezultatuLaukas].addClass('has_border') : null;
-calcAlert !== "" ? label[klaiduLaukas].text('Klaida! Trūksta duomenų ') : label[klaiduLaukas].text('');
+	// // sugeneruoja rezultato label
+	(mamosPajamos > 0 || tecioPajamos > 0)  && calcAlert === "" ? label[rezultatuLaukas].text('Preliminariai apskaičiuotos išmokos**:') : label[rezultatuLaukas].text('');
+	(mamosPajamos > 0 || tecioPajamos > 0) && calcAlert === "" ? fieldset[rezultatuLaukas].addClass('has_border') : null;
+	calcAlert !== "" ? label[klaiduLaukas].text('Klaida! Trūksta duomenų ') : label[klaiduLaukas].text('');
 
 return calcAlert;
 }
