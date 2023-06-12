@@ -40,14 +40,14 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 			break;
 		case 'tecioRadio' : 
 			mamaArTetisVpa = 2;
-			rodytiLaukus([ tecioPajamuLaukas ], true);
+			rodytiLaukus([ tecioPajamuLaukas, npmLaukas ], true);
 			label[4].text('Mama naudosis 2 neperleidžiamais VPA mėnesiais?');
 			fieldset[vpaImsLaukas].removeClass('klaida');
 			naudosisNpm ? rodytiLaukus([ mamosPajamuLaukas ], true) : rodytiLaukus([ mamosPajamuLaukas ], false);
 			break;
 		case 'mamosRadio' : 
 			mamaArTetisVpa = 1;
-			rodytiLaukus([ mamosPajamuLaukas ], true);
+			rodytiLaukus([ mamosPajamuLaukas, npmLaukas ], true);
 			label[4].text('Tėtis naudosis 2 neperleidžiamais VPA mėnesiais?');
 			fieldset[vpaImsLaukas].removeClass('klaida');
 			naudosisNpm ? rodytiLaukus([ tecioPajamuLaukas ], true) : rodytiLaukus([ tecioPajamuLaukas ], false);
