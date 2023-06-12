@@ -217,21 +217,31 @@ function isjungtiLaukus() {
     			rodytiLaukus([ ...vpaLaukai, mLaukai[0][0], tLaukai[0][0] ], true);
         		break;
 		case vpaIsmokaRodyti && !motinystesIsmokaRodyti && tevystesIsmokaRodyti:
-			mamaArTetisVpa === 2 && !naudosisNpm ? rodytiLaukus( [...mLaukai[0], ...mLaukai[1] ], false) : null;
-			atzymetiRadios(mRadios);
+			if(mamaArTetisVpa === 2 && !naudosisNpm) {
+				rodytiLaukus( [...mLaukai[0], ...mLaukai[1] ], false);
+				atzymetiRadios(mRadios);
+			};
     			rodytiLaukus([ ...vpaLaukai, tLaukai[0][0] ], true);
        			break;
 		case vpaIsmokaRodyti && motinystesIsmokaRodyti && !tevystesIsmokaRodyti:
-			mamaArTetisVpa === 1 && !naudosisNpm ? rodytiLaukus( [...tLaukai[0], ...tLaukai[1] ], false) : null; 
-			atzymetiRadios(tRadios);
+			if(mamaArTetisVpa === 1 && !naudosisNpm) {
+				rodytiLaukus( [...tLaukai[0], ...tLaukai[1] ], false); 
+				atzymetiRadios(tRadios);
+			};
     			rodytiLaukus([ ...vpaLaukai, mLaukai[0][0] ], true);
        			break;
 		case vpaIsmokaRodyti && !motinystesIsmokaRodyti && !tevystesIsmokaRodyti:
 			rodytiLaukus(vpaLaukai, true);
 			if (!naudosisNpm) {
-				mamaArTetisVpa === 2 ? rodytiLaukus( [...mLaukai[0], ...mLaukai[1] ], false) : mamaArTetisVpa === 1 ? rodytiLaukus( [...tLaukai[0], ...tLaukai[1] ], false) : null;
+				if(mamaArTetisVpa === 2) {
+					rodytiLaukus( [...mLaukai[0], ...mLaukai[1] ], false);
+					atzymetiRadios([ ...mRadios ]);
+				}
+				if(mamaArTetisVpa === 1) {
+					rodytiLaukus( [...tLaukai[0], ...tLaukai[1] ], false);
+					atzymetiRadios([ ...tRadios ]);
+				}
 			} 
-			atzymetiRadios([ ...mRadios, ...tRadios ]);
         		break;
 	}
 }
