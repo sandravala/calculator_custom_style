@@ -434,19 +434,19 @@ function createRow(data, ismokuPavadinimas) {
 			const fontWeight = (i + 1 > 5) && (i + 1 >= data.length) ? 'bold' : 'normal';
 			if ((i + 1 > 5) && (i + 1 >= data.length)) {
 			rows += `<tr>
-					<td data-label=''>${data[i].tarifas}</td>
-					<td data-label='' style='font-weight: ${fontWeight};'>${data[i].men}</td>
-					<td data-label='SUMA**' style='font-weight: ${fontWeight};'>${data[i].suma}</td>
-					<td data-label='SUMA (Į RANKAS)' style='font-weight: ${fontWeight};'>${data[i].sumaPoMokesciu}</td>
-					<td data-label='' style='font-weight: ${fontWeight};'>${data[i].gavejas}</td>
+					<td data-label='' style='text-transform: uppercase;'>${data[i].tarifas}</td>
+					<td data-label='' style='font-weight: ${fontWeight}; text-transform: uppercase;'>${data[i].men}</td>
+					<td data-label='SUMA**' style='font-weight: ${fontWeight}; text-transform: uppercase;'>${data[i].suma}</td>
+					<td data-label='SUMA (Į RANKAS)' style='font-weight: ${fontWeight}; text-transform: uppercase;'>${data[i].sumaPoMokesciu}</td>
+					<td data-label='' style='font-weight: ${fontWeight}; text-transform: uppercase;'>${data[i].gavejas}</td>
 				</tr>`
 			else {
 			rows += `<tr>
 					<td data-label='TARIFAS'>${data[i].tarifas}</td>
-					<td data-label='DATA*' style='font-weight: ${fontWeight};'>${data[i].men}</td>
-					<td data-label='SUMA**' style='font-weight: ${fontWeight};'>${data[i].suma}</td>
-					<td data-label='SUMA (Į RANKAS)' style='font-weight: ${fontWeight};'>${data[i].sumaPoMokesciu}</td>
-					<td data-label='GAVĖJAS' style='font-weight: ${fontWeight};'>${data[i].gavejas}</td>
+					<td data-label='DATA*' style='font-weight: ${fontWeight}; text-transform: uppercase;'>${data[i].men}</td>
+					<td data-label='SUMA**' style='font-weight: ${fontWeight}; text-transform: uppercase;'>${data[i].suma}</td>
+					<td data-label='SUMA (Į RANKAS)' style='font-weight: ${fontWeight}; text-transform: uppercase;'>${data[i].sumaPoMokesciu}</td>
+					<td data-label='GAVĖJAS' style='font-weight: ${fontWeight}; text-transform: uppercase;'>${data[i].gavejas}</td>
 				</tr>`
 			}
 		}
