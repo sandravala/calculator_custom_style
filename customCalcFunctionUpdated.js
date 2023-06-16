@@ -432,13 +432,23 @@ function createRow(data, ismokuPavadinimas) {
 		
 		for(let i = 0; i < data.length ; i++) {
 			const fontWeight = (i + 1 > 5) && (i + 1 >= data.length) ? 'bold' : 'normal';
+			if ((i + 1 > 5) && (i + 1 >= data.length)) {
 			rows += `<tr>
-					<td data-label=${(i + 1 > 5) && (i + 1 >= data.length) ? '' : 'TARIFAS'}>${data[i].tarifas}</td>
-					<td data-label=${(i + 1 > 5) && (i + 1 >= data.length) ? '' : 'DATA*'} style='font-weight: ${fontWeight};'>${data[i].men}</td>
-					<td data-label=${(i + 1 > 5) && (i + 1 >= data.length) ? '' : 'SUMA**'} style='font-weight: ${fontWeight};'>${data[i].suma}</td>
-					<td data-label=${(i + 1 > 5) && (i + 1 >= data.length) ? '' : 'SUMA (Į RANKAS)'} style='font-weight: ${fontWeight};'>${data[i].sumaPoMokesciu}</td>
-					<td data-label=${(i + 1 > 5) && (i + 1 >= data.length) ? '' : 'GAVĖJAS'} style='font-weight: ${fontWeight};'>${data[i].gavejas}</td>
+					<td data-label=''>${data[i].tarifas}</td>
+					<td data-label='' style='font-weight: ${fontWeight};'>${data[i].men}</td>
+					<td data-label='SUMA**' style='font-weight: ${fontWeight};'>${data[i].suma}</td>
+					<td data-label='SUMA (Į RANKAS)' style='font-weight: ${fontWeight};'>${data[i].sumaPoMokesciu}</td>
+					<td data-label='' style='font-weight: ${fontWeight};'>${data[i].gavejas}</td>
 				</tr>`
+			else {
+			rows += `<tr>
+					<td data-label='TARIFAS'>${data[i].tarifas}</td>
+					<td data-label='DATA*' style='font-weight: ${fontWeight};'>${data[i].men}</td>
+					<td data-label='SUMA**' style='font-weight: ${fontWeight};'>${data[i].suma}</td>
+					<td data-label='SUMA (Į RANKAS)' style='font-weight: ${fontWeight};'>${data[i].sumaPoMokesciu}</td>
+					<td data-label='GAVĖJAS' style='font-weight: ${fontWeight};'>${data[i].gavejas}</td>
+				</tr>`
+			}
 		}
 	}
 	return rows;	
