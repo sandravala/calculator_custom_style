@@ -511,6 +511,7 @@ table.rezultatuLentele td {
     display: block;
     font-size: .8em;
     text-align: right;
+    text-transform: uppercase;
   }
   
   table.rezultatuLentele td::before {
