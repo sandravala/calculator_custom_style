@@ -497,13 +497,13 @@ ${createRow(motinystesIsmokosEilute, mIsmokosPavadinimas)}
 ${createRow(tevystesIsmokosEilute, tIsmokosPavadinimas)}
 ${createRow(vpaIsmokos, vpaIsmokosPavadinimas)}
 <tr><td colspan='5' class='segment' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${paaiskinimuPavadinimas}</td></tr>
-<tr><td colspan='5'>${paaiskinimai[0]}</td></tr>
-<tr><td colspan='5'>${paaiskinimai[1]}</td></tr>
-<tr><td colspan='5'>${paaiskinimai[5]}</td></tr>
-<tr><td colspan='5'>${paaiskinimai[2]}</td></tr>
-<tr><td colspan='5'>${paaiskinimai[6]}</td></tr>
-<tr><td colspan='5'>${paaiskinimai[3]}</td></tr>
-<tr><td colspan='5'>${paaiskinimai[4]}</td></tr>
+<tr><td colspan='5' style='text-align: left;'>${paaiskinimai[0]}</td></tr>
+<tr><td colspan='5' style='text-align: left;'>${paaiskinimai[1]}</td></tr>
+<tr><td colspan='5' style='text-align: left;'>${paaiskinimai[5]}</td></tr>
+<tr><td colspan='5' style='text-align: left;'>${paaiskinimai[2]}</td></tr>
+<tr><td colspan='5' style='text-align: left;'>${paaiskinimai[6]}</td></tr>
+<tr><td colspan='5' style='text-align: left;'>${paaiskinimai[3]}</td></tr>
+<tr><td colspan='5' style='text-align: left;'>${paaiskinimai[4]}</td></tr>
 </tbody>
 </table>
 `
