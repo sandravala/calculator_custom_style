@@ -433,15 +433,15 @@ function createRow(data, ismokuPavadinimas) {
 		for(let i = 0; i < data.length ; i++) {
 			const fontWeight = (i + 1 > 5) && (i + 1 >= data.length) ? 'bold' : 'normal';
 			if ((i + 1 > 5) && (i + 1 >= data.length)) {
-			rows += `<tr>
+			rows += `<tr class='skaiciai' >
 					<td data-label='' style='text-transform: uppercase;'>${data[i].tarifas}</td>
 					<td data-label='' style='font-weight: ${fontWeight}; text-transform: uppercase;'>${data[i].men}</td>
-					<td data-label='SUMA**' style='font-weight: ${fontWeight}; text-transform: uppercase;'>${data[i].suma}</td>
-					<td data-label='SUMA (Į RANKAS)' style='font-weight: ${fontWeight}; text-transform: uppercase;'>${data[i].sumaPoMokesciu}</td>
+					<td data-label='BENDRA SUMA**' style='font-weight: ${fontWeight}; text-transform: uppercase;'>${data[i].suma}</td>
+					<td data-label='BENDRA SUMA (Į RANKAS)' style='font-weight: ${fontWeight}; text-transform: uppercase;'>${data[i].sumaPoMokesciu}</td>
 					<td data-label='' style='font-weight: ${fontWeight}; text-transform: uppercase;'>${data[i].gavejas}</td>
 				</tr>`
 			} else {
-			rows += `<tr>
+			rows += `<tr class='skaiciai' >
 					<td data-label='TARIFAS'>${data[i].tarifas}</td>
 					<td data-label='DATA*' style='font-weight: ${fontWeight}; text-transform: uppercase;'>${data[i].men}</td>
 					<td data-label='SUMA**' style='font-weight: ${fontWeight}; text-transform: uppercase;'>${data[i].suma}</td>
