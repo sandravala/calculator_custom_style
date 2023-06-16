@@ -501,9 +501,12 @@ table.rezultatuLentele td {
   }
   
   table.rezultatuLentele tr {
-    border-bottom: 3px solid #ddd;
     display: block;
     margin-bottom: .625em;
+  }
+
+table.rezultatuLentele tr.skaiciai {
+    border-bottom: 1px solid #ddd;
   }
   
   table.rezultatuLentele td {
