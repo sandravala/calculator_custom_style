@@ -440,7 +440,7 @@ function createRow(data, ismokuPavadinimas) {
 					<td data-label='SUMA (Į RANKAS)' style='font-weight: ${fontWeight}; text-transform: uppercase;'>${data[i].sumaPoMokesciu}</td>
 					<td data-label='' style='font-weight: ${fontWeight}; text-transform: uppercase;'>${data[i].gavejas}</td>
 				</tr>`
-			else {
+			} else {
 			rows += `<tr>
 					<td data-label='TARIFAS'>${data[i].tarifas}</td>
 					<td data-label='DATA*' style='font-weight: ${fontWeight}; text-transform: uppercase;'>${data[i].men}</td>
