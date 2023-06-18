@@ -1,3 +1,4 @@
+console.log('bug fixed');
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
@@ -357,12 +358,14 @@ let vpaMenuo = vpaPradzia.getMonth() + 1 - gMenuo + 1;
 
 // PASIDAROME BAZE SKAICIAVIMUI
 
-function galutineIsmokosSuma(bazeIsmokai, tarifas, menSkaicius) {
-	let galutineIsmoka = bazeIsmokai < maxIsmoka && bazeIsmokai > minIsmoka ? bazeIsmokai * tarifas/100 * (1 - mokesciaiNuoIsmoku/100) : bazeIsmokai > maxIsmoka ? maxIsmoka * tarifas/100 * (1 - mokesciaiNuoIsmoku/100) : minIsmoka * (1 - mokesciaiNuoIsmoku/100);
+function galutineIsmokosSuma(bazeIsmokai, tarifas, menSkaicius, netaikytiLubu) {
+	let lubos = netaikytiLubu ? bazeIsmokai + 1 : maxIsmoka;
+	let galutineIsmoka = bazeIsmokai < lubos && bazeIsmokai > minIsmoka ? bazeIsmokai * tarifas/100 * (1 - mokesciaiNuoIsmoku/100) : bazeIsmokai > lubos ? maxIsmoka * tarifas/100 * (1 - mokesciaiNuoIsmoku/100) : minIsmoka * (1 - mokesciaiNuoIsmoku/100);
 	return galutineIsmoka.round(2) * menSkaicius;
 }
-function ismokosSumaSuMokesciais(bazeIsmokai, tarifas, menSkaicius) {
-	let galutineIsmoka = bazeIsmokai < maxIsmoka && bazeIsmokai > minIsmoka ? bazeIsmokai * tarifas/100 : bazeIsmokai > maxIsmoka ? maxIsmoka * tarifas/100 : minIsmoka;
+function ismokosSumaSuMokesciais(bazeIsmokai, tarifas, menSkaicius, netaikytiLubu) {
+	let lubos = netaikytiLubu ? bazeIsmokai + 1 : maxIsmoka;
+	let galutineIsmoka = bazeIsmokai < lubos && bazeIsmokai > minIsmoka ? bazeIsmokai * tarifas/100 : bazeIsmokai > lubos ? maxIsmoka * tarifas/100 : minIsmoka;
 	return galutineIsmoka.round(2) * menSkaicius;
 }
 
@@ -371,8 +374,8 @@ let tecioBazeIsmokai = tecioPajamuTipas == 1 ? tecioPajamos : tecioIslaiduTipas 
 
 // apskaiciuojame motinystes ismoka
 
-let motinystesIsmoka = galutineIsmokosSuma(mamosBazeIsmokai, motinystesTarifas, 4);
-let motinystesIsmokaSuMokesciais = ismokosSumaSuMokesciais(mamosBazeIsmokai, motinystesTarifas, 4);
+let motinystesIsmoka = galutineIsmokosSuma(mamosBazeIsmokai, motinystesTarifas, 4, true); 
+let motinystesIsmokaSuMokesciais = ismokosSumaSuMokesciais(mamosBazeIsmokai, motinystesTarifas, 4, true);
 let motinystesIsmokosEilute = motinystesIsmokaRodyti && mamosPajamos > 0 ? [{'tarifas' : motinystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + motinystesIsmokosData, 'suma' : motinystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : motinystesIsmoka.toLocaleString("lt-LT") + " €", 'gavejas': 'mama'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
 
 // apskaiciuojame tevystes ismoka
