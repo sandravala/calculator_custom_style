@@ -421,7 +421,7 @@ for (let i = 2 ; i <= vpaTrukme + 1; i++) {
 	}
 }
 
-vpaIsmokos.push({'tarifas' : '', 'men' : 'Viso:', 'suma' : bendraIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
+vpaIsmokos.push({'tarifas' : '', 'men' : 'Viso VPA išmokų:', 'suma' : bendraIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
 
 // funkcija eiluciu generavimui pagal duomenis
 
