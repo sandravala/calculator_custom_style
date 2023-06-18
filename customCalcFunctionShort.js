@@ -1,3 +1,4 @@
+console.log('bug fixed');
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
@@ -71,10 +72,10 @@ function isjungtiLaukus() {
 	rodytiLaukus(vpaLaukai, true);
 			if (!naudosisNpm) {
 				if(mamaArTetisVpa === 2) {
-					rodytiLaukus( [...mLaukai[0], ...mLaukai[1] ], false);
+					rodytiLaukus( [mLaukai[0]], false);
 				}
 				if(mamaArTetisVpa === 1) {
-					rodytiLaukus( [...tLaukai[0], ...tLaukai[1] ], false);
+					rodytiLaukus( [tLaukai[0]], false);
 				}
 			} 
 }
