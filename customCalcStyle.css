@@ -468,6 +468,11 @@ fieldset.formbox__container.klaida {
     .formbox__btn {
         text-align: center
     }
+    
+    table.rezultatuLentele tr {
+        font-size: .8em;
+    
+    }
 }
 
 .formbox__btn button,
