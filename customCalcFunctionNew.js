@@ -1,4 +1,4 @@
-console.log('bug fixed');
+console.log('npm vpa skaiciavimas');
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
@@ -414,9 +414,9 @@ function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm) {
 
 for (let i = 2 ; i <= vpaTrukme; i++) {
 	const praejoMetu = Math.trunc((gimimoDiena.getMonth() + i)/12);
-	if(i > vpaTrukme - 1 && naudosisNpm) {
+	if(i >= vpaTrukme - 1 && naudosisNpm) {
  tekstasIsmokuSarasui(praejoMetu, i, true);
-	} else if (i <= vpaTrukme - 1) {
+	} else if (i < vpaTrukme) {
 		tekstasIsmokuSarasui(praejoMetu, i);
 	}
 }
