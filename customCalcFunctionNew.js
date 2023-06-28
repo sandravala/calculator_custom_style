@@ -412,11 +412,11 @@ function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm) {
 		vpaIsmokos.push({'tarifas' : tarifasSpausdinimui, 'men' : menuo, 'suma' : suma, 'sumaPoMokesciu': sumaPoMokesciu, 'gavejas' : gavejas});
 }
 
-for (let i = 2 ; i <= vpaTrukme; i++) {
+for (let i = 2 ; i <= vpaTrukme - 1; i++) {
 	const praejoMetu = Math.trunc((gimimoDiena.getMonth() + i)/12);
-	if(i >= vpaTrukme - 1 && naudosisNpm) {
+	if(i >= vpaTrukme - 2 && naudosisNpm) {
  tekstasIsmokuSarasui(praejoMetu, i, true);
-	} else if (i < vpaTrukme) {
+	} else if (i < vpaTrukme - 2) {
 		tekstasIsmokuSarasui(praejoMetu, i);
 	}
 }
