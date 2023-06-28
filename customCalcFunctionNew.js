@@ -1,4 +1,4 @@
-console.log('npm vpa skaiciavimas');
+//console.log('npm vpa skaiciavimas');
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
@@ -412,12 +412,23 @@ function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm) {
 		vpaIsmokos.push({'tarifas' : tarifasSpausdinimui, 'men' : menuo, 'suma' : suma, 'sumaPoMokesciu': sumaPoMokesciu, 'gavejas' : gavejas});
 }
 
-for (let i = 2 ; i <= vpaTrukme - 1; i++) {
+if (new Date(gimdymoData).getDate() > 1) {
+for (let i = 2 ; i <= vpaTrukme; i++) {
 	const praejoMetu = Math.trunc((gimimoDiena.getMonth() + i)/12);
-	if(i >= vpaTrukme - 2 && naudosisNpm) {
- tekstasIsmokuSarasui(praejoMetu, i, true);
-	} else if (i < vpaTrukme - 2) {
+	if(i > vpaTrukme - 2 && naudosisNpm) {
+ 		tekstasIsmokuSarasui(praejoMetu, i, true);
+	} else if (i < vpaTrukme) {
 		tekstasIsmokuSarasui(praejoMetu, i);
+	}
+}
+} else {
+	for (let i = 2 ; i <= vpaTrukme-1; i++) {
+		const praejoMetu = Math.trunc((gimimoDiena.getMonth() + i)/12);
+		if(i >= vpaTrukme - 2 && naudosisNpm) {
+			 tekstasIsmokuSarasui(praejoMetu, i, true);
+		} else if (i < vpaTrukme - 2) {
+			tekstasIsmokuSarasui(praejoMetu, i);
+		}
 	}
 }
 
@@ -458,7 +469,7 @@ let pavadinimai = mamosPajamos > 0 || tecioPajamos > 0 ? ['tarifas', 'data*', 's
 
 // pasidarom paaiskinimu tekstus
 
-let paaiskinimai = mamosPajamos > 0 || tecioPajamos > 0 ? ['* - Preliminari teisės į išmoką atsiradimo data, t.y. nuo kada galima kreiptis dėl išmokos.','', '** - preliminariai apskaičiuota išmokos suma pagal pateiktus duomenis (faktinės išmokos gali nežymiai kisti, priklausomai nuo gimdymo datos, atostogų, ligos ir pan.)', '', '', '', ''] : ['', '', '', '', '', '', ''];
+let paaiskinimai = mamosPajamos > 0 || tecioPajamos > 0 ? ['* - Preliminari teisės į išmoką atsiradimo data, t.y. nuo kada galima kreiptis dėl išmokos.','', '** - preliminariai apskaičiuota išmokos suma pagal pateiktus duomenis (faktinės išmokos gali nežymiai kisti, priklausomai nuo gimdymo datos, atostogų, ligos ir pan.)', '', '', '', '',''] : ['', '', '', '', '', '', '',''];
 mamosPajamos > 0 && motinystesIsmokaRodyti ? paaiskinimai[1] = 'Tikslią datą nurodys jus prižiūrintis gydytojas.' : paaiskinimai[1] = '';
 mamosPajamos > 0 && motinystesIsmokaRodyti ? paaiskinimai[6] = 'Nėštumo ir gimdymo išmoka mokama visa iš karto už visą 126 dienų laikotarpį.' : paaiskinimai[6] = '';
 	
@@ -467,6 +478,8 @@ mamosPajamos > 0  && mamosBazeIsmokai > maxIsmoka ? paaiskinimai[3] += `Mamos pa
 tecioPajamos > 0 && tecioBazeIsmokai < minIsmoka ? paaiskinimai[3] += `Tėčio pajamos yra mažesnės už šiuo metu galiojantį minimalų dydį, todėl išmokos skaičiuojamos nuo mažiausios galimos sumos (${minIsmoka.toLocaleString("lt-LT")} Eur).` : tecioPajamos > 0 && tecioBazeIsmokai > maxIsmoka ? paaiskinimai[3] += `Tėčio pajamos viršija šiuo metu galiojantį maksimalų galimą išmokos dydį, todėl išmokos skaičiuojamos nuo didžiausios galimos sumos (${maxIsmoka.toLocaleString("lt-LT")} Eur).` : null;
 
 vpaIsmokaRodyti && (tecioPajamos || mamosPajamos) > 0 ? paaiskinimai[4] = '*** - NPM yra 2 neperleidžiami mėnesiai mamai ir 2 neperleidžiami mėnesiai tėčiui. Didesnis tarifas taikomas tik neperleidžiamais VPA mėnesiais (NPM), ir jais atitinkamai gali pasinaudoti tik mama arba tėtis. Jei NPM naudoja tik vienas iš tėvų, išmoka pradingsta, o VPA sutrumpėja' : null;
+
+vpaIsmokaRodyti && (tecioPajamos || mamosPajamos) > 0 ? paaiskinimai[7] = 'Čia matote preliminariai apskaičiuotas išmokas pilnam mėnesiui. Pirmo ir paskutinio mėnesio VPA išmokų sumos bus mažesnės, priklausomai nuo to, kurią dieną prasidės ir baigsis teisė į VPA išmoką.' : null;
 
 (tecioPajamos > 0 && tecioPajamuTipas == 2) || (mamosPajamos > 0 && mamosPajamuTipas == 2) ? paaiskinimai[5] = 'Jei pajamas deklaruojate kartą metuose, galimai išmoką gausite tik kitais mokestiniais metais. Jei atliekate avansinius mokėjimus, būtinai išsiųskite SAV pranešimą mėnuo iki teisės į išmoką datos.' : null;
 
@@ -494,6 +507,7 @@ ${createRow(vpaIsmokos, vpaIsmokosPavadinimas)}
 <tr><td colspan='5'>${paaiskinimai[1]}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[5]}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[2]}</td></tr>
+<tr><td colspan='5'>${paaiskinimai[7]}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[6]}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[3]}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[4]}</td></tr>
