@@ -138,7 +138,7 @@ function skaiciuotiIsmokas(fieldset, label, tevystesTarifas, motinystesTarifas, 
 
 // SKAICIUOJAME LUBAS IR GRINDIS
 
-let minIsmoka = bazineSocIsmoka * 6 ; //  6 bazinės socialinės išmokos dydžiai galioję praeitą ketvirtį (paskutinis patvirtintas dydis) iki teisės gauti išmoką atsiradimo dienos.
+let minIsmoka = bazineSocIsmoka * 8 ; //  8 bazinės socialinės išmokos dydžiai galioję praeitą ketvirtį (paskutinis patvirtintas dydis) iki teisės gauti išmoką atsiradimo dienos.
 minIsmoka.round(2);
 
 let duomenysMaxIsmokai = {
