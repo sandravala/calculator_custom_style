@@ -399,18 +399,22 @@ let bazeNpmSkaiciavimui = pajamuBaze(!mamaVpa); // pasirenkam mamos ar tecio du 
 let bendraIsmokuSuma = 0;
 let bendraIsmokuSumaSuMokesciais = 0;
 
-function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm, paskutinisMenuo) {
+function lastday(y, m) {
+return  new Date(y, m + 1, 0).getDate();
+}
 
+function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm, paskutinisMenuo) {
+		const menesioNr = gMenuo + i >= 12 ? (gMenuo + i)%12 : gMenuo + i;
 		const tarifas = i < 4 || npm ? neperleidziamuMenesiuTarifas : vpaTrukme <= 18 ? tarifasAtostogos18men : i < 12 ? tarifasAtostogos24men[0] : tarifasAtostogos24men[1];
 		const tarifasSpausdinimui = i < 4 || npm ? tarifas.toLocaleString("lt-LT") + ' % (npm***)' : tarifas.toLocaleString("lt-LT") + ' %';
-		const menuo = (gimimoDiena.getFullYear() + metuNuoGimdymo) + " " + menesiai[gMenuo + i >= 12 ? (gMenuo + i)%12: gMenuo + i];
+		const menuo = (gimimoDiena.getFullYear() + metuNuoGimdymo) + " " + menesiai[menesioNr];
 		const baze = npm ? bazeNpmSkaiciavimui : bazeSkaiciavimui;
-		const suma = ismokosSumaSuMokesciais(baze, tarifas, 1).toLocaleString("lt-LT")  + " €";
-		const sumaPoMokesciu = galutineIsmokosSuma(baze, tarifas, 1).toLocaleString("lt-LT") + " €";
+		const suma = paskutinisMenuo ? ismokosSumaSuMokesciais(baze, tarifas, 1) / lastday(gimimoDiena.getFullYear() + metuNuoGimdymo, menesioNr) * gimimoDiena.getDate() : ismokosSumaSuMokesciais(baze, tarifas, 1);
+		const sumaPoMokesciu = galutineIsmokosSuma(baze, tarifas, 1);
 		const gavejas = !npm ? mamaVpa? 'mama' : 'tėtis' : mamaVpa? 'tėtis' : 'mama'; 
-		bendraIsmokuSuma += galutineIsmokosSuma(baze, tarifas, 1);
-		bendraIsmokuSumaSuMokesciais += ismokosSumaSuMokesciais(baze, tarifas, 1);
-		vpaIsmokos.push({'tarifas' : tarifasSpausdinimui, 'men' : menuo, 'suma' : suma, 'sumaPoMokesciu': sumaPoMokesciu, 'gavejas' : gavejas});
+		bendraIsmokuSuma += sumaPoMokesciu;
+		bendraIsmokuSumaSuMokesciais += suma;
+		vpaIsmokos.push({'tarifas' : tarifasSpausdinimui, 'men' : menuo, 'suma' : suma.toLocaleString("lt-LT") + " €", 'sumaPoMokesciu': sumaPoMokesciu.toLocaleString("lt-LT") + " €", 'gavejas' : gavejas});
 		if (paskutinisMenuo) {
 			console.log("paskutinisMenuo " + menuo)
 		}
