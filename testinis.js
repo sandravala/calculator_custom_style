@@ -410,14 +410,11 @@ function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm, paskutinisMenuo) {
 		const menuo = (gimimoDiena.getFullYear() + metuNuoGimdymo) + " " + menesiai[menesioNr];
 		const baze = npm ? bazeNpmSkaiciavimui : bazeSkaiciavimui;
 		const suma = paskutinisMenuo ? ismokosSumaSuMokesciais(baze, tarifas, 1) / lastday(gimimoDiena.getFullYear() + metuNuoGimdymo, menesioNr) * gimimoDiena.getDate() : ismokosSumaSuMokesciais(baze, tarifas, 1);
-		const sumaPoMokesciu = galutineIsmokosSuma(baze, tarifas, 1);
+		const sumaPoMokesciu = paskutinisMenuo ? galutineIsmokosSuma(baze, tarifas, 1) / lastday(gimimoDiena.getFullYear() + metuNuoGimdymo, menesioNr) * gimimoDiena.getDate() : galutineIsmokosSuma(baze, tarifas, 1);
 		const gavejas = !npm ? mamaVpa? 'mama' : 'tėtis' : mamaVpa? 'tėtis' : 'mama'; 
 		bendraIsmokuSuma += sumaPoMokesciu;
 		bendraIsmokuSumaSuMokesciais += suma;
 		vpaIsmokos.push({'tarifas' : tarifasSpausdinimui, 'men' : menuo, 'suma' : suma.toLocaleString("lt-LT") + " €", 'sumaPoMokesciu': sumaPoMokesciu.toLocaleString("lt-LT") + " €", 'gavejas' : gavejas});
-		if (paskutinisMenuo) {
-			console.log("paskutinisMenuo " + menuo)
-		}
 }
 
 if (new Date(gimdymoData).getDate() > 1) {
