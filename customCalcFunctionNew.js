@@ -409,8 +409,8 @@ function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm, paskutinisMenuo) {
 		const tarifasSpausdinimui = i < 4 || npm ? tarifas.toLocaleString("lt-LT") + ' % (npm***)' : tarifas.toLocaleString("lt-LT") + ' %';
 		const menuo = (gimimoDiena.getFullYear() + metuNuoGimdymo) + " " + menesiai[menesioNr];
 		const baze = npm ? bazeNpmSkaiciavimui : bazeSkaiciavimui;
-		const suma = paskutinisMenuo ? (ismokosSumaSuMokesciais(baze, tarifas, 1) / lastday(gimimoDiena.getFullYear() + metuNuoGimdymo, menesioNr) * gimimoDiena.getDate()).round(2) : ismokosSumaSuMokesciais(baze, tarifas, 1);
-		const sumaPoMokesciu = paskutinisMenuo ? (galutineIsmokosSuma(baze, tarifas, 1) / lastday(gimimoDiena.getFullYear() + metuNuoGimdymo, menesioNr) * gimimoDiena.getDate()).round(2) : galutineIsmokosSuma(baze, tarifas, 1);
+		const suma = paskutinisMenuo ? (ismokosSumaSuMokesciais(baze, tarifas, 1) / lastday(gimimoDiena.getFullYear() + metuNuoGimdymo, menesioNr) * (gimimoDiena.getDate() - 1)).round(2) : ismokosSumaSuMokesciais(baze, tarifas, 1);
+		const sumaPoMokesciu = paskutinisMenuo ? (galutineIsmokosSuma(baze, tarifas, 1) / lastday(gimimoDiena.getFullYear() + metuNuoGimdymo, menesioNr) * (gimimoDiena.getDate() - 1)).round(2) : galutineIsmokosSuma(baze, tarifas, 1);
 		const gavejas = !npm ? mamaVpa? 'mama' : 'tėtis' : mamaVpa? 'tėtis' : 'mama'; 
 		bendraIsmokuSuma += sumaPoMokesciu;
 		bendraIsmokuSumaSuMokesciais += suma;
