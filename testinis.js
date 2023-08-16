@@ -399,7 +399,8 @@ let bazeNpmSkaiciavimui = pajamuBaze(!mamaVpa); // pasirenkam mamos ar tecio du 
 let bendraIsmokuSuma = 0;
 let bendraIsmokuSumaSuMokesciais = 0;
 
-function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm) {
+function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm, paskutinisMenuo) {
+
 		const tarifas = i < 4 || npm ? neperleidziamuMenesiuTarifas : vpaTrukme <= 18 ? tarifasAtostogos18men : i < 12 ? tarifasAtostogos24men[0] : tarifasAtostogos24men[1];
 		const tarifasSpausdinimui = i < 4 || npm ? tarifas.toLocaleString("lt-LT") + ' % (npm***)' : tarifas.toLocaleString("lt-LT") + ' %';
 		const menuo = (gimimoDiena.getFullYear() + metuNuoGimdymo) + " " + menesiai[gMenuo + i >= 12 ? (gMenuo + i)%12: gMenuo + i];
@@ -410,24 +411,29 @@ function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm) {
 		bendraIsmokuSuma += galutineIsmokosSuma(baze, tarifas, 1);
 		bendraIsmokuSumaSuMokesciais += ismokosSumaSuMokesciais(baze, tarifas, 1);
 		vpaIsmokos.push({'tarifas' : tarifasSpausdinimui, 'men' : menuo, 'suma' : suma, 'sumaPoMokesciu': sumaPoMokesciu, 'gavejas' : gavejas});
+		if (paskutinisMenuo) {
+			console.log("paskutinisMenuo " + menuo)
+		}
 }
 
 if (new Date(gimdymoData).getDate() > 1) {
 for (let i = 2 ; i <= vpaTrukme; i++) {
 	const praejoMetu = Math.trunc((gimimoDiena.getMonth() + i)/12);
+	let paskutinisMenuo = (vpaTrukme - 1) === i ? true : false;
 	if(i > vpaTrukme - 2 && naudosisNpm) {
- 		tekstasIsmokuSarasui(praejoMetu, i, true);
+ 		tekstasIsmokuSarasui(praejoMetu, i, true, paskutinisMenuo);
 	} else if (i < vpaTrukme) {
-		tekstasIsmokuSarasui(praejoMetu, i);
+		tekstasIsmokuSarasui(praejoMetu, i, false, paskutinisMenuo);
 	}
 }
 } else {
 	for (let i = 2 ; i <= vpaTrukme-1; i++) {
 		const praejoMetu = Math.trunc((gimimoDiena.getMonth() + i)/12);
+		let paskutinisMenuo = (vpaTrukme - 1) === i ? true : false;
 		if(i >= vpaTrukme - 2 && naudosisNpm) {
-			 tekstasIsmokuSarasui(praejoMetu, i, true);
+			 tekstasIsmokuSarasui(praejoMetu, i, true, paskutinisMenuo);
 		} else if (i < vpaTrukme - 2) {
-			tekstasIsmokuSarasui(praejoMetu, i);
+			tekstasIsmokuSarasui(praejoMetu, i, false, paskutinisMenuo);
 		}
 	}
 }
