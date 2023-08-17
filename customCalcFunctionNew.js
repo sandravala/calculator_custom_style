@@ -418,25 +418,25 @@ function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm, paskutinisMenuo) {
 }
 
 if (new Date(gimdymoData).getDate() > 1) {
-for (let i = 2 ; i <= vpaTrukme; i++) {
-	const praejoMetu = Math.trunc((gimimoDiena.getMonth() + i)/12);
-	let paskutinisMenuo = vpaTrukme === i ? true : false;
-	if(i > vpaTrukme - 2 && naudosisNpm) {
- 		tekstasIsmokuSarasui(praejoMetu, i, true, false);
-	} else if (i < vpaTrukme) {
-		tekstasIsmokuSarasui(praejoMetu, i, false, false);
-	}
-}
+    for (let i = 2; i <= vpaTrukme; i++) {
+        const praejoMetu = Math.trunc((gimimoDiena.getMonth() + i) / 12);
+        let paskutinisMenuo = vpaTrukme === i ? true : false;
+        if (i > vpaTrukme - 2 && naudosisNpm) {
+            tekstasIsmokuSarasui(praejoMetu, i, true, false);
+        } else if (i <= vpaTrukme - 2) {
+            tekstasIsmokuSarasui(praejoMetu, i, false, false);
+        }
+    }
 } else {
-	for (let i = 2 ; i <= vpaTrukme-1; i++) {
-		const praejoMetu = Math.trunc((gimimoDiena.getMonth() + i)/12);
-		let paskutinisMenuo = vpaTrukme === i ? true : false;
-		if(i >= vpaTrukme - 2 && naudosisNpm) {
-			 tekstasIsmokuSarasui(praejoMetu, i, true, false);
-		} else if (i < vpaTrukme - 2) {
-			tekstasIsmokuSarasui(praejoMetu, i, false, false);
-		}
-	}
+    for (let i = 2; i <= vpaTrukme - 1; i++) {
+        const praejoMetu = Math.trunc((gimimoDiena.getMonth() + i) / 12);
+        let paskutinisMenuo = vpaTrukme === i ? true : false;
+        if (i >= vpaTrukme - 2 && naudosisNpm) {
+            tekstasIsmokuSarasui(praejoMetu, i, true, false);
+        } else if (i < vpaTrukme - 2) {
+            tekstasIsmokuSarasui(praejoMetu, i, false, false);
+        }
+    }
 }
 
 vpaIsmokos.push({'tarifas' : '', 'men' : 'Viso VPA išmokų:', 'suma' : bendraIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
