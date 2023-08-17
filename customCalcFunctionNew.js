@@ -422,9 +422,9 @@ for (let i = 2 ; i <= vpaTrukme; i++) {
 	const praejoMetu = Math.trunc((gimimoDiena.getMonth() + i)/12);
 	let paskutinisMenuo = vpaTrukme === i ? true : false;
 	if(i > vpaTrukme - 2 && naudosisNpm) {
- 		tekstasIsmokuSarasui(praejoMetu, i, true, paskutinisMenuo);
+ 		tekstasIsmokuSarasui(praejoMetu, i, true, false);
 	} else if (i < vpaTrukme) {
-		tekstasIsmokuSarasui(praejoMetu, i, false, paskutinisMenuo);
+		tekstasIsmokuSarasui(praejoMetu, i, false, false);
 	}
 }
 } else {
@@ -432,9 +432,9 @@ for (let i = 2 ; i <= vpaTrukme; i++) {
 		const praejoMetu = Math.trunc((gimimoDiena.getMonth() + i)/12);
 		let paskutinisMenuo = vpaTrukme === i ? true : false;
 		if(i >= vpaTrukme - 2 && naudosisNpm) {
-			 tekstasIsmokuSarasui(praejoMetu, i, true, paskutinisMenuo);
+			 tekstasIsmokuSarasui(praejoMetu, i, true, false);
 		} else if (i < vpaTrukme - 2) {
-			tekstasIsmokuSarasui(praejoMetu, i, false, paskutinisMenuo);
+			tekstasIsmokuSarasui(praejoMetu, i, false, false);
 		}
 	}
 }
