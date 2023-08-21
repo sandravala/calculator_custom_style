@@ -420,21 +420,21 @@ function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm, paskutinisMenuo) {
 if (new Date(gimdymoData).getDate() > 1) {
     for (let i = 2; i <= vpaTrukme; i++) {
         const praejoMetu = Math.trunc((gimimoDiena.getMonth() + i) / 12);
-        let paskutinisMenuo = vpaTrukme === i ? true : false;
+        let paskutinisMenuo = vpaTrukme - 2 === i ? true : false;
         if (i > vpaTrukme - 2 && naudosisNpm) {
             tekstasIsmokuSarasui(praejoMetu, i, true, false);
         } else if (i <= vpaTrukme - 2) {
-            tekstasIsmokuSarasui(praejoMetu, i, false, false);
+            tekstasIsmokuSarasui(praejoMetu, i, false, paskutinisMenuo);
         }
     }
 } else {
     for (let i = 2; i <= vpaTrukme - 1; i++) {
         const praejoMetu = Math.trunc((gimimoDiena.getMonth() + i) / 12);
-        let paskutinisMenuo = vpaTrukme === i ? true : false;
+        let paskutinisMenuo = vpaTrukme - 3 === i ? true : false;
         if (i >= vpaTrukme - 2 && naudosisNpm) {
             tekstasIsmokuSarasui(praejoMetu, i, true, false);
         } else if (i < vpaTrukme - 2) {
-            tekstasIsmokuSarasui(praejoMetu, i, false, false);
+            tekstasIsmokuSarasui(praejoMetu, i, false, paskutinisMenuo);
         }
     }
 }
