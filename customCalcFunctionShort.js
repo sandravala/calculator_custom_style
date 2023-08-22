@@ -229,7 +229,7 @@ function lastday(y, m) {
     return new Date(y, m + 1, 0).getDate();
 }
 	
-function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm) {
+function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm, paskutinisMenuo) {
 		const tarifas = i < 4 || npm ? neperleidziamuMenesiuTarifas : vpaTrukme <= 18 ? tarifasAtostogos18men : i < 12 ? tarifasAtostogos24men[0] : tarifasAtostogos24men[1];
 		const tarifasSpausdinimui = i < 4 || npm ? tarifas.toLocaleString("lt-LT") + ' % (npm***)' : tarifas.toLocaleString("lt-LT") + ' %';
 		const menuo = (gimimoDiena.getFullYear() + metuNuoGimdymo) + " " + menesiai[gMenuo + i >= 12 ? (gMenuo + i)%12: gMenuo + i];
