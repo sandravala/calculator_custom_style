@@ -332,7 +332,7 @@ function findLastPositive(arr) {
 
 let maxIsmoka = vdu.filter(el => el[0] === duomenysMaxIsmokai.metai).length == 0 || vdu.filter(el => el[0] === duomenysMaxIsmokai.metai)[0][duomenysMaxIsmokai.ketvirtis] == 0 ? 
 		duomenysMaxIsmokai.metai > vdu[0][0] ? findLastPositive(flatten(vdu))*2  : vdu[0][1]*2 : (vdu.filter(el => el[0] === duomenysMaxIsmokai.metai)[0][duomenysMaxIsmokai.ketvirtis])*2;
-maxIsmoka.round(2);
+maxIsmoka.toFixed(2);
 
 // PASIDAROM LENTELE SU ISMOKU SARASU PAMENESIUI
 
@@ -487,7 +487,9 @@ function ismokosSuma(bazeIsmokai, tarifas, kiekisDienomisArbaMenesiais, netaikyt
     let baseMax = countDaily ? maxDaily : maxIsmoka;
     let lubos = netaikytiLubu ? bazeIsmokai + 1 : baseMax;
 	let galutineIsmoka = bazeIsmokai <= lubos ? bazeIsmokai * tarifas/100 * kiekisDienomisArbaMenesiais : baseMax * tarifas/100 * kiekisDienomisArbaMenesiais;
-   
+   if(bazeIsmokai < 10) {
+	   console.log('baze ismokai < 10, galutine ismoka = ' + galutineIsmoka);
+   }
     return galutineIsmoka.toFixed(2);
 }
 
