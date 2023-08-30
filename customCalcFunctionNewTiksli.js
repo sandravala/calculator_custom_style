@@ -352,7 +352,7 @@ let tevystesIsmokosPabaiga = (gimimoDiena.getFullYear() + 1) + " " + menesiai[gi
 let gDiena = gimimoDiena.getFullYear() + " " + menesiai[gimimoDiena.getMonth()] + " " + diena(gimimoDiena);
 let gMenuo = gimimoDiena.getMonth();
 let vpaPradzia = new Date(gimimoDiena);
-vpaPradzia.setDate(vpaPradzia.getDate() + 56);
+vpaPradzia.setDate(vpaPradzia.getDate() + 57);
 let vpaMenuo = vpaPradzia.getMonth() + 1 - gMenuo + 1;
 
 
@@ -459,8 +459,7 @@ function addMonthsToDate(date, monthsToAdd) {
 let avgBusinessDaysInAYear = countBusinessDays(new Date(gimimoDiena.getFullYear(), 0, 1), new Date(gimimoDiena.getFullYear(), 11, 31), generatePublicHolidays(gimimoDiena.getFullYear())) / 12;
 avgBusinessDaysInAYear = avgBusinessDaysInAYear.toFixed(1);
 
-const npmFirstStart = new Date(gimimoDiena);
-npmFirstStart.setDate(npmFirstStart.getDate() + 57);
+const npmFirstStart = vpaPradzia;
 
 const npmFirstEnd = addMonthsToDate(new Date(npmFirstStart), 2);
 npmFirstEnd.setDate(npmFirstEnd.getDate());
@@ -487,7 +486,7 @@ function ismokosSuma(bazeIsmokai, tarifas, kiekisDienomisArbaMenesiais, netaikyt
     maxDaily = maxDaily.toFixed(2);
     let baseMax = countDaily ? maxDaily : maxIsmoka;
     let lubos = netaikytiLubu ? bazeIsmokai + 1 : baseMax;
-	  let galutineIsmoka = bazeIsmokai <= lubos ? bazeIsmokai * tarifas/100 * kiekisDienomisArbaMenesiais : baseMax * tarifas/100 * kiekisDienomisArbaMenesiais;
+	let galutineIsmoka = bazeIsmokai <= lubos ? bazeIsmokai * tarifas/100 * kiekisDienomisArbaMenesiais : baseMax * tarifas/100 * kiekisDienomisArbaMenesiais;
    
     return galutineIsmoka.toFixed(2);
 }
@@ -527,7 +526,6 @@ let bendraIsmokuSumaSuMokesciais = 0;
 const tarifai = [];
 
 function fillRateArray() {
-
     let gavejas = mamaVpa ? 'mama' : 'tėtis';
     let gavejasNpm = mamaVpa ? 'tėtis' : 'mama';
     let vienosDienosBazePagrTevo = bazeSkaiciavimui / avgBusinessDaysInAYear;
@@ -558,6 +556,7 @@ fillRateArray();
 tarifai.forEach(el => {
     el.start = formatDate(el.start, "yyyy-mm-dd");
     el.end = formatDate(el.end, "yyyy-mm-dd");
+	console.log(JSON.stringify(el));
 })
 
 
@@ -588,7 +587,7 @@ function generuotiIsmokosEilute(start, end, rate, base, receiver, npm) {
         let currentBusinessDays = countBusinessDays(new Date(currentYear, currentMonth, 1), new Date(currentYear, currentMonth, currentLastDay), generatePublicHolidays(currentYear));
 
         let suma = ismokosSuma(base, rate, currentBusinessDays, false, true);
-        suma = suma < minIsmoka ? minIsmoka * factor : suma * factor ;
+        suma = suma < minIsmoka ? minIsmoka * factor : suma * factor;
         suma = parseFloat(suma.toFixed(2));
         let sumaPoMokesciu = suma * (1 - mokesciaiNuoIsmoku/100);
         sumaPoMokesciu = parseFloat(sumaPoMokesciu.toFixed(2));
