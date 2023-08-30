@@ -95,7 +95,7 @@
     width: 100%
     &.rezultatuLentele {
         border-collapse: separate !important; 
-        border-spacing: .60em !important;
+/*         border-spacing: .60em !important; */
     }
 }
 
@@ -143,8 +143,14 @@ fieldset.formbox__container {
 fieldset.formbox__container.has_border {
         padding-top: 2em;
         border-top: var(--formbox-field-border-width) solid var(--formbox-field-border-color);
-    padding-left: 0;
 }
+
+fieldset.formbox__container.has_result.has_border {
+        padding-top: 2em;
+        border-top: var(--formbox-field-border-width) solid var(--formbox-field-border-color);
+padding-left: 0;
+}
+    
 
 fieldset.formbox__container.nerodyti {
             display: none;
