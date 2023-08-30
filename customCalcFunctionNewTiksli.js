@@ -625,7 +625,7 @@ bendrosSumos.push({'tarifas' : '', 'men' : 'Viso VPA išmokų:', 'suma' : bendra
 	};
 
 	
-if(bendraVisuIsmokuSumaSuMokesciais = bendraVpaIsmokuSumaSuMokesciais) {
+if(bendraVisuIsmokuSumaSuMokesciais === bendraVpaIsmokuSumaSuMokesciais) {
 	bendrosSumos.push({'tarifas' : '', 'men' : 'Viso išmokų:', 'suma' : bendraVisuIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraVisuIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
 }
 
