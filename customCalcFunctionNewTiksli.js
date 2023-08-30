@@ -491,7 +491,6 @@ function ismokosSuma(bazeIsmokai, tarifas, kiekisDienomisArbaMenesiais, netaikyt
     let baseMax = countDaily ? maxDaily : maxIsmoka;
     let lubos = netaikytiLubu ? bazeIsmokai + 1 : baseMax;
 	let bazeDidesneUzLubas = parseFloat(bazeIsmokai) > parseFloat(lubos);
-	console.log("bazeDidesneUzLubas:", bazeDidesneUzLubas);
 	let galutineIsmoka = bazeDidesneUzLubas ? baseMax * tarifas/100 * kiekisDienomisArbaMenesiais : bazeIsmokai * tarifas/100 * kiekisDienomisArbaMenesiais;
     return galutineIsmoka.toFixed(2);
 }
@@ -556,7 +555,6 @@ fillRateArray();
 tarifai.forEach(el => {
     el.start = formatDate(el.start, "yyyy-mm-dd");
     el.end = formatDate(el.end, "yyyy-mm-dd");
-	console.log(JSON.stringify(el));
 })
 
 
@@ -646,6 +644,9 @@ function createRow(data, ismokuPavadinimas) {
 			const fontWeight = 'bold';
 			
 			rows += `<tr>
+				 <td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '></td>
+				</tr>
+   				<tr>
 					<td colspan='2' style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].men}</td>
 					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].suma}</td>
 					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].sumaPoMokesciu}</td>
