@@ -358,8 +358,8 @@ let vpaMenuo = vpaPradzia.getMonth() + 1 - gMenuo + 1;
 
 // PASIDAROME REIKALINGAS TARPINES DATAS
 
-	function lastday(y, m) {
-return  new Date(y, m + 1, 0).getDate();
+function lastday(y, m) {
+	return  new Date(y, m + 1, 0).getDate();
 }
 
 function countBusinessDays(startDate, endDate, holidays) {
@@ -445,7 +445,7 @@ function addMonthsToDate(date, monthsToAdd) {
 }  
 
 
-let avgBusinessDaysInAYear = countBusinessDays(new Date(gimdymoData.getFullYear(), 0, 1), new Date(gimdymoData.getFullYear(), 11, 31), generatePublicHolidays(gimdymoData.getFullYear())) / 12;
+let avgBusinessDaysInAYear = countBusinessDays(new Date(gimimoDiena.getFullYear(), 0, 1), new Date(gimimoDiena.getFullYear(), 11, 31), generatePublicHolidays(gimimoDiena.getFullYear())) / 12;
 avgBusinessDaysInAYear = avgBusinessDaysInAYear.toFixed(1);
 
 const npmFirstStart = new Date(gimdymoData);
@@ -454,7 +454,7 @@ npmFirstStart.setDate(npmFirstStart.getDate() + 57);
 const npmFirstEnd = addMonthsToDate(new Date(npmFirstStart), 2);
 npmFirstEnd.setDate(npmFirstEnd.getDate());
 
-const npmLasttEnd = addMonthsToDate(new Date(gimdymoData), vpaTrukme);
+const npmLasttEnd = addMonthsToDate(new Date(gimimoDiena), vpaTrukme);
 npmLasttEnd.setDate(npmLasttEnd.getDate() - 1);
 
 const npmLastStart = addMonthsToDate(new Date(npmLasttEnd), -2);
@@ -462,7 +462,7 @@ const npmLastStart = addMonthsToDate(new Date(npmLasttEnd), -2);
 const vpaEnd = new Date(npmLastStart);
 vpaEnd.setDate(vpaEnd.getDate() - 1);
 
-const oneYear = addMonthsToDate(new Date(gimdymoData), 12);
+const oneYear = addMonthsToDate(new Date(gimimoDiena), 12);
 oneYear.setDate(oneYear.getDate() - 1);
 
 const vpaStart = new Date(npmFirstEnd);
