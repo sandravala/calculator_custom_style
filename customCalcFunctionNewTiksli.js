@@ -486,8 +486,8 @@ function ismokosSuma(bazeIsmokai, tarifas, kiekisDienomisArbaMenesiais, netaikyt
     maxDaily = maxDaily.toFixed(2);
     let baseMax = countDaily ? maxDaily : maxIsmoka;
     let lubos = netaikytiLubu ? bazeIsmokai + 1 : baseMax;
-	let bazeMazesneUzLubas = bazeIsmokai <= lubos;
-	let galutineIsmoka = bazeMazesneUzLubas ? bazeIsmokai * tarifas/100 * kiekisDienomisArbaMenesiais : baseMax * tarifas/100 * kiekisDienomisArbaMenesiais;
+	let bazeDidesneUzLubas = bazeIsmokai > lubos;
+	let galutineIsmoka = bazeDidesneUzLubas ? baseMax * tarifas/100 * kiekisDienomisArbaMenesiais : bazeIsmokai * tarifas/100 * kiekisDienomisArbaMenesiais;
    if(bazeIsmokai < 10) {
 	   console.log('baze ismokai < 10, galutine ismoka = ' + galutineIsmoka);
 	   console.log('baze ismokai ' + bazeIsmokai);
