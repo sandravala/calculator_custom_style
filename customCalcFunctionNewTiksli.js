@@ -358,6 +358,17 @@ let vpaMenuo = vpaPradzia.getMonth() + 1 - gMenuo + 1;
 
 // PASIDAROME REIKALINGAS TARPINES DATAS
 
+function formatDate(date, format) {
+    let currentYear = date.getFullYear();
+    let currentMonth = date.getMonth();
+    let currentDay = date.getDate();
+    let formattedMonth = String(currentMonth + 1).padStart(2, '0'); // Adding 1 to adjust for 0-indexed months
+    let formattedDay = String(currentDay).padStart(2, '0');
+
+    return format.localeCompare("yyyy-mm") === 0 ? `${currentYear}-${formattedMonth}` : format.localeCompare("yyyy-mm-dd") === 0 ? `${currentYear}-${formattedMonth}-${currentDay}` : date;
+    
+}
+
 function lastday(y, m) {
 	return  new Date(y, m + 1, 0).getDate();
 }
@@ -412,7 +423,7 @@ function generatePublicHolidays(year) {
     const easterMonday = new Date(easter);
     easterMonday.setDate(easter.getDate() + 1);
 
-    const flexibleHolidays = [ easter.toISOString().split('T')[0], easterMonday.toISOString().split('T')[0]];
+    const flexibleHolidays = [ formatDate(easter, 'yyyy-mm-dd'), formatDate(easterMonday, 'yyyy-mm-dd')];
 
     const publicHolidays = [...fixedHolidays, ...flexibleHolidays];
     const holidaysOnWeekdays = [];
@@ -543,17 +554,6 @@ function fillRateArray() {
 }
 
 fillRateArray();
-
-function formatDate(date, format) {
-    let currentYear = date.getFullYear();
-    let currentMonth = date.getMonth();
-    let currentDay = date.getDate();
-    let formattedMonth = String(currentMonth + 1).padStart(2, '0'); // Adding 1 to adjust for 0-indexed months
-
-    return format.localeCompare("yyyy-mm") === 0 ? `${currentYear}-${formattedMonth}` : format.localeCompare("yyyy-mm-dd") === 0 ? `${currentYear}-${formattedMonth}-${currentDay}` : date;
-    
-}
-
 
 tarifai.forEach(el => {
     el.start = formatDate(el.start, "yyyy-mm-dd");
