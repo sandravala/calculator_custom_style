@@ -515,30 +515,26 @@ let tecioBazeIsmokai = tecioPajamuTipas == 1 ? tecioPajamos : tecioIslaiduTipas 
 
 // apskaiciuojame motinystes ismoka
 
-let motinystesIsmokaSuMokesciais = ismokosSuma(mamosBazeIsmokai, motinystesTarifas, 4, true, false);
+let motinystesIsmokaSuMokesciais = ismokosSuma(mamosBazeIsmokai, motinystesTarifas, 4, true, false) * 1 < minIsmoka * 4 ? minIsmoka * 4 : ismokosSuma(mamosBazeIsmokai, motinystesTarifas, 4, true, false) * 1;
 let motinystesIsmoka = motinystesIsmokaSuMokesciais * (1 - mokesciaiNuoIsmoku / 100);
-let motinystesIsmokosEilute = motinystesIsmokaRodyti && mamosPajamos > 0 ? [{'tarifas' : motinystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + motinystesIsmokosData, 'suma' : motinystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : motinystesIsmoka.toLocaleString("lt-LT") + " €", 'gavejas': 'mama'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
+let motinystesIsmokosEilute = motinystesIsmokaRodyti && mamosPajamos > 0 ? [{'tarifas' : motinystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + motinystesIsmokosData, 'suma' : motinystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : motinystesIsmoka.toFixed(2).toLocaleString("lt-LT") + " €", 'gavejas': 'mama'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
 
-if(motinystesIsmokaRodyti && mamosPajamos > 0) {
-	bendraVisuIsmokuSumaSuMokesciais += motinystesIsmokaSuMokesciais;
-	bendraVisuIsmokuSuma += motinystesIsmoka;
-}
+
 
 // apskaiciuojame tevystes ismoka
 
-
-let tevystesIsmokaSuMokesciais = ismokosSuma(tecioBazeIsmokai, tevystesTarifas, 1, false, false);
+let tevystesIsmokaSuMokesciais = ismokosSuma(tecioBazeIsmokai, tevystesTarifas, 1, false, false) * 1 < minIsmoka ? minIsmoka : ismokosSuma(tecioBazeIsmokai, tevystesTarifas, 1, false, false) * 1;
 let tevystesIsmoka = tevystesIsmokaSuMokesciais * (1 - mokesciaiNuoIsmoku / 100);
-let tevystesIsmokosEilute = tevystesIsmokaRodyti && tecioPajamos > 0 ? [{'tarifas' : tevystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + gDiena , 'suma' : tevystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : tevystesIsmoka.toLocaleString("lt-LT")  + " €", 'gavejas': 'tėtis'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
+let tevystesIsmokosEilute = tevystesIsmokaRodyti && tecioPajamos > 0 ? [{'tarifas' : tevystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + gDiena , 'suma' : tevystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : tevystesIsmoka.toFixed(2).toLocaleString("lt-LT")  + " €", 'gavejas': 'tėtis'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
 
-if(tevystesIsmokaRodyti && tecioPajamos > 0) {
 	bendraVisuIsmokuSumaSuMokesciais += tevystesIsmokaSuMokesciais;
 	bendraVisuIsmokuSuma += tevystesIsmoka;
-}
 	
 //pasidarome vpa ismoku sarasa 
 
 let vpaIsmokos = [];
+let tarifai = [];
+let bendrosSumos = [];
 let mamaVpa = mamaArTetisVpa === 1; // patikriniam, ar mama eis vpa (jei ne, tai vadinasi tetis)
 function pajamuBaze(arMamaVpa){
 	const baze = arMamaVpa ? mamosBazeIsmokai : tecioBazeIsmokai;
@@ -547,11 +543,6 @@ function pajamuBaze(arMamaVpa){
 
 let bazeSkaiciavimui = pajamuBaze(mamaVpa); // pasirenkam mamos ar tecio du skaiciuoti ismokoms pagrindinems
 let bazeNpmSkaiciavimui = pajamuBaze(!mamaVpa); // pasirenkam mamos ar tecio du skaiciuoti ismokoms npm
-
-
-
-
-const tarifai = [];
 
 function fillRateArray() {
     let gavejas = mamaVpa ? 'mama' : 'tėtis';
@@ -638,11 +629,26 @@ tarifai.forEach(element => {
     generuotiIsmokosEilute(element.start, element.end, element.rate, element.base, element.receiver, element.npm)
 });
 
-vpaIsmokos.push({'tarifas' : '', 'men' : 'Viso VPA išmokų:', 'suma' : bendraVpaIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraVpaIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
+bendrosSumos.push({'tarifas' : '', 'men' : 'Viso VPA išmokų:', 'suma' : bendraVpaIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraVpaIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
 
-if(bendraVisuIsmokuSumaSuMokesciais > bendraVpaIsmokuSumaSuMokesciais) {
-	vpaIsmokos.push({'tarifas' : '', 'men' : 'Viso išmokų:', 'suma' : bendraVisuIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraVisuIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
-}
+	if(motinystesIsmokaRodyti && !tevystesIsmokaRodyti) {
+		bendraVisuIsmokuSumaSuMokesciais += motinystesIsmokaSuMokesciais;
+		bendraVisuIsmokuSuma += motinystesIsmoka;
+	}
+	if(!motinystesIsmokaRodyti && tevystesIsmokaRodyti) {
+	bendraVisuIsmokuSumaSuMokesciais += tevystesIsmokaSuMokesciais;
+	bendraVisuIsmokuSuma += tevystesIsmoka;
+	}
+	if(motinystesIsmokaRodyti && tevystesIsmokaRodyti) {
+	bendraVisuIsmokuSumaSuMokesciais += motinystesIsmokaSuMokesciais;
+	bendraVisuIsmokuSuma += motinystesIsmoka;
+	bendraVisuIsmokuSumaSuMokesciais += tevystesIsmokaSuMokesciais;
+	bendraVisuIsmokuSuma += tevystesIsmoka;
+	}
+
+	
+	bendrosSumos.push({'tarifas' : '', 'men' : 'Viso išmokų:', 'suma' : bendraVisuIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraVisuIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
+
 
 vpaIsmokos.forEach(ismoka => {
     ismoka.suma = ismoka.suma.toLocaleString("lt-LT") + " €";
@@ -655,9 +661,13 @@ function createRow(data, ismokuPavadinimas) {
 	let rows = '';
 
 	if (ismokuPavadinimas !== '') {
-		rows += `<tr>
+		if(ismokuPavadinimas.contains('bendraSuma') {} 
+		else {
+			rows += `<tr>
 			 <td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${ismokuPavadinimas}</td>
 			</tr>`
+		}
+		
 		
 		for(let i = 0; i < data.length ; i++) {
 			const fontWeight = (data[i].tarifas === '') ? 'bold' : 'normal';
@@ -717,6 +727,7 @@ let rezultatuLentele =
 ${createRow(motinystesIsmokosEilute, mIsmokosPavadinimas)}
 ${createRow(tevystesIsmokosEilute, tIsmokosPavadinimas)}
 ${createRow(vpaIsmokos, vpaIsmokosPavadinimas)}
+${createRow(bendraSuma, 'bendraSuma')}
 <tr><td colspan='5' class='segment' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${paaiskinimuPavadinimas}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[0]}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[1]}</td></tr>
