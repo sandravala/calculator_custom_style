@@ -642,19 +642,20 @@ function createRow(data, ismokuPavadinimas) {
 
 	if (ismokuPavadinimas !== '') {
 		if(ismokuPavadinimas === 'bendraSuma' && (mamosPajamos > 0 || tecioPajamos > 0)) {
+			for(let i = 0; i < data.length ; i++) {
 			const fontWeight = 'bold';
+			
 			rows += `<tr>
-					<td colspan='2' style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].men}</td>
+					<td colspan='2' style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].men}</td>
 					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].suma}</td>
 					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].sumaPoMokesciu}</td>
 					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].gavejas}</td>
 				</tr>`
-		} else {
+			}
+			} else {
 			rows += `<tr>
 			 <td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${ismokuPavadinimas}</td>
 			</tr>`
-
-		
 		
 		for(let i = 0; i < data.length ; i++) {
 			const fontWeight = 'normal';
@@ -677,6 +678,7 @@ function createRow(data, ismokuPavadinimas) {
 let mIsmokosPavadinimas = motinystesIsmokaRodyti && mamosPajamos > 0 ? 'Nėštumo ir gimdymo atostogų išmoka:' : '';
 let tIsmokosPavadinimas = tevystesIsmokaRodyti && tecioPajamos > 0 ? 'Tėvystės išmoka:' : '';
 let vpaIsmokosPavadinimas = vpaIsmokaRodyti && (tecioPajamos || mamosPajamos) > 0 ? 'Vaiko priežiūros atostogų išmoka:' : '';
+let bendrosSumosPavadinimas = (vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (tecioPajamos || mamosPajamos) > 0 ? 'bendraSuma' : '';
 let paaiskinimuPavadinimas = tecioPajamos || mamosPajamos > 0 ? 'Paaiškinimai:' : '';
 let pavadinimai = mamosPajamos > 0 || tecioPajamos > 0 ? ['tarifas', 'data*', 'suma**', 'suma (į rankas)', 'gavėjas'] : ['', '', '', '', ''];
 
@@ -716,7 +718,7 @@ let rezultatuLentele =
 ${createRow(motinystesIsmokosEilute, mIsmokosPavadinimas)}
 ${createRow(tevystesIsmokosEilute, tIsmokosPavadinimas)}
 ${createRow(vpaIsmokos, vpaIsmokosPavadinimas)}
-${createRow(bendrosSumos, 'bendraSuma')}
+${createRow(bendrosSumos, bendrosSumosPavadinimas)}
 <tr><td colspan='5' class='segment' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${paaiskinimuPavadinimas}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[0]}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[1]}</td></tr>
