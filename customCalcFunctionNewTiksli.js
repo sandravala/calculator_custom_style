@@ -696,7 +696,7 @@ tecioPajamos > 0 && tecioBazeIsmokai < minIsmoka ? paaiskinimai[3] += `Tėčio p
 
 vpaIsmokaRodyti && (tecioPajamos || mamosPajamos) > 0 ? paaiskinimai[4] = '*** - NPM yra 2 neperleidžiami mėnesiai mamai ir 2 neperleidžiami mėnesiai tėčiui. Didesnis tarifas taikomas tik neperleidžiamais VPA mėnesiais (NPM), ir jais atitinkamai gali pasinaudoti tik mama arba tėtis. Jei NPM naudoja tik vienas iš tėvų, išmoka pradingsta, o VPA sutrumpėja' : null;
 
-vpaIsmokaRodyti && (tecioPajamos || mamosPajamos) > 0 ? paaiskinimai[7] = 'Čia matote preliminariai apskaičiuotas išmokas pilnam mėnesiui. Pirmo ir paskutinio mėnesio VPA išmokų sumos bus mažesnės, priklausomai nuo to, kurią dieną prasidės ir baigsis teisė į VPA išmoką.' : null;
+vpaIsmokaRodyti && (tecioPajamos || mamosPajamos) > 0 ? paaiskinimai[7] = 'Čia matote preliminariai apskaičiuotas išmokas pilnam mėnesiui. Pirmo ir paskutinio mėnesio (taip pat mėnesio eigoje keičiantis tarifams) VPA išmokų sumos bus mažesnės, priklausomai nuo to, kurią dieną prasidės ir baigsis teisė į VPA išmoką.' : null;
 
 (tecioPajamos > 0 && tecioPajamuTipas == 2) || (mamosPajamos > 0 && mamosPajamuTipas == 2) ? paaiskinimai[5] = 'Jei pajamas deklaruojate kartą metuose, galimai išmoką gausite tik kitais mokestiniais metais. Jei atliekate avansinius mokėjimus, būtinai išsiųskite SAV pranešimą mėnuo iki teisės į išmoką datos.' : null;
 
