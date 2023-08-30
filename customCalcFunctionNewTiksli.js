@@ -356,59 +356,10 @@ vpaPradzia.setDate(vpaPradzia.getDate() + 56);
 let vpaMenuo = vpaPradzia.getMonth() + 1 - gMenuo + 1;
 
 
-// PASIDAROME BAZE SKAICIAVIMUI
+// PASIDAROME REIKALINGAS TARPINES DATAS
 
-function ismokosSuma(bazeIsmokai, tarifas, kiekisDienomisArbaMenesiais, netaikytiLubu, countDaily) {
-
-    let maxDaily = maxIsmoka / avgBusinessDaysInAYear;
-    maxDaily = maxDaily.toFixed(2);
-    let baseMax = countDaily ? maxDaily : maxIsmoka;
-    let lubos = netaikytiLubu ? bazeIsmokai + 1 : baseMax;
-	  let galutineIsmoka = bazeIsmokai <= lubos ? bazeIsmokai * tarifas/100 * kiekisDienomisArbaMenesiais : baseMax * tarifas/100 * kiekisDienomisArbaMenesiais;
-   
-    return galutineIsmoka.toFixed(2);
-}
-
-let mamosBazeIsmokai = mamosPajamuTipas == 1 ? mamosPajamos : mamosIslaiduTipas == 1 ? (mamosPajamos - (mamosPajamos * 0.3)) * 0.9 : (mamosPajamos - mamosIslaidos) * 0.9;
-let tecioBazeIsmokai = tecioPajamuTipas == 1 ? tecioPajamos : tecioIslaiduTipas == 1 ? (tecioPajamos - (tecioPajamos * 0.3)) * 0.9 : (tecioPajamos - tecioIslaidos) * 0.9;
-
-// apskaiciuojame motinystes ismoka
-
-let motinystesIsmokaSuMokesciais = ismokosSuma(mamosBazeIsmokai, motinystesTarifas, 4, true, false);
-let motinystesIsmoka = motinystesIsmokaSuMokesciais * (1 - mokesciaiNuoIsmoku / 100);
-let motinystesIsmokosEilute = motinystesIsmokaRodyti && mamosPajamos > 0 ? [{'tarifas' : motinystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + motinystesIsmokosData, 'suma' : motinystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : motinystesIsmoka.toLocaleString("lt-LT") + " €", 'gavejas': 'mama'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
-
-// apskaiciuojame tevystes ismoka
-
-
-let tevystesIsmokaSuMokesciais = ismokosSuma(tecioBazeIsmokai, tevystesTarifas, 1, false, false);
-let tevystesIsmoka = tevystesIsmokaSuMokesciais * (1 - mokesciaiNuoIsmoku / 100);
-let tevystesIsmokosEilute = tevystesIsmokaRodyti && tecioPajamos > 0 ? [{'tarifas' : tevystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + gDiena , 'suma' : tevystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : tevystesIsmoka.toLocaleString("lt-LT")  + " €", 'gavejas': 'tėtis'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
-
-//pasidarome vpa ismoku sarasa 
-
-let vpaIsmokos = [];
-let mamaVpa = mamaArTetisVpa === 1; // patikriniam, ar mama eis vpa (jei ne, tai vadinasi tetis)
-function pajamuBaze(arMamaVpa){
-	const baze = arMamaVpa ? mamosBazeIsmokai : tecioBazeIsmokai;
-	return baze;
-}; //jei mama, tai ima mamos. jei tetis arba !mama - tai ima tecio
-
-let bazeSkaiciavimui = pajamuBaze(mamaVpa); // pasirenkam mamos ar tecio du skaiciuoti ismokoms pagrindinems
-let bazeNpmSkaiciavimui = pajamuBaze(!mamaVpa); // pasirenkam mamos ar tecio du skaiciuoti ismokoms npm
-
-let bendraIsmokuSuma = 0;
-let bendraIsmokuSumaSuMokesciais = 0;
-
-function lastday(y, m) {
+	function lastday(y, m) {
 return  new Date(y, m + 1, 0).getDate();
-}
-
-function getDateString(date) {
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const day = date.getDate().toString().padStart(2, '0');
-    return `${year}-${month}-${day}`;
 }
 
 function countBusinessDays(startDate, endDate, holidays) {
@@ -516,6 +467,50 @@ oneYear.setDate(oneYear.getDate() - 1);
 
 const vpaStart = new Date(npmFirstEnd);
 vpaStart.setDate(vpaStart.getDate() + 1);
+	
+// PASIDAROME BAZE SKAICIAVIMUI
+
+function ismokosSuma(bazeIsmokai, tarifas, kiekisDienomisArbaMenesiais, netaikytiLubu, countDaily) {
+
+    let maxDaily = maxIsmoka / avgBusinessDaysInAYear;
+    maxDaily = maxDaily.toFixed(2);
+    let baseMax = countDaily ? maxDaily : maxIsmoka;
+    let lubos = netaikytiLubu ? bazeIsmokai + 1 : baseMax;
+	  let galutineIsmoka = bazeIsmokai <= lubos ? bazeIsmokai * tarifas/100 * kiekisDienomisArbaMenesiais : baseMax * tarifas/100 * kiekisDienomisArbaMenesiais;
+   
+    return galutineIsmoka.toFixed(2);
+}
+
+let mamosBazeIsmokai = mamosPajamuTipas == 1 ? mamosPajamos : mamosIslaiduTipas == 1 ? (mamosPajamos - (mamosPajamos * 0.3)) * 0.9 : (mamosPajamos - mamosIslaidos) * 0.9;
+let tecioBazeIsmokai = tecioPajamuTipas == 1 ? tecioPajamos : tecioIslaiduTipas == 1 ? (tecioPajamos - (tecioPajamos * 0.3)) * 0.9 : (tecioPajamos - tecioIslaidos) * 0.9;
+
+// apskaiciuojame motinystes ismoka
+
+let motinystesIsmokaSuMokesciais = ismokosSuma(mamosBazeIsmokai, motinystesTarifas, 4, true, false);
+let motinystesIsmoka = motinystesIsmokaSuMokesciais * (1 - mokesciaiNuoIsmoku / 100);
+let motinystesIsmokosEilute = motinystesIsmokaRodyti && mamosPajamos > 0 ? [{'tarifas' : motinystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + motinystesIsmokosData, 'suma' : motinystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : motinystesIsmoka.toLocaleString("lt-LT") + " €", 'gavejas': 'mama'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
+
+// apskaiciuojame tevystes ismoka
+
+
+let tevystesIsmokaSuMokesciais = ismokosSuma(tecioBazeIsmokai, tevystesTarifas, 1, false, false);
+let tevystesIsmoka = tevystesIsmokaSuMokesciais * (1 - mokesciaiNuoIsmoku / 100);
+let tevystesIsmokosEilute = tevystesIsmokaRodyti && tecioPajamos > 0 ? [{'tarifas' : tevystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + gDiena , 'suma' : tevystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : tevystesIsmoka.toLocaleString("lt-LT")  + " €", 'gavejas': 'tėtis'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
+
+//pasidarome vpa ismoku sarasa 
+
+let vpaIsmokos = [];
+let mamaVpa = mamaArTetisVpa === 1; // patikriniam, ar mama eis vpa (jei ne, tai vadinasi tetis)
+function pajamuBaze(arMamaVpa){
+	const baze = arMamaVpa ? mamosBazeIsmokai : tecioBazeIsmokai;
+	return baze;
+}; //jei mama, tai ima mamos. jei tetis arba !mama - tai ima tecio
+
+let bazeSkaiciavimui = pajamuBaze(mamaVpa); // pasirenkam mamos ar tecio du skaiciuoti ismokoms pagrindinems
+let bazeNpmSkaiciavimui = pajamuBaze(!mamaVpa); // pasirenkam mamos ar tecio du skaiciuoti ismokoms npm
+
+let bendraIsmokuSuma = 0;
+let bendraIsmokuSumaSuMokesciais = 0;
 
 
 const tarifai = [];
