@@ -612,22 +612,25 @@ bendrosSumos.push({'tarifas' : '', 'men' : 'Viso VPA išmokų:', 'suma' : bendra
 	if(motinystesIsmokaRodyti && !tevystesIsmokaRodyti) {
 		bendraVisuIsmokuSumaSuMokesciais += motinystesIsmokaSuMokesciais;
 		bendraVisuIsmokuSuma += motinystesIsmoka;
+		bendrosSumos.push({'tarifas' : '', 'men' : 'Viso išmokų:', 'suma' : bendraVisuIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraVisuIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
 	};
 	if(!motinystesIsmokaRodyti && tevystesIsmokaRodyti) {
 	bendraVisuIsmokuSumaSuMokesciais += tevystesIsmokaSuMokesciais;
 	bendraVisuIsmokuSuma += tevystesIsmoka;
+		bendrosSumos.push({'tarifas' : '', 'men' : 'Viso išmokų:', 'suma' : bendraVisuIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraVisuIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
 	};
 	if(motinystesIsmokaRodyti && tevystesIsmokaRodyti) {
 	bendraVisuIsmokuSumaSuMokesciais += motinystesIsmokaSuMokesciais;
 	bendraVisuIsmokuSuma += motinystesIsmoka;
 	bendraVisuIsmokuSumaSuMokesciais += tevystesIsmokaSuMokesciais;
 	bendraVisuIsmokuSuma += tevystesIsmoka;
+		bendrosSumos.push({'tarifas' : '', 'men' : 'Viso išmokų:', 'suma' : bendraVisuIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraVisuIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
 	};
 
 	
-if(bendraVisuIsmokuSumaSuMokesciais === bendraVpaIsmokuSumaSuMokesciais) {
-	bendrosSumos.push({'tarifas' : '', 'men' : 'Viso išmokų:', 'suma' : bendraVisuIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraVisuIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
-}
+// if(bendraVisuIsmokuSumaSuMokesciais === bendraVpaIsmokuSumaSuMokesciais) {
+// 	bendrosSumos.push({'tarifas' : '', 'men' : 'Viso išmokų:', 'suma' : bendraVisuIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraVisuIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
+// }
 
 vpaIsmokos.forEach(ismoka => {
     ismoka.suma = ismoka.suma.toLocaleString("lt-LT") + " €";
