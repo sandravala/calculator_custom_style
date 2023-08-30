@@ -503,13 +503,13 @@ let tecioBazeIsmokai = tecioPajamuTipas == 1 ? tecioPajamos : tecioIslaiduTipas 
 
 let motinystesIsmokaSuMokesciais = ismokosSuma(mamosBazeIsmokai, motinystesTarifas, 4, true, false) * 1 < minIsmoka * 4 ? minIsmoka * 4 : ismokosSuma(mamosBazeIsmokai, motinystesTarifas, 4, true, false) * 1;
 let motinystesIsmoka = motinystesIsmokaSuMokesciais * (1 - mokesciaiNuoIsmoku / 100);
-let motinystesIsmokosEilute = motinystesIsmokaRodyti && mamosPajamos > 0 ? [{'tarifas' : motinystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + motinystesIsmokosData, 'suma' : motinystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : motinystesIsmoka.toFixed(2).toLocaleString("lt-LT") + " €", 'gavejas': 'mama'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
+let motinystesIsmokosEilute = motinystesIsmokaRodyti && mamosPajamos > 0 ? [{'tarifas' : motinystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + motinystesIsmokosData, 'suma' : motinystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : parseFloat(motinystesIsmoka.toFixed(2)).toLocaleString("lt-LT") + " €", 'gavejas': 'mama'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
 
 // apskaiciuojame tevystes ismoka
 
 let tevystesIsmokaSuMokesciais = ismokosSuma(tecioBazeIsmokai, tevystesTarifas, 1, false, false) * 1 < minIsmoka ? minIsmoka : ismokosSuma(tecioBazeIsmokai, tevystesTarifas, 1, false, false) * 1;
 let tevystesIsmoka = tevystesIsmokaSuMokesciais * (1 - mokesciaiNuoIsmoku / 100);
-let tevystesIsmokosEilute = tevystesIsmokaRodyti && tecioPajamos > 0 ? [{'tarifas' : tevystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + gDiena , 'suma' : tevystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : tevystesIsmoka.toFixed(2).toLocaleString("lt-LT")  + " €", 'gavejas': 'tėtis'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
+let tevystesIsmokosEilute = tevystesIsmokaRodyti && tecioPajamos > 0 ? [{'tarifas' : tevystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + gDiena , 'suma' : tevystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : parseFloat(tevystesIsmoka.toFixed(2)).toLocaleString("lt-LT")  + " €", 'gavejas': 'tėtis'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
 
 //pasidarome vpa ismoku sarasa 
 
@@ -641,16 +641,23 @@ function createRow(data, ismokuPavadinimas) {
 	let rows = '';
 
 	if (ismokuPavadinimas !== '') {
-		if(ismokuPavadinimas === 'bendraSuma') {} 
-		else {
+		if(ismokuPavadinimas === 'bendraSuma' && (mamosPajamos > 0 || tecioPajamos > 0)) {
+			const fontWeight = 'bold';
+			rows += `<tr>
+					<td colspan='2' style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].men}</td>
+					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].suma}</td>
+					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].sumaPoMokesciu}</td>
+					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].gavejas}</td>
+				</tr>`
+		} else {
 			rows += `<tr>
 			 <td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${ismokuPavadinimas}</td>
 			</tr>`
-		}
+
 		
 		
 		for(let i = 0; i < data.length ; i++) {
-			const fontWeight = (data[i].tarifas === '') ? 'bold' : 'normal';
+			const fontWeight = 'normal';
 			rows += `<tr>
 					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].tarifas}</td>
 					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].men}</td>
@@ -659,6 +666,8 @@ function createRow(data, ismokuPavadinimas) {
 					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].gavejas}</td>
 				</tr>`
 		}
+	}
+		
 	}
 	return rows;	
 };
