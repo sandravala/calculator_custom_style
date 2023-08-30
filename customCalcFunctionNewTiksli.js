@@ -459,7 +459,7 @@ function addMonthsToDate(date, monthsToAdd) {
 let avgBusinessDaysInAYear = countBusinessDays(new Date(gimimoDiena.getFullYear(), 0, 1), new Date(gimimoDiena.getFullYear(), 11, 31), generatePublicHolidays(gimimoDiena.getFullYear())) / 12;
 avgBusinessDaysInAYear = avgBusinessDaysInAYear.toFixed(1);
 
-const npmFirstStart = new Date(gimdymoData);
+const npmFirstStart = new Date(gimimoDiena);
 npmFirstStart.setDate(npmFirstStart.getDate() + 57);
 
 const npmFirstEnd = addMonthsToDate(new Date(npmFirstStart), 2);
