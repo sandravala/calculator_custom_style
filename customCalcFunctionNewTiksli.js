@@ -481,16 +481,15 @@ vpaStart.setDate(vpaStart.getDate() + 1);
 // PASIDAROME BAZE SKAICIAVIMUI
 
 function ismokosSuma(bazeIsmokai, tarifas, kiekisDienomisArbaMenesiais, netaikytiLubu, countDaily) {
-
-    let maxDaily = maxIsmoka / avgBusinessDaysInAYear;
-    maxDaily = maxDaily.toFixed(2);
+	let maxDaily = maxIsmoka / avgBusinessDaysInAYear;
+	maxDaily = maxDaily.toFixed(2);
     let baseMax = countDaily ? maxDaily : maxIsmoka;
     let lubos = netaikytiLubu ? bazeIsmokai + 1 : baseMax;
 	console.log("Debugging - Values before comparison:");
 	console.log("bazeIsmokai:", bazeIsmokai);
 	console.log("lubos:", lubos);
 	
-	let bazeDidesneUzLubas = bazeIsmokai > lubos;
+	let bazeDidesneUzLubas = parseFloat(bazeIsmokai) > parseFloat(lubos);
 	console.log("bazeDidesneUzLubas:", bazeDidesneUzLubas);
 	let galutineIsmoka = bazeDidesneUzLubas ? baseMax * tarifas/100 * kiekisDienomisArbaMenesiais : bazeIsmokai * tarifas/100 * kiekisDienomisArbaMenesiais;
    // if(bazeIsmokai < 10) {
