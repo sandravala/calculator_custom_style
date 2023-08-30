@@ -480,6 +480,12 @@ vpaStart.setDate(vpaStart.getDate() + 1);
 	
 // PASIDAROME BAZE SKAICIAVIMUI
 
+let bendraVpaIsmokuSuma = 0;
+let bendraVpaIsmokuSumaSuMokesciais = 0;
+let bendraVisuIsmokuSuma = 0;
+let bendraVisuIsmokuSumaSuMokesciais = 0;
+
+
 function ismokosSuma(bazeIsmokai, tarifas, kiekisDienomisArbaMenesiais, netaikytiLubu, countDaily) {
 	let maxDaily = maxIsmoka / avgBusinessDaysInAYear;
 	maxDaily = maxDaily.toFixed(2);
@@ -513,6 +519,11 @@ let motinystesIsmokaSuMokesciais = ismokosSuma(mamosBazeIsmokai, motinystesTarif
 let motinystesIsmoka = motinystesIsmokaSuMokesciais * (1 - mokesciaiNuoIsmoku / 100);
 let motinystesIsmokosEilute = motinystesIsmokaRodyti && mamosPajamos > 0 ? [{'tarifas' : motinystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + motinystesIsmokosData, 'suma' : motinystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : motinystesIsmoka.toLocaleString("lt-LT") + " €", 'gavejas': 'mama'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
 
+if(motinystesIsmokaRodyti && mamosPajamos > 0) {
+	bendraVisuIsmokuSumaSuMokesciais += motinystesIsmokaSuMokesciais;
+	bendraVisuIsmokuSuma += motinystesIsmoka;
+}
+
 // apskaiciuojame tevystes ismoka
 
 
@@ -520,6 +531,11 @@ let tevystesIsmokaSuMokesciais = ismokosSuma(tecioBazeIsmokai, tevystesTarifas, 
 let tevystesIsmoka = tevystesIsmokaSuMokesciais * (1 - mokesciaiNuoIsmoku / 100);
 let tevystesIsmokosEilute = tevystesIsmokaRodyti && tecioPajamos > 0 ? [{'tarifas' : tevystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + gDiena , 'suma' : tevystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : tevystesIsmoka.toLocaleString("lt-LT")  + " €", 'gavejas': 'tėtis'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
 
+if(tevystesIsmokaRodyti && tecioPajamos > 0) {
+	bendraVisuIsmokuSumaSuMokesciais += tevystesIsmokaSuMokesciais;
+	bendraVisuIsmokuSuma += tevystesIsmoka;
+}
+	
 //pasidarome vpa ismoku sarasa 
 
 let vpaIsmokos = [];
@@ -532,8 +548,7 @@ function pajamuBaze(arMamaVpa){
 let bazeSkaiciavimui = pajamuBaze(mamaVpa); // pasirenkam mamos ar tecio du skaiciuoti ismokoms pagrindinems
 let bazeNpmSkaiciavimui = pajamuBaze(!mamaVpa); // pasirenkam mamos ar tecio du skaiciuoti ismokoms npm
 
-let bendraIsmokuSuma = 0;
-let bendraIsmokuSumaSuMokesciais = 0;
+
 
 
 const tarifai = [];
@@ -605,8 +620,11 @@ function generuotiIsmokosEilute(start, end, rate, base, receiver, npm) {
         let sumaPoMokesciu = suma * (1 - mokesciaiNuoIsmoku/100);
         sumaPoMokesciu = parseFloat(sumaPoMokesciu.toFixed(2));
 
-        bendraIsmokuSumaSuMokesciais += suma;
-        bendraIsmokuSuma += sumaPoMokesciu;
+        bendraVpaIsmokuSumaSuMokesciais += suma;
+        bendraVpaIsmokuSuma += sumaPoMokesciu;
+
+	bendraVisuIsmokuSumaSuMokesciais += suma;
+	bendraVisuIsmokuSuma += sumaPoMokesciu;
 
         vpaIsmokos.push({'tarifas': rate + ' % ' + npmText, 'men': menuo, 'suma': suma, 'sumaPoMokesciu': sumaPoMokesciu, 'gavejas': receiver});
 
@@ -619,6 +637,12 @@ function generuotiIsmokosEilute(start, end, rate, base, receiver, npm) {
 tarifai.forEach(element => {
     generuotiIsmokosEilute(element.start, element.end, element.rate, element.base, element.receiver, element.npm)
 });
+
+vpaIsmokos.push({'tarifas' : '', 'men' : 'Viso VPA išmokų:', 'suma' : bendraVpaIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraVpaIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
+
+if(bendraVisuIsmokuSumaSuMokesciais > bendraVpaIsmokuSumaSuMokesciais) {
+	vpaIsmokos.push({'tarifas' : '', 'men' : 'Viso išmokų:', 'suma' : bendraVisuIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraVisuIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
+}
 
 vpaIsmokos.forEach(ismoka => {
     ismoka.suma = ismoka.suma.toLocaleString("lt-LT") + " €";
@@ -636,7 +660,7 @@ function createRow(data, ismokuPavadinimas) {
 			</tr>`
 		
 		for(let i = 0; i < data.length ; i++) {
-			const fontWeight = (i + 1 > 5) && (i + 1 >= data.length) ? 'bold' : 'normal';
+			const fontWeight = (data[i].tarifas === '') ? 'bold' : 'normal';
 			rows += `<tr>
 					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].tarifas}</td>
 					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].men}</td>
