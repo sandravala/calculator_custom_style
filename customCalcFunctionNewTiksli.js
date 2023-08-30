@@ -485,28 +485,14 @@ let bendraVpaIsmokuSumaSuMokesciais = 0;
 let bendraVisuIsmokuSuma = 0;
 let bendraVisuIsmokuSumaSuMokesciais = 0;
 
-
 function ismokosSuma(bazeIsmokai, tarifas, kiekisDienomisArbaMenesiais, netaikytiLubu, countDaily) {
 	let maxDaily = maxIsmoka / avgBusinessDaysInAYear;
 	maxDaily = maxDaily.toFixed(2);
     let baseMax = countDaily ? maxDaily : maxIsmoka;
     let lubos = netaikytiLubu ? bazeIsmokai + 1 : baseMax;
-	console.log("Debugging - Values before comparison:");
-	console.log("bazeIsmokai:", bazeIsmokai);
-	console.log("lubos:", lubos);
-	
 	let bazeDidesneUzLubas = parseFloat(bazeIsmokai) > parseFloat(lubos);
 	console.log("bazeDidesneUzLubas:", bazeDidesneUzLubas);
 	let galutineIsmoka = bazeDidesneUzLubas ? baseMax * tarifas/100 * kiekisDienomisArbaMenesiais : bazeIsmokai * tarifas/100 * kiekisDienomisArbaMenesiais;
-   // if(bazeIsmokai < 10) {
-	  //  console.log('baze ismokai < 10, galutine ismoka = ' + galutineIsmoka);
-	  //  console.log('baze ismokai ' + bazeIsmokai);
-	  //  console.log('maxDaily = ' + maxDaily);
-	  //  console.log('baseMax = ' + baseMax);
-	  //  console.log('lubos = ' + lubos);
-	  //  console.log('bazeIsmokai <= lubos ? ' + bazeIsmokai <= lubos);
-	   
-   // }
     return galutineIsmoka.toFixed(2);
 }
 
@@ -519,17 +505,12 @@ let motinystesIsmokaSuMokesciais = ismokosSuma(mamosBazeIsmokai, motinystesTarif
 let motinystesIsmoka = motinystesIsmokaSuMokesciais * (1 - mokesciaiNuoIsmoku / 100);
 let motinystesIsmokosEilute = motinystesIsmokaRodyti && mamosPajamos > 0 ? [{'tarifas' : motinystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + motinystesIsmokosData, 'suma' : motinystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : motinystesIsmoka.toFixed(2).toLocaleString("lt-LT") + " €", 'gavejas': 'mama'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
 
-
-
 // apskaiciuojame tevystes ismoka
 
 let tevystesIsmokaSuMokesciais = ismokosSuma(tecioBazeIsmokai, tevystesTarifas, 1, false, false) * 1 < minIsmoka ? minIsmoka : ismokosSuma(tecioBazeIsmokai, tevystesTarifas, 1, false, false) * 1;
 let tevystesIsmoka = tevystesIsmokaSuMokesciais * (1 - mokesciaiNuoIsmoku / 100);
 let tevystesIsmokosEilute = tevystesIsmokaRodyti && tecioPajamos > 0 ? [{'tarifas' : tevystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + gDiena , 'suma' : tevystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : tevystesIsmoka.toFixed(2).toLocaleString("lt-LT")  + " €", 'gavejas': 'tėtis'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
 
-	bendraVisuIsmokuSumaSuMokesciais += tevystesIsmokaSuMokesciais;
-	bendraVisuIsmokuSuma += tevystesIsmoka;
-	
 //pasidarome vpa ismoku sarasa 
 
 let vpaIsmokos = [];
@@ -587,7 +568,6 @@ function generuotiIsmokosEilute(start, end, rate, base, receiver, npm) {
     let finalEndMonth = finalEndDate.getMonth();
     let npmText = npm ? '(npm***)' : '';
 
-
     while (currentStartDate < finalEndDate) {
         let factor = 1;
         let currentYear = currentStartDate.getFullYear();
@@ -634,17 +614,17 @@ bendrosSumos.push({'tarifas' : '', 'men' : 'Viso VPA išmokų:', 'suma' : bendra
 	if(motinystesIsmokaRodyti && !tevystesIsmokaRodyti) {
 		bendraVisuIsmokuSumaSuMokesciais += motinystesIsmokaSuMokesciais;
 		bendraVisuIsmokuSuma += motinystesIsmoka;
-	}
+	};
 	if(!motinystesIsmokaRodyti && tevystesIsmokaRodyti) {
 	bendraVisuIsmokuSumaSuMokesciais += tevystesIsmokaSuMokesciais;
 	bendraVisuIsmokuSuma += tevystesIsmoka;
-	}
+	};
 	if(motinystesIsmokaRodyti && tevystesIsmokaRodyti) {
 	bendraVisuIsmokuSumaSuMokesciais += motinystesIsmokaSuMokesciais;
 	bendraVisuIsmokuSuma += motinystesIsmoka;
 	bendraVisuIsmokuSumaSuMokesciais += tevystesIsmokaSuMokesciais;
 	bendraVisuIsmokuSuma += tevystesIsmoka;
-	}
+	};
 
 	
 	bendrosSumos.push({'tarifas' : '', 'men' : 'Viso išmokų:', 'suma' : bendraVisuIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraVisuIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
@@ -661,7 +641,7 @@ function createRow(data, ismokuPavadinimas) {
 	let rows = '';
 
 	if (ismokuPavadinimas !== '') {
-		if(ismokuPavadinimas.contains('bendraSuma') {} 
+		if(ismokuPavadinimas === 'bendraSuma') {} 
 		else {
 			rows += `<tr>
 			 <td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${ismokuPavadinimas}</td>
@@ -727,7 +707,7 @@ let rezultatuLentele =
 ${createRow(motinystesIsmokosEilute, mIsmokosPavadinimas)}
 ${createRow(tevystesIsmokosEilute, tIsmokosPavadinimas)}
 ${createRow(vpaIsmokos, vpaIsmokosPavadinimas)}
-${createRow(bendraSuma, 'bendraSuma')}
+${createRow(bendrosSumos, 'bendraSuma')}
 <tr><td colspan='5' class='segment' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${paaiskinimuPavadinimas}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[0]}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[1]}</td></tr>
