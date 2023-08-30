@@ -486,17 +486,22 @@ function ismokosSuma(bazeIsmokai, tarifas, kiekisDienomisArbaMenesiais, netaikyt
     maxDaily = maxDaily.toFixed(2);
     let baseMax = countDaily ? maxDaily : maxIsmoka;
     let lubos = netaikytiLubu ? bazeIsmokai + 1 : baseMax;
+	console.log("Debugging - Values before comparison:");
+	console.log("bazeIsmokai:", bazeIsmokai);
+	console.log("lubos:", lubos);
+	
 	let bazeDidesneUzLubas = bazeIsmokai > lubos;
+	console.log("bazeDidesneUzLubas:", bazeDidesneUzLubas);
 	let galutineIsmoka = bazeDidesneUzLubas ? baseMax * tarifas/100 * kiekisDienomisArbaMenesiais : bazeIsmokai * tarifas/100 * kiekisDienomisArbaMenesiais;
-   if(bazeIsmokai < 10) {
-	   console.log('baze ismokai < 10, galutine ismoka = ' + galutineIsmoka);
-	   console.log('baze ismokai ' + bazeIsmokai);
-	   console.log('maxDaily = ' + maxDaily);
-	   console.log('baseMax = ' + baseMax);
-	   console.log('lubos = ' + lubos);
-	   console.log('bazeIsmokai <= lubos ? ' + bazeIsmokai <= lubos);
+   // if(bazeIsmokai < 10) {
+	  //  console.log('baze ismokai < 10, galutine ismoka = ' + galutineIsmoka);
+	  //  console.log('baze ismokai ' + bazeIsmokai);
+	  //  console.log('maxDaily = ' + maxDaily);
+	  //  console.log('baseMax = ' + baseMax);
+	  //  console.log('lubos = ' + lubos);
+	  //  console.log('bazeIsmokai <= lubos ? ' + bazeIsmokai <= lubos);
 	   
-   }
+   // }
     return galutineIsmoka.toFixed(2);
 }
 
