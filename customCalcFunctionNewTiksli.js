@@ -625,8 +625,9 @@ bendrosSumos.push({'tarifas' : '', 'men' : 'Viso VPA išmokų:', 'suma' : bendra
 	};
 
 	
+if(bendraVisuIsmokuSumaSuMokesciais = bendraVpaIsmokuSumaSuMokesciais) {
 	bendrosSumos.push({'tarifas' : '', 'men' : 'Viso išmokų:', 'suma' : bendraVisuIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraVisuIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
-
+}
 
 vpaIsmokos.forEach(ismoka => {
     ismoka.suma = ismoka.suma.toLocaleString("lt-LT") + " €";
@@ -640,13 +641,15 @@ function createRow(data, ismokuPavadinimas) {
 
 	if (ismokuPavadinimas !== '') {
 		if(ismokuPavadinimas === 'bendraSuma' && (mamosPajamos > 0 || tecioPajamos > 0)) {
-			for(let i = 0; i < data.length ; i++) {
+			
 			const fontWeight = 'bold';
 			
 			rows += `<tr>
-				 <td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>IŠ VISO</td>
-				</tr>
-   				<tr>
+				 <td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>IŠ VISO:</td>
+				</tr>`
+			
+    for(let i = 0; i < data.length ; i++) {
+    			rows += `<tr>
 					<td colspan='2' style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].men}</td>
 					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].suma}</td>
 					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].sumaPoMokesciu}</td>
