@@ -143,6 +143,7 @@ fieldset.formbox__container {
 fieldset.formbox__container.has_border {
         padding-top: 2em;
         border-top: var(--formbox-field-border-width) solid var(--formbox-field-border-color);
+    padding-left: 0;
 }
 
 fieldset.formbox__container.nerodyti {
