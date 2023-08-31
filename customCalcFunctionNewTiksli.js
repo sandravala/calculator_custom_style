@@ -371,10 +371,10 @@ function formatDate(date, format) {
 		formattedDate = `${currentYear}-${formattedMonth}`;
 			break;
 		case format.localeCompare("yyyy-mm-dd") === 0:
-			formattedDate = `${currentYear}-${formattedMonth}-${currentDay}`;
+			formattedDate = `${currentYear}-${formattedMonth}-${formattedDay}`;
 			break;
 		case format.localeCompare("yyyy/mm/dd") === 0:
-			formattedDate = `${currentYear}/${formattedMonth}/${currentDay}`;
+			formattedDate = `${currentYear}/${formattedMonth}/${formattedDay}`;
 			break;
 	    default:
 		    formattedDate = date;
