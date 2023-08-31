@@ -659,6 +659,22 @@ function createRow(data, ismokuPavadinimas) {
 					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].gavejas}</td>
 				</tr>`
 			}
+			} else if(ismokuPavadinimas === 'tarifai') {
+			
+			const fontWeight = 'bold';
+			
+			rows += `<tr>
+				 <td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>TARIFAI:</td>
+				</tr>`
+			
+    for(let i = 0; i < data.length ; i++) {
+    			rows += `<tr>
+					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].start}</td>
+					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].end}</td>
+					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].rate}</td>
+					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].base}</td>
+					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].receiver}</td>
+				</tr>`
 			} else {
 			rows += `<tr>
 			 <td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${ismokuPavadinimas}</td>
@@ -679,6 +695,7 @@ function createRow(data, ismokuPavadinimas) {
 	}
 	return rows;	
 };
+
 
 // pasidarome pavadinimus stulpeliu
 
@@ -722,6 +739,7 @@ let rezultatuLentele =
 </tr>
 </thead>
 <tbody>
+${createRow(tarifai, 'tarifai')}
 ${createRow(motinystesIsmokosEilute, mIsmokosPavadinimas)}
 ${createRow(tevystesIsmokosEilute, tIsmokosPavadinimas)}
 ${createRow(vpaIsmokos, vpaIsmokosPavadinimas)}
@@ -738,7 +756,6 @@ ${createRow(bendrosSumos, bendrosSumosPavadinimas)}
 </tbody>
 </table>
 `
-
 rezultatai = rezultatuLentele;
 
 	return rezultatai;
