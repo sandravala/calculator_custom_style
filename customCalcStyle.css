@@ -96,6 +96,7 @@
     &.rezultatuLentele {
         border-collapse: separate !important; 
         border-spacing: 0;
+        table-layout: fixed;
     }
 }
 
