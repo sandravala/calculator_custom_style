@@ -532,21 +532,39 @@ function fillRateArray() {
     vienosDienosBazePagrTevo = vienosDienosBazePagrTevo.toFixed(2);
     vienosDienosBazeAntroTevo = vienosDienosBazeAntroTevo.toFixed(2);
 
-    tarifai.push({'start': formatDate(npmFirstStart, 'yyyy-mm-dd'), 'end': formatDate(npmFirstEnd, 'yyyy-mm-dd'), 'rate': neperleidziamuMenesiuTarifas, 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': true});
+
+    tarifai.push({'start': Date.parse(npmFirstStart), 'end': Date.parse(npmFirstEnd), 'rate': neperleidziamuMenesiuTarifas, 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': true});
 
     if (vpaTrukme === 24) {
         const vpaTarpinisPabaiga = oneYear;
         const vpaTarpinisPradzia = new Date(vpaTarpinisPabaiga);
         vpaTarpinisPradzia.setDate(vpaTarpinisPradzia.getDate() + 1);
-        tarifai.push({ 'start': formatDate(vpaStart, 'yyyy-mm-dd'), 'end': formatDate(vpaTarpinisPabaiga, 'yyyy-mm-dd'), 'rate': tarifasAtostogos24men[0], 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': false});
-        tarifai.push({ 'start': formatDate(vpaTarpinisPradzia, 'yyyy-mm-dd'), 'end': formatDate(vpaEnd, 'yyyy-mm-dd'), 'rate': tarifasAtostogos24men[1], 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': false});
+        tarifai.push({ 'start': Date.parse(vpaStart), 'end': Date.parse(vpaTarpinisPabaiga), 'rate': tarifasAtostogos24men[0], 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': false});
+        tarifai.push({ 'start': Date.parse(vpaTarpinisPradzia), 'end': Date.parse(vpaEnd), 'rate': tarifasAtostogos24men[1], 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': false});
     } else {
-        tarifai.push({ 'start': formatDate(vpaStart, 'yyyy-mm-dd'), 'end': formatDate(vpaEnd, 'yyyy-mm-dd'), 'rate': tarifasAtostogos18men, 'base' : vienosDienosBazePagrTevo,  'receiver': gavejas, 'npm': false})
+        tarifai.push({ 'start': Date.parse(vpaStart), 'end': Date.parse(vpaEnd), 'rate': tarifasAtostogos18men, 'base' : vienosDienosBazePagrTevo,  'receiver': gavejas, 'npm': false})
     }
 
     if (naudosisNpm) {
-    tarifai.push({'start': formatDate(npmLastStart, 'yyyy-mm-dd'), 'end': formatDate(npmLasttEnd, 'yyyy-mm-dd'), 'rate': neperleidziamuMenesiuTarifas, 'base' : vienosDienosBazeAntroTevo, 'receiver': gavejasNpm, 'npm': true});
+    tarifai.push({'start': Date.parse(npmLastStart), 'end': Date.parse(npmLasttEnd), 'rate': neperleidziamuMenesiuTarifas, 'base' : vienosDienosBazeAntroTevo, 'receiver': gavejasNpm, 'npm': true});
     }
+	
+	
+    // tarifai.push({'start': formatDate(npmFirstStart), 'end': formatDate(npmFirstEnd), 'rate': neperleidziamuMenesiuTarifas, 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': true});
+
+    // if (vpaTrukme === 24) {
+    //     const vpaTarpinisPabaiga = oneYear;
+    //     const vpaTarpinisPradzia = new Date(vpaTarpinisPabaiga);
+    //     vpaTarpinisPradzia.setDate(vpaTarpinisPradzia.getDate() + 1);
+    //     tarifai.push({ 'start': formatDate(vpaStart, 'yyyy-mm-dd'), 'end': formatDate(vpaTarpinisPabaiga, 'yyyy-mm-dd'), 'rate': tarifasAtostogos24men[0], 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': false});
+    //     tarifai.push({ 'start': formatDate(vpaTarpinisPradzia, 'yyyy-mm-dd'), 'end': formatDate(vpaEnd, 'yyyy-mm-dd'), 'rate': tarifasAtostogos24men[1], 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': false});
+    // } else {
+    //     tarifai.push({ 'start': formatDate(vpaStart, 'yyyy-mm-dd'), 'end': formatDate(vpaEnd, 'yyyy-mm-dd'), 'rate': tarifasAtostogos18men, 'base' : vienosDienosBazePagrTevo,  'receiver': gavejas, 'npm': false})
+    // }
+
+    // if (naudosisNpm) {
+    // tarifai.push({'start': formatDate(npmLastStart, 'yyyy-mm-dd'), 'end': formatDate(npmLasttEnd, 'yyyy-mm-dd'), 'rate': neperleidziamuMenesiuTarifas, 'base' : vienosDienosBazeAntroTevo, 'receiver': gavejasNpm, 'npm': true});
+    // }
 
 }
 
