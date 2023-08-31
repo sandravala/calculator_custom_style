@@ -365,7 +365,21 @@ function formatDate(date, format) {
     let formattedMonth = String(currentMonth + 1).padStart(2, '0'); // Adding 1 to adjust for 0-indexed months
     let formattedDay = String(currentDay).padStart(2, '0');
 
-    return format.localeCompare("yyyy-mm") === 0 ? `${currentYear}-${formattedMonth}` : format.localeCompare("yyyy-mm-dd") === 0 ? `${currentYear}-${formattedMonth}-${currentDay}` : date;
+    let formattedDate;
+    switch (true) {
+		case format.localeCompare("yyyy-mm") === 0:
+		formattedDate = `${currentYear}-${formattedMonth}`;
+			break;
+		case format.localeCompare("yyyy-mm-dd") === 0:
+			formattedDate = `${currentYear}-${formattedMonth}-${currentDay}`;
+			break;
+		case format.localeCompare("yyyy/mm/dd") === 0:
+			formattedDate = `${currentYear}/${formattedMonth}/${currentDay}`;
+			break;
+	    default:
+		    formattedDate = date;
+    }
+    return formattedDate;
     
 }
 
@@ -532,23 +546,41 @@ function fillRateArray() {
     vienosDienosBazePagrTevo = vienosDienosBazePagrTevo.toFixed(2);
     vienosDienosBazeAntroTevo = vienosDienosBazeAntroTevo.toFixed(2);
 
-
-    tarifai.push({'start': Date.parse(npmFirstStart), 'end': Date.parse(npmFirstEnd), 'rate': neperleidziamuMenesiuTarifas, 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': true});
+	tarifai.push({'start': npmFirstStart, 'end': npmFirstEnd, 'rate': neperleidziamuMenesiuTarifas, 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': true});
 
     if (vpaTrukme === 24) {
         const vpaTarpinisPabaiga = oneYear;
         const vpaTarpinisPradzia = new Date(vpaTarpinisPabaiga);
         vpaTarpinisPradzia.setDate(vpaTarpinisPradzia.getDate() + 1);
-        tarifai.push({ 'start': Date.parse(vpaStart), 'end': Date.parse(vpaTarpinisPabaiga), 'rate': tarifasAtostogos24men[0], 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': false});
-        tarifai.push({ 'start': Date.parse(vpaTarpinisPradzia), 'end': Date.parse(vpaEnd), 'rate': tarifasAtostogos24men[1], 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': false});
+        tarifai.push({ 'start': vpaStart, 'end': vpaTarpinisPabaiga, 'rate': tarifasAtostogos24men[0], 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': false});
+        tarifai.push({ 'start': vpaTarpinisPradzia, 'end': vpaEnd, 'rate': tarifasAtostogos24men[1], 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': false});
     } else {
-        tarifai.push({ 'start': Date.parse(vpaStart), 'end': Date.parse(vpaEnd), 'rate': tarifasAtostogos18men, 'base' : vienosDienosBazePagrTevo,  'receiver': gavejas, 'npm': false})
+        tarifai.push({ 'start': vpaStart, 'end': vpaEnd, 'rate': tarifasAtostogos18men, 'base' : vienosDienosBazePagrTevo,  'receiver': gavejas, 'npm': false})
     }
 
     if (naudosisNpm) {
-    tarifai.push({'start': Date.parse(npmLastStart), 'end': Date.parse(npmLasttEnd), 'rate': neperleidziamuMenesiuTarifas, 'base' : vienosDienosBazeAntroTevo, 'receiver': gavejasNpm, 'npm': true});
+    tarifai.push({'start': npmLastStart, 'end': npmLasttEnd, 'rate': neperleidziamuMenesiuTarifas, 'base' : vienosDienosBazeAntroTevo, 'receiver': gavejasNpm, 'npm': true});
     }
 	
+// cia su parse	
+
+    // tarifai.push({'start': Date.parse(npmFirstStart), 'end': Date.parse(npmFirstEnd), 'rate': neperleidziamuMenesiuTarifas, 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': true});
+
+    // if (vpaTrukme === 24) {
+    //     const vpaTarpinisPabaiga = oneYear;
+    //     const vpaTarpinisPradzia = new Date(vpaTarpinisPabaiga);
+    //     vpaTarpinisPradzia.setDate(vpaTarpinisPradzia.getDate() + 1);
+    //     tarifai.push({ 'start': Date.parse(vpaStart), 'end': Date.parse(vpaTarpinisPabaiga), 'rate': tarifasAtostogos24men[0], 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': false});
+    //     tarifai.push({ 'start': Date.parse(vpaTarpinisPradzia), 'end': Date.parse(vpaEnd), 'rate': tarifasAtostogos24men[1], 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': false});
+    // } else {
+    //     tarifai.push({ 'start': Date.parse(vpaStart), 'end': Date.parse(vpaEnd), 'rate': tarifasAtostogos18men, 'base' : vienosDienosBazePagrTevo,  'receiver': gavejas, 'npm': false})
+    // }
+
+    // if (naudosisNpm) {
+    // tarifai.push({'start': Date.parse(npmLastStart), 'end': Date.parse(npmLasttEnd), 'rate': neperleidziamuMenesiuTarifas, 'base' : vienosDienosBazeAntroTevo, 'receiver': gavejasNpm, 'npm': true});
+    // }
+
+// cia su format
 	
     // tarifai.push({'start': formatDate(npmFirstStart), 'end': formatDate(npmFirstEnd), 'rate': neperleidziamuMenesiuTarifas, 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': true});
 
@@ -571,8 +603,8 @@ function fillRateArray() {
 fillRateArray();
 
 tarifai.forEach(el => {
-    el.start = formatDate(el.start, "yyyy-mm-dd");
-    el.end = formatDate(el.end, "yyyy-mm-dd");
+    el.start = formatDate(el.start, "yyyy/mm/dd");
+    el.end = formatDate(el.end, "yyyy/mm/dd");
 })
 
 
