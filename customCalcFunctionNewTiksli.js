@@ -734,11 +734,11 @@ function createRow(data, ismokuPavadinimas) {
 		for(let i = 0; i < data.length ; i++) {
 			const fontWeight = 'normal';
 			rows += `<tr>
-					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].tarifas}</td>
-					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].men}</td>
-					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].suma}</td>
-					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].sumaPoMokesciu}</td>
-					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].gavejas}</td>
+					<td style='text-align: left; font-size: .75em; text-transform: uppercase; padding-left: .3em;'>${data[i].tarifas}</td>
+					<td style='text-align: left; font-size: .75em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].men}</td>
+					<td style='text-align: left; font-size: .75em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].suma}</td>
+					<td style='text-align: left; font-size: .75em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].sumaPoMokesciu}</td>
+					<td style='text-align: left; font-size: .75em; text-transform: uppercase; padding-left: .3em;'>${data[i].gavejas}</td>
 				</tr>`
 		}
 	}
@@ -782,11 +782,11 @@ let rezultatuLentele =
 `<table id='rezultatuLentele' class='rezultatuLentele'  style='border-collapse: separate !important; border-spacing: .60em !important;'>
 <thead>
 <tr>
-<th style='text-align: left; font-size: .85em; text-transform: uppercase;padding-left: .3em;'>${pavadinimai[0]}</th>
-<th style='text-align: left; font-size: .85em; text-transform: uppercase;padding-left: .3em;'">${pavadinimai[1]}</th>
-<th style='text-align: left; font-size: .85em; text-transform: uppercase;padding-left: .3em;'">${pavadinimai[2]}</th>
-<th style='text-align: left; font-size: .85em; text-transform: uppercase;padding-left: .3em;'">${pavadinimai[3]}</th>
-<th style='text-align: left; font-size: .85em; text-transform: uppercase;padding-left: .3em;'">${pavadinimai[4]}</th>
+<th style='text-align: left; font-size: .75em; text-transform: uppercase;padding-left: .3em;'>${pavadinimai[0]}</th>
+<th style='text-align: left; font-size: .75em; text-transform: uppercase;padding-left: .3em;'">${pavadinimai[1]}</th>
+<th style='text-align: left; font-size: .75em; text-transform: uppercase;padding-left: .3em;'">${pavadinimai[2]}</th>
+<th style='text-align: left; font-size: .75em; text-transform: uppercase;padding-left: .3em;'">${pavadinimai[3]}</th>
+<th style='text-align: left; font-size: .75em; text-transform: uppercase;padding-left: .3em;'">${pavadinimai[4]}</th>
 </tr>
 </thead>
 <tbody>
