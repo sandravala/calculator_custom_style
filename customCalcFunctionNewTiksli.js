@@ -621,7 +621,7 @@ function generuotiIsmokosEilute(start, end, rate, base, receiver, npm) {
         let currentYear = currentStartDate.getFullYear();
         let currentMonth = currentStartDate.getMonth();
         let currentLastDay = lastDay(currentYear, currentMonth);
-        let menuo = formatDate(currentStartDate, "yyyy-mm");
+        let menuo = formatDate(currentStartDate, "yyyy-mm-dd") + " - ";
 
         if(currentStartDate.getDate() > 1) {
             factor = ((currentLastDay - currentStartDate.getDate() + 1) / currentLastDay).toFixed(2);
@@ -629,6 +629,9 @@ function generuotiIsmokosEilute(start, end, rate, base, receiver, npm) {
 
         if (currentMonth === finalEndMonth && currentYear === finalEndYear && currentLastDay > finalEndDate.getDate()) {
             factor = (finalEndDate.getDate() / currentLastDay).toFixed(2);
+        	menuo += formatDate(new Date(currentYear, currentMonth, finalEndDate.getDate()), "yyyy-mm-dd");
+        } else {
+            menuo += formatDate(new Date(currentYear, currentMonth, currentLastDay), "yyyy-mm-dd");
         }
 
         let currentBusinessDays = countBusinessDays(new Date(currentYear, currentMonth, 1), new Date(currentYear, currentMonth, currentLastDay), generatePublicHolidays(currentYear));
@@ -779,7 +782,7 @@ vpaIsmokaRodyti && (tecioPajamos || mamosPajamos) > 0 ? paaiskinimai[7] = 'Čia 
 // sugeneruojame rezultatu lentele
 
 let rezultatuLentele = 
-`<table id='rezultatuLentele' class='rezultatuLentele'  style='border-collapse: separate !important; border-spacing: .60em !important;'>
+`<table id='rezultatuLentele' class='rezultatuLentele'  style='border-collapse: separate !important; border-spacing: 0 !important;'>
 <thead>
 <tr>
 <th style='text-align: left; font-size: .75em; text-transform: uppercase;padding-left: .3em;'>${pavadinimai[0]}</th>
