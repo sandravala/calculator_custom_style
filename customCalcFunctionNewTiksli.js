@@ -675,7 +675,8 @@ function createRow(data, ismokuPavadinimas) {
 					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].base}</td>
 					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].receiver}</td>
 				</tr>`
-			} else {
+			}
+		} else {
 			rows += `<tr>
 			 <td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${ismokuPavadinimas}</td>
 			</tr>`
