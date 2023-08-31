@@ -95,7 +95,7 @@
     width: 100%
     &.rezultatuLentele {
         border-collapse: separate !important; 
-/*         border-spacing: .60em !important; */
+        border-spacing: 0;
     }
 }
 
