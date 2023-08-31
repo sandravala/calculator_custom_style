@@ -742,7 +742,10 @@ function createRow(data, ismokuPavadinimas) {
 					<td style='text-align: left; font-size: .75em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].suma}</td>
 					<td style='text-align: left; font-size: .75em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].sumaPoMokesciu}</td>
 					<td style='text-align: left; font-size: .75em; text-transform: uppercase; padding-left: .3em;'>${data[i].gavejas}</td>
-				</tr>`
+				</tr>
+				<tr >
+				    <td colspan='5' style='border-bottom:1px solid #D9E1E7;'></td>
+				  </tr>`
 		}
 	}
 		
@@ -785,8 +788,8 @@ let rezultatuLentele =
 `<table id='rezultatuLentele' class='rezultatuLentele'  style='border-collapse: separate !important; border-spacing: 0 !important;'>
 <thead>
 <tr>
-<th style='text-align: left; font-size: .75em; text-transform: uppercase;padding-left: .3em;'>${pavadinimai[0]}</th>
-<th style='text-align: left; font-size: .75em; text-transform: uppercase;padding-left: .3em;'">${pavadinimai[1]}</th>
+<th style='text-align: left; font-size: .75em; text-transform: uppercase;padding-left: .3em; width: 10%;'>${pavadinimai[0]}</th>
+<th style='text-align: left; font-size: .75em; text-transform: uppercase;padding-left: 1em;'">${pavadinimai[1]}</th>
 <th style='text-align: left; font-size: .75em; text-transform: uppercase;padding-left: .3em;'">${pavadinimai[2]}</th>
 <th style='text-align: left; font-size: .75em; text-transform: uppercase;padding-left: .3em;'">${pavadinimai[3]}</th>
 <th style='text-align: left; font-size: .75em; text-transform: uppercase;padding-left: .3em;'">${pavadinimai[4]}</th>
