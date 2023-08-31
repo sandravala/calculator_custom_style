@@ -790,7 +790,6 @@ let rezultatuLentele =
 </tr>
 </thead>
 <tbody>
-${createRow(tarifai, 'tarifai')}
 ${createRow(motinystesIsmokosEilute, mIsmokosPavadinimas)}
 ${createRow(tevystesIsmokosEilute, tIsmokosPavadinimas)}
 ${createRow(vpaIsmokos, vpaIsmokosPavadinimas)}
