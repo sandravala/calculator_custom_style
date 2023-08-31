@@ -742,10 +742,10 @@ function createRow(data, ismokuPavadinimas) {
 					<td style='text-align: left; font-size: .75em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].suma}</td>
 					<td style='text-align: left; font-size: .75em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].sumaPoMokesciu}</td>
 					<td style='text-align: left; font-size: .75em; text-transform: uppercase; padding-left: .3em;'>${data[i].gavejas}</td>
-				</tr>
-				<tr >
-				    <td colspan='5' style='border-bottom:1px solid #D9E1E7;'></td>
-				  </tr>`
+				</tr>`
+			if(data.length > 2 && i < data.length - 1) {	
+				    rows += `<tr><td colspan='5' style='border-bottom:1px solid #D9E1E7;'></td></tr>`
+			}
 		}
 	}
 		
@@ -785,7 +785,7 @@ vpaIsmokaRodyti && (tecioPajamos || mamosPajamos) > 0 ? paaiskinimai[7] = 'Čia 
 // sugeneruojame rezultatu lentele
 
 let rezultatuLentele = 
-`<table id='rezultatuLentele' class='rezultatuLentele'  style='border-collapse: separate !important; border-spacing: 0 !important;'>
+`<table id='rezultatuLentele' class='rezultatuLentele'  style='border-collapse: separate !important; border-spacing: .2em !important;'>
 <thead>
 <tr>
 <th style='text-align: left; font-size: .75em; text-transform: uppercase;padding-left: .3em; width: 10%;'>${pavadinimai[0]}</th>
