@@ -171,7 +171,7 @@ function findLastPositive(arr) {
 
 let maxIsmoka = vdu.filter(el => el[0] === duomenysMaxIsmokai.metai).length == 0 || vdu.filter(el => el[0] === duomenysMaxIsmokai.metai)[0][duomenysMaxIsmokai.ketvirtis] == 0 ? 
 		duomenysMaxIsmokai.metai > vdu[0][0] ? findLastPositive(flatten(vdu))*2  : vdu[0][1]*2 : (vdu.filter(el => el[0] === duomenysMaxIsmokai.metai)[0][duomenysMaxIsmokai.ketvirtis])*2;
-maxIsmoka.round(2);
+maxIsmoka.toFixed(2);
 
 // PASIDAROM LENTELE SU ISMOKU SARASU PAMENESIUI
 
@@ -194,16 +194,155 @@ let vpaPradzia = new Date(gimimoDiena);
 vpaPradzia.setDate(vpaPradzia.getDate() + 56);
 let vpaMenuo = vpaPradzia.getMonth() + 1 - gMenuo + 1;
 
+// PASIDAROME REIKALINGAS TARPINES DATAS
+
+	function formatDate(date, format) {
+    let currentYear = date.getFullYear();
+    let currentMonth = date.getMonth();
+    let currentDay = date.getDate();
+    let formattedMonth = String(currentMonth + 1).padStart(2, '0'); // Adding 1 to adjust for 0-indexed months
+    let formattedDay = String(currentDay).padStart(2, '0');
+
+    let formattedDate;
+    switch (true) {
+		case format.localeCompare("yyyy-mm") === 0:
+		formattedDate = `${currentYear}-${formattedMonth}`;
+			break;
+		case format.localeCompare("yyyy-mm-dd") === 0:
+			formattedDate = `${currentYear}-${formattedMonth}-${formattedDay}`;
+			break;
+		case format.localeCompare("yyyy/mm/dd") === 0:
+			formattedDate = `${currentYear}/${formattedMonth}/${formattedDay}`;
+			break;
+	    default:
+		    formattedDate = date;
+    }
+    return formattedDate;
+    
+}
+
+function lastDay(y, m) {
+	return  new Date(y, m + 1, 0).getDate();
+}
+
+function countBusinessDays(startDate, endDate, holidays) {
+    let workdays = 0;
+
+    for (let day = new Date(startDate); day <= endDate; day.setDate(day.getDate() + 1)) {
+      const dayOfWeek = day.getDay();
+      const isWeekend = dayOfWeek === 0 || dayOfWeek === 6; // Saturday or Sunday
+      const isHoliday = holidays.includes(day.toISOString().split('T')[0]);
+    if (!isWeekend && !isHoliday) {
+        workdays++;
+      }
+    }
+  
+    return workdays;  
+
+}
+
+function calculateEasterDate(year) {
+    const a = year % 19;
+    const b = Math.floor(year / 100);
+    const c = year % 100;
+    const d = Math.floor(b / 4);
+    const e = b % 4;
+    const f = Math.floor((b + 8) / 25);
+    const g = Math.floor((b - f + 1) / 3);
+    const h = (19 * a + b - d - g + 15) % 30;
+    const i = Math.floor(c / 4);
+    const k = c % 4;
+    const l = (32 + 2 * e + 2 * i - h - k) % 7;
+    const m = Math.floor((a + 11 * h + 22 * l) / 451);
+    const month = Math.floor((h + l - 7 * m + 114) / 31);
+    const day = ((h + l - 7 * m + 114) % 31) + 1;
+    
+    return new Date(year, month - 1, day);
+}
+
+function generatePublicHolidays(year) {
+    
+    const fixedHolidayDays = ['-01-01', '-02-16', '-03-11', '-05-01', '-06-24', '-07-06', '-08-15', '-11-01', '-11-02', '-12-24', '-12-25', '-12-26'];
+
+    const fixedHolidays = [];
+
+    fixedHolidayDays.forEach(element => {
+        fixedHolidays.push(year+element);
+    });
+
+    const easter = calculateEasterDate(year);
+    easter.setDate(easter.getDate() + 1);
+    const easterMonday = new Date(easter);
+    easterMonday.setDate(easter.getDate() + 1);
+
+    const flexibleHolidays = [ formatDate(easter, 'yyyy-mm-dd'), formatDate(easterMonday, 'yyyy-mm-dd')];
+
+    const publicHolidays = [...fixedHolidays, ...flexibleHolidays];
+    const holidaysOnWeekdays = [];
+
+
+    publicHolidays.forEach(holiday => {
+        const holidayOnWeekend = new Date(holiday).getDay() === 0 || new Date(holiday).getDay() === 6;
+        if (!holidayOnWeekend) {
+            holidaysOnWeekdays.push(holiday);
+        }
+    });
+
+    return holidaysOnWeekdays;
+}
+ 
+
+function addMonthsToDate(date, monthsToAdd) {
+    const newDate = new Date(date);
+        const currentMonth = newDate.getMonth();
+    newDate.setMonth(currentMonth + monthsToAdd);
+
+    let newCurrentMonth = currentMonth + monthsToAdd > 0 ? (currentMonth + monthsToAdd) % 12 : 12 + (currentMonth + monthsToAdd) % 12;
+
+    // Handling potential year adjustment
+    if (newDate.getMonth() !== newCurrentMonth) {
+      newDate.setDate(0); // Move to the last day of the previous month
+    }
+    
+    return newDate;
+}  
+
+
+let avgBusinessDaysInAYear = countBusinessDays(new Date(gimimoDiena.getFullYear(), 0, 1), new Date(gimimoDiena.getFullYear(), 11, 31), generatePublicHolidays(gimimoDiena.getFullYear())) / 12;
+avgBusinessDaysInAYear = avgBusinessDaysInAYear.toFixed(1);
+
+const npmFirstStart = vpaPradzia;
+
+const npmFirstEnd = addMonthsToDate(new Date(npmFirstStart), 2);
+npmFirstEnd.setDate(npmFirstEnd.getDate());
+
+const npmLasttEnd = addMonthsToDate(new Date(gimimoDiena), vpaTrukme);
+npmLasttEnd.setDate(npmLasttEnd.getDate() - 1);
+
+const npmLastStart = addMonthsToDate(new Date(npmLasttEnd), -2);
+
+const vpaEnd = new Date(npmLastStart);
+vpaEnd.setDate(vpaEnd.getDate() - 1);
+
+const oneYear = addMonthsToDate(new Date(gimimoDiena), 12);
+oneYear.setDate(oneYear.getDate() - 1);
+
+const vpaStart = new Date(npmFirstEnd);
+vpaStart.setDate(vpaStart.getDate() + 1);
 
 // PASIDAROME BAZE SKAICIAVIMUI
 
-function galutineIsmokosSuma(bazeIsmokai, tarifas, menSkaicius) {
-	let galutineIsmoka = bazeIsmokai < maxIsmoka && bazeIsmokai > minIsmoka ? bazeIsmokai * tarifas/100 * (1 - mokesciaiNuoIsmoku/100) : bazeIsmokai > maxIsmoka ? maxIsmoka * tarifas/100 * (1 - mokesciaiNuoIsmoku/100) : minIsmoka * (1 - mokesciaiNuoIsmoku/100);
-	return galutineIsmoka.round(2) * menSkaicius;
-}
-function ismokosSumaSuMokesciais(bazeIsmokai, tarifas, menSkaicius) {
-	let galutineIsmoka = bazeIsmokai < maxIsmoka && bazeIsmokai > minIsmoka ? bazeIsmokai * tarifas/100 : bazeIsmokai > maxIsmoka ? maxIsmoka * tarifas/100 : minIsmoka;
-	return galutineIsmoka.round(2) * menSkaicius;
+let bendraVpaIsmokuSuma = 0;
+let bendraVpaIsmokuSumaSuMokesciais = 0;
+
+function ismokosSuma(bazeIsmokai, tarifas, kiekisDienomisArbaMenesiais, netaikytiLubu, countDaily) {
+	let maxDaily = maxIsmoka / avgBusinessDaysInAYear;
+	maxDaily = maxDaily.toFixed(2);
+    let baseMax = countDaily ? maxDaily : maxIsmoka;
+    let lubos = netaikytiLubu ? bazeIsmokai + 1 : baseMax;
+	let bazeDidesneUzLubas = parseFloat(bazeIsmokai) > parseFloat(lubos);
+	let galutineIsmoka = bazeDidesneUzLubas ? baseMax * tarifas/100 * kiekisDienomisArbaMenesiais : bazeIsmokai * tarifas/100 * kiekisDienomisArbaMenesiais;
+    return galutineIsmoka.toFixed(2);
 }
 
 let mamosBazeIsmokai = mamosPajamos;
@@ -212,6 +351,8 @@ let tecioBazeIsmokai = tecioPajamos;
 //pasidarome vpa ismoku sarasa 
 
 let vpaIsmokos = [];
+let tarifai = [];
+let bendrosSumos = [];
 let mamaVpa = mamaArTetisVpa === 1; // patikriniam, ar mama eis vpa (jei ne, tai vadinasi tetis)
 function pajamuBaze(arMamaVpa){
 	const baze = arMamaVpa ? mamosBazeIsmokai : tecioBazeIsmokai;
@@ -221,75 +362,154 @@ function pajamuBaze(arMamaVpa){
 let bazeSkaiciavimui = pajamuBaze(mamaVpa); // pasirenkam mamos ar tecio du skaiciuoti ismokoms pagrindinems
 let bazeNpmSkaiciavimui = pajamuBaze(!mamaVpa); // pasirenkam mamos ar tecio du skaiciuoti ismokoms npm
 
-let bendraIsmokuSuma = 0;
-let bendraIsmokuSumaSuMokesciais = 0;
+function fillRateArray() {
+    let gavejas = mamaVpa ? 'mama' : 'tėtis';
+    let gavejasNpm = mamaVpa ? 'tėtis' : 'mama';
+    let vienosDienosBazePagrTevo = bazeSkaiciavimui / avgBusinessDaysInAYear;
+    let vienosDienosBazeAntroTevo = bazeNpmSkaiciavimui / avgBusinessDaysInAYear;
+    vienosDienosBazePagrTevo = vienosDienosBazePagrTevo.toFixed(2);
+    vienosDienosBazeAntroTevo = vienosDienosBazeAntroTevo.toFixed(2);
 
+	tarifai.push({'start': npmFirstStart, 'end': npmFirstEnd, 'rate': neperleidziamuMenesiuTarifas, 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': true});
 
-function lastday(y, m) {
-    return new Date(y, m + 1, 0).getDate();
-}
-	
-function tekstasIsmokuSarasui(metuNuoGimdymo, i, npm, paskutinisMenuo) {
-	const menesioNr = gMenuo + i >= 12 ? (gMenuo + i)%12:gMenuo + i;
-		const tarifas = i < 4 || npm ? neperleidziamuMenesiuTarifas : vpaTrukme <= 18 ? tarifasAtostogos18men : i < 12 ? tarifasAtostogos24men[0] : tarifasAtostogos24men[1];
-		const tarifasSpausdinimui = i < 4 || npm ? tarifas.toLocaleString("lt-LT") + ' % (npm***)' : tarifas.toLocaleString("lt-LT") + ' %';
-		const menuo = (gimimoDiena.getFullYear() + metuNuoGimdymo) + " " + menesiai[menesioNr];
-		const baze = npm ? bazeNpmSkaiciavimui : bazeSkaiciavimui;
-
-		const suma = paskutinisMenuo ? (ismokosSumaSuMokesciais(baze, tarifas, 1) / lastday(gimimoDiena.getFullYear() + metuNuoGimdymo, menesioNr) * (gimimoDiena.getDate() - 1)).round(2) : ismokosSumaSuMokesciais(baze, tarifas, 1);
-		const sumaPoMokesciu = paskutinisMenuo ? (galutineIsmokosSuma(baze, tarifas, 1) / lastday(gimimoDiena.getFullYear() + metuNuoGimdymo, menesioNr) * (gimimoDiena.getDate() - 1)).round(2) : galutineIsmokosSuma(baze, tarifas, 1);
-	
-		const gavejas = !npm ? mamaVpa? 'mama' : 'tėtis' : mamaVpa? 'tėtis' : 'mama'; 
-		bendraIsmokuSuma += galutineIsmokosSuma(baze, tarifas, 1);
-		bendraIsmokuSumaSuMokesciais += ismokosSumaSuMokesciais(baze, tarifas, 1);
-		vpaIsmokos.push({'tarifas' : tarifasSpausdinimui, 'men' : menuo, 'suma' : suma.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu': sumaPoMokesciu.toLocaleString("lt-LT")  + " €", 'gavejas' : gavejas});
-}
-
-if (new Date(gimdymoData).getDate() > 1) {
-    for (let i = 2; i <= vpaTrukme; i++) {
-        const praejoMetu = Math.trunc((gimimoDiena.getMonth() + i) / 12);
-        let paskutinisMenuo = vpaTrukme - 2 === i ? true : false;
-        if (i > vpaTrukme - 2 && naudosisNpm) {
-            tekstasIsmokuSarasui(praejoMetu, i, true, false);
-        } else if (i <= vpaTrukme - 2) {
-            tekstasIsmokuSarasui(praejoMetu, i, false, paskutinisMenuo);
-        }
+    if (vpaTrukme === 24) {
+        const vpaTarpinisPabaiga = oneYear;
+        const vpaTarpinisPradzia = new Date(vpaTarpinisPabaiga);
+        vpaTarpinisPradzia.setDate(vpaTarpinisPradzia.getDate() + 1);
+        tarifai.push({ 'start': vpaStart, 'end': vpaTarpinisPabaiga, 'rate': tarifasAtostogos24men[0], 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': false});
+        tarifai.push({ 'start': vpaTarpinisPradzia, 'end': vpaEnd, 'rate': tarifasAtostogos24men[1], 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': false});
+    } else {
+        tarifai.push({ 'start': vpaStart, 'end': vpaEnd, 'rate': tarifasAtostogos18men, 'base' : vienosDienosBazePagrTevo,  'receiver': gavejas, 'npm': false})
     }
-} else {
-    for (let i = 2; i <= vpaTrukme - 1; i++) {
-        const praejoMetu = Math.trunc((gimimoDiena.getMonth() + i) / 12);
-        let paskutinisMenuo = vpaTrukme - 3 === i ? true : false;
-        if (i >= vpaTrukme - 2 && naudosisNpm) {
-            tekstasIsmokuSarasui(praejoMetu, i, true, false);
-        } else if (i < vpaTrukme - 2) {
-            tekstasIsmokuSarasui(praejoMetu, i, false, paskutinisMenuo);
-        }
+
+    if (naudosisNpm) {
+    tarifai.push({'start': npmLastStart, 'end': npmLasttEnd, 'rate': neperleidziamuMenesiuTarifas, 'base' : vienosDienosBazeAntroTevo, 'receiver': gavejasNpm, 'npm': true});
     }
 }
 
+fillRateArray();
 
-vpaIsmokos.push({'tarifas' : '', 'men' : 'Viso:', 'suma' : bendraIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
+tarifai.forEach(el => {
+    el.start = formatDate(el.start, "yyyy/mm/dd");
+    el.end = formatDate(el.end, "yyyy/mm/dd");
+})
 
+
+function generuotiIsmokosEilute(start, end, rate, base, receiver, npm) {
+
+    let currentStartDate = new Date(start);
+    let finalEndDate = new Date(end);
+    let finalEndYear = finalEndDate.getFullYear();
+    let finalEndMonth = finalEndDate.getMonth();
+    let npmText = npm ? '(npm***)' : '';
+
+    while (currentStartDate < finalEndDate) {
+        let factor = 1;
+        let currentYear = currentStartDate.getFullYear();
+        let currentMonth = currentStartDate.getMonth();
+        let currentLastDay = lastDay(currentYear, currentMonth);
+        let menuo = formatDate(currentStartDate, "yyyy-mm-dd") + " - ";
+
+        if(currentStartDate.getDate() > 1) {
+            factor = ((currentLastDay - currentStartDate.getDate() + 1) / currentLastDay).toFixed(2);
+        }
+
+        if (currentMonth === finalEndMonth && currentYear === finalEndYear && currentLastDay > finalEndDate.getDate()) {
+            factor = (finalEndDate.getDate() / currentLastDay).toFixed(2);
+        	menuo += formatDate(new Date(currentYear, currentMonth, finalEndDate.getDate()), "yyyy-mm-dd");
+        } else {
+            menuo += formatDate(new Date(currentYear, currentMonth, currentLastDay), "yyyy-mm-dd");
+        }
+
+        let currentBusinessDays = countBusinessDays(new Date(currentYear, currentMonth, 1), new Date(currentYear, currentMonth, currentLastDay), generatePublicHolidays(currentYear));
+
+        let suma = ismokosSuma(base, rate, currentBusinessDays, false, true);
+        suma = suma < minIsmoka ? minIsmoka * factor : suma * factor;
+        suma = parseFloat(suma.toFixed(2));
+        let sumaPoMokesciu = suma * (1 - mokesciaiNuoIsmoku/100);
+        sumaPoMokesciu = parseFloat(sumaPoMokesciu.toFixed(2));
+
+        bendraVpaIsmokuSumaSuMokesciais += suma;
+        bendraVpaIsmokuSuma += sumaPoMokesciu;
+
+        vpaIsmokos.push({'tarifas': rate + ' % ' + npmText, 'men': menuo, 'suma': suma, 'sumaPoMokesciu': sumaPoMokesciu, 'gavejas': receiver});
+
+        currentStartDate = addMonthsToDate(currentStartDate.setDate(1), 1);       
+    }; 
+
+}
+
+
+tarifai.forEach(element => {
+    generuotiIsmokosEilute(element.start, element.end, element.rate, element.base, element.receiver, element.npm)
+});
+
+bendrosSumos.push({'tarifas' : '', 'men' : 'Viso VPA išmokų:', 'suma' : bendraVpaIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraVpaIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
+
+vpaIsmokos.forEach(ismoka => {
+    ismoka.suma = ismoka.suma.toLocaleString("lt-LT") + " €";
+    ismoka.sumaPoMokesciu = ismoka.sumaPoMokesciu.toLocaleString("lt-LT") + " €";
+})
+	
 // funkcija eiluciu generavimui pagal duomenis
 
 function createRow(data, ismokuPavadinimas) {
 	let rows = '';
 
-	if (ismokuPavadinimas !== '') {
-		rows += `<tr>
-			 <td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${ismokuPavadinimas}</td>
-			</tr>`
-		
-		for(let i = 0; i < data.length ; i++) {
-			const fontWeight = (i + 1 > 5) && (i + 1 >= data.length) ? 'bold' : 'normal';
+if (ismokuPavadinimas !== '') {
+		if(ismokuPavadinimas === 'bendraSuma' && (mamosPajamos > 0 || tecioPajamos > 0)) {
+			
+			const fontWeight = 'bold';
+			
 			rows += `<tr>
-					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].tarifas}</td>
-					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].men}</td>
+				 <td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>IŠ VISO:</td>
+				</tr>`
+			
+    for(let i = 0; i < data.length ; i++) {
+    			rows += `<tr>
+					<td colspan='2' style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].men}</td>
 					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].suma}</td>
 					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].sumaPoMokesciu}</td>
 					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].gavejas}</td>
 				</tr>`
+			}
+			} else if(ismokuPavadinimas === 'tarifai') {
+			
+			const fontWeight = 'bold';
+			
+			rows += `<tr>
+				 <td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>TARIFAI:</td>
+				</tr>`
+			
+    for(let i = 0; i < data.length ; i++) {
+    			rows += `<tr>
+					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].start}</td>
+					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].end}</td>
+					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].rate}</td>
+					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].base}</td>
+					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].receiver}</td>
+				</tr>`
+			}
+		} else {
+			rows += `<tr>
+			 <td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${ismokuPavadinimas}</td>
+			</tr>`
+		
+		for(let i = 0; i < data.length ; i++) {
+			const fontWeight = 'normal';
+			rows += `<tr>
+					<td style='text-align: left; font-size: .75em; text-transform: uppercase; padding-left: .3em;'>${data[i].tarifas}</td>
+					<td style='text-align: left; font-size: .75em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].men}</td>
+					<td style='text-align: left; font-size: .75em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].suma}</td>
+					<td style='text-align: left; font-size: .75em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].sumaPoMokesciu}</td>
+					<td style='text-align: left; font-size: .75em; text-transform: uppercase; padding-left: .3em;'>${data[i].gavejas}</td>
+				</tr>`
+			if(data.length > 2 && i < data.length - 1) {	
+				    rows += `<tr><td colspan='5' style='border-bottom:1px solid #D9E1E7;'></td></tr>`
+			}
 		}
+	}
+		
 	}
 	return rows;	
 };
@@ -299,7 +519,7 @@ function createRow(data, ismokuPavadinimas) {
 let vpaIsmokosPavadinimas = (tecioPajamos || mamosPajamos) > 0 ? 'Vaiko priežiūros atostogų išmoka:' : '';
 let paaiskinimuPavadinimas = tecioPajamos || mamosPajamos > 0 ? 'Paaiškinimai:' : '';
 let pavadinimai = mamosPajamos > 0 || tecioPajamos > 0 ? ['tarifas', 'data*', 'suma**', 'suma (į rankas)', 'gavėjas'] : ['', '', '', '', ''];
-
+let bendrosSumosPavadinimas = vpaIsmokaRodyti && (tecioPajamos || mamosPajamos) > 0 ? 'bendraSuma' : '';
 
 // pasidarom paaiskinimu tekstus
 
@@ -326,6 +546,7 @@ let rezultatuLentele =
 </thead>
 <tbody>
 ${createRow(vpaIsmokos, vpaIsmokosPavadinimas)}
+${createRow(bendrosSumos, bendrosSumosPavadinimas)}
 <tr><td colspan='5' class='segment' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${paaiskinimuPavadinimas}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[0]}</td></tr>
 <tr><td colspan='5'>${paaiskinimai[1]}</td></tr>
