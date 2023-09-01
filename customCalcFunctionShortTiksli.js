@@ -519,7 +519,7 @@ if (ismokuPavadinimas !== '') {
 let vpaIsmokosPavadinimas = (tecioPajamos || mamosPajamos) > 0 ? 'Vaiko priežiūros atostogų išmoka:' : '';
 let paaiskinimuPavadinimas = tecioPajamos || mamosPajamos > 0 ? 'Paaiškinimai:' : '';
 let pavadinimai = mamosPajamos > 0 || tecioPajamos > 0 ? ['tarifas', 'data*', 'suma**', 'suma (į rankas)', 'gavėjas'] : ['', '', '', '', ''];
-let bendrosSumosPavadinimas = vpaIsmokaRodyti && (tecioPajamos || mamosPajamos) > 0 ? 'bendraSuma' : '';
+let bendrosSumosPavadinimas = tecioPajamos || mamosPajamos > 0 ? 'bendraSuma' : '';
 
 // pasidarom paaiskinimu tekstus
 
