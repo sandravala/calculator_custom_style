@@ -537,8 +537,8 @@ let rezultatuLentele =
 `<table id='rezultatuLentele' class='rezultatuLentele'  style='border-collapse: separate !important; border-spacing: .60em !important;'>
 <thead>
 <tr>
-<th style='text-align: left; font-size: .85em; text-transform: uppercase;padding-left: .3em;'>${pavadinimai[0]}</th>
-<th style='text-align: left; font-size: .85em; text-transform: uppercase;padding-left: .3em;'">${pavadinimai[1]}</th>
+<th style='text-align: left; font-size: .85em; text-transform: uppercase;padding-left: .3em; width: 10%;'>${pavadinimai[0]}</th>
+<th style='text-align: left; font-size: .85em; text-transform: uppercase;padding-left: 1em;'">${pavadinimai[1]}</th>
 <th style='text-align: left; font-size: .85em; text-transform: uppercase;padding-left: .3em;'">${pavadinimai[2]}</th>
 <th style='text-align: left; font-size: .85em; text-transform: uppercase;padding-left: .3em;'">${pavadinimai[3]}</th>
 <th style='text-align: left; font-size: .85em; text-transform: uppercase;padding-left: .3em;'">${pavadinimai[4]}</th>
