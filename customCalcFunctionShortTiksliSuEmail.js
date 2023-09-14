@@ -513,7 +513,7 @@ if (ismokuPavadinimas !== '') {
 		
 		for(let i = 0; i < data.length ; i++) {
 			
-			ismokuEilutes.push(data[i].men + ': ' + ${data[i].suma + ' suma su mokesciais');
+			ismokuEilutes.push(data[i].men + ': ' + data[i].suma + ' suma su mokesciais');
 								  
 			const fontWeight = 'normal';
 			rows += `<tr>
