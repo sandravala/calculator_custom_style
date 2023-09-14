@@ -585,7 +585,8 @@ rezultatai = rezultatuLentele;
 }
 
 function rezultataiEmailui() {
-let table = `<table><thead><tr></tr></thead><tbody>${ismokuEilutes}</tbody></table>`
+let table = `<table><thead><tr></tr></thead><tbody>${ismokuEilutes}</tbody></table>`;
+	console.log('table');
 return table;
 }
 
