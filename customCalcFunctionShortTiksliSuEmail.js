@@ -466,6 +466,15 @@ vpaIsmokos.forEach(ismoka => {
     ismoka.suma = ismoka.suma.toLocaleString("lt-LT") + " €";
     ismoka.sumaPoMokesciu = ismoka.sumaPoMokesciu.toLocaleString("lt-LT") + " €";
 })
+
+// funkcija laukeliu iterpimui i elementor forma. dinamiskai sukursiu reikalingus laukelius, i juos idesiu teksta is vpa ismoku, o elementor editor nurodysiu all fields. tik dar klausimas, kaip su email laukeliu (kaip padaryt, kad jo neidetu i emaila)
+function insertElementorField(i) {
+	let newField = `<div class="elementor-field-type-hidden elementor-field-group elementor-column elementor-field-group-${i} elementor-col-100">
+			 <input size="1" type="hidden" name="form_fields[${i}]" id="form-field-${i}" class="elementor-field elementor-size-sm  elementor-field-textual">
+			 </div>`;
+	document.getElementsByClassName('elementor-form-fields-wrapper')[0].lastElementChild.insertAdjacentHTML('beforeBegin', newField);
+}
+
 	
 // funkcija eiluciu generavimui pagal duomenis
 
