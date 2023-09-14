@@ -1,4 +1,4 @@
-let ismokuEilutes = '';
+let ismokuEilutes = [];
 
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, emailas, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
@@ -512,10 +512,10 @@ if (ismokuPavadinimas !== '') {
 			</tr>`
 		
 		for(let i = 0; i < data.length ; i++) {
-			
-			ismokuEilutes += `
-   <tr><td>${data[i].men}: ${data[i].suma} (suma su mokesciais)\n</td></tr>
-   <tr><td></td></tr>`;
+			ismokuEilutes.push(data[i].men + ': ' + data[i].suma + ' (suma su mokesciais)');
+			// ismokuEilutes += `
+   // <tr><td>${data[i].men}: ${data[i].suma} (suma su mokesciais)\n</td></tr>
+   // <tr><td></td></tr>`;
 			// ismokuEilutes += `<li>${data[i].men}: ${data[i].suma} (suma su mokesciais)\n</li>`;
 								  
 			const fontWeight = 'normal';
@@ -588,10 +588,10 @@ rezultatai = rezultatuLentele;
 }
 
 function rezultataiEmailui() {
-let table = `<div><div><table><thead><tr></tr></thead><tbody>${ismokuEilutes}</tbody></table></div></div>`;
-	let list = `<div><ul>${ismokuEilutes}</ul><div>`;
-	console.log(list);
-return table;
+// let table = `<div><div><table><thead><tr></tr></thead><tbody>${ismokuEilutes}</tbody></table></div></div>`;
+// 	let list = `<div><ul>${ismokuEilutes}</ul><div>`;
+// 	console.log(list);
+return ismokuEilutes;
 }
 
 function getAlert(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, emailas, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas){
