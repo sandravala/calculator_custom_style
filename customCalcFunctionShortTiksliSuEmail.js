@@ -113,6 +113,10 @@ jQuery('.formbox__btn-reset').on('click', function(){
 	jQuery('#rezultatuLentele').empty();
 });
 
+jQuery('.formbox__btn-calc').on('click', function(){
+	jQuery('#send-btn-elementor').trigger('click');
+});
+
 jQuery('input').on('change', function(){
 	if(motinystesIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
 	if(tevystesIsmokaRodyti) {fieldset[rezultatuLaukas].show();};
