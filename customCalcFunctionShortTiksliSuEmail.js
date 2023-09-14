@@ -513,7 +513,7 @@ if (ismokuPavadinimas !== '') {
 		
 		for(let i = 0; i < data.length ; i++) {
 			
-			ismokuEilutes += `<div>${data[i].men}: ${data[i].suma} (suma su mokesciais)</div>`;
+			ismokuEilutes += `<tr><td>${data[i].men}: ${data[i].suma} (suma su mokesciais)</td></tr>`;
 								  
 			const fontWeight = 'normal';
 			rows += `<tr>
@@ -585,8 +585,8 @@ rezultatai = rezultatuLentele;
 }
 
 function rezultataiEmailui() {
-
-return ismokuEilutes;
+let table = `<table><tbody>${ismokuEilutes}</tbody></table>`
+return table;
 }
 
 function getAlert(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, emailas, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas){
