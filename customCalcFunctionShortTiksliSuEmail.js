@@ -576,7 +576,7 @@ ${createRow(bendrosSumos, bendrosSumosPavadinimas)}
 
 rezultatai = rezultatuLentele;
 
-function rezultataiEmailui(vpaIsmokos, bendrosSumos) {
+function rezultataiEmailui() {
 	let finalTekstasEmailui = [];
 	vpaIsmokos.forEach(el => {
 		// {'tarifas': rate + ' % ' + npmText, 'men': menuo, 'suma': suma, 'sumaPoMokesciu': sumaPoMokesciu, 'gavejas': receiver}
