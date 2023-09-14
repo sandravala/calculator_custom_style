@@ -108,7 +108,7 @@ jQuery('.formbox__btn-reset').on('click', function(){
 	sessionStorage.removeItem('done'); 
 	fieldset[rezultatuLaukas].removeClass('has-result'); 
 	fieldset[rezultatuLaukas].hide(); 
-	rodytiLaukus([...vpaLaukai,...bendriLaukai, npmLaukas, ...mLaukai[0], ...mLaukai[1], ...tLaukai[0], ...tLaukai[1]], false);
+	rodytiLaukus([...vpaLaukai,...bendriLaukai, npmLaukas, mLaukai[0], tLaukai[0], false);
 	atzymetiRadios([ ...vpaRadios ]);
 	jQuery('#rezultatuLentele').empty();
 });
@@ -574,19 +574,6 @@ ${createRow(bendrosSumos, bendrosSumosPavadinimas)}
 `
 
 rezultatai = rezultatuLentele;
-
-const emailoInputCalc = document.getElementById('formbox-field-16');
-const formaEmailuiYra = document.getElementById('form_SV');
-const emailoInputElementor = document.getElementById('form-field-email_form_SV');
-const resultInputElementor = document.getElementById('form-field-result_form_SV');
-
-emailoInputCalc.addEventListener('input', event => {
-	if(formaEmailuiYra) {
-		emailoInputElementor.value = emailoInputCalc.value;
-		resultInputElementor.value = rezultatuLentele;
-	}
-	
-});
 
 	return rezultatai;
 }
