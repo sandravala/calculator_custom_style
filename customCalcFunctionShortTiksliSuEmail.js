@@ -108,7 +108,7 @@ jQuery('.formbox__btn-reset').on('click', function(){
 	sessionStorage.removeItem('done'); 
 	fieldset[rezultatuLaukas].removeClass('has-result'); 
 	fieldset[rezultatuLaukas].hide(); 
-	rodytiLaukus([...vpaLaukai,...bendriLaukai, npmLaukas, mLaukai[0], tLaukai[0], false);
+	rodytiLaukus([...vpaLaukai,...bendriLaukai, npmLaukas, mLaukai[0], tLaukai[0], false]);
 	atzymetiRadios([ ...vpaRadios ]);
 	jQuery('#rezultatuLentele').empty();
 });
