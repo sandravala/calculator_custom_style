@@ -516,7 +516,7 @@ if (ismokuPavadinimas !== '') {
 			ismokuEilutes += `
    <tr><td>${data[i].men}: ${data[i].suma} (suma su mokesciais)</td></tr>
    <tr><td></td></tr>`;
-			// ismokuEilutes += `<li>${data[i].men}: ${data[i].suma} (suma su mokesciais)</li>`;
+			// ismokuEilutes += `<li>${data[i].men}: ${data[i].suma} (suma su mokesciais)\n</li>`;
 								  
 			const fontWeight = 'normal';
 			rows += `<tr>
