@@ -514,7 +514,7 @@ if (ismokuPavadinimas !== '') {
 		for(let i = 0; i < data.length ; i++) {
 			
 			ismokuEilutes += `
-   <tr><td>${data[i].men}: ${data[i].suma} (suma su mokesciais)</td></tr>
+   <tr><td>${data[i].men}: ${data[i].suma} (suma su mokesciais)\n</td></tr>
    <tr><td></td></tr>`;
 			// ismokuEilutes += `<li>${data[i].men}: ${data[i].suma} (suma su mokesciais)\n</li>`;
 								  
