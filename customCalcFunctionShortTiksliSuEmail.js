@@ -148,6 +148,10 @@ jQuery(document).ready(function($) {
 });
 }
 
+let vpaIsmokos = [];
+let tarifai = [];
+let bendrosSumos = [];
+
 function skaiciuotiIsmokas(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, emailas, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
 // SKAICIUOJAME LUBAS IR GRINDIS
@@ -364,9 +368,7 @@ let tecioBazeIsmokai = tecioPajamos;
 
 //pasidarome vpa ismoku sarasa 
 
-let vpaIsmokos = [];
-let tarifai = [];
-let bendrosSumos = [];
+
 let mamaVpa = mamaArTetisVpa === 1; // patikriniam, ar mama eis vpa (jei ne, tai vadinasi tetis)
 function pajamuBaze(arMamaVpa){
 	const baze = arMamaVpa ? mamosBazeIsmokai : tecioBazeIsmokai;
@@ -577,6 +579,17 @@ rezultatai = rezultatuLentele;
 
 	return rezultatai;
 }
+
+function rezultataiEmailui(vpaIsmokos, bendrosSumos) {
+	let finalTekstasEmailui = [];
+	vpaIsmokos.forEach(el => {
+		// {'tarifas': rate + ' % ' + npmText, 'men': menuo, 'suma': suma, 'sumaPoMokesciu': sumaPoMokesciu, 'gavejas': receiver}
+		let eilute = el.men + ' ' + el.suma + '(su mokesčiais)';
+		finalTekstasEmailui.push(eilute);
+	})
+	return finalTekstasEmailui;	
+}
+
 
 function getAlert(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, emailas, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas){
 	if(tecioPajamos > 0 || mamosPajamos > 0) {
