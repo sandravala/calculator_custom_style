@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+form#form_SV {
+    display: none;
+}
+
 .formbox {
     --formbox-font-size: 16px;
     --formbox-radius: 0.25em;
