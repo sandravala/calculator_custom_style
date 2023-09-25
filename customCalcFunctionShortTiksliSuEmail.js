@@ -537,6 +537,7 @@ if (ismokuPavadinimas !== '') {
 		for(let i = 0; i < data.length ; i++) {
 			// ismokuEilutes.push([data[i].men + ': ' + data[i].suma + ' (suma su mokesciais)']);
 			
+			ismokuEilutes = '';
 			ismokuEilutes += `
    <tr><td>${data[i].men}: ${data[i].suma} (suma su mokesciais)\n</td></tr>
    <tr><td></td></tr>`;
