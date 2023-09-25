@@ -473,7 +473,7 @@ if (ismokuPavadinimas !== '') {
 				</tr>`
 			
     			for(let i = 0; i < data.length ; i++) {
-				if (!emailas || emailas !== '') {
+				if (emailas || emailas !== '') {
 					ismokuEilutes += `<tr><td>${data[i].men} ${data[i].suma} (suma su mokesciais)\n</td></tr>`;
 				}
     				
@@ -491,7 +491,7 @@ if (ismokuPavadinimas !== '') {
 
 
 			for(let i = 0; i < data.length ; i++) {
-				if (!emailas || emailas !== '') {
+				if (emailas || emailas !== '') {
 					ismokuEilutes += `<tr><td>${data[i].men}: ${data[i].suma} (suma su mokesciais)\n</td></tr>`;
 				}			  
 				const fontWeight = 'normal';
@@ -563,7 +563,7 @@ rezultatai = rezultatuLentele;
 }
 
 function rezultataiEmailui(emailas) {
-	console.log('!emailas: ' + !emailas + ', emailas !== ,,' + emailas !=='');
+	console.log('emailas: ' + emailas + ', emailas !== ,,' + emailas !=='');
 let table = `<div><div><table><thead><tr></tr></thead><tbody>${ismokuEilutes}</tbody></table></div></div>`;
 // 	let list = `<div><ul>${ismokuEilutes}</ul><div>`;
 // 	console.log(list);
