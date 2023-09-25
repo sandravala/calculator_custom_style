@@ -561,7 +561,7 @@ rezultatai = rezultatuLentele;
 }
 
 function rezultataiEmailui() {
-let table = `<div><div><table><thead><tr></tr></thead><tbody>${ismokuEilutes}</tbody></table></div></div>`;
+let table = `<div><div><table><thead><tr></tr></thead><tbody>${ismokuEilutes}\n\n</tbody></table></div></div>`;
 return table;
 }
 
