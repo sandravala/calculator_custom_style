@@ -465,16 +465,14 @@ function createRow(data, ismokuPavadinimas) {
 if (ismokuPavadinimas !== '') {
 	if(ismokuPavadinimas === 'bendraSuma' && (mamosPajamos > 0 || tecioPajamos > 0)) {
 
-
 			const fontWeight = 'bold';
-			
 			rows += `<tr>
 				 <td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>IŠ VISO:</td>
 				</tr>`
 			
     			for(let i = 0; i < data.length ; i++) {
 				if (emailas || emailas !== '') {
-					ismokuEilutes += `<tr><td>${data[i].men} ${data[i].suma} (suma su mokesciais)\n</td></tr>`;
+					ismokuEilutes += `<tr><td>${data[i].men} ${data[i].suma} (${data[i].sumaPoMokesciu} į rankas)</td></tr>`;
 				}
     				
 				rows += `<tr>
@@ -492,7 +490,7 @@ if (ismokuPavadinimas !== '') {
 
 			for(let i = 0; i < data.length ; i++) {
 				if (emailas || emailas !== '') {
-					ismokuEilutes += `<tr><td>${data[i].men}: ${data[i].suma} (suma su mokesciais)\n</td></tr>`;
+					ismokuEilutes += `<tr><td>${data[i].men}: ${data[i].suma} (${data[i].sumaPoMokesciu} į rankas), gavėjas - ${data[i].gavejas} (tarifas - ${data[i].tarifas})</td></tr>`;
 				}			  
 				const fontWeight = 'normal';
 				rows += `<tr>
