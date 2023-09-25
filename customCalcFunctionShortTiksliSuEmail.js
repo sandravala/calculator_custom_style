@@ -561,7 +561,7 @@ rezultatai = rezultatuLentele;
 }
 
 function rezultataiEmailui() {
-	if (emailas || emailas === '') {
+	if (emailas === undefined || emailas === '') {
 		return;}
 let table = `<div><div><table><thead><tr></tr></thead><tbody>${ismokuEilutes}</tbody></table></div></div>`;
 // 	let list = `<div><ul>${ismokuEilutes}</ul><div>`;
