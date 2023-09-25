@@ -473,7 +473,9 @@ if (ismokuPavadinimas !== '') {
 				</tr>`
 			
     			for(let i = 0; i < data.length ; i++) {
-				ismokuEilutes += `<tr><td>${data[i].men} ${data[i].suma} (suma su mokesciais)\n</td></tr>`;
+				if (!emailas || emailas !== '') {
+					ismokuEilutes += `<tr><td>${data[i].men} ${data[i].suma} (suma su mokesciais)\n</td></tr>`;
+				}
     				
 				rows += `<tr>
 					<td colspan='2' style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].men}</td>
@@ -489,9 +491,9 @@ if (ismokuPavadinimas !== '') {
 
 
 			for(let i = 0; i < data.length ; i++) {
-			
-				ismokuEilutes += `<tr><td>${data[i].men}: ${data[i].suma} (suma su mokesciais)\n</td></tr>`;
-									  
+				if (!emailas || emailas !== '') {
+					ismokuEilutes += `<tr><td>${data[i].men}: ${data[i].suma} (suma su mokesciais)\n</td></tr>`;
+				}			  
 				const fontWeight = 'normal';
 				rows += `<tr>
 					<td style='text-align: left; font-size: .75em; text-transform: uppercase; padding-left: .3em;'>${data[i].tarifas}</td>
@@ -561,7 +563,7 @@ rezultatai = rezultatuLentele;
 }
 
 function rezultataiEmailui(emailas) {
-	if (emailas || emailas === '') {return;)
+	console.log('!emailas: ' + !emailas + ', emailas !== ,,' + emailas !=='');
 let table = `<div><div><table><thead><tr></tr></thead><tbody>${ismokuEilutes}</tbody></table></div></div>`;
 // 	let list = `<div><ul>${ismokuEilutes}</ul><div>`;
 // 	console.log(list);
