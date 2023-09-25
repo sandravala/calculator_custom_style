@@ -1,4 +1,3 @@
-// let ismokuEilutes = [];
 let ismokuEilutes = '';
 
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, emailas, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
@@ -27,16 +26,6 @@ mamosPajamuInput.addEventListener('input', event => {fieldset[mamosPajamuLaukas]
 tecioPajamuInput.addEventListener('input', event => {fieldset[tecioPajamuLaukas].removeClass('klaida');});	
 gimdymoDatosInput.addEventListener('input', event => {fieldset[gimdymoDatosLaukas].removeClass('klaida');});	
 
-// const emailoInputCalc = document.getElementById('formbox-field-16');
-// const formaEmailuiYra = document.getElementById('form_SV');
-// const emailoInputElementor = document.getElementById('form-field-email_form_SV');
-// const resultInputElementor = document.getElementById('form-field-result_form_SV');
-
-// emailoInputCalc.addEventListener('input', event => {
-// 	formaEmailuiYra ? emailoInputElementor.value = emailoInputCalc.value;
-// });
-	
-	
 let vpaLaukai = [ vpaTrukmesLaukas, vpaImsLaukas ];
 let mLaukai = [ mamosPajamuLaukas];
 let tLaukai = [tecioPajamuLaukas ];
@@ -451,18 +440,9 @@ function generuotiIsmokosEilute(start, end, rate, base, receiver, npm) {
 
         vpaIsmokos.push({'tarifas': rate + ' % ' + npmText, 'men': menuo, 'suma': suma, 'sumaPoMokesciu': sumaPoMokesciu, 'gavejas': receiver});
 
-	    
-        currentStartDate = addMonthsToDate(currentStartDate.setDate(1), 1);       
+	currentStartDate = addMonthsToDate(currentStartDate.setDate(1), 1);       
     }; 
 
-}
-
-// funkcija laukeliu iterpimui i elementor forma. dinamiskai sukursiu reikalingus laukelius, i juos idesiu teksta is vpa ismoku, o elementor editor nurodysiu all fields. tik dar klausimas, kaip su email laukeliu (kaip padaryt, kad jo neidetu i emaila)
-function insertElementorField(i, fieldValue) {
-	let newField = `<div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-${i} elementor-col-100">
-			 <input size="1" type="text" name="form_fields[${i}]" id="form-field-${i}" class="elementor-field elementor-size-sm  elementor-field-textual" value="${fieldValue}">
-			 </div>`;
-	document.getElementsByClassName('elementor-form-fields-wrapper')[0].lastElementChild.insertAdjacentHTML('beforeBegin', newField);
 }
 
 tarifai.forEach(element => {
@@ -474,22 +454,8 @@ bendrosSumos.push({'tarifas' : '', 'men' : 'Viso VPA išmokų:', 'suma' : bendra
 vpaIsmokos.forEach(ismoka => {
     ismoka.suma = ismoka.suma.toLocaleString("lt-LT") + " €";
     ismoka.sumaPoMokesciu = ismoka.sumaPoMokesciu.toLocaleString("lt-LT") + " €";
-	let i = vpaIsmokos.indexOf(ismoka);
-	let fieldValue = ismoka.men + '. Tarifas: ' + ismoka.tarifas + ', ' + ismoka.suma + ' (prieš mokesčius), ' + ismoka.sumaPoMokesciu + ' (po mokesčių)' + ', gavėjas: ' + ismoka.gavejas;
-	insertElementorField(ismoka.men, fieldValue);
 })
 
-insertElementorField('naujas-laukas', 'testuojam ar veikia');
-
-// for (let i = 1; i <= vpaIsmokos.length; i++) {
-// 	insertElementorField(i);
-// 	let fieldValue = vpaIsmokos[i-1].men + '. Tarifas: ' + vpaIsmokos[i-1].tarifas + ', ' + vpaIsmokos[i-1].suma + ' (prieš mokesčius), ' + vpaIsmokos[i-1].sumaPoMokesciu + ' (po mokesčių)' + ', gavėjas: ' + vpaIsmokos[i-1].gavejas;
-// 	document.getElementById('form-field-' + i).value = fieldValue;
-// 	if(i === vpaIsmokos.length) {
-// 		insertElementorField(i+1);
-// 		document.getElementById('form-field-' + (i+1)).value = 'Bendra išmokų suma: ' + bendraVpaIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' € (prieš mokesčius)' + bendraVpaIsmokuSuma.toLocaleString("lt-LT") + ' € (po mokesčių)';
-// 	}
-// }
 	
 // funkcija eiluciu generavimui pagal duomenis
 
@@ -497,38 +463,24 @@ function createRow(data, ismokuPavadinimas) {
 	let rows = '';
 
 if (ismokuPavadinimas !== '') {
-		if(ismokuPavadinimas === 'bendraSuma' && (mamosPajamos > 0 || tecioPajamos > 0)) {
-			
+	if(ismokuPavadinimas === 'bendraSuma' && (mamosPajamos > 0 || tecioPajamos > 0)) {
+
+
 			const fontWeight = 'bold';
 			
 			rows += `<tr>
 				 <td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>IŠ VISO:</td>
 				</tr>`
 			
-    for(let i = 0; i < data.length ; i++) {
-    			rows += `<tr>
+    			for(let i = 0; i < data.length ; i++) {
+				ismokuEilutes += `<tr><td>${data[i].men} ${data[i].suma} (suma su mokesciais)\n</td></tr>`;
+    				
+				rows += `<tr>
 					<td colspan='2' style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].men}</td>
 					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].suma}</td>
 					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].sumaPoMokesciu}</td>
 					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].gavejas}</td>
-				</tr>`
-			}
-			} else if(ismokuPavadinimas === 'tarifai') {
-			
-			const fontWeight = 'bold';
-			
-			rows += `<tr>
-				 <td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>TARIFAI:</td>
-				</tr>`
-			
-    for(let i = 0; i < data.length ; i++) {
-    			rows += `<tr>
-					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].start}</td>
-					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].end}</td>
-					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].rate}</td>
-					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].base}</td>
-					<td style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em;'>${data[i].receiver}</td>
-				</tr>`
+				</tr>`;
 			}
 		} else {
 			rows += `<tr>
@@ -536,27 +488,23 @@ if (ismokuPavadinimas !== '') {
 			</tr>`
 
 
-		for(let i = 0; i < data.length ; i++) {
-			// ismokuEilutes.push([data[i].men + ': ' + data[i].suma + ' (suma su mokesciais)']);
+			for(let i = 0; i < data.length ; i++) {
 			
-			ismokuEilutes += `
-   <tr><td>${data[i].men}: ${data[i].suma} (suma su mokesciais)\n</td></tr>
-   <tr><td></td></tr>`;
-			// ismokuEilutes += `<li>${data[i].men}: ${data[i].suma} (suma su mokesciais)\n</li>`;
-								  
-			const fontWeight = 'normal';
-			rows += `<tr>
+				ismokuEilutes += `<tr><td>${data[i].men}: ${data[i].suma} (suma su mokesciais)\n</td></tr>`;
+									  
+				const fontWeight = 'normal';
+				rows += `<tr>
 					<td style='text-align: left; font-size: .75em; text-transform: uppercase; padding-left: .3em;'>${data[i].tarifas}</td>
 					<td style='text-align: left; font-size: .75em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].men}</td>
 					<td style='text-align: left; font-size: .75em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].suma}</td>
 					<td style='text-align: left; font-size: .75em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].sumaPoMokesciu}</td>
 					<td style='text-align: left; font-size: .75em; text-transform: uppercase; padding-left: .3em;'>${data[i].gavejas}</td>
 				</tr>`
-			if(data.length > 2 && i < data.length - 1) {	
-				    rows += `<tr><td colspan='5' style='border-bottom:1px solid #D9E1E7;'></td></tr>`
+				if(data.length > 2 && i < data.length - 1) {	
+				    rows += `<tr><td colspan='5' style='border-bottom:1px solid #D9E1E7;'></td></tr>`;
+				}
 			}
 		}
-	}
 		
 	}
 	return rows;	
