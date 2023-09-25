@@ -557,11 +557,12 @@ ${createRow(bendrosSumos, bendrosSumosPavadinimas)}
 
 rezultatai = rezultatuLentele;
 
-
 	return rezultatai;
 }
 
 function rezultataiEmailui() {
+	if (emailas === '') {
+		return;}
 let table = `<div><div><table><thead><tr></tr></thead><tbody>${ismokuEilutes}</tbody></table></div></div>`;
 // 	let list = `<div><ul>${ismokuEilutes}</ul><div>`;
 // 	console.log(list);
@@ -585,10 +586,7 @@ function getAlert(fieldset, label, tevystesTarifas, motinystesTarifas, neperleid
 	if(mamaArTetisVpa === 2 || (mamaArTetisVpa === 1 && naudosisNpm) ) {
 		generateAlert(tecioPajamos <= 0, tecioPajamuLaukas);
 		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
-	}
-	
-
-
+	}	
 
 	function generateAlert(conditionToGenerateAlert, fieldsetNumberToAddStyling) {
 		if (conditionToGenerateAlert) {
