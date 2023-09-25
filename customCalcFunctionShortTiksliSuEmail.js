@@ -458,7 +458,7 @@ function generuotiIsmokosEilute(start, end, rate, base, receiver, npm) {
 
 // funkcija laukeliu iterpimui i elementor forma. dinamiskai sukursiu reikalingus laukelius, i juos idesiu teksta is vpa ismoku, o elementor editor nurodysiu all fields. tik dar klausimas, kaip su email laukeliu (kaip padaryt, kad jo neidetu i emaila)
 function insertElementorField(i, fieldValue) {
-	let newField = `<div class="elementor-field-type-hidden elementor-field-group elementor-column elementor-field-group-${i} elementor-col-100">
+	let newField = `<div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-${i} elementor-col-100">
 			 <input size="1" type="text" name="form_fields[${i}]" id="form-field-${i}" class="elementor-field elementor-size-sm  elementor-field-textual" value="${fieldValue}">
 			 </div>`;
 	document.getElementsByClassName('elementor-form-fields-wrapper')[0].lastElementChild.insertAdjacentHTML('beforeBegin', newField);
