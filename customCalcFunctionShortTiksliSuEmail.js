@@ -574,6 +574,7 @@ function getAlert(fieldset, label, tevystesTarifas, motinystesTarifas, neperleid
 	generateAlert(mamaArTetisVpa === undefined, vpaImsLaukas);
 	generateAlert(naudosisNpm === undefined, npmLaukas);
 	generateAlert(gimdymoData === '', gimdymoDatosLaukas);
+	generateAlert(emailas === '', emailoLaukas);
 	}
 
 	if(mamaArTetisVpa === 1 || (mamaArTetisVpa === 2 && naudosisNpm) ) {
