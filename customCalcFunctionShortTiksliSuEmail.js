@@ -478,7 +478,7 @@ vpaIsmokos.forEach(ismoka => {
 	insertElementorField(i, fieldValue);
 })
 
-
+insertElementorField('naujas-laukas', 'testuojam ar veikia');
 
 // for (let i = 1; i <= vpaIsmokos.length; i++) {
 // 	insertElementorField(i);
