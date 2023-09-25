@@ -450,14 +450,22 @@ function generuotiIsmokosEilute(start, end, rate, base, receiver, npm) {
 
         vpaIsmokos.push({'tarifas': rate + ' % ' + npmText, 'men': menuo, 'suma': suma, 'sumaPoMokesciu': sumaPoMokesciu, 'gavejas': receiver});
 
+	    
         currentStartDate = addMonthsToDate(currentStartDate.setDate(1), 1);       
     }; 
 
 }
 
+// funkcija laukeliu iterpimui i elementor forma. dinamiskai sukursiu reikalingus laukelius, i juos idesiu teksta is vpa ismoku, o elementor editor nurodysiu all fields. tik dar klausimas, kaip su email laukeliu (kaip padaryt, kad jo neidetu i emaila)
+function insertElementorField(i, fieldValue) {
+	let newField = `<div class="elementor-field-type-hidden elementor-field-group elementor-column elementor-field-group-${i} elementor-col-100">
+			 <input size="1" type="hidden" name="form_fields[${i}]" id="form-field-${i}" class="elementor-field elementor-size-sm  elementor-field-textual" value="${fieldValue}">
+			 </div>`;
+	document.getElementsByClassName('elementor-form-fields-wrapper')[0].lastElementChild.insertAdjacentHTML('beforeBegin', newField);
+}
 
 tarifai.forEach(element => {
-    generuotiIsmokosEilute(element.start, element.end, element.rate, element.base, element.receiver, element.npm)
+    generuotiIsmokosEilute(element.start, element.end, element.rate, element.base, element.receiver, element.npm);
 });
 
 bendrosSumos.push({'tarifas' : '', 'men' : 'Viso VPA išmokų:', 'suma' : bendraVpaIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraVpaIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
@@ -465,26 +473,22 @@ bendrosSumos.push({'tarifas' : '', 'men' : 'Viso VPA išmokų:', 'suma' : bendra
 vpaIsmokos.forEach(ismoka => {
     ismoka.suma = ismoka.suma.toLocaleString("lt-LT") + " €";
     ismoka.sumaPoMokesciu = ismoka.sumaPoMokesciu.toLocaleString("lt-LT") + " €";
-	
+	let i = vpaIsmokos.indexOf(ismoka);
+	let fieldValue = ismoka.men + '. Tarifas: ' + ismoka.tarifas + ', ' + ismoka.suma + ' (prieš mokesčius), ' + ismoka.sumaPoMokesciu + ' (po mokesčių)' + ', gavėjas: ' + ismoka.gavejas;
+	insertElementorField(i, fieldValue);
 })
 
-// funkcija laukeliu iterpimui i elementor forma. dinamiskai sukursiu reikalingus laukelius, i juos idesiu teksta is vpa ismoku, o elementor editor nurodysiu all fields. tik dar klausimas, kaip su email laukeliu (kaip padaryt, kad jo neidetu i emaila)
-function insertElementorField(i) {
-	let newField = `<div class="elementor-field-type-hidden elementor-field-group elementor-column elementor-field-group-${i} elementor-col-100">
-			 <input size="1" type="hidden" name="form_fields[${i}]" id="form-field-${i}" class="elementor-field elementor-size-sm  elementor-field-textual">
-			 </div>`;
-	document.getElementsByClassName('elementor-form-fields-wrapper')[0].lastElementChild.insertAdjacentHTML('beforeBegin', newField);
-}
 
-for (let i = 1; i <= vpaIsmokos.length; i++) {
-	insertElementorField(i);
-	let fieldValue = vpaIsmokos[i-1].men + '. Tarifas: ' + vpaIsmokos[i-1].tarifas + ', ' + vpaIsmokos[i-1].suma + ' (prieš mokesčius), ' + vpaIsmokos[i-1].sumaPoMokesciu + ' (po mokesčių)' + ', gavėjas: ' + vpaIsmokos[i-1].gavejas;
-	document.getElementById('form-field-' + i).value = fieldValue;
-	if(i === vpaIsmokos.length) {
-		insertElementorField(i+1);
-		document.getElementById('form-field-' + (i+1)).value = 'Bendra išmokų suma: ' + bendraVpaIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' € (prieš mokesčius)' + bendraVpaIsmokuSuma.toLocaleString("lt-LT") + ' € (po mokesčių)';
-	}
-}
+
+// for (let i = 1; i <= vpaIsmokos.length; i++) {
+// 	insertElementorField(i);
+// 	let fieldValue = vpaIsmokos[i-1].men + '. Tarifas: ' + vpaIsmokos[i-1].tarifas + ', ' + vpaIsmokos[i-1].suma + ' (prieš mokesčius), ' + vpaIsmokos[i-1].sumaPoMokesciu + ' (po mokesčių)' + ', gavėjas: ' + vpaIsmokos[i-1].gavejas;
+// 	document.getElementById('form-field-' + i).value = fieldValue;
+// 	if(i === vpaIsmokos.length) {
+// 		insertElementorField(i+1);
+// 		document.getElementById('form-field-' + (i+1)).value = 'Bendra išmokų suma: ' + bendraVpaIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' € (prieš mokesčius)' + bendraVpaIsmokuSuma.toLocaleString("lt-LT") + ' € (po mokesčių)';
+// 	}
+// }
 	
 // funkcija eiluciu generavimui pagal duomenis
 
