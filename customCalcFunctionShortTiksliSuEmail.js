@@ -1,4 +1,5 @@
-let ismokuEilutes = [];
+// let ismokuEilutes = [];
+let ismokuEilutes = '';
 
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, emailas, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
@@ -109,7 +110,7 @@ jQuery('.formbox__btn-reset').on('click', function(){
 	sessionStorage.removeItem('done'); 
 	fieldset[rezultatuLaukas].removeClass('has-result'); 
 	fieldset[rezultatuLaukas].hide(); 
-	rodytiLaukus([...vpaLaukai,...bendriLaukai, npmLaukas, mLaukai[0], tLaukai[0], false]);
+	rodytiLaukus([...vpaLaukai,...bendriLaukai, npmLaukas, mLaukai[0], tLaukai[0]], false);
 	atzymetiRadios([ ...vpaRadios ]);
 	jQuery('#rezultatuLentele').empty();
 });
@@ -533,11 +534,11 @@ if (ismokuPavadinimas !== '') {
 			rows += `<tr>
 			 <td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${ismokuPavadinimas}</td>
 			</tr>`
-		
+
+
 		for(let i = 0; i < data.length ; i++) {
 			// ismokuEilutes.push([data[i].men + ': ' + data[i].suma + ' (suma su mokesciais)']);
 			
-			ismokuEilutes = '';
 			ismokuEilutes += `
    <tr><td>${data[i].men}: ${data[i].suma} (suma su mokesciais)\n</td></tr>
    <tr><td></td></tr>`;
