@@ -475,7 +475,7 @@ vpaIsmokos.forEach(ismoka => {
     ismoka.sumaPoMokesciu = ismoka.sumaPoMokesciu.toLocaleString("lt-LT") + " €";
 	let i = vpaIsmokos.indexOf(ismoka);
 	let fieldValue = ismoka.men + '. Tarifas: ' + ismoka.tarifas + ', ' + ismoka.suma + ' (prieš mokesčius), ' + ismoka.sumaPoMokesciu + ' (po mokesčių)' + ', gavėjas: ' + ismoka.gavejas;
-	insertElementorField(i, fieldValue);
+	insertElementorField(ismoka.men, fieldValue);
 })
 
 insertElementorField('naujas-laukas', 'testuojam ar veikia');
