@@ -472,7 +472,7 @@ if (ismokuPavadinimas !== '') {
 			
     			for(let i = 0; i < data.length ; i++) {
 				if (emailas || emailas !== '') {
-					ismokuEilutes += `<tr><td>${data[i].men} ${data[i].suma} (${data[i].sumaPoMokesciu} į rankas)</td></tr>`;
+					ismokuEilutes += `<tr><td>${data[i].men} ${data[i].suma} (${data[i].sumaPoMokesciu} į rankas)\n</td></tr>`;
 				}
     				
 				rows += `<tr>
@@ -490,7 +490,7 @@ if (ismokuPavadinimas !== '') {
 
 			for(let i = 0; i < data.length ; i++) {
 				if (emailas || emailas !== '') {
-					ismokuEilutes += `<tr><td>${data[i].men}: ${data[i].suma} (${data[i].sumaPoMokesciu} į rankas), gavėjas - ${data[i].gavejas} (tarifas - ${data[i].tarifas})</td></tr>`;
+					ismokuEilutes += `<tr><td>${data[i].men}: ${data[i].suma} (${data[i].sumaPoMokesciu} į rankas), gavėjas - ${data[i].gavejas} (tarifas - ${data[i].tarifas})\n</td></tr>`;
 				}			  
 				const fontWeight = 'normal';
 				rows += `<tr>
