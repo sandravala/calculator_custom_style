@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
-form#form_SV {
+/* form#form_SV {
     display: none;
-}
+} */
 
 .formbox {
     --formbox-font-size: 16px;
