@@ -490,7 +490,7 @@ if (ismokuPavadinimas !== '') {
 
 			for(let i = 0; i < data.length ; i++) {
 				if (emailas || emailas !== '') {
-					ismokuEilutes += `<tr><td>${data[i].men}: ${data[i].suma} (${data[i].sumaPoMokesciu} į rankas), gavėjas - ${data[i].gavejas} (tarifas - ${data[i].tarifas})\n</td></tr>`;
+					ismokuEilutes += `<tr><td style="background-color: lightblue;">${data[i].men}: </td><td style="color: red; font-weight: bold;">${data[i].suma} </td><td>(${data[i].sumaPoMokesciu} į rankas),</td><td> gavėjas - ${data[i].gavejas}</td><td> (tarifas - ${data[i].tarifas})\n</td></tr>`;
 				}			  
 				const fontWeight = 'normal';
 				rows += `<tr>
