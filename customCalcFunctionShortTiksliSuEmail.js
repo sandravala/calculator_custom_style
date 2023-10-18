@@ -408,7 +408,10 @@ function generuotiIsmokosEilute(start, end, rate, base, receiver, npm) {
     let finalEndYear = finalEndDate.getFullYear();
     let finalEndMonth = finalEndDate.getMonth();
     let npmText = npm ? '(npm***)' : '';
-
+	
+	const formDiv = document.querySelector('.elementor-form-fields-wrapper.elementor-labels-');
+	let i = 1;
+	
     while (currentStartDate < finalEndDate) {
         let factor = 1;
         let currentYear = currentStartDate.getFullYear();
@@ -439,7 +442,25 @@ function generuotiIsmokosEilute(start, end, rate, base, receiver, npm) {
         bendraVpaIsmokuSuma += sumaPoMokesciu;
 
         vpaIsmokos.push({'tarifas': rate + ' % ' + npmText, 'men': menuo, 'suma': suma, 'sumaPoMokesciu': sumaPoMokesciu, 'gavejas': receiver});
+	 
+	// Create the child element you want to append
+	const newDivElement = document.createElement('div');
+	let newFieldId = 'textarea_calc_' + i;
+	newDivElement.classList.add('elementor-field-type-textarea', 'elementor-field-group', 'elementor-column', 'elementor-field-group-' + newFieldId, 'elementor-col-100');
+	
+	const textareaElement = document.createElement('textarea');
+	textareaElement.classList.add('elementor-field-textual', 'elementor-field', 'elementor-size-sm');
+	textareaElement.name = 'form_fields[' + newFieldId + ']';
+	textareaElement.id = 'form-field-' + newFieldId;
+	textareaElement.rows = 4;
+	textareaElement.setAttribute('aria-invalid', 'false');
+	textareaElement.textContent = 'tarifas' + rate + ' % ' + npmText + 'men' + menuo + 'suma' + suma + 'sumaPoMokesciu' + sumaPoMokesciu + 'gavejas'+ receiver;  // Initial content for the textarea
+	
+	newDivElement.appendChild(textareaElement);
+	formDiv.appendChild(newDivElement);
 
+	    i++;
+	    
 	currentStartDate = addMonthsToDate(currentStartDate.setDate(1), 1);       
     }; 
 
