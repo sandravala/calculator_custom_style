@@ -1,4 +1,11 @@
 let ismokuEilutes = '';
+let ismokosEmailui = {
+	'tarifas': [],
+	'men': [],
+	'suma': [], 
+	'sumaPoMokesciu': [], 
+	'gavejas': []
+};
 
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, emailas, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
@@ -454,6 +461,11 @@ bendrosSumos.push({'tarifas' : '', 'men' : 'Viso VPA išmokų:', 'suma' : bendra
 vpaIsmokos.forEach(ismoka => {
     ismoka.suma = ismoka.suma.toLocaleString("lt-LT") + " €";
     ismoka.sumaPoMokesciu = ismoka.sumaPoMokesciu.toLocaleString("lt-LT") + " €";
+	ismokosEmailui.tarifas.push(ismoka.tarifas);
+	ismokosEmailui.men.push(ismoka.men);
+	ismokosEmailui.suma.push(ismoka.suma);
+	ismokosEmailui.sumaPoMokesciu.push(ismoka.sumaPoMokesciu);
+	ismokosEmailui.gavejas.push(ismoka.gavejas);
 })
 
 	
@@ -559,6 +571,11 @@ rezultatai = rezultatuLentele;
 
 	return rezultatai;
 }
+
+function tarpiniaiRezultataiEmailui() {
+	return ismokosEmailui;
+}
+
 
 function rezultataiEmailui() {
 let table = `<div><div><table><thead><tr></tr></thead><tbody>${ismokuEilutes}\n\n</tbody></table></div></div>`;
