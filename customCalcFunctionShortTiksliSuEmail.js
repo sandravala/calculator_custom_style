@@ -410,6 +410,7 @@ function generuotiIsmokosEilute(start, end, rate, base, receiver, npm) {
     let npmText = npm ? '(npm***)' : '';
 	
 	const formDiv = document.querySelector('.elementor-form-fields-wrapper.elementor-labels-');
+	const firstChild = formDiv.firstChild;
 	let i = 1;
 	
     while (currentStartDate < finalEndDate) {
@@ -457,7 +458,7 @@ function generuotiIsmokosEilute(start, end, rate, base, receiver, npm) {
 	textareaElement.textContent = 'tarifas' + rate + ' % ' + npmText + 'men' + menuo + 'suma' + suma + 'sumaPoMokesciu' + sumaPoMokesciu + 'gavejas'+ receiver;  // Initial content for the textarea
 	
 	newDivElement.appendChild(textareaElement);
-	formDiv.appendChild(newDivElement);
+	formDiv.insertBefore(newDivElement, firstChild);
 
 	    i++;
 	    
