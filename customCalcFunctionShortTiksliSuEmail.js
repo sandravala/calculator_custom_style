@@ -6,15 +6,25 @@ let ismokosEmailui = {
 	'sumaPoMokesciu': [], 
 	'gavejas': []
 };
+function showResults(fieldset) {
+// Get the URL's query string
+let queryStringPageUrl = window.location.search;
+// Create a URLSearchParams object to parse the query string
+var searchParams = new URLSearchParams(queryStringPageUrl);
+// Define the parameter you want to check for
+var desiredParam = 'vpaTrukme';
 
-let ismokosUrl = {
-	'vpaTrukme' : '',
-	'mamaArTetisVpa' : '',
-	'naudosisNpm' : '',
-	'mamosPajamos' : '',
-	'tecioPajamos' : '',
-	'gimdymoData' : ''
-};
+function getParamValue(params, paramKey) {
+	return params.get(paramKey);
+}
+
+// Check if the URL contains the desired parameter
+if (searchParams.has(desiredParam)) {
+    // The URL contains the desired parameter
+  	let slepiamiLaukai = [2, 3, 4, 6,  10, 13, 14, 15, 16];
+	slepiamiLaukai.forEach((laukas) => fieldset[laukas].addClass('is-hidden'));
+}
+}
 
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, emailas, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
