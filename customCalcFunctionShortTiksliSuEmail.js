@@ -19,7 +19,7 @@ function showResultsOrEditUrl(hideORgetValues) {
 	if (searchParams.has(desiredParam)) {
 		switch(hideORgetValues) {
 			case 'hide' :
-				let slepiamiLaukai = [2, 3, 4, 6,  10, 13, 14, 15, 16];
+				let slepiamiLaukai = [2, 3, 4, 6,  10, 13, 14, 15];
 				slepiamiLaukai.forEach((laukas) => fieldset[laukas].addClass('is-hidden'));
 				break;
 			case 'getValues' :
@@ -42,7 +42,7 @@ function showResultsOrEditUrl(hideORgetValues) {
 				break;
 		};
 	} else {
-		let slepiamiLaukai = [2, 3, 4, 6,  10, 13, 14, 15, 16];
+		let slepiamiLaukai = [2, 3, 4, 6,  10, 13, 14, 15];
 		slepiamiLaukai.forEach((laukas) => fieldset[laukas].classList.remove('is-hidden'));
 	}
 }
