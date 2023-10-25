@@ -7,7 +7,7 @@ let ismokosEmailui = {
 	'gavejas': []
 };
 
-function showResultsOrEditUrl(hideORgetValues) {
+function showResultsOrEditUrl(hideORgetValues, fieldset) {
 	// Get the URL's query string
 	let queryStringPageUrl = window.location.search;
 	// Create a URLSearchParams object to parse the query string
@@ -49,7 +49,7 @@ function showResultsOrEditUrl(hideORgetValues) {
 
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, emailas, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
-showResultsOrEditUrl('hide');
+showResultsOrEditUrl('hide', fieldset);
 	
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
 
