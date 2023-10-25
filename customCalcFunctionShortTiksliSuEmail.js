@@ -25,7 +25,7 @@ function showResultsOrEditUrl(hideORgetValues) {
 			case 'getValues' :
 				vpaTrukme = parseInt(searchParams.get('vpaTrukme'));
 				mamaArTetisVpa = parseInt(searchParams.get('mamaArTetisVpa'));
-				naudosisNpm = searchParams.get('naudosisNpm') === 'true';
+				naudosisNpm = searchParams.get('naudosisNpm') === 'true' ? 1 : 0;
 				mamosPajamos = parseFloat(searchParams.get('mamosPajamos'));
 				tecioPajamos = parseFloat(searchParams.get('tecioPajamos'));
 				gimdymoData = new Date(searchParams.get('gimdymoData'));
