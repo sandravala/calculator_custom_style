@@ -41,6 +41,9 @@ function showResultsOrEditUrl(hideORgetValues) {
 				minimumas = parseFloat(searchParams.get('minimumas'));
 				break;
 		};
+	} else {
+		let slepiamiLaukai = [2, 3, 4, 6,  10, 13, 14, 15, 16];
+		slepiamiLaukai.forEach((laukas) => fieldset[laukas].classList.remove('is-hidden'));
 	}
 }
 
