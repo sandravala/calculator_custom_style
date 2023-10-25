@@ -43,7 +43,7 @@ function showResultsOrEditUrl(hideORgetValues, fieldset) {
 		};
 	} else {
 		let slepiamiLaukai = [2, 3, 4, 6,  10, 13, 14, 15];
-		slepiamiLaukai.forEach((laukas) => fieldset[laukas].classList.remove('nerodyti'));
+		slepiamiLaukai.forEach((laukas) => fieldset[laukas].removeClass('nerodyti'));
 	}
 }
 
