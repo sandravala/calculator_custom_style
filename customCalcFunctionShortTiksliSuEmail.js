@@ -6,28 +6,48 @@ let ismokosEmailui = {
 	'sumaPoMokesciu': [], 
 	'gavejas': []
 };
-function showResults(fieldset) {
-// Get the URL's query string
-let queryStringPageUrl = window.location.search;
-// Create a URLSearchParams object to parse the query string
-var searchParams = new URLSearchParams(queryStringPageUrl);
-// Define the parameter you want to check for
-var desiredParam = 'vpaTrukme';
 
-function getParamValue(params, paramKey) {
-	return params.get(paramKey);
-}
-
-// Check if the URL contains the desired parameter
-if (searchParams.has(desiredParam)) {
-    // The URL contains the desired parameter
-  	let slepiamiLaukai = [2, 3, 4, 6,  10, 13, 14, 15, 16];
-	slepiamiLaukai.forEach((laukas) => fieldset[laukas].addClass('is-hidden'));
-}
+function showResultsOrEditUrl(hideORgetValues) {
+	// Get the URL's query string
+	let queryStringPageUrl = window.location.search;
+	// Create a URLSearchParams object to parse the query string
+	var searchParams = new URLSearchParams(queryStringPageUrl);
+	// Define the parameter you want to check for
+	var desiredParam = 'vpaTrukme';
+	
+	// Check if the URL contains the desired parameter
+	if (searchParams.has(desiredParam)) {
+		switch(hideORgetValues) {
+			case 'hide' :
+				let slepiamiLaukai = [2, 3, 4, 6,  10, 13, 14, 15, 16];
+				slepiamiLaukai.forEach((laukas) => fieldset[laukas].addClass('is-hidden'));
+				break;
+			case 'getValues' :
+				vpaTrukme = parseInt(searchParams.get('vpaTrukme'));
+				mamaArTetisVpa = parseInt(searchParams.get('mamaArTetisVpa'));
+				naudosisNpm = parseInt(searchParams.get('naudosisNpm'));
+				mamosPajamos = parseFloat(searchParams.get('mamosPajamos'));
+				tecioPajamos = parseFloat(searchParams.get('tecioPajamos'));
+				gimdymoData = new Date(searchParams.get('gimdymoData'));
+				tevystesTarifas = parseFloat(searchParams.get('tevystesTarifas'));
+				motinystesTarifas = parseFloat(searchParams.get('motinystesTarifas'));
+				neperleidziamuMenesiuTarifas = parseFloat(searchParams.get('neperleidziamuMenesiuTarifas'));
+				tarifasAtostogos18men = parseFloat(searchParams.get('tarifasAtostogos18men'));
+				let tarifasAtostogos24menPirmas = parseFloat(searchParams.get('tarifasAtostogos24menPirmas'));
+				let tarifasAtostogos24menAntras = parseFloat(searchParams.get('tarifasAtostogos24menAntras'));
+				tarifasAtostogos24men = [tarifasAtostogos24menPirmas, tarifasAtostogos24menAntras];
+				mokesciaiNuoIsmoku = parseFloat(searchParams.get('mokesciaiNuoIsmoku'));
+				bazineSocIsmoka = parseFloat(searchParams.get('bazineSocIsmoka'));
+				minimumas = parseFloat(searchParams.get('minimumas'));
+				break;
+		};
+	}
 }
 
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, emailas, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
+showResultsOrEditUrl('hide');
+	
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
 
 const vpaTrukme18Radio = document.getElementById('formbox-field-4_1');
@@ -167,13 +187,8 @@ jQuery(document).ready(function($) {
 
 function skaiciuotiIsmokas(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, emailas, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
-ismokosUrl.vpaTrukme = vpaTrukme;
-ismokosUrl.mamaArTetisVpa = mamaArTetisVpa;
-ismokosUrl.naudosisNpm = naudosisNpm;
-ismokosUrl.mamosPajamos = mamosPajamos;
-ismokosUrl.tecioPajamos = tecioPajamos;
-ismokosUrl.gimdymoData = gimdymoData;
-
+showResultsOrEditUrl('getValues');
+	
 // SKAICIUOJAME LUBAS IR GRINDIS
 
 let minIsmoka = bazineSocIsmoka * 8 ; //  8 bazinės socialinės išmokos dydžiai galioję praeitą ketvirtį (paskutinis patvirtintas dydis) iki teisės gauti išmoką atsiradimo dienos.
