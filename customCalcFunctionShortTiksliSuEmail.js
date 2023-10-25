@@ -1,44 +1,3 @@
-let ismokuEilutes = '';
-let ismokosEmailui = {
-	'tarifas': [],
-	'men': [],
-	'suma': [], 
-	'sumaPoMokesciu': [], 
-	'gavejas': []
-};
-
-function showResultsOrEditUrl(variablesArray) {
-	// Get the URL's query string
-	let queryStringPageUrl = window.location.search;
-	// Create a URLSearchParams object to parse the query string
-	var searchParams = new URLSearchParams(queryStringPageUrl);
-	// Define the parameter you want to check for
-	var desiredParam = 'vpaTrukme';
-
-
-	// Check if the URL contains the desired parameter
-	if (searchParams.has(desiredParam)) {
-				variablesArray[0] = parseInt(searchParams.get('vpaTrukme'));
-				variablesArray[1] = parseInt(searchParams.get('mamaArTetisVpa'));
-				variablesArray[2] = searchParams.get('naudosisNpm') === 'true';
-				variablesArray[3] = parseFloat(searchParams.get('mamosPajamos'));
-				variablesArray[4] = parseFloat(searchParams.get('tecioPajamos'));
-				variablesArray[5] = new Date(searchParams.get('gimdymoData'));
-				variablesArray[6] = parseFloat(searchParams.get('tevystesTarifas'));
-				variablesArray[7] = parseFloat(searchParams.get('motinystesTarifas'));
-				variablesArray[8] = parseFloat(searchParams.get('neperleidziamuMenesiuTarifas'));
-				variablesArray[9] = parseFloat(searchParams.get('tarifasAtostogos18men'));
-				let tarifasAtostogos24menPirmas = parseFloat(searchParams.get('tarifasAtostogos24menPirmas'));
-				let tarifasAtostogos24menAntras = parseFloat(searchParams.get('tarifasAtostogos24menAntras'));
-				variablesArray[10] = [tarifasAtostogos24menPirmas, tarifasAtostogos24menAntras];
-				variablesArray[11] = parseFloat(searchParams.get('mokesciaiNuoIsmoku'));
-				variablesArray[12] = parseFloat(searchParams.get('bazineSocIsmoka'));
-				variablesArray[13] = parseFloat(searchParams.get('minimumas'));
-	}
-}
-
-
-
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, emailas, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 	
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
@@ -180,10 +139,6 @@ jQuery(document).ready(function($) {
 
 function skaiciuotiIsmokas(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, emailas, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
-let varArray = [ vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamos, tecioPajamos, gimdymoData, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, bazineSocIsmoka, minimumas];
-	
-showResultsOrEditUrl(varArray);
-	
 // SKAICIUOJAME LUBAS IR GRINDIS
 
 let minIsmoka = bazineSocIsmoka * 8 ; //  8 bazinės socialinės išmokos dydžiai galioję praeitą ketvirtį (paskutinis patvirtintas dydis) iki teisės gauti išmoką atsiradimo dienos.
@@ -498,11 +453,6 @@ bendrosSumos.push({'tarifas' : '', 'men' : 'Viso VPA išmokų:', 'suma' : bendra
 vpaIsmokos.forEach(ismoka => {
     ismoka.suma = ismoka.suma.toLocaleString("lt-LT") + " €";
     ismoka.sumaPoMokesciu = ismoka.sumaPoMokesciu.toLocaleString("lt-LT") + " €";
-	ismokosEmailui.tarifas.push(ismoka.tarifas);
-	ismokosEmailui.men.push(ismoka.men);
-	ismokosEmailui.suma.push(ismoka.suma);
-	ismokosEmailui.sumaPoMokesciu.push(ismoka.sumaPoMokesciu);
-	ismokosEmailui.gavejas.push(ismoka.gavejas);
 })
 
 	
@@ -520,10 +470,6 @@ if (ismokuPavadinimas !== '') {
 				</tr>`
 			
     			for(let i = 0; i < data.length ; i++) {
-				if (emailas || emailas !== '') {
-					ismokuEilutes += `<tr><td>${data[i].men} ${data[i].suma} (${data[i].sumaPoMokesciu} į rankas)\n</td></tr>`;
-				}
-    				
 				rows += `<tr>
 					<td colspan='2' style='text-align: left; font-size: .85em; text-transform: uppercase; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].men}</td>
 					<td style='text-align: left; font-size: .85em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].suma}</td>
@@ -536,11 +482,7 @@ if (ismokuPavadinimas !== '') {
 			 <td colspan='5' style='text-align: center; font-size: .85em; letter-spacing: .1em; text-transform: uppercase; background-color: #D9E1E7; line-height: 2; '>${ismokuPavadinimas}</td>
 			</tr>`
 
-
 			for(let i = 0; i < data.length ; i++) {
-				if (emailas || emailas !== '') {
-					ismokuEilutes += `<tr><td style="background-color: lightblue;">${data[i].men}: </td><td style="color: red; font-weight: bold;">${data[i].suma} </td><td>(${data[i].sumaPoMokesciu} į rankas),</td><td> gavėjas - ${data[i].gavejas}</td><td> (tarifas - ${data[i].tarifas})\n</td></tr>`;
-				}			  
 				const fontWeight = 'normal';
 				rows += `<tr>
 					<td style='text-align: left; font-size: .75em; text-transform: uppercase; padding-left: .3em;'>${data[i].tarifas}</td>
@@ -607,16 +549,6 @@ ${createRow(bendrosSumos, bendrosSumosPavadinimas)}
 rezultatai = rezultatuLentele;
 
 	return rezultatai;
-}
-
-function tarpiniaiRezultataiEmailui() {
-	return ismokosEmailui;
-}
-
-
-function rezultataiEmailui() {
-let table = `<div><div><table><thead><tr></tr></thead><tbody>${ismokuEilutes}\n\n</tbody></table></div></div>`;
-return table;
 }
 
 function getAlert(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, emailas, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas){
