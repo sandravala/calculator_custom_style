@@ -439,7 +439,7 @@ function fillRateArray() {
         tarifai.push({ 'start': vpaStart, 'end': vpaEnd, 'rate': tarifasAtostogos18men, 'base' : vienosDienosBazePagrTevo,  'receiver': gavejas, 'npm': false})
     }
 	console.log(naudosisNpm);
-	console.log(typeOf naudosisNpm);
+	console.log(typeof naudosisNpm);
     if (naudosisNpm) {
     tarifai.push({'start': npmLastStart, 'end': npmLasttEnd, 'rate': neperleidziamuMenesiuTarifas, 'base' : vienosDienosBazeAntroTevo, 'receiver': gavejasNpm, 'npm': true});
     }
