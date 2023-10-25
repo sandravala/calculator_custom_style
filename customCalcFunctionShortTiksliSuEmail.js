@@ -7,7 +7,7 @@ let ismokosEmailui = {
 	'gavejas': []
 };
 
-function showResultsOrEditUrl(hideORgetValues, fieldset) {
+function showResultsOrEditUrl(hideORgetValues, rodomiLaukai) {
 	// Get the URL's query string
 	let queryStringPageUrl = window.location.search;
 	// Create a URLSearchParams object to parse the query string
@@ -18,10 +18,10 @@ function showResultsOrEditUrl(hideORgetValues, fieldset) {
 	// Check if the URL contains the desired parameter
 	if (searchParams.has(desiredParam)) {
 		switch(hideORgetValues) {
-			case 'hide' :
-				let slepiamiLaukai = [2, 3, 4, 6,  10, 13, 14, 15];
-				slepiamiLaukai.forEach((laukas) => fieldset[laukas].classList.add('is-hidden'));
-				break;
+			// case 'hide' :
+			// 	let slepiamiLaukai = [2, 3, 4, 6,  10, 13, 14, 15];
+			// 	slepiamiLaukai.forEach((laukas) => fieldset[laukas].classList.add('is-hidden'));
+			// 	break;
 			case 'getValues' :
 				vpaTrukme = parseInt(searchParams.get('vpaTrukme'));
 				mamaArTetisVpa = parseInt(searchParams.get('mamaArTetisVpa'));
@@ -42,22 +42,21 @@ function showResultsOrEditUrl(hideORgetValues, fieldset) {
 				break;
 		};
 	} else {
-		let slepiamiLaukai = [2, 3, 4, 6,  10, 13, 14, 15];
-		slepiamiLaukai.forEach((laukas) => fieldset[laukas].removeClass('nerodyti'));
+		rodytiLaukus(rodomiLaukai, true);
 	}
 }
 
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, emailas, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
-showResultsOrEditUrl('hide', fieldset);
+showResultsOrEditUrl('hide', [vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuLaukas, tecioPajamuLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas]);
 	
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
-
+	
 const vpaTrukme18Radio = document.getElementById('formbox-field-4_1');
 const vpaTrukme24Radio = document.getElementById('formbox-field-4_2');
 vpaTrukme18Radio.addEventListener('click', event => rodytiLaukusIsmokosSkaiciavimui('vpaTrukme'));
 vpaTrukme24Radio.addEventListener('click', event => rodytiLaukusIsmokosSkaiciavimui('vpaTrukme'));
-	
+
 const tecioRadio = document.getElementById('formbox-field-5_2');
 const mamosRadio = document.getElementById('formbox-field-5_1');
 tecioRadio.addEventListener('click', event => rodytiLaukusIsmokosSkaiciavimui('tecioRadio'));
