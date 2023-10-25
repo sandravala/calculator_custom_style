@@ -20,7 +20,7 @@ function showResultsOrEditUrl(hideORgetValues) {
 		switch(hideORgetValues) {
 			case 'hide' :
 				let slepiamiLaukai = [2, 3, 4, 6,  10, 13, 14, 15];
-				slepiamiLaukai.forEach((laukas) => fieldset[laukas].addClass('is-hidden'));
+				slepiamiLaukai.forEach((laukas) => fieldset[laukas].classList.add('is-hidden'));
 				break;
 			case 'getValues' :
 				vpaTrukme = parseInt(searchParams.get('vpaTrukme'));
