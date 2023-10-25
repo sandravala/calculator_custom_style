@@ -46,6 +46,10 @@ function showResultsOrEditUrl(hideORgetValues, rodomiLaukai) {
 	}
 }
 
+function rodytiLaukus(visiLaukuNumeriaiArray, rodytiTrueOrFalse) {
+ 	visiLaukuNumeriaiArray.forEach(laukoNr => {rodytiTrueOrFalse ? fieldset[laukoNr].removeClass('nerodyti') : fieldset[laukoNr].addClass('nerodyti');} )
+};
+
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, emailas, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
 showResultsOrEditUrl('hide', [vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuLaukas, tecioPajamuLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas]);
@@ -135,11 +139,6 @@ function atzymetiRadios(radios) {
 	}
 }
 
-
-
-function rodytiLaukus(visiLaukuNumeriaiArray, rodytiTrueOrFalse) {
- 	visiLaukuNumeriaiArray.forEach(laukoNr => {rodytiTrueOrFalse ? fieldset[laukoNr].removeClass('nerodyti') : fieldset[laukoNr].addClass('nerodyti');} )
-};
 
 // jquery reset mygtukas istrina viska, kas buvo suzymeta, ir paslepia visus laukus
 	
