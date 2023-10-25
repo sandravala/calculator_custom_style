@@ -7,46 +7,33 @@ let ismokosEmailui = {
 	'gavejas': []
 };
 
-function showResultsOrEditUrl(hideORgetValues) {
+function showResultsOrEditUrl(variablesArray) {
 	// Get the URL's query string
 	let queryStringPageUrl = window.location.search;
 	// Create a URLSearchParams object to parse the query string
 	var searchParams = new URLSearchParams(queryStringPageUrl);
 	// Define the parameter you want to check for
 	var desiredParam = 'vpaTrukme';
-	
+
+
 	// Check if the URL contains the desired parameter
 	if (searchParams.has(desiredParam)) {
-		switch(hideORgetValues) {
-			// case 'hide' :
-			// 	let slepiamiLaukai = [2, 3, 4, 6,  10, 13, 14, 15];
-			// 	slepiamiLaukai.forEach((laukas) => fieldset[laukas].classList.add('is-hidden'));
-			// 	break;
-			case 'getValues' :
-				vpaTrukme = parseInt(searchParams.get('vpaTrukme'));
-				mamaArTetisVpa = parseInt(searchParams.get('mamaArTetisVpa'));
-				naudosisNpm = searchParams.get('naudosisNpm') === 'true';
-				console.log('searchParam: ', searchParams.get('naudosisNpm'));
-				console.log('converted searchParam: ', naudosisNpm);
-				console.log('converted searchParam to string: ', naudosisNpm.toString());
-				mamosPajamos = parseFloat(searchParams.get('mamosPajamos'));
-				tecioPajamos = parseFloat(searchParams.get('tecioPajamos'));
-				gimdymoData = new Date(searchParams.get('gimdymoData'));
-				tevystesTarifas = parseFloat(searchParams.get('tevystesTarifas'));
-				motinystesTarifas = parseFloat(searchParams.get('motinystesTarifas'));
-				neperleidziamuMenesiuTarifas = parseFloat(searchParams.get('neperleidziamuMenesiuTarifas'));
-				tarifasAtostogos18men = parseFloat(searchParams.get('tarifasAtostogos18men'));
+				variablesArray[0] = parseInt(searchParams.get('vpaTrukme'));
+				variablesArray[1] = parseInt(searchParams.get('mamaArTetisVpa'));
+				variablesArray[2] = searchParams.get('naudosisNpm') === 'true';
+				variablesArray[3] = parseFloat(searchParams.get('mamosPajamos'));
+				variablesArray[4] = parseFloat(searchParams.get('tecioPajamos'));
+				variablesArray[5] = new Date(searchParams.get('gimdymoData'));
+				variablesArray[6] = parseFloat(searchParams.get('tevystesTarifas'));
+				variablesArray[7] = parseFloat(searchParams.get('motinystesTarifas'));
+				variablesArray[8] = parseFloat(searchParams.get('neperleidziamuMenesiuTarifas'));
+				variablesArray[9] = parseFloat(searchParams.get('tarifasAtostogos18men'));
 				let tarifasAtostogos24menPirmas = parseFloat(searchParams.get('tarifasAtostogos24menPirmas'));
 				let tarifasAtostogos24menAntras = parseFloat(searchParams.get('tarifasAtostogos24menAntras'));
-				tarifasAtostogos24men = [tarifasAtostogos24menPirmas, tarifasAtostogos24menAntras];
-				mokesciaiNuoIsmoku = parseFloat(searchParams.get('mokesciaiNuoIsmoku'));
-				bazineSocIsmoka = parseFloat(searchParams.get('bazineSocIsmoka'));
-				minimumas = parseFloat(searchParams.get('minimumas'));
-				break;
-		};
-	} else {
-		// let rodomiLaukai = [2, 3, 4, 6,  10, 13, 14, 15];
-		// rodytiLaukus(rodomiLaukai, true);
+				variablesArray[10] = [tarifasAtostogos24menPirmas, tarifasAtostogos24menAntras];
+				variablesArray[11] = parseFloat(searchParams.get('mokesciaiNuoIsmoku'));
+				variablesArray[12] = parseFloat(searchParams.get('bazineSocIsmoka'));
+				variablesArray[13] = parseFloat(searchParams.get('minimumas'));
 	}
 }
 
@@ -193,7 +180,9 @@ jQuery(document).ready(function($) {
 
 function skaiciuotiIsmokas(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, emailas, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 
-showResultsOrEditUrl('getValues');
+let varArray = [ vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamos, tecioPajamos, gimdymoData, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, bazineSocIsmoka, minimumas];
+	
+showResultsOrEditUrl(varArray);
 	
 // SKAICIUOJAME LUBAS IR GRINDIS
 
