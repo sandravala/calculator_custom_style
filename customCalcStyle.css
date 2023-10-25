@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
-/* form#form_SV {
+form#form_SV {
     display: none;
-} */
+}
 
 .formbox {
     --formbox-font-size: 16px;
@@ -135,6 +135,13 @@ fieldset.formbox__container {
     &.has_border {
         padding-top: 2em;
         border-top: var(--formbox-field-border-width) solid var(--formbox-field-border-color);
+    }    
+    
+    &.has_border_top_bottom {
+        padding-top: 2em;
+        border-top: var(--formbox-field-border-width) solid var(--formbox-field-border-color);
+        margin-bottom: 2em;
+        border-bottom: var(--formbox-field-border-width) solid var(--formbox-field-border-color);
     }
     
     &.nerodyti {
@@ -149,6 +156,13 @@ fieldset.formbox__container.has_border {
         padding-top: 2em;
         border-top: var(--formbox-field-border-width) solid var(--formbox-field-border-color);
 }
+
+fieldset.formbox__container.has_border_top_bottom {
+        padding-top: 2em;
+        border-top: var(--formbox-field-border-width) solid var(--formbox-field-border-color);
+        margin-bottom: 2em;
+        border-bottom: var(--formbox-field-border-width) solid var(--formbox-field-border-color);
+    }
 
 fieldset.formbox__container.has-result.has_border {
         padding-top: 2em;
