@@ -7,7 +7,7 @@ let ismokosEmailui = {
 	'gavejas': []
 };
 
-function showResultsOrEditUrl(hideORgetValues, rodomiLaukai) {
+function showResultsOrEditUrl(hideORgetValues) {
 	// Get the URL's query string
 	let queryStringPageUrl = window.location.search;
 	// Create a URLSearchParams object to parse the query string
@@ -42,19 +42,17 @@ function showResultsOrEditUrl(hideORgetValues, rodomiLaukai) {
 				break;
 		};
 	} else {
-		rodytiLaukus(rodomiLaukai, true);
+		// let rodomiLaukai = [2, 3, 4, 6,  10, 13, 14, 15];
+		// rodytiLaukus(rodomiLaukai, true);
 	}
 }
 
-function rodytiLaukus(visiLaukuNumeriaiArray, rodytiTrueOrFalse) {
- 	visiLaukuNumeriaiArray.forEach(laukoNr => {rodytiTrueOrFalse ? fieldset[laukoNr].removeClass('nerodyti') : fieldset[laukoNr].addClass('nerodyti');} )
-};
+
 
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, emailas, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
-
-showResultsOrEditUrl('hide', [vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuLaukas, tecioPajamuLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas]);
 	
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
+	
 	
 const vpaTrukme18Radio = document.getElementById('formbox-field-4_1');
 const vpaTrukme24Radio = document.getElementById('formbox-field-4_2');
@@ -131,6 +129,7 @@ function isjungtiLaukus() {
 					rodytiLaukus( [tLaukai[0]], false);
 				}
 			} 
+	rodytiLaukus([emailoLaukas, mygtukuLaukas], true);
 }
 
 function atzymetiRadios(radios) {
@@ -139,7 +138,10 @@ function atzymetiRadios(radios) {
 	}
 }
 
-
+function rodytiLaukus(visiLaukuNumeriaiArray, rodytiTrueOrFalse) {
+ 	visiLaukuNumeriaiArray.forEach(laukoNr => {rodytiTrueOrFalse ? fieldset[laukoNr].removeClass('nerodyti') : fieldset[laukoNr].addClass('nerodyti');} )
+};
+	
 // jquery reset mygtukas istrina viska, kas buvo suzymeta, ir paslepia visus laukus
 	
 jQuery('.formbox__btn-reset').on('click', function(){
