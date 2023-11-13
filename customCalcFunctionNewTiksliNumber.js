@@ -4,9 +4,9 @@ function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, n
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
 
 let inputsTypeNumber = document.getElementsByClassName('formbox__field-input');
-inputsTypeNumber.forEach((input) => {
-  input.setAttribute('inputmode', 'numeric');
-  input.setAttribute('pattern', '[0-9]*');
+	for(let i=0; i < inputsTypeNumber.length - 1; i++) {
+		inputsTypeNumber[i].setAttribute('inputmode', 'numeric');
+		inputsTypeNumber[i].setAttribute('pattern', '[0-9]*');
 });
 
 const motinystesCheck = document.getElementById('formbox-field-1');
