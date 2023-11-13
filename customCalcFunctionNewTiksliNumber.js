@@ -5,9 +5,11 @@ function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, n
 
 let inputsTypeNumber = document.getElementsByClassName('formbox__field-input');
 	for(let i=0; i < inputsTypeNumber.length - 1; i++) {
-		inputsTypeNumber[i].setAttribute('inputmode', 'numeric');
-		inputsTypeNumber[i].setAttribute('pattern', '[0-9]*');
-		inputsTypeNumber[i].setAttribute('novalidate', true);
+		// inputsTypeNumber[i].setAttribute('inputmode', 'numeric');
+		// inputsTypeNumber[i].setAttribute('pattern', '[0-9]*');
+		inputsTypeNumber[i].removeAttribute('value');
+		
+		// inputsTypeNumber[i].setAttribute('novalidate', true);
 		// inputsTypeNumber[i].setAttribute('type', 'text');
 	};
 
