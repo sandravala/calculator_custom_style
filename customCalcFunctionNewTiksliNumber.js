@@ -833,6 +833,7 @@ rezultatai = rezultatuLentele;
 
 function getAlert(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas){
 if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti === 1) {
+	
 	if (vpaIsmokaRodyti === 1) {
 		generateAlert(vpaTrukme === undefined, vpaTrukmesLaukas);
 		generateAlert(mamaArTetisVpa === undefined, vpaImsLaukas);
@@ -842,24 +843,24 @@ if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti
 	
 	if(mamaArTetisVpa === 1 || (mamaArTetisVpa === 2 && naudosisNpm) || motinystesIsmokaRodyti === 1) {
 	generateAlert(mamosPajamuTipas === undefined, mamosPajamuTipoLaukas);
-	generateAlert(mamosPajamos <= 0, mamosPajamuLaukas);
+	generateAlert(mamosPajamos <= 0 || isNaN(mamosPajamos), mamosPajamuLaukas);
 	generateAlert(gimdymoData === '', gimdymoDatosLaukas);
 		if (mamosPajamuTipas === 2) {
 			generateAlert(mamosIslaiduTipas === undefined, mamosIslaiduTipoLaukas);
 			if (mamosIslaiduTipas === 2) {
-				generateAlert(mamosIslaidos === 0, faktiniuMamosIslaiduLaukas);
+				generateAlert(mamosIslaidos === 0 || isNaN(mamosIslaidos), faktiniuMamosIslaiduLaukas);
 			}
 		}
 	}
 	
 	if(mamaArTetisVpa === 2 || (mamaArTetisVpa === 1 && naudosisNpm) || tevystesIsmokaRodyti === 1) {
 		generateAlert(tecioPajamuTipas === undefined, tecioPajamuTipoLaukas);
-		generateAlert(tecioPajamos <= 0, tecioPajamuLaukas);
+		generateAlert(tecioPajamos <= 0 || isNaN(tecioPajamos), tecioPajamuLaukas);
 		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
 		if (tecioPajamuTipas === 2) {
 			generateAlert(tecioIslaiduTipas === undefined, tecioIslaiduTipoLaukas);
 			if (tecioIslaiduTipas === 2) {
-				generateAlert(tecioIslaidos === 0, faktiniuTecioIslaiduLaukas);
+				generateAlert(tecioIslaidos === 0 || isNaN(tecioIslaidos), faktiniuTecioIslaiduLaukas);
 			}
 		}
 	}
@@ -870,7 +871,7 @@ if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti
 function generateAlert(conditionToGenerateAlert, fieldsetNumberToAddStyling) {
 	if (conditionToGenerateAlert) {
 	    fieldset[fieldsetNumberToAddStyling].addClass('klaida');
-	    calcAlert = 'Užpildykite raudonai pažymėtus laukelius ir spauskite "SKAIČIUOTI"';
+	    calcAlert = 'Teisingai užpildykite raudonai pažymėtus laukelius ir spauskite "SKAIČIUOTI"';
 	  } else {
 	    fieldset[fieldsetNumberToAddStyling].removeClass('klaida');
 	  }
