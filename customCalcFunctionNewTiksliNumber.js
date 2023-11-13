@@ -3,15 +3,12 @@ function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, n
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
 
-// let inputsTypeNumber = document.getElementsByClassName('formbox__field-input');
-// 	for(let i=0; i < inputsTypeNumber.length - 1; i++) {
-// 		// inputsTypeNumber[i].setAttribute('inputmode', 'numeric');
-// 		// inputsTypeNumber[i].setAttribute('pattern', '[0-9]*');
-// 		inputsTypeNumber[i].removeAttribute('value');
-		
-// 		inputsTypeNumber[i].setAttribute('novalidate', true);
-// 		// inputsTypeNumber[i].setAttribute('type', 'text');
-// 	};
+let inputsTypeNumber = document.getElementsByClassName('formbox__field-input');
+	for(let i=0; i < inputsTypeNumber.length - 1; i++) {
+		inputsTypeNumber[i].setAttribute('inputmode', 'numeric');
+		inputsTypeNumber[i].setAttribute('pattern', '[0-9]*');
+		inputsTypeNumber[i].setAttribute('type', 'text');
+	};
 
 const motinystesCheck = document.getElementById('formbox-field-1');
 const tevystesCheck = document.getElementById('formbox-field-2');
