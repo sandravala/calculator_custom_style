@@ -9,7 +9,7 @@ let inputsTypeNumber = document.getElementsByClassName('formbox__field-input');
 		// inputsTypeNumber[i].setAttribute('pattern', '[0-9]*');
 		inputsTypeNumber[i].removeAttribute('value');
 		
-		// inputsTypeNumber[i].setAttribute('novalidate', true);
+		inputsTypeNumber[i].setAttribute('novalidate', true);
 		// inputsTypeNumber[i].setAttribute('type', 'text');
 	};
 
