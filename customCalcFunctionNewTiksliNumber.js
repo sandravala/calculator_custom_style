@@ -8,6 +8,7 @@ let inputsTypeNumber = document.getElementsByClassName('formbox__field-input');
 		inputsTypeNumber[i].setAttribute('inputmode', 'numeric');
 		inputsTypeNumber[i].setAttribute('pattern', '[0-9]*');
 		inputsTypeNumber[i].setAttribute('type', 'text');
+		inputsTypeNumber[i].setAttribute('novalidate', true);
 		inputsTypeNumber[i].removeAttribute('value');
 	};
 
