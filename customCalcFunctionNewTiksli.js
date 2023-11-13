@@ -3,6 +3,14 @@ function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, n
 
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
 
+let inputsTypeNumber = document.getElementsByClassName('formbox__field-input');
+	for(let i=0; i < inputsTypeNumber.length - 1; i++) {
+		inputsTypeNumber[i].addEventListener('focus', event => {inputsTypeNumber[i].setAttribute('value', '');});
+	};
+
+if ("ontouchstart" in document.documentElement)
+{  document.getElementById('calculator_15').setAttribute('novalidate', true); }
+
 const motinystesCheck = document.getElementById('formbox-field-1');
 const tevystesCheck = document.getElementById('formbox-field-2');
 const vpaCheck = document.getElementById('formbox-field-3');
@@ -828,24 +836,24 @@ if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti
 	
 	if(mamaArTetisVpa === 1 || (mamaArTetisVpa === 2 && naudosisNpm) || motinystesIsmokaRodyti === 1) {
 	generateAlert(mamosPajamuTipas === undefined, mamosPajamuTipoLaukas);
-	generateAlert(mamosPajamos <= 0, mamosPajamuLaukas);
+	generateAlert(mamosPajamos <= 0 || isNaN(mamosPajamos), mamosPajamuLaukas);
 	generateAlert(gimdymoData === '', gimdymoDatosLaukas);
 		if (mamosPajamuTipas === 2) {
 			generateAlert(mamosIslaiduTipas === undefined, mamosIslaiduTipoLaukas);
 			if (mamosIslaiduTipas === 2) {
-				generateAlert(mamosIslaidos === 0, faktiniuMamosIslaiduLaukas);
+				generateAlert(mamosIslaidos === 0 || isNaN(mamosIslaidos), faktiniuMamosIslaiduLaukas);
 			}
 		}
 	}
 	
 	if(mamaArTetisVpa === 2 || (mamaArTetisVpa === 1 && naudosisNpm) || tevystesIsmokaRodyti === 1) {
 		generateAlert(tecioPajamuTipas === undefined, tecioPajamuTipoLaukas);
-		generateAlert(tecioPajamos <= 0, tecioPajamuLaukas);
+		generateAlert(tecioPajamos <= 0 || isNaN(tecioPajamos), tecioPajamuLaukas);
 		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
 		if (tecioPajamuTipas === 2) {
 			generateAlert(tecioIslaiduTipas === undefined, tecioIslaiduTipoLaukas);
 			if (tecioIslaiduTipas === 2) {
-				generateAlert(tecioIslaidos === 0, faktiniuTecioIslaiduLaukas);
+				generateAlert(tecioIslaidos === 0 || isNaN(tecioIslaidos), faktiniuTecioIslaiduLaukas);
 			}
 		}
 	}
