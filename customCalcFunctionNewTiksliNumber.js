@@ -62,7 +62,10 @@ const mamosIslaiduInput = document.getElementById('formbox-field-10');
 const tecioPajamuInput = document.getElementById('formbox-field-12');
 const tecioIslaiduInput = document.getElementById('formbox-field-14');
 const gimdymoDatosInput = document.getElementById('formbox-field-15');
-mamosPajamuInput.addEventListener('input', event => {fieldset[mamosPajamuLaukas].removeClass('klaida');});	
+mamosPajamuInput.addEventListener('input', event => {
+	fieldset[mamosPajamuLaukas].removeClass('klaida');
+	console.log(mamosPajamuLaukas.value);
+});	
 mamosIslaiduInput.addEventListener('input', event => {fieldset[faktiniuMamosIslaiduLaukas].removeClass('klaida');});	
 tecioPajamuInput.addEventListener('input', event => {fieldset[tecioPajamuLaukas].removeClass('klaida');});	
 tecioIslaiduInput.addEventListener('input', event => {fieldset[faktiniuTecioIslaiduLaukas].removeClass('klaida');});	
