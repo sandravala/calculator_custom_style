@@ -499,6 +499,11 @@ fieldset.formbox__container.klaida {
         font-size: .8em;
     
     }
+
+    .has-result {
+        margin-inline-start: -15%; 
+        margin-inline-end: -10%;
+    }
 }
 
 .formbox__btn button,
