@@ -505,6 +505,10 @@ fieldset.formbox__container.klaida {
         margin-inline-end: -8%;
     }
 
+    ul.data-for-result li {
+     font-size: small;
+    }
+
 }
 
 .formbox__btn button,
