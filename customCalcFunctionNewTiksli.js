@@ -830,13 +830,14 @@ rezultatai = rezultatuLentele;
 function getAlert(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas){
 if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti === 1) {
 	let re = new RegExp(/(20)\d{2}-(0[1-9]|1[1,2])-(0[1-9]|[12][0-9]|3[01])/);
+
+		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
+		generateAlert(!re.test(gimdymoData), gimdymoDatosLaukas);
 	
 	if (vpaIsmokaRodyti === 1) {
 		generateAlert(vpaTrukme === undefined, vpaTrukmesLaukas);
 		generateAlert(mamaArTetisVpa === undefined, vpaImsLaukas);
 		generateAlert(naudosisNpm === undefined, npmLaukas);
-		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
-		generateAlert(re.test(gimdymoData), gimdymoDatosLaukas);
 	}
 
 
@@ -844,8 +845,8 @@ if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti
 	if(mamaArTetisVpa === 1 || (mamaArTetisVpa === 2 && naudosisNpm) || motinystesIsmokaRodyti === 1) {
 	generateAlert(mamosPajamuTipas === undefined, mamosPajamuTipoLaukas);
 	generateAlert(mamosPajamos <= 0 || isNaN(mamosPajamos), mamosPajamuLaukas);
-	generateAlert(gimdymoData === '', gimdymoDatosLaukas);
-	generateAlert(re.test(gimdymoData), gimdymoDatosLaukas);
+	// generateAlert(gimdymoData === '', gimdymoDatosLaukas);
+	// generateAlert(re.test(gimdymoData), gimdymoDatosLaukas);
 		if (mamosPajamuTipas === 2) {
 			generateAlert(mamosIslaiduTipas === undefined, mamosIslaiduTipoLaukas);
 			if (mamosIslaiduTipas === 2) {
@@ -855,8 +856,8 @@ if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti
 	}
 	
 	if(mamaArTetisVpa === 2 || (mamaArTetisVpa === 1 && naudosisNpm) || tevystesIsmokaRodyti === 1) {
-		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
-		generateAlert(re.test(gimdymoData), gimdymoDatosLaukas);
+		// generateAlert(gimdymoData === '', gimdymoDatosLaukas);
+		// generateAlert(re.test(gimdymoData), gimdymoDatosLaukas);
 		generateAlert(tecioPajamuTipas === undefined, tecioPajamuTipoLaukas);
 		generateAlert(tecioPajamos <= 0 || isNaN(tecioPajamos), tecioPajamuLaukas);
 		if (tecioPajamuTipas === 2) {
