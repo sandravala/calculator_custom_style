@@ -501,7 +501,7 @@ fieldset.formbox__container.klaida {
     
     }
 
-    .has-result .formbox__body {
+    .has-result .formbox__body.result-page {
         margin-inline-start: -12%; 
         margin-inline-end: -8%;
     }
