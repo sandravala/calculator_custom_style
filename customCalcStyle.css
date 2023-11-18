@@ -511,6 +511,11 @@ fieldset.formbox__container.klaida {
         margin-inline-end: -8%;
     }
 
+    div.datos-laukas {
+        font-size: 1em;
+        width: 60px;
+    }
+
     ul.data-for-result li {
      font-size: small;
     }
