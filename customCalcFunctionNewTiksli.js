@@ -572,42 +572,6 @@ function fillRateArray() {
     tarifai.push({'start': npmLastStart, 'end': npmLasttEnd, 'rate': neperleidziamuMenesiuTarifas, 'base' : vienosDienosBazeAntroTevo, 'receiver': gavejasNpm, 'npm': true});
     }
 	
-// cia su parse	
-
-    // tarifai.push({'start': Date.parse(npmFirstStart), 'end': Date.parse(npmFirstEnd), 'rate': neperleidziamuMenesiuTarifas, 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': true});
-
-    // if (vpaTrukme === 24) {
-    //     const vpaTarpinisPabaiga = oneYear;
-    //     const vpaTarpinisPradzia = new Date(vpaTarpinisPabaiga);
-    //     vpaTarpinisPradzia.setDate(vpaTarpinisPradzia.getDate() + 1);
-    //     tarifai.push({ 'start': Date.parse(vpaStart), 'end': Date.parse(vpaTarpinisPabaiga), 'rate': tarifasAtostogos24men[0], 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': false});
-    //     tarifai.push({ 'start': Date.parse(vpaTarpinisPradzia), 'end': Date.parse(vpaEnd), 'rate': tarifasAtostogos24men[1], 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': false});
-    // } else {
-    //     tarifai.push({ 'start': Date.parse(vpaStart), 'end': Date.parse(vpaEnd), 'rate': tarifasAtostogos18men, 'base' : vienosDienosBazePagrTevo,  'receiver': gavejas, 'npm': false})
-    // }
-
-    // if (naudosisNpm) {
-    // tarifai.push({'start': Date.parse(npmLastStart), 'end': Date.parse(npmLasttEnd), 'rate': neperleidziamuMenesiuTarifas, 'base' : vienosDienosBazeAntroTevo, 'receiver': gavejasNpm, 'npm': true});
-    // }
-
-// cia su format
-	
-    // tarifai.push({'start': formatDate(npmFirstStart), 'end': formatDate(npmFirstEnd), 'rate': neperleidziamuMenesiuTarifas, 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': true});
-
-    // if (vpaTrukme === 24) {
-    //     const vpaTarpinisPabaiga = oneYear;
-    //     const vpaTarpinisPradzia = new Date(vpaTarpinisPabaiga);
-    //     vpaTarpinisPradzia.setDate(vpaTarpinisPradzia.getDate() + 1);
-    //     tarifai.push({ 'start': formatDate(vpaStart, 'yyyy-mm-dd'), 'end': formatDate(vpaTarpinisPabaiga, 'yyyy-mm-dd'), 'rate': tarifasAtostogos24men[0], 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': false});
-    //     tarifai.push({ 'start': formatDate(vpaTarpinisPradzia, 'yyyy-mm-dd'), 'end': formatDate(vpaEnd, 'yyyy-mm-dd'), 'rate': tarifasAtostogos24men[1], 'base' : vienosDienosBazePagrTevo, 'receiver': gavejas, 'npm': false});
-    // } else {
-    //     tarifai.push({ 'start': formatDate(vpaStart, 'yyyy-mm-dd'), 'end': formatDate(vpaEnd, 'yyyy-mm-dd'), 'rate': tarifasAtostogos18men, 'base' : vienosDienosBazePagrTevo,  'receiver': gavejas, 'npm': false})
-    // }
-
-    // if (naudosisNpm) {
-    // tarifai.push({'start': formatDate(npmLastStart, 'yyyy-mm-dd'), 'end': formatDate(npmLasttEnd, 'yyyy-mm-dd'), 'rate': neperleidziamuMenesiuTarifas, 'base' : vienosDienosBazeAntroTevo, 'receiver': gavejasNpm, 'npm': true});
-    // }
-
 }
 
 fillRateArray();
@@ -690,10 +654,6 @@ bendrosSumos.push({'tarifas' : '', 'men' : 'Viso VPA išmokų:', 'suma' : bendra
 		bendrosSumos.push({'tarifas' : '', 'men' : 'Viso išmokų:', 'suma' : bendraVisuIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraVisuIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
 	};
 
-	
-// if(bendraVisuIsmokuSumaSuMokesciais === bendraVpaIsmokuSumaSuMokesciais) {
-// 	bendrosSumos.push({'tarifas' : '', 'men' : 'Viso išmokų:', 'suma' : bendraVisuIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraVisuIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
-// }
 
 vpaIsmokos.forEach(ismoka => {
     ismoka.suma = ismoka.suma.toLocaleString("lt-LT") + " €";
@@ -832,7 +792,7 @@ if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti
 	let re = new RegExp(/(20)\d{2}-(0[1-9]|1[1,2])-(0[1-9]|[12][0-9]|3[01])/);
 
 		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
-		generateAlert(!re.test(gimdymoData), gimdymoDatosLaukas);
+		generateAlert(!re.test(gimdymoData), gimdymoDatosLaukas, 'Įveskite gimdymo datą tinkamu formatu, t.y. "YYYY-MM-DD"');
 	
 	if (vpaIsmokaRodyti === 1) {
 		generateAlert(vpaTrukme === undefined, vpaTrukmesLaukas);
@@ -845,8 +805,6 @@ if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti
 	if(mamaArTetisVpa === 1 || (mamaArTetisVpa === 2 && naudosisNpm) || motinystesIsmokaRodyti === 1) {
 	generateAlert(mamosPajamuTipas === undefined, mamosPajamuTipoLaukas);
 	generateAlert(mamosPajamos <= 0 || isNaN(mamosPajamos), mamosPajamuLaukas);
-	// generateAlert(gimdymoData === '', gimdymoDatosLaukas);
-	// generateAlert(re.test(gimdymoData), gimdymoDatosLaukas);
 		if (mamosPajamuTipas === 2) {
 			generateAlert(mamosIslaiduTipas === undefined, mamosIslaiduTipoLaukas);
 			if (mamosIslaiduTipas === 2) {
@@ -856,8 +814,6 @@ if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti
 	}
 	
 	if(mamaArTetisVpa === 2 || (mamaArTetisVpa === 1 && naudosisNpm) || tevystesIsmokaRodyti === 1) {
-		// generateAlert(gimdymoData === '', gimdymoDatosLaukas);
-		// generateAlert(re.test(gimdymoData), gimdymoDatosLaukas);
 		generateAlert(tecioPajamuTipas === undefined, tecioPajamuTipoLaukas);
 		generateAlert(tecioPajamos <= 0 || isNaN(tecioPajamos), tecioPajamuLaukas);
 		if (tecioPajamuTipas === 2) {
@@ -871,10 +827,10 @@ if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti
 } else {calcAlert = "";}
 
 
-function generateAlert(conditionToGenerateAlert, fieldsetNumberToAddStyling) {
+function generateAlert(conditionToGenerateAlert, fieldsetNumberToAddStyling, alertText) {
 	if (conditionToGenerateAlert) {
 	    fieldset[fieldsetNumberToAddStyling].addClass('klaida');
-	    calcAlert = 'Užpildykite raudonai pažymėtus laukelius ir spauskite "SKAIČIUOTI"';
+	    calcAlert = alertText ? alertText : 'Užpildykite raudonai pažymėtus laukelius ir spauskite "SKAIČIUOTI"';
 	  } else {
 	    fieldset[fieldsetNumberToAddStyling].removeClass('klaida');
 	  }
