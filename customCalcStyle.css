@@ -9,6 +9,10 @@ div.bendra-suma {
     width: max-content;
 }
 
+div.datos-laukas {
+    font-size: 1em;
+}
+
 .formbox {
     --formbox-font-size: 16px;
     --formbox-radius: 0.25em;
@@ -512,7 +516,6 @@ fieldset.formbox__container.klaida {
     }
 
     div.datos-laukas {
-        font-size: 1em;
         width: 60px;
     }
 
