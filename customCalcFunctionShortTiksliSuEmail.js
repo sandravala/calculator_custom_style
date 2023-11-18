@@ -1,8 +1,16 @@
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, emailas, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 	
+let inputsTypeNumber = document.getElementsByClassName('formbox__field-input');
+	for(let i=0; i < inputsTypeNumber.length - 1; i++) {
+		inputsTypeNumber[i].addEventListener('focus', event => {inputsTypeNumber[i].setAttribute('value', '');});
+	};
+
+if ("ontouchstart" in document.documentElement)
+{  document.querySelector('[id^="calculator"]').setAttribute('novalidate', true); }
+
+	
 // LAUKU ATIDENGIMAS PRIKLAUSOMAI NUO PASIRINKIMU
-	
-	
+		
 const vpaTrukme18Radio = document.getElementById('formbox-field-4_1');
 const vpaTrukme24Radio = document.getElementById('formbox-field-4_2');
 vpaTrukme18Radio.addEventListener('click', event => rodytiLaukusIsmokosSkaiciavimui('vpaTrukme'));
