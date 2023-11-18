@@ -708,7 +708,7 @@ function createRow(data, ismokuPavadinimas) {
 			const fontWeight = 'normal';
 			rows += `<tr>
 					<td style='text-align: left; font-size: .75em; text-transform: uppercase; padding-left: .3em;'>${data[i].tarifas}</td>
-					<td style='text-align: left; font-size: .75em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].men}</td>
+					<td style='text-align: left; font-size: .75em; padding-left: .3em; font-weight: ${fontWeight};'><div class='datos-laukas'>${data[i].men}</div></td>
 					<td style='text-align: left; font-size: .75em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].suma}</td>
 					<td style='text-align: left; font-size: .75em; padding-left: .3em; font-weight: ${fontWeight};'>${data[i].sumaPoMokesciu}</td>
 					<td style='text-align: left; font-size: .75em; text-transform: uppercase; padding-left: .3em;'>${data[i].gavejas}</td>
