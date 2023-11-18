@@ -835,14 +835,17 @@ if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti
 		generateAlert(vpaTrukme === undefined, vpaTrukmesLaukas);
 		generateAlert(mamaArTetisVpa === undefined, vpaImsLaukas);
 		generateAlert(naudosisNpm === undefined, npmLaukas);
+		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
+		generateAlert(re.test(gimdymoData), gimdymoDatosLaukas);
 	}
 
-	generateAlert(gimdymoData === '', gimdymoDatosLaukas);
-	generateAlert(re.test(gimdymoData), gimdymoDatosLaukas);
+
 	
 	if(mamaArTetisVpa === 1 || (mamaArTetisVpa === 2 && naudosisNpm) || motinystesIsmokaRodyti === 1) {
 	generateAlert(mamosPajamuTipas === undefined, mamosPajamuTipoLaukas);
 	generateAlert(mamosPajamos <= 0 || isNaN(mamosPajamos), mamosPajamuLaukas);
+	generateAlert(gimdymoData === '', gimdymoDatosLaukas);
+	generateAlert(re.test(gimdymoData), gimdymoDatosLaukas);
 		if (mamosPajamuTipas === 2) {
 			generateAlert(mamosIslaiduTipas === undefined, mamosIslaiduTipoLaukas);
 			if (mamosIslaiduTipas === 2) {
@@ -852,6 +855,8 @@ if(vpaIsmokaRodyti === 1 || motinystesIsmokaRodyti === 1 || tevystesIsmokaRodyti
 	}
 	
 	if(mamaArTetisVpa === 2 || (mamaArTetisVpa === 1 && naudosisNpm) || tevystesIsmokaRodyti === 1) {
+		generateAlert(gimdymoData === '', gimdymoDatosLaukas);
+		generateAlert(re.test(gimdymoData), gimdymoDatosLaukas);
 		generateAlert(tecioPajamuTipas === undefined, tecioPajamuTipoLaukas);
 		generateAlert(tecioPajamos <= 0 || isNaN(tecioPajamos), tecioPajamuLaukas);
 		if (tecioPajamuTipas === 2) {
