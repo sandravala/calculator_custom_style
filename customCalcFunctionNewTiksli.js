@@ -9,7 +9,7 @@ let inputsTypeNumber = document.getElementsByClassName('formbox__field-input');
 	};
 
 if ("ontouchstart" in document.documentElement)
-{  document.getElementById('calculator_15').setAttribute('novalidate', true); }
+{  document.querySelector('[id^="calculator"]').setAttribute('novalidate', true); }
 
 const motinystesCheck = document.getElementById('formbox-field-1');
 const tevystesCheck = document.getElementById('formbox-field-2');
