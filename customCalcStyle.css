@@ -4,12 +4,6 @@ form#form_SV {
     display: none;
 }
 
-div.bendraSuma {
-    width: 92px;
-    overflow: hidden;
-    font-size: 1em;
-}
-
 .formbox {
     --formbox-font-size: 16px;
     --formbox-radius: 0.25em;
@@ -497,13 +491,7 @@ fieldset.formbox__container.klaida {
 }
 
 @media screen and (max-width: 776px) {
-
-    div.bendraSuma {
-        width: 74px;
-        overflow: hidden;
-        font-size: 1em;
-    }
-    
+   
     .formbox__btn {
         text-align: center
     }
