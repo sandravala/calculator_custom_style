@@ -524,6 +524,12 @@ function ismokosSuma(bazeIsmokai, tarifas, kiekisDienomisArbaMenesiais, netaikyt
 let mamosBazeIsmokai = mamosPajamuTipas == 1 ? mamosPajamos : mamosIslaiduTipas == 1 ? (mamosPajamos - (mamosPajamos * 0.3)) * 0.9 : (mamosPajamos - mamosIslaidos) * 0.9;
 let tecioBazeIsmokai = tecioPajamuTipas == 1 ? tecioPajamos : tecioIslaiduTipas == 1 ? (tecioPajamos - (tecioPajamos * 0.3)) * 0.9 : (tecioPajamos - tecioIslaidos) * 0.9;
 
+// pasidarome tuscius masyvus bendroms sumoms
+	
+	let vpaIsmokos = [];
+	let tarifai = [];
+	let bendrosSumos = [];
+	
 // apskaiciuojame motinystes ismoka
 
 if(motinystesIsmokaRodyti) {
@@ -551,9 +557,7 @@ bendraVisuIsmokuSuma += tevystesIsmoka;
 
 if(vpaIsmokaRodyti) {
 	
-	let vpaIsmokos = [];
-	let tarifai = [];
-	let bendrosSumos = [];
+
 	let mamaVpa = mamaArTetisVpa === 1; // patikriniam, ar mama eis vpa (jei ne, tai vadinasi tetis)
 	function pajamuBaze(arMamaVpa){
 		const baze = arMamaVpa ? mamosBazeIsmokai : tecioBazeIsmokai;
