@@ -524,11 +524,13 @@ function ismokosSuma(bazeIsmokai, tarifas, kiekisDienomisArbaMenesiais, netaikyt
 let mamosBazeIsmokai = mamosPajamuTipas == 1 ? mamosPajamos : mamosIslaiduTipas == 1 ? (mamosPajamos - (mamosPajamos * 0.3)) * 0.9 : (mamosPajamos - mamosIslaidos) * 0.9;
 let tecioBazeIsmokai = tecioPajamuTipas == 1 ? tecioPajamos : tecioIslaiduTipas == 1 ? (tecioPajamos - (tecioPajamos * 0.3)) * 0.9 : (tecioPajamos - tecioIslaidos) * 0.9;
 
-// pasidarome tuscius masyvus bendroms sumoms
+// pasidarome tuscius kintamuosius rezultatu isvedimui
 	
 	let vpaIsmokos = [];
 	let tarifai = [];
 	let bendrosSumos = [];
+	let motinystesIsmokosEilute = [];
+	let tevystesIsmokosEilute = [];
 	
 // apskaiciuojame motinystes ismoka
 
@@ -536,7 +538,7 @@ if(motinystesIsmokaRodyti) {
 	
 let motinystesIsmokaSuMokesciais = ismokosSuma(mamosBazeIsmokai, motinystesTarifas, 4, true, false) * 1 < minIsmoka * 4 ? minIsmoka * 4 : ismokosSuma(mamosBazeIsmokai, motinystesTarifas, 4, true, false) * 1;
 let motinystesIsmoka = motinystesIsmokaSuMokesciais * (1 - mokesciaiNuoIsmoku / 100);
-let motinystesIsmokosEilute = motinystesIsmokaRodyti && mamosPajamos > 0 ? [{'tarifas' : motinystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + motinystesIsmokosData, 'suma' : motinystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : parseFloat(motinystesIsmoka.toFixed(2)).toLocaleString("lt-LT") + " €", 'gavejas': 'mama'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
+motinystesIsmokosEilute = motinystesIsmokaRodyti && mamosPajamos > 0 ? [{'tarifas' : motinystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + motinystesIsmokosData, 'suma' : motinystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : parseFloat(motinystesIsmoka.toFixed(2)).toLocaleString("lt-LT") + " €", 'gavejas': 'mama'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
 
 bendraVisuIsmokuSumaSuMokesciais += motinystesIsmokaSuMokesciais;
 bendraVisuIsmokuSuma += motinystesIsmoka;
@@ -548,7 +550,7 @@ if(tevystesIsmokaRodyti) {
 	
 let tevystesIsmokaSuMokesciais = ismokosSuma(tecioBazeIsmokai, tevystesTarifas, 1, false, false) * 1 < minIsmoka ? minIsmoka : ismokosSuma(tecioBazeIsmokai, tevystesTarifas, 1, false, false) * 1;
 let tevystesIsmoka = tevystesIsmokaSuMokesciais * (1 - mokesciaiNuoIsmoku / 100);
-let tevystesIsmokosEilute = tevystesIsmokaRodyti && tecioPajamos > 0 ? [{'tarifas' : tevystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + gDiena , 'suma' : tevystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : parseFloat(tevystesIsmoka.toFixed(2)).toLocaleString("lt-LT")  + " €", 'gavejas': 'tėtis'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
+tevystesIsmokosEilute = tevystesIsmokaRodyti && tecioPajamos > 0 ? [{'tarifas' : tevystesTarifas.toLocaleString("lt-LT")  + ' %', 'men' : 'nuo ' + gDiena , 'suma' : tevystesIsmokaSuMokesciais.toLocaleString("lt-LT")  + " €", 'sumaPoMokesciu' : parseFloat(tevystesIsmoka.toFixed(2)).toLocaleString("lt-LT")  + " €", 'gavejas': 'tėtis'}] : [{'tarifas':'', 'men': '', 'suma': '', 'sumaPoMokesciu' : '', 'gavejas': ''}];
 
 bendraVisuIsmokuSumaSuMokesciais += tevystesIsmokaSuMokesciais;
 bendraVisuIsmokuSuma += tevystesIsmoka;
