@@ -1,9 +1,5 @@
 @charset "UTF-8";
 
-.rodyti-skaiciuokleje {
-    display: none;
-}
-
 form#form_SV {
     display: none;
 }
@@ -520,7 +516,7 @@ fieldset.formbox__container.klaida {
 
     .has-result .formbox__body.result-page {
         margin-inline-start: -12%; 
-/*         margin-inline-end: -8%; */
+        margin-inline-end: -2%;
     }
 
     div.datos-laukas {
