@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.rodyti-skaiciuokleje {
+    display: none;
+}
+
 form#form_SV {
     display: none;
 }
