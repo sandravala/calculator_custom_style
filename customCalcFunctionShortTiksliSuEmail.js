@@ -1,21 +1,21 @@
-let queryStringPageUrl = window.location.search;
-var searchParams = new URLSearchParams(queryStringPageUrl);
-var desiredParam = 'kval';
+// let queryStringPageUrl = window.location.search;
+// var searchParams = new URLSearchParams(queryStringPageUrl);
+// var desiredParam = 'kval';
 
-if (searchParams.has(desiredParam) && searchParams.get(desiredParam) == 'swcwefnywlnudb9kdsjdha8n1t2bx0ijoat43zycmg4ch9fu2776vmmdzqkw6qpw5qcoyplw850rbtbrr8sg4h1c9') {
+// if (searchParams.has(desiredParam) && searchParams.get(desiredParam) == 'swcwefnywlnudb9kdsjdha8n1t2bx0ijoat43zycmg4ch9fu2776vmmdzqkw6qpw5qcoyplw850rbtbrr8sg4h1c9') {
 	
-	let nerodomosSekcijos = document.getElementsByClassName('rodyti-skaiciuokleje');
+// 	let nerodomosSekcijos = document.getElementsByClassName('rodyti-skaiciuokleje');
 	
-	for (var i = 0; i < nerodomosSekcijos.length; i++) {
-	   // nerodomosSekcijos[i].style.display = 'none'; 
-	   // nerodomosSekcijos[i].style.visibility = 'hidden'; 
-		console.log(nerodomosSekcijos[i]);
-		nerodomosSekcijos[i].remove();
-		console.log('liko: ' + nerodomosSekcijos.length);
-	}
+// 	for (var i = 0; i < nerodomosSekcijos.length; i++) {
+// 	   // nerodomosSekcijos[i].style.display = 'none'; 
+// 	   // nerodomosSekcijos[i].style.visibility = 'hidden'; 
+// 		console.log(nerodomosSekcijos[i]);
+// 		nerodomosSekcijos[i].remove();
+// 		console.log('liko: ' + nerodomosSekcijos.length);
+// 	}
 	
-	document.getElementsByTagName('h1')[0].innerHTML = 'Vaiko priežiūros išmokų skaičiuoklės rezultatai';
-}
+// 	document.getElementsByTagName('h1')[0].innerHTML = 'Vaiko priežiūros išmokų skaičiuoklės rezultatai';
+// }
 
 function loadCustomScript(fieldset, label, tevystesTarifas, motinystesTarifas, neperleidziamuMenesiuTarifas, tarifasAtostogos18men, tarifasAtostogos24men, mokesciaiNuoIsmoku, vdu, bazineSocIsmoka, motinystesIsmokaRodyti, tevystesIsmokaRodyti, vpaIsmokaRodyti, vpaTrukme, mamaArTetisVpa, naudosisNpm, mamosPajamuTipas, mamosPajamos, mamosIslaiduTipas, mamosIslaidos, tecioPajamuTipas, tecioPajamos, tecioIslaiduTipas, tecioIslaidos, emailas, gimdymoData, rezultatai, ismokuTipoLaukas, vpaTrukmesLaukas, vpaImsLaukas, npmLaukas, mamosPajamuTipoLaukas, mamosPajamuLaukas, mamosIslaiduTipoLaukas, faktiniuMamosIslaiduLaukas, tecioPajamuTipoLaukas, tecioPajamuLaukas, tecioIslaiduTipoLaukas, faktiniuTecioIslaiduLaukas, gimdymoDatosLaukas, emailoLaukas, mygtukuLaukas, rezultatuLaukas, datosInput, calcAlert, klaiduLaukas, minimumas) {
 	
