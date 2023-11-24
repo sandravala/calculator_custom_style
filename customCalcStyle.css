@@ -4,6 +4,10 @@ form#form_SV {
     display: none;
 }
 
+.formbox__htmlBlock-result {
+    max-width: 98%;
+}
+
 div.bendra-suma {
     font-size: 1em;
     width: max-content;
@@ -512,7 +516,7 @@ fieldset.formbox__container.klaida {
 
     .has-result .formbox__body.result-page {
         margin-inline-start: -12%; 
-        margin-inline-end: -8%;
+/*         margin-inline-end: -8%; */
     }
 
     div.datos-laukas {
