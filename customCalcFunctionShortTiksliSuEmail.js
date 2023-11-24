@@ -9,7 +9,9 @@ if (searchParams.has(desiredParam) && searchParams.get(desiredParam) == 'swcwefn
 	for (var i = 0; i < nerodomosSekcijos.length; i++) {
 	   // nerodomosSekcijos[i].style.display = 'none'; 
 	   // nerodomosSekcijos[i].style.visibility = 'hidden'; 
+		console.log(nerodomosSekcijos[i]);
 		nerodomosSekcijos[i].remove();
+		console.log('liko: ' + nerodomosSekcijos.length);
 	}
 	
 	document.getElementsByTagName('h1')[0].innerHTML = 'Vaiko priežiūros išmokų skaičiuoklės rezultatai';
