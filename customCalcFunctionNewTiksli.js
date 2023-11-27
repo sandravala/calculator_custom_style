@@ -663,6 +663,7 @@ function generuotiIsmokosEilute(start, end, rate, base, receiver, npm) {
 
 bendrosSumos.push({'tarifas' : '', 'men' : 'Viso išmokų:', 'suma' : bendraVisuIsmokuSumaSuMokesciais.toLocaleString("lt-LT") + ' €', 'sumaPoMokesciu': bendraVisuIsmokuSuma.toLocaleString("lt-LT") + ' €', 'gavejas' : ''});
 
+
   
 // funkcija eiluciu generavimui pagal duomenis
 
@@ -733,7 +734,7 @@ function createRow(data, ismokuPavadinimas) {
 let mIsmokosPavadinimas = motinystesIsmokaRodyti && mamosPajamos > 0 ? 'Nėštumo ir gimdymo atostogų išmoka:' : '';
 let tIsmokosPavadinimas = tevystesIsmokaRodyti && tecioPajamos > 0 ? 'Tėvystės išmoka:' : '';
 let vpaIsmokosPavadinimas = vpaIsmokaRodyti && (tecioPajamos || mamosPajamos) > 0 ? 'Vaiko priežiūros atostogų išmoka:' : '';
-let bendrosSumosPavadinimas = (vpaIsmokaRodyti || motinystesIsmokaRodyti || tevystesIsmokaRodyti) && (tecioPajamos || mamosPajamos) > 0 ? 'bendraSuma' : '';
+let bendrosSumosPavadinimas = ((vpaIsmokaRodyti && ( motinystesIsmokaRodyti || tevystesIsmokaRodyti)) || (motinystesIsmokaRodyti && tevystesIsmokaRodyti) ) && (tecioPajamos || mamosPajamos) > 0 ? 'bendraSuma' : '';
 let paaiskinimuPavadinimas = tecioPajamos || mamosPajamos > 0 ? 'Paaiškinimai:' : '';
 let pavadinimai = mamosPajamos > 0 || tecioPajamos > 0 ? ['tarifas', 'data*', 'suma**', 'suma (į rankas)', 'gavėjas'] : ['', '', '', '', ''];
 
