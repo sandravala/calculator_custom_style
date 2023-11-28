@@ -421,7 +421,7 @@ function generuotiIsmokosEilute(start, end, rate, base, receiver, npm) {
             menuo += formatDate(new Date(currentYear, currentMonth, currentLastDay), "yyyy-mm-dd");
         }
 
-        let currentBusinessDays = countBusinessDays(new Date(currentYear, currentMonth, 1), new Date(currentYear, currentMonth, currentLastDay), generatePublicHolidays(currentYear));
+        let currentBusinessDays = factor === 1 ? 20.9 : countBusinessDays(new Date(currentYear, currentMonth, 1), new Date(currentYear, currentMonth, currentLastDay), generatePublicHolidays(currentYear));
 
         let suma = ismokosSuma(base, rate, currentBusinessDays, false, true);
         suma = suma < minIsmoka ? minIsmoka * factor : suma * factor;
