@@ -297,7 +297,7 @@ function addMonthsToDate(date, monthsToAdd) {
         const currentMonth = newDate.getMonth();
     newDate.setMonth(currentMonth + monthsToAdd);
 
-    let newCurrentMonth = currentMonth + monthsToAdd > 0 ? (currentMonth + monthsToAdd) % 12 : 12 + (currentMonth + monthsToAdd) % 12;
+    let newCurrentMonth = currentMonth + monthsToAdd >= 0 ? (currentMonth + monthsToAdd) % 12 : 12 + (currentMonth + monthsToAdd) % 12;
 
     // Handling potential year adjustment
     if (newDate.getMonth() !== newCurrentMonth) {
