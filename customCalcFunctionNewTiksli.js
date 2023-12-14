@@ -473,7 +473,7 @@ function addMonthsToDate(date, monthsToAdd) {
 
     let newCurrentMonth = currentMonth + monthsToAdd >= 0 ? (currentMonth + monthsToAdd) % 12 : 12 + (currentMonth + monthsToAdd) % 12;
 
-    // Handling potential year adjustment
+// Handling potential year adjustment in case new month has fewer days than current month. e.g. 2024-03-31 minus 1 month should result 2024-02-29, not 2024-03-02
     if (newDate.getMonth() !== newCurrentMonth) {
       newDate.setDate(0); // Move to the last day of the previous month
     }
