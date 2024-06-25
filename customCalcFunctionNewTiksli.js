@@ -134,7 +134,7 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 		case 'mamosIV' : 
 			mamosIslaidos30.checked = false;
 			mamosIslaidosFaktas.checked = false;
-			label[mamosPajamuLaukas].text('Vidutinės mamos pajamos');
+			label[mamosPajamuLaukas].text('Grynos gaunamos vidutinės mamos pajamos iš IDV');
 			mamosPajamuInput.setAttribute('min', minimumas);
 			mamosPajamuInput.setAttribute('value', minimumas);
 			pastabaDelIvGrindu(mamosPajamuLaukas, true);
@@ -156,7 +156,7 @@ function rodytiLaukusIsmokosSkaiciavimui(ismoka) {
 		case 'tecioIV' : 
 			tecioIslaidos30.checked = false;
 			tecioIslaidosFaktas.checked = false;
-			label[tecioPajamuLaukas].text('Vidutinės tėčio pajamos');
+			label[tecioPajamuLaukas].text('Grynos gaunamos vidutinės tėčio pajamos iš IDV');
 			tecioPajamuInput.setAttribute('min', minimumas);
 			tecioPajamuInput.setAttribute('value', minimumas);
 			pastabaDelIvGrindu(tecioPajamuLaukas, true);
